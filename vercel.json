@@ -1,21 +1,3 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    },
-    {
-      "source": "/public/(.*)",
-      "destination": "/frontend/public/$1"
-    },
-    {
-      "source": "/",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/frontend/$1"
-    }
-  ]
+  "cleanUrls": true
 }
