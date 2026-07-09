@@ -1,0 +1,10 @@
+{
+  "name": "ved-vigyan-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Root configuration for Vercel deployment of Ved Vigyan serverless APIs",
+  "dependencies": {
+    "googleapis": "^140.0.1",
+    "nodemailer": "^6.9.13"
+  }
+}

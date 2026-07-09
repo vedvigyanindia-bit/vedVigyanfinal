@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New Launches | Ved Vigyan</title>
+    <meta name="description" content="Explore new launches in Rudraksha, malas, bracelets and gem stones at Ved Vigyan." />
+    <link rel="canonical" href="/new-launches.html" />
+    <meta name="robots" content="index,follow" />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/home-luxury.css" />
+
+    <script src="/public/js/data.js" defer></script>
+    <script src="/public/js/carousel.js" defer></script>
+    <script src="/public/js/cart.js" defer></script>
+    <script src="/public/js/wishlist.js" defer></script>
+    <script src="/public/js/lux-shell.js" defer></script>
+    <script src="/public/js/lux-cards.js" defer></script>
+    <script src="/public/js/ui.js" defer></script>
+    <script src="/public/js/new-launches.js" defer></script>
+  </head>
+  <body class="lux-home" data-lux-shell-inject="true">
+
+    
+
+    <main class="page">
+      <div class="container">
+        <div class="pagecard">
+          <div class="breadcrumbs">Home / New Launches</div>
+          <h1 class="section-title" style="margin:0 0 6px">New Launches</h1>
+          <p class="section-sub" style="margin:0">A simple SEO landing page for new products (demo).</p>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <section class="grid" id="launchGrid" aria-label="New launches"></section>
+      </div>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const renderStars = (rating) => {
+          const fullStars = Math.round(rating || 0);
+          return `${"★".repeat(fullStars)}${"☆".repeat(Math.max(0, 5 - fullStars))}`;
+        };
+        const renderPriceBlock = (p) => {
+          if (!p.originalPrice || p.originalPrice <= p.price) {
+            return `<div class="price">${window.VedVigyanCart.formatINR(p.price)}</div>`;
+          }
+          return `
+            <div class="rating-row">
+              <span class="stars" aria-hidden="true">${renderStars(p.rating)}</span>
+              <span class="rating-text">${p.rating}/5</span>
+            </div>
+            <div class="price-stack">
+              <div class="price">${window.VedVigyanCart.formatINR(p.price)}</div>
+              <div class="price-meta">
+                <span class="old-price">${window.VedVigyanCart.formatINR(p.originalPrice)}</span>
+                <span class="discount-badge">${p.discountPercent}% OFF</span>
+              </div>
+            </div>
+          `;
+        };
+        const renderCartControl = (productId) => {
+          const qty = window.VedVigyanCart.getItemQty(productId);
+          if (!qty) {
+            return `<button class="btn small primary" type="button" data-add-to-cart="${productId}">Add to Cart</button>`;
+          }
+          return `
+            <div class="qty qty-card" data-card-qty="${productId}">
+              <button type="button" data-card-dec="${productId}" aria-label="Decrease quantity">−</button>
+              <span>${qty}</span>
+              <button type="button" data-card-inc="${productId}" aria-label="Increase quantity">+</button>
+            </div>
+          `;
+        };
+        const grid = document.getElementById("launchGrid");
+        const products = (window.VED_VIGYAN_DATA && window.VED_VIGYAN_DATA.products) || [];
+        const newest = products.slice(-6).reverse();
+        if (!grid) return;
+        const renderLaunches = () => {
+          grid.innerHTML = newest
+            .map(
+              (p) => `
+                <article class="card">
+                  ${window.VedVigyanCarousel ? window.VedVigyanCarousel.renderCarouselHtml(p) : `<div class="thumb"><img src="${p.image}" alt="${p.imageAlt}" width="420" height="260" loading="lazy"></div>`}
+                  <div class="pillrow">
+                    <span class="pill">New</span>
+                    <span class="pill">${p.category.replace("-", " ")}</span>
+                  </div>
+                  <div class="body">
+                    <h3>${p.name}</h3>
+                    <div class="muted">${p.short}</div>
+                    ${renderPriceBlock(p)}
+                    <div class="actions">
+                      <a class="btn small" href="${p.url}">View Details</a>
+                      ${renderCartControl(p.id)}
+                      <button class="btn small wishbtn" type="button" data-wishlist="${p.id}" aria-label="Add to wishlist">♡</button>
+                    </div>
+                  </div>
+                </article>
+              `
+            )
+            .join("");
+
+          window.VedVigyanCarousel?.bindCarouselEvents(grid);
+          window.VedVigyanCart.wireAddToCartButtons(grid);
+          grid.querySelectorAll("[data-card-inc]").forEach((button) => {
+            button.addEventListener("click", () => {
+              window.VedVigyanCart.changeQty(button.getAttribute("data-card-inc"), 1);
+            });
+          });
+          grid.querySelectorAll("[data-card-dec]").forEach((button) => {
+            button.addEventListener("click", () => {
+              window.VedVigyanCart.changeQty(button.getAttribute("data-card-dec"), -1);
+            });
+          });
+          window.VedVigyanWishlist?.wireWishlistButtons?.(grid);
+          window.VedVigyanWishlist?.updateWishButtons?.(grid);
+        };
+
+        renderLaunches();
+        window.addEventListener("vedvigyan:cart-updated", renderLaunches);
+      });
+    </script>
+  </body>
+</html>
+
+

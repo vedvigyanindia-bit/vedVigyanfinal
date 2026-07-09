@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shop Collection | Ved Vigyan</title>
+    <meta name="description" content="Browse 44+ authentic Rudraksha beads, sacred malas, healing crystal bracelets and spiritual wellness products. Lab verified with free shipping above ₹999." />
+    <link rel="canonical" href="/shop.html" />
+    <meta name="robots" content="index,follow" />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/home-luxury.css" />
+    <script src="/public/js/data.js" defer></script>
+    <script src="/public/js/carousel.js" defer></script>
+    <script src="/public/js/cart.js" defer></script>
+    <script src="/public/js/wishlist.js" defer></script>
+    <script src="/public/js/lux-shell.js" defer></script>
+    <script src="/public/js/lux-cards.js" defer></script>
+    <script src="/public/js/ui.js" defer></script>
+    <script src="/public/js/shop.js" defer></script>
+  </head>
+  <body class="lux-home" data-lux-shell-inject="true" data-lux-page="shop">
+
+    
+
+    <main>
+      <section class="lux-shop-hero">
+        <div class="lux-container">
+          <nav class="lux-breadcrumb" aria-label="Breadcrumb">
+            <a href="/index.html">Home</a>
+            <span aria-hidden="true">/</span>
+            <span>Shop</span>
+          </nav>
+          <div class="lux-shop-hero-inner lux-reveal">
+            <div class="lux-section-kicker">Full Collection</div>
+            <h1 class="lux-section-title">Sacred Essentials</h1>
+            <p class="lux-section-sub" style="margin:0 auto;">
+              Authentic Rudraksha, malas, crystals and Vedic wellness — each piece lab verified and energized.
+              <span id="resultCount" class="lux-result-count"></span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lux-section lux-shop-body" style="padding-top:0;">
+        <div class="lux-container">
+          <div class="lux-shop-toolbar lux-reveal" aria-label="Filters">
+            <div class="lux-filter-group">
+              <label for="categorySelect">Category</label>
+              <select id="categorySelect" aria-label="Filter by category"></select>
+            </div>
+            <div class="lux-filter-group lux-filter-search">
+              <label for="searchInput">Search</label>
+              <input id="searchInput" type="search" placeholder="Try: 5 Mukhi, Tulsi mala…" aria-label="Search products" />
+            </div>
+            <div class="lux-filter-group">
+              <label for="sortSelect">Sort</label>
+              <select id="sortSelect" aria-label="Sort products">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="name-asc">Name: A to Z</option>
+              </select>
+            </div>
+            <div class="lux-filter-group lux-filter-price">
+              <label for="minPrice">Min ₹</label>
+              <input id="minPrice" type="number" inputmode="numeric" placeholder="0" aria-label="Minimum price" />
+            </div>
+            <div class="lux-filter-group lux-filter-price">
+              <label for="maxPrice">Max ₹</label>
+              <input id="maxPrice" type="number" inputmode="numeric" placeholder="5000" aria-label="Maximum price" />
+            </div>
+          </div>
+
+          <div class="lux-products-grid" id="productGrid" aria-label="Product listing"></div>
+
+          <section class="lux-advisor lux-reveal" aria-label="Shopping advisor">
+            <div class="lux-advisor-copy">
+              <div class="lux-section-kicker">Personalized Guidance</div>
+              <h2 class="lux-section-title" style="font-size:32px;">Find Your Perfect Match</h2>
+              <p class="lux-section-sub" style="margin:0;text-align:left;">
+                Answer a few questions and we'll recommend the ideal Rudraksha or crystal for your spiritual goals.
+              </p>
+            </div>
+            <form id="advisorForm" class="lux-advisor-form">
+              <div class="lux-field">
+                <label for="advisorGoal">Primary goal</label>
+                <select id="advisorGoal" name="goal">
+                  <option value="calm">Calm & emotional balance</option>
+                  <option value="clarity">Clarity & focus</option>
+                  <option value="confidence">Confidence & grounding</option>
+                  <option value="prosperity">Prosperity & guidance</option>
+                  <option value="ritual">Puja & ritual practice</option>
+                </select>
+              </div>
+              <div class="lux-field">
+                <label for="advisorExperience">Experience</label>
+                <select id="advisorExperience" name="experience">
+                  <option value="beginner">Beginner</option>
+                  <option value="regular">Regular practitioner</option>
+                </select>
+              </div>
+              <div class="lux-field">
+                <label for="advisorWear">How will you use it?</label>
+                <select id="advisorWear" name="wear">
+                  <option value="daily">Daily wear</option>
+                  <option value="ritual">Prayer / ritual use</option>
+                </select>
+              </div>
+              <div class="lux-field">
+                <label for="advisorBudget">Budget</label>
+                <select id="advisorBudget" name="budget">
+                  <option value="under-700">Under ₹700</option>
+                  <option value="700-1500">₹700 to ₹1500</option>
+                  <option value="1500-plus">₹1500+</option>
+                </select>
+              </div>
+              <button class="lux-btn lux-btn-primary" type="submit" style="align-self:end;">Recommend</button>
+            </form>
+            <div id="advisorResult" class="lux-advisor-result">
+              <p>Your personalized recommendation will appear here.</p>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

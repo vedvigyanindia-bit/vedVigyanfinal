@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cart | Ved Vigyan</title>
+    <meta name="description" content="Review your Ved Vigyan cart, update quantities, and proceed to checkout." />
+    <link rel="canonical" href="/cart.html" />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/home-luxury.css" />
+    <script src="/public/js/data.js" defer></script>
+    <script src="/public/js/carousel.js" defer></script>
+    <script src="/public/js/cart.js" defer></script>
+    <script src="/public/js/wishlist.js" defer></script>
+    <script src="/public/js/lux-shell.js" defer></script>
+    <script src="/public/js/lux-cards.js" defer></script>
+    <script src="/public/js/ui.js" defer></script>
+    <script src="/public/js/cart-page.js" defer></script>
+  </head>
+  <body class="lux-home" data-lux-shell-inject="true" data-lux-page="cart">
+
+    
+
+    <main>
+      <section class="lux-shop-hero">
+        <div class="lux-container">
+          <nav class="lux-breadcrumb" aria-label="Breadcrumb">
+            <a href="/index.html">Home</a><span aria-hidden="true">/</span><span>Cart</span>
+          </nav>
+          <div class="lux-shop-hero-inner lux-reveal">
+            <div class="lux-section-kicker">Your Selection</div>
+            <h1 class="lux-section-title">Shopping Cart</h1>
+            <p class="lux-section-sub" style="margin:0 auto;">Review items, update quantities, and proceed to secure checkout.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lux-section" style="padding-top:0;">
+        <div class="lux-container">
+          <section id="cartSmartSummary"></section>
+
+          <div class="lux-cart-panel lux-reveal">
+            <div id="cartEmpty" class="lux-empty-state" style="display:none;">
+              <p>Your cart is empty.</p>
+              <a class="lux-btn lux-btn-primary" href="/shop.html">Continue Shopping</a>
+            </div>
+
+            <div class="lux-cart-table-wrap">
+              <table class="lux-cart-table" aria-label="Cart items">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Total</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="cartBody"></tbody>
+              </table>
+            </div>
+
+            <div class="lux-cart-footer">
+              <div>
+                <div class="lux-cart-subtotal-label">Subtotal</div>
+                <div class="lux-cart-subtotal" id="cartSubtotal">₹0</div>
+                <p class="lux-cart-shipping-note">Free shipping on orders above ₹999</p>
+              </div>
+              <div id="cartActions" class="lux-cart-actions">
+                <a class="lux-btn lux-btn-secondary" href="/shop.html">Continue Shopping</a>
+                <a class="lux-btn lux-btn-primary" href="/checkout.html">Proceed to Checkout</a>
+              </div>
+            </div>
+          </div>
+
+          <section class="lux-section" style="padding:64px 0 0;">
+            <div class="lux-section-head lux-reveal">
+              <div class="lux-section-kicker">Complete Your Journey</div>
+              <h2 class="lux-section-title">Recommended For You</h2>
+            </div>
+            <div class="lux-products-grid" id="cartRecommendations"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

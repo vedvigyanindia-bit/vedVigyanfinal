@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wishlist | Ved Vigyan</title>
+    <meta name="description" content="Your saved spiritual products at Ved Vigyan." />
+    <link rel="canonical" href="/wishlist.html" />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/home-luxury.css" />
+    <script src="/public/js/data.js" defer></script>
+    <script src="/public/js/carousel.js" defer></script>
+    <script src="/public/js/cart.js" defer></script>
+    <script src="/public/js/wishlist.js" defer></script>
+    <script src="/public/js/lux-shell.js" defer></script>
+    <script src="/public/js/lux-cards.js" defer></script>
+    <script src="/public/js/ui.js" defer></script>
+    <script src="/public/js/wishlist-page.js" defer></script>
+  </head>
+  <body class="lux-home" data-lux-shell-inject="true" data-lux-page="wishlist">
+
+    
+
+    <main>
+      <section class="lux-shop-hero">
+        <div class="lux-container">
+          <nav class="lux-breadcrumb" aria-label="Breadcrumb">
+            <a href="/index.html">Home</a><span aria-hidden="true">/</span><span>Wishlist</span>
+          </nav>
+          <div class="lux-shop-hero-inner lux-reveal">
+            <div class="lux-section-kicker">Saved Items</div>
+            <h1 class="lux-section-title">Your Wishlist</h1>
+            <p class="lux-section-sub" style="margin:0 auto;">Products you've saved for your spiritual journey.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lux-section" style="padding-top:0;">
+        <div class="lux-container">
+          <div class="lux-products-grid" id="wishlistGrid" aria-label="Wishlist products"></div>
+          <div id="wishlistEmpty" class="lux-empty-state lux-reveal" style="display:none;">
+            <p>Your wishlist is empty.</p>
+            <a class="lux-btn lux-btn-primary" href="/shop.html">Browse Collection</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

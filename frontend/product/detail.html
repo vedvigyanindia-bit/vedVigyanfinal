@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product | Ved Vigyan</title>
+    <meta name="description" content="Shop authentic spiritual products at Ved Vigyan. Lab verified Rudraksha, malas and healing crystals." />
+    <link rel="canonical" href="/product/detail.html" />
+    <meta name="robots" content="index,follow" />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/home-luxury.css" />
+    <script src="/public/js/data.js" defer></script>
+    <script src="/public/js/carousel.js" defer></script>
+    <script src="/public/js/cart.js" defer></script>
+    <script src="/public/js/wishlist.js" defer></script>
+    <script src="/public/js/lux-shell.js" defer></script>
+    <script src="/public/js/lux-cards.js" defer></script>
+    <script src="/public/js/ui.js" defer></script>
+    <script src="/public/js/product.js" defer></script>
+  </head>
+  <body class="lux-home" data-lux-shell-inject="true" data-lux-page="product">
+
+    
+
+    <main>
+      <section class="lux-pdp">
+        <div class="lux-container">
+          <nav class="lux-breadcrumb lux-reveal" aria-label="Breadcrumb">
+            <a href="/index.html">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/shop.html">Shop</a>
+            <span aria-hidden="true">/</span>
+            <span id="pdpBreadcrumb">Product</span>
+          </nav>
+
+          <div class="lux-pdp-grid">
+            <div class="lux-pdp-gallery lux-reveal" id="pdpGallery">
+              <img id="productImg" src="/logo.webp" alt="Product" width="600" height="600" />
+            </div>
+
+            <div class="lux-pdp-info lux-reveal">
+              <div class="lux-pdp-badges">
+                <span class="lux-badge-pill lux-badge-cert">Lab Certified</span>
+                <span class="lux-badge-pill lux-badge-auth">100% Authentic</span>
+                <span class="lux-badge-pill lux-badge-cert">Energized</span>
+              </div>
+              <h1 class="lux-pdp-title" id="productTitle">Loading…</h1>
+              <div class="lux-product-rating" id="pdpRating"></div>
+              <div class="lux-pdp-price" id="productPrice"></div>
+              <p class="lux-pdp-desc" id="productDesc"></p>
+
+              <ul class="lux-pdp-bullets" id="productBullets"></ul>
+
+              <div class="lux-pdp-actions">
+                <button class="lux-btn lux-btn-primary" id="addToCartBtn" type="button">Add to Cart</button>
+                <button class="lux-product-action-btn lux-pdp-wish" type="button" data-wishlist="" aria-label="Add to wishlist">♡</button>
+                <a class="lux-btn lux-btn-secondary" href="https://wa.me/917900811101" target="_blank" rel="noopener noreferrer">Ask Expert</a>
+              </div>
+
+              <div class="lux-pdp-trust-row">
+                <span>✓ Free shipping above ₹999</span>
+                <span>✓ 7-day easy returns</span>
+                <span>✓ Certificate included</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lux-pdp-tabs lux-reveal">
+            <details class="lux-pdp-faq" open>
+              <summary>Product Details</summary>
+              <div id="pdpDetails"></div>
+            </details>
+            <details class="lux-pdp-faq">
+              <summary>How to Use</summary>
+              <p>Wear comfortably on skin or use during meditation and jaap. Keep clean and dry. Store respectfully when not in use. For Rudraksha, many practitioners chant Om Namah Shivaya 108 times upon first wear.</p>
+            </details>
+            <details class="lux-pdp-faq">
+              <summary>Authenticity & Certification</summary>
+              <p>Every product includes a lab verification certificate where applicable. Our team performs visual inspection and traditional energization before dispatch. Contact us on WhatsApp for certificate verification support.</p>
+            </details>
+            <details class="lux-pdp-faq">
+              <summary>Shipping & Returns</summary>
+              <p>Orders dispatch within 1–2 business days. Free shipping on orders above ₹999 across India. 7-day return policy for unused products in original packaging.</p>
+            </details>
+          </div>
+
+          <section class="lux-section" style="padding-bottom:48px;">
+            <div class="lux-section-head lux-reveal">
+              <div class="lux-section-kicker">Curated For You</div>
+              <h2 class="lux-section-title">You May Also Like</h2>
+            </div>
+            <div class="lux-products-grid" id="relatedGrid"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div class="lux-sticky-cart" id="stickyCart" aria-hidden="true">
+      <div class="lux-container lux-sticky-cart-inner">
+        <div class="lux-sticky-cart-info">
+          <img id="stickyImg" src="" alt="" width="48" height="48" />
+          <div>
+            <b id="stickyTitle"></b>
+            <span id="stickyPrice"></span>
+          </div>
+        </div>
+        <button class="lux-btn lux-btn-primary lux-btn-sm" id="stickyAddBtn" type="button">Add to Cart</button>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

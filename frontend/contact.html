@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Ved Vigyan | Spiritual Products Support</title>
+    <meta
+      name="description"
+      content="Contact Ved Vigyan for product guidance, authenticity questions, and order support. Rudraksha, malas, and puja items."
+    />
+    <link rel="canonical" href="/contact.html" />
+    <meta name="robots" content="index,follow" />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/home-luxury.css" />
+
+    <script src="/public/js/cart.js" defer></script>
+    <script src="/public/js/lux-shell.js" defer></script>
+    <script src="/public/js/lux-cards.js" defer></script>
+    <script src="/public/js/ui.js" defer></script>
+  </head>
+  <body class="lux-home" data-lux-shell-inject="true">
+
+    
+
+    <main class="page">
+      <div class="container">
+        <div class="pagecard">
+          <div class="breadcrumbs">Home / Contact</div>
+          <h1 class="section-title" style="margin:0 0 6px">Contact Ved Vigyan</h1>
+          <p class="section-sub" style="margin:0">
+            Ask about authenticity, usage, and product recommendations. We will open WhatsApp on your query after you submit.
+          </p>
+        </div>
+
+        <div style="height:14px"></div>
+
+        <div class="grid">
+          <section class="card col-span-7">
+            <div class="body">
+              <h2 style="margin:0">Send a Message</h2>
+              <form id="contactForm" style="margin-top:10px">
+                <div class="formgrid">
+                  <div class="field">
+                    <label for="cname">Name *</label>
+                    <input id="cname" name="name" required />
+                  </div>
+                  <div class="field">
+                    <label for="cemail">Email *</label>
+                    <input id="cemail" name="email" type="email" autocomplete="email" required />
+                  </div>
+                  <div class="field">
+                    <label for="cphone">Phone *</label>
+                    <input id="cphone" name="phone" type="tel" autocomplete="tel" required />
+                  </div>
+                  <div class="field" style="grid-column:1/-1">
+                    <label for="cmsg">Message *</label>
+                    <textarea id="cmsg" name="message" required placeholder="Tell us what you need..."></textarea>
+                  </div>
+                </div>
+                <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
+                  <button class="btn small primary" type="submit">Send</button>
+                  <a class="btn small" href="/shop.html">Shop Products</a>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <aside class="card col-span-5">
+            <div class="body">
+              <h2 style="margin:0">Support</h2>
+              <p class="sub" style="margin:10px 0 0">
+                Email: <a href="mailto:Vedvigyanindia@gmail.com"><b>Vedvigyanindia@gmail.com</b></a><br />
+                Phone: <a href="tel:+917900811101"><b>+91 7900811101</b></a><br />
+                WhatsApp: <a href="https://wa.me/917900811101" target="_blank" rel="noopener noreferrer"><b>Chat on WhatsApp</b></a>
+              </p>
+
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contactForm");
+        if (!form) return;
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const data = new FormData(form);
+          const name = String(data.get("name") || "").trim();
+          const email = String(data.get("email") || "").trim();
+          const phone = String(data.get("phone") || "").trim();
+          const message = String(data.get("message") || "").trim();
+          const whatsappText =
+            `Ved Vigyan Query%0A` +
+            `Name: ${encodeURIComponent(name)}%0A` +
+            `Email: ${encodeURIComponent(email)}%0A` +
+            `Phone: ${encodeURIComponent(phone)}%0A` +
+            `Message: ${encodeURIComponent(message)}`;
+
+          if (window.VedVigyanCart?.toast) window.VedVigyanCart.toast("Opening WhatsApp");
+          form.reset();
+          window.open(`https://wa.me/917900811101?text=${whatsappText}`, "_blank", "noopener");
+        });
+      });
+    </script>
+  </body>
+</html>

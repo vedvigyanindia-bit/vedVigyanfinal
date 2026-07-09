@@ -1,0 +1,26 @@
+{
+  "name": "ved-vigyan-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "seed": "node src/utils/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.6.1",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.1",
+    "googleapis": "^140.0.1",
+    "helmet": "^7.1.0",
+    "mongoose": "^8.12.1",
+    "nodemailer": "^6.9.13",
+    "morgan": "^1.10.0",
+    "slugify": "^1.6.6"
+  }
+}
