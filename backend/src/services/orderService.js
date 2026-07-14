@@ -14,7 +14,8 @@ async function createOrder({ customer, items, razorpayOrderId, razorpayPaymentId
 
   // Calculate amount
   const subtotal = items.reduce((sum, item) => sum + (item.qty * item.price), 0);
-  const shipping = subtotal >= 999 ? 0 : 99;
+  const hasFreeShippingProduct = items.some(item => item.id === "p_rud_5m");
+  const shipping = hasFreeShippingProduct ? 0 : (subtotal >= 999 ? 0 : 99);
   const amount = subtotal + shipping;
 
   // Generate Order ID

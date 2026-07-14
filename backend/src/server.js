@@ -195,7 +195,8 @@ async function handleCreateRazorpayOrder(req, res) {
     const customer = sanitizeCustomer(rawCustomer);
     const items = sanitizeItems(rawItems);
     const subtotal = calculateAmount(items);
-    const shipping = subtotal >= 999 ? 0 : 99;
+    const hasFreeShippingProduct = items.some(item => item.id === "p_rud_5m");
+    const shipping = hasFreeShippingProduct ? 0 : (subtotal >= 999 ? 0 : 99);
     const amount = subtotal + shipping;
 
     console.log(`[Payment] Creating Razorpay order for customer: ${customer.name}, amount: INR ${amount}`);
@@ -244,7 +245,8 @@ async function handleVerifyRazorpayPayment(req, res) {
     const customer = sanitizeCustomer(body.customer);
     const items = sanitizeItems(body.items);
     const subtotal = calculateAmount(items);
-    const shipping = subtotal >= 999 ? 0 : 99;
+    const hasFreeShippingProduct = items.some(item => item.id === "p_rud_5m");
+    const shipping = hasFreeShippingProduct ? 0 : (subtotal >= 999 ? 0 : 99);
     const amount = subtotal + shipping;
     const payment = body.payment || {};
     const razorpayOrderId = sanitizeText(payment.razorpay_order_id, 100);
