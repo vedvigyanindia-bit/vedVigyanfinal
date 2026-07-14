@@ -15,7 +15,7 @@ module.exports = async function handler(req, res) {
 
   try {
     const { customer, items, amount: subtotal } = parseCheckoutPayload(req.body);
-    const hasFreeShippingProduct = items.some(item => item.id === "p_rud_5m");
+    const hasFreeShippingProduct = items.some(item => item.id === "vv_p08" || item.id === "p_rud_5m");
     const shipping = hasFreeShippingProduct ? 0 : (subtotal >= 999 ? 0 : 99);
     const amount = subtotal + shipping;
     validateCheckoutPayload(customer, items, amount);

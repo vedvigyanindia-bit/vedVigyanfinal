@@ -36,7 +36,7 @@ function collectCheckoutPayload(form) {
   });
 
   const subtotal = items.reduce((sum, item) => sum + (item.qty * item.price), 0);
-  const hasFreeShippingProduct = items.some(item => item.id === "p_rud_5m");
+  const hasFreeShippingProduct = items.some(item => item.id === "vv_p08" || item.id === "p_rud_5m");
   const shipping = hasFreeShippingProduct ? 0 : (subtotal >= 999 ? 0 : 99);
 
   return {
@@ -103,7 +103,7 @@ function renderCheckoutSummary() {
     discount = Math.round(subtotal * 0.95);
   }
   const netSubtotal = subtotal - discount;
-  const hasFreeShippingProduct = items.some(item => item.id === "p_rud_5m");
+  const hasFreeShippingProduct = items.some(item => item.id === "vv_p08" || item.id === "p_rud_5m");
   const shipping = hasFreeShippingProduct ? 0 : (netSubtotal >= 999 ? 0 : 99);
   const netTotal = netSubtotal + shipping;
 
