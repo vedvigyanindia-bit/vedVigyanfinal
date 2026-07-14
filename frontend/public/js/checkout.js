@@ -1,9 +1,6 @@
 const CUSTOMER_KEY = "ved_vigyan_checkout_customer_v1";
 const ORDER_KEY = "ved_vigyan_orders_v1";
 
-let appliedCoupon = null;
-let discountPercent = 0;
-
 async function postJson(url, payload) {
   const response = await fetch(url, {
     method: "POST",
@@ -24,20 +21,9 @@ async function postJson(url, payload) {
 function collectCheckoutPayload(form) {
   const customer = Object.fromEntries(new FormData(form).entries());
   const cart = window.VedVigyanCart.loadCart();
-  const items = Object.values(cart.items).map(item => {
-    if (appliedCoupon === "VED_V95") {
-      const discountedPrice = Math.round(item.price * 0.05);
-      return {
-        ...item,
-        price: discountedPrice
-      };
-    }
-    return item;
-  });
-
-  const subtotal = items.reduce((sum, item) => sum + (item.qty * item.price), 0);
-  const hasFreeShippingProduct = items.some(item => item.id === "vv_p08" || item.id === "p_rud_5m");
-  const shipping = hasFreeShippingProduct ? 0 : (subtotal >= 999 ? 0 : 99);
+  const items = Object.values(cart.items);
+  const subtotal = window.VedVigyanCart.cartSubtotal(cart);
+  const shipping = subtotal >= 999 ? 0 : 99;
 
   return {
     customer,
@@ -98,28 +84,10 @@ function renderCheckoutSummary() {
     .join("");
 
   const subtotal = window.VedVigyanCart.cartSubtotal(cart);
-  let discount = 0;
-  if (appliedCoupon === "VED_V95") {
-    discount = Math.round(subtotal * 0.95);
-  }
-  const netSubtotal = subtotal - discount;
-  const hasFreeShippingProduct = items.some(item => item.id === "vv_p08" || item.id === "p_rud_5m");
-  const shipping = hasFreeShippingProduct ? 0 : (netSubtotal >= 999 ? 0 : 99);
-  const netTotal = netSubtotal + shipping;
+  const shipping = subtotal >= 999 ? 0 : 99;
+  const netTotal = subtotal + shipping;
 
   if (subtotalEl) subtotalEl.textContent = window.VedVigyanCart.formatINR(subtotal);
-
-  const discountRow = document.getElementById("discountRow");
-  const discountEl = document.getElementById("checkoutDiscount");
-  if (discountRow && discountEl) {
-    if (discount > 0) {
-      discountRow.style.display = "flex";
-      discountEl.textContent = "-" + window.VedVigyanCart.formatINR(discount);
-    } else {
-      discountRow.style.display = "none";
-    }
-  }
-
   if (shippingEl) shippingEl.textContent = shipping === 0 ? "Free" : window.VedVigyanCart.formatINR(shipping);
   totalEl.textContent = window.VedVigyanCart.formatINR(netTotal);
 }
@@ -315,45 +283,10 @@ function wireCheckoutForm() {
   });
 }
 
-function setupCouponHandler() {
-  const couponInput = document.getElementById("couponCode");
-  const applyBtn = document.getElementById("applyCouponBtn");
-  const messageEl = document.getElementById("couponMessage");
-
-  if (!couponInput || !applyBtn || !messageEl) return;
-
-  applyBtn.addEventListener("click", () => {
-    const code = couponInput.value.trim().toUpperCase();
-    if (!code) {
-      appliedCoupon = null;
-      discountPercent = 0;
-      messageEl.style.display = "none";
-      renderCheckoutSummary();
-      return;
-    }
-
-    if (code === "VED_V95") {
-      appliedCoupon = "VED_V95";
-      discountPercent = 95;
-      messageEl.textContent = "Coupon VED_V95 applied! 95% discount has been applied to product prices.";
-      messageEl.style.color = "#2e7d32";
-      messageEl.style.display = "block";
-    } else {
-      appliedCoupon = null;
-      discountPercent = 0;
-      messageEl.textContent = "Invalid coupon code.";
-      messageEl.style.color = "#d32f2f";
-      messageEl.style.display = "block";
-    }
-    renderCheckoutSummary();
-  });
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   prefillCheckoutForm();
   renderCheckoutSummary();
   wireCheckoutForm();
-  setupCouponHandler();
   window.addEventListener("vedvigyan:cart-updated", renderCheckoutSummary);
 });
 
