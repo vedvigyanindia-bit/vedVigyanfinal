@@ -24,10 +24,10 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     <header class="lux-nav is-scrolled" id="luxNav">
       <div class="lux-container lux-nav-inner">
         <a class="lux-brand" href="/index.html" aria-label="Ved Vigyan Home">
-          <img src="/logo.webp?v=2" alt="Ved Vigyan" width="44" height="44" />
+          <img src="/public/images/logo.jpg" alt="Ved Vigyan" width="48" height="48" class="lux-logo-img" style="border-radius:50%; object-fit:cover; border:1.5px solid var(--gold,#d4af37);" />
           <div class="lux-brand-text">
             <div class="lux-brand-name">Ved Vigyan</div>
-            <div class="lux-brand-tag">Ancient Wisdom · Modern Living</div>
+            <div class="lux-brand-tag">Divine Wisdom & Sacred Jewels</div>
           </div>
         </a>
         <nav class="lux-navlinks" aria-label="Primary">
@@ -190,7 +190,10 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     </div>
     <div class="lux-mobile-menu" id="mobileMenu" aria-hidden="true">
       <div class="lux-mobile-header">
-        <span class="lux-brand-name">Ved Vigyan</span>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <img src="/public/images/logo.jpg" alt="Ved Vigyan" width="36" height="36" style="border-radius:50%; object-fit:cover; border:1px solid var(--gold,#d4af37);" />
+          <span class="lux-brand-name">Ved Vigyan</span>
+        </div>
         <button class="lux-icon-btn" id="mobileMenuClose" type="button" aria-label="Close menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
@@ -213,7 +216,13 @@ window.VedVigyanLux = window.VedVigyanLux || {};
       <div class="lux-container">
         <div class="lux-footer-grid">
           <div class="lux-footer-brand">
-            <div class="lux-brand-name">Ved Vigyan</div>
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
+              <img src="/public/images/logo.jpg" alt="Ved Vigyan" width="42" height="42" style="border-radius:50%; object-fit:cover; border:1.5px solid var(--gold,#d4af37);" />
+              <div>
+                <div class="lux-brand-name" style="font-size:20px;">Ved Vigyan</div>
+                <div style="font-size:11px; color:var(--gold,#d4af37); font-weight:600;">Divine Wisdom & Sacred Jewels</div>
+              </div>
+            </div>
             <p>Authentic Rudraksha, healing crystals and Vedic wellness products — crafted with integrity.</p>
             <form class="lux-newsletter" id="newsletterForm">
               <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required />

@@ -61,21 +61,43 @@ function renderShop() {
   function renderCartControl(productId) {
     const qty = window.VedVigyanCart.getItemQty(productId);
 
-    if (!qty) {
-      return `
-        <button class="btn small primary" type="button" data-add-to-cart="${productId}">
-          Add to Cart
-        </button>
-      `;
-    }
+    const cartBtn = !qty
+      ? `<button class="btn small secondary" type="button" data-add-to-cart="${productId}">Add to Cart</button>`
+      : `<div class="qty qty-card" data-card-qty="${productId}">
+          <button type="button" data-card-dec="${productId}" aria-label="Decrease quantity">−</button>
+          <span>${qty}</span>
+          <button type="button" data-card-inc="${productId}" aria-label="Increase quantity">+</button>
+        </div>`;
+
+    const buyNowBtn = `<button class="btn small primary" type="button" data-buy-now="${productId}">Buy Now</button>`;
 
     return `
-      <div class="qty qty-card" data-card-qty="${productId}">
-        <button type="button" data-card-dec="${productId}" aria-label="Decrease quantity">−</button>
-        <span>${qty}</span>
-        <button type="button" data-card-inc="${productId}" aria-label="Increase quantity">+</button>
+      <div class="lux-product-footer">
+        ${cartBtn}
+        ${buyNowBtn}
       </div>
     `;
+  }
+
+  const categoryPillsEl = document.getElementById("categoryPills");
+  const resetFiltersBtn = document.getElementById("resetFiltersBtn");
+
+  function renderCategoryPills() {
+    if (!categoryPillsEl || !data?.categories) return;
+    categoryPillsEl.innerHTML = data.categories
+      .map(
+        (c) =>
+          `<button type="button" class="lux-category-pill${active === c.id ? " is-active" : ""}" data-cat-pill="${c.id}">${c.label}</button>`
+      )
+      .join("");
+
+    categoryPillsEl.querySelectorAll("[data-cat-pill]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        active = btn.getAttribute("data-cat-pill") || "all";
+        syncInputs();
+        apply();
+      });
+    });
   }
 
   function syncInputs() {
@@ -84,6 +106,12 @@ function renderShop() {
     if (sortSelect) sortSelect.value = sort;
     if (minPriceInput) minPriceInput.value = minPrice;
     if (maxPriceInput) maxPriceInput.value = maxPrice;
+
+    if (categoryPillsEl) {
+      categoryPillsEl.querySelectorAll("[data-cat-pill]").forEach((b) => {
+        b.classList.toggle("is-active", b.getAttribute("data-cat-pill") === active);
+      });
+    }
   }
 
   function persistFilters() {
@@ -242,9 +270,10 @@ function renderShop() {
             </div>
             <p class="sub" style="margin:0 0 12px">${p.short}</p>
             ${renderPriceBlock(p, true)}
-            <div class="actions" style="margin-top:12px">
+            <div class="actions" style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
               <a class="btn small" href="${p.url}">View Full Details</a>
-              <button class="btn small primary" type="button" data-add-to-cart="${p.id}">Add to Cart</button>
+              <button class="btn small secondary" type="button" data-add-to-cart="${p.id}">Add to Cart</button>
+              <button class="btn small primary" type="button" data-buy-now="${p.id}">Buy Now</button>
               <button class="btn small wishbtn" type="button" data-wishlist="${p.id}" aria-label="Add to wishlist">♡</button>
             </div>
             <div class="chakra" style="margin-top:12px">
@@ -300,18 +329,23 @@ function renderShop() {
       window.VedVigyanWishlist?.updateWishButtons?.(grid);
     }
 
-    document.getElementById("clearFilters")?.addEventListener("click", () => {
+    const resetHandler = () => {
       active = "all";
       query = "";
+      sort = "featured";
       minPrice = "";
       maxPrice = "";
       syncInputs();
       apply();
-    });
+    };
+    document.getElementById("clearFilters")?.addEventListener("click", resetHandler);
+    resetFiltersBtn?.addEventListener("click", resetHandler);
 
     if (countEl) countEl.textContent = ` · ${filtered.length} products`;
     window.VedVigyanLux?.initScrollReveal?.();
   }
+
+  renderCategoryPills();
 
   if (categorySelect && data?.categories) {
     categorySelect.innerHTML = data.categories
@@ -319,6 +353,7 @@ function renderShop() {
       .join("");
     categorySelect.addEventListener("change", (e) => {
       active = e.target.value || "all";
+      syncInputs();
       apply();
     });
   }

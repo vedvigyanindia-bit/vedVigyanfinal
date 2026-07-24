@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --bg: #faf6f0;               /* Warm parchment / linen color */
+  --bg: #FFFAF1;
   --surface: #ffffff;
-  --text: #1d150f;             /* Deep warm charcoal/brown */
-  --muted: #6b5a4b;            /* Soft earth/mud grey */
-  --saffron: #cf5817;          /* Rich spiritual saffron */
-  --saffron-light: rgba(207, 88, 23, 0.08);
-  --gold: #c79f3c;             /* Metallic golden highlight */
-  --gold-light: rgba(199, 159, 60, 0.12);
-  --red: #8a1a23;              /* Sacred vermillion / crimson */
-  --red-light: rgba(138, 26, 35, 0.05);
-  --line: rgba(199, 159, 60, 0.22); /* Gold-accented lines */
-  --shadow: 0 16px 40px rgba(29, 21, 15, 0.05), 0 4px 12px rgba(199, 159, 60, 0.03);
+  --text: #1A1A1A;
+  --muted: #6b5a4b;
+  --saffron: #8B1E2D;
+  --saffron-light: rgba(139, 30, 45, 0.08);
+  --gold: #D4A017;
+  --gold-light: rgba(212, 160, 23, 0.12);
+  --red: #8B1E2D;
+  --red-light: rgba(139, 30, 45, 0.06);
+  --line: rgba(212, 160, 23, 0.22);
+  --shadow: 0 1px 6px rgba(0, 0, 0, 0.05), 0 8px 24px rgba(0, 0, 0, 0.06);
   --radius: 12px;
-  --max: 1280px;
+  --max: 1300px;
 }
 
 * { box-sizing: border-box; }

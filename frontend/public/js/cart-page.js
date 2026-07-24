@@ -84,11 +84,15 @@ function renderCartPage() {
     `;
   }
 
+  const mobileStickyEl = document.getElementById("mobileCartSticky");
+  const mobileSubtotalEl = document.getElementById("mobileCartSubtotal");
+
   if (!items.length) {
     tableBody.innerHTML = "";
     if (subtotalEl) subtotalEl.textContent = window.VedVigyanCart.formatINR(0);
     if (emptyEl) emptyEl.style.display = "block";
     if (actionsEl) actionsEl.style.display = "none";
+    if (mobileStickyEl) mobileStickyEl.style.display = "none";
     if (recommendationHost) {
       recommendationHost.innerHTML = catalog
         .slice(0, 4)
@@ -102,32 +106,41 @@ function renderCartPage() {
 
   if (emptyEl) emptyEl.style.display = "none";
   if (actionsEl) actionsEl.style.display = "flex";
+  if (mobileStickyEl) mobileStickyEl.style.display = "flex";
+  if (mobileSubtotalEl) mobileSubtotalEl.textContent = window.VedVigyanCart.formatINR(subtotal);
 
   tableBody.innerHTML = items
     .map((it) => {
       const line = (it.price || 0) * (it.qty || 0);
       return `
-        <tr>
-          <td>
-            <div style="display:flex; gap:10px; align-items:flex-start">
-              <img src="${it.image}" alt="${it.imageAlt}" width="64" height="64" style="border-radius:14px; border:1px solid var(--line); background:rgba(255,255,255,.7); padding:6px">
-              <div>
-                <div style="font-weight:900">${it.name}</div>
-                <a class="muted" href="${it.url}">View product</a>
+        <tr class="lux-cart-row">
+          <td class="lux-cart-col-product">
+            <div class="lux-cart-item-meta">
+              <img src="${it.image}" alt="${it.imageAlt || it.name}" width="76" height="76" class="lux-cart-thumb" />
+              <div class="lux-cart-info">
+                <div class="lux-cart-title">${it.name}</div>
+                <div class="lux-cart-unit-price">${window.VedVigyanCart.formatINR(it.price)}</div>
+                <a class="lux-cart-link" href="${it.url}">View product</a>
               </div>
+              <button class="lux-cart-remove-btn" type="button" data-remove="${it.id}" aria-label="Remove item">✕</button>
             </div>
           </td>
-          <td>${window.VedVigyanCart.formatINR(it.price)}</td>
-          <td>
-            <div class="qty" data-qty="${it.id}">
+          <td class="lux-cart-col-price desktop-only">${window.VedVigyanCart.formatINR(it.price)}</td>
+          <td class="lux-cart-col-qty">
+            <div class="qty qty-card" data-qty="${it.id}">
               <button type="button" data-dec="${it.id}" aria-label="Decrease quantity">−</button>
               <span>${it.qty}</span>
               <button type="button" data-inc="${it.id}" aria-label="Increase quantity">+</button>
             </div>
           </td>
-          <td><b>${window.VedVigyanCart.formatINR(line)}</b></td>
-          <td>
-            <button class="btn small" type="button" data-remove="${it.id}">Remove</button>
+          <td class="lux-cart-col-total">
+            <div class="lux-cart-line-price">
+              <span class="mobile-only-label">Total: </span>
+              <b>${window.VedVigyanCart.formatINR(line)}</b>
+            </div>
+          </td>
+          <td class="lux-cart-col-remove desktop-only">
+            <button class="btn small wishbtn" type="button" data-remove="${it.id}" aria-label="Remove item">✕</button>
           </td>
         </tr>
       `;

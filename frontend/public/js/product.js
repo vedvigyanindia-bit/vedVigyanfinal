@@ -86,9 +86,10 @@ function createRecommendationCard(product, label) {
         <h3>${product.name}</h3>
         <p class="sub" style="margin:0">${product.short}</p>
         ${priceBlock}
-        <div class="actions">
+        <div class="actions" style="display:flex;gap:6px;flex-wrap:wrap;">
           <a class="btn small" href="${product.url}">Open</a>
-          <button class="btn small primary" type="button" data-add-to-cart="${product.id}">Add to Cart</button>
+          <button class="btn small secondary" type="button" data-add-to-cart="${product.id}">Add to Cart</button>
+          <button class="btn small primary" type="button" data-buy-now="${product.id}">Buy Now</button>
         </div>
       </div>
     </article>
@@ -183,7 +184,12 @@ function renderProductPage() {
   const imgEl = document.getElementById("productImg");
   const bulletsEl = document.getElementById("productBullets");
   const addBtn = document.getElementById("addToCartBtn");
+  const buyBtn = document.getElementById("buyNowBtn");
   const wishBtn = document.querySelector("[data-wishlist]");
+
+  if (addBtn) addBtn.setAttribute("data-add-to-cart", product.id);
+  if (buyBtn) buyBtn.setAttribute("data-buy-now", product.id);
+  window.VedVigyanCart.wireAddToCartButtons(document);
   const breadcrumbEl = document.getElementById("pdpBreadcrumb");
   const ratingEl = document.getElementById("pdpRating");
   const detailsEl = document.getElementById("pdpDetails");
@@ -279,10 +285,6 @@ function renderProductPage() {
     bulletsEl.innerHTML = product.bullets.map((b) => `<li>${b}</li>`).join("");
   }
 
-  if (addBtn) {
-    addBtn.setAttribute("data-add-to-cart", product.id);
-    window.VedVigyanCart.wireAddToCartButtons(document);
-  }
   if (wishBtn) {
     wishBtn.setAttribute("data-wishlist", product.id);
     window.VedVigyanWishlist?.wireWishlistButtons?.(document);

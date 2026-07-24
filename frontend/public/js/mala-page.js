@@ -32,15 +32,17 @@ function renderMalaPage() {
 
   function renderCartControl(productId) {
     const qty = window.VedVigyanCart.getItemQty(productId);
-    if (!qty) {
-      return `<button class="btn small primary" type="button" data-add-to-cart="${productId}">Add to Cart</button>`;
-    }
+    const cartBtn = !qty
+      ? `<button class="btn small secondary" type="button" data-add-to-cart="${productId}">Add to Cart</button>`
+      : `<div class="qty qty-card" data-card-qty="${productId}">
+          <button type="button" data-card-dec="${productId}" aria-label="Decrease quantity">−</button>
+          <span>${qty}</span>
+          <button type="button" data-card-inc="${productId}" aria-label="Increase quantity">+</button>
+        </div>`;
+    const buyNowBtn = `<button class="btn small primary" type="button" data-buy-now="${productId}">Buy Now</button>`;
     return `
-      <div class="qty qty-card" data-card-qty="${productId}">
-        <button type="button" data-card-dec="${productId}" aria-label="Decrease quantity">−</button>
-        <span>${qty}</span>
-        <button type="button" data-card-inc="${productId}" aria-label="Increase quantity">+</button>
-      </div>
+      ${cartBtn}
+      ${buyNowBtn}
     `;
   }
 

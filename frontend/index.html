@@ -81,6 +81,9 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
 <body class="lux-home" data-page="home-luxury">
 
   <!-- 1. Announcement Bar -->
+  <div class="lux-promo-bar" aria-live="polite">
+    🙏 Free Shipping Above ₹999 · Lab Certified Rudraksha · Trusted by 25,000+ Devotees
+  </div>
   <div class="lux-announce" id="announceBar" aria-live="polite">
     <div class="lux-announce-track" id="announceTrack"></div>
     <div class="lux-announce-dots" id="announceDots"></div>
@@ -314,6 +317,36 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
     </div>
   </header>
 
+  <!-- Mobile Quick Links (Divine Hindu style) -->
+  <nav class="dh-quicklinks" aria-label="Quick collections">
+    <div class="dh-quicklinks__row">
+      <a class="dh-quicklinks__item" href="/new-launches.html">
+        <span class="dh-quicklinks__icon">⭐</span>
+        <span class="dh-quicklinks__label">Best Seller</span>
+      </a>
+      <a class="dh-quicklinks__item" href="/shop.html?cat=zodiac-bracelet">
+        <span class="dh-quicklinks__icon">♈</span>
+        <span class="dh-quicklinks__label">Rashi</span>
+      </a>
+      <a class="dh-quicklinks__item" href="/mala.html">
+        <span class="dh-quicklinks__icon">📿</span>
+        <span class="dh-quicklinks__label">Malas</span>
+      </a>
+      <a class="dh-quicklinks__item" href="/gem-stone.html">
+        <span class="dh-quicklinks__icon">💎</span>
+        <span class="dh-quicklinks__label">Crystals</span>
+      </a>
+      <a class="dh-quicklinks__item" href="/rudraksha.html">
+        <span class="dh-quicklinks__icon">🔱</span>
+        <span class="dh-quicklinks__label">Rudraksha</span>
+      </a>
+      <a class="dh-quicklinks__item" href="/shop.html">
+        <span class="dh-quicklinks__icon">🛍</span>
+        <span class="dh-quicklinks__label">Shop All</span>
+      </a>
+    </div>
+  </nav>
+
   <!-- Search Modal -->
   <div class="lux-search-modal" id="searchModal" role="dialog" aria-label="Search products" aria-hidden="true">
     <button class="lux-search-close" id="searchClose" type="button" aria-label="Close search">
@@ -358,80 +391,31 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
   <main>
     <!-- 3. Hero Section -->
     <section class="lux-hero" id="hero">
-      <div class="lux-hero-split">
-        <!-- Left Content Pane -->
-        <div class="lux-hero-pane-left">
-          <div class="lux-hero-copy">
-            <!-- Main Heading -->
-            <h1 class="hero-title">
-              WEAR STRENGTH.<br><span class="highlight">EMBRACE DIVINITY.</span>
-            </h1>
+      <!-- Banner Carousel -->
+      <div class="dh-hero-carousel" id="heroCarousel" aria-label="Featured collections">
+        <div class="dh-hero-track" id="heroTrack"></div>
+        <div class="dh-hero-dots" id="heroDots"></div>
+      </div>
 
-            <!-- Sub Heading / Red Banner Line -->
-            <div class="hero-subbanner">
-              <span class="subbanner-line"></span>
-              <span class="subbanner-text">TRANSFORM ENERGY. ELEVATE LIFE.</span>
-              <span class="subbanner-line"></span>
-            </div>
-
-            <!-- Paragraph -->
-            <p class="hero-desc">
-              Authentic Rudraksha, Healing Crystals & Sacred Jewelry crafted to bring balance, protection and positivity
-              into every moment of your life.
-            </p>
-
-            <!-- 4 Icons Grid -->
-            <div class="hero-features-grid">
-              <div class="hero-feature-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M12 2V22M12 2C9 4 6 8 6 12C6 15 8 18 12 18C16 18 18 15 18 12C18 8 15 4 12 2Z" />
-                  <path d="M6 12H18M9 7h6" />
-                </svg>
-                <span>ROOTED IN<br>TRADITION</span>
-              </div>
-              <div class="hero-feature-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path
-                    d="M12 22c-1.5-2.5-3.5-3.5-5-3.5C4 18.5 3 20 3 21c0 1 1 1 2 1h14c1 0 2 0 2-1c0-1-1-2.5-4-2.5-1.5 0-3.5 1-5 3.5z" />
-                  <path d="M12 5C10 8 7 11 7 14c0 3 2 5 5 5s5-2 5-5c0-3-3-6-5-9z" />
-                  <path d="M12 8c-1 2-2 4-2 6c0 1.5 1 2 2 2s2-.5 2-2c0-2-1-4-2-6z" />
-                </svg>
-                <span>ENERGIZED BY<br>NATURE</span>
-              </div>
-              <div class="hero-feature-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-                <span>PROTECTION<br>YOU CAN FEEL</span>
-              </div>
-              <div class="hero-feature-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="5" r="2" />
-                  <path
-                    d="M12 7c-2 0-3.5 1.5-3.5 3.5 0 .5.5 1 1 1s1-.5 1-1c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5c0 .8-.7 1.5-1.5 1.5v3.5l-3.5 3c-.5.4-.5 1.1-.1 1.6s1.1.5 1.6.1L12 17.5l2.5 2.1c.5.4 1.2.3 1.6-.1s.3-1.2-.1-1.6l-3.5-3V13.5c1.5 0 2.5-1 2.5-2.5C15.5 8.5 14 7 12 7z" />
-                </svg>
-                <span>PEACE THAT<br>STAYS WITH YOU</span>
-              </div>
-            </div>
-
-            <!-- Button CTA -->
-            <div class="hero-cta-wrap">
-              <a href="/shop.html" class="hero-cta-button" data-magnetic>
-                <span class="diamond">♦</span> DISCOVER SACRED COLLECTION <span class="diamond">♦</span>
-              </a>
-              <div class="hero-cta-footer">WEAR THE DIVINE. LIVE THE EXTRAORDINARY.</div>
-            </div>
-          </div>
+      <!-- Mobile trust marquee -->
+      <div class="dh-marquee dh-marquee--mobile-only" aria-hidden="true">
+        <div class="dh-marquee__inner">
+          <span>Free Shipping</span><span>Blessed Products</span><span>Authentic Quality</span><span>Lab Certified</span><span>Free Shipping</span><span>Blessed Products</span><span>Authentic Quality</span><span>Lab Certified</span>
         </div>
+      </div>
 
-        <!-- Right Image Pane -->
-        <div class="lux-hero-pane-right lux-hero-visual">
-          <div class="lux-hero-img-bg"></div>
-          <div class="lux-hero-particles" id="heroParticles" aria-hidden="true"></div>
+      <!-- Compact value proposition -->
+      <div class="lux-container lux-hero-compact">
+        <h1 class="hero-title">
+          WEAR STRENGTH.<br><span class="highlight">EMBRACE DIVINITY.</span>
+        </h1>
+        <p class="hero-desc">
+          Authentic Rudraksha, Healing Crystals & Sacred Jewelry — lab verified, energized with Vedic rituals.
+        </p>
+        <div class="hero-cta-wrap">
+          <a href="/shop.html" class="hero-cta-button" data-magnetic>
+            <span class="diamond">♦</span> SHOP SACRED COLLECTION <span class="diamond">♦</span>
+          </a>
         </div>
       </div>
 
@@ -486,6 +470,17 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- 4. Shop by Collection (Divine Hindu style) -->
+    <section class="dh-collection-section" id="shopCollection">
+      <div class="lux-container">
+        <div class="lux-section-head lux-reveal">
+          <h2 class="lux-section-title">Shop by <span class="accent">Collection</span></h2>
+        </div>
+        <div class="dh-pc-tabs" id="collectionTabs" role="tablist"></div>
+        <div id="collectionPanels"></div>
       </div>
     </section>
 

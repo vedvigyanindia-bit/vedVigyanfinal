@@ -118,13 +118,34 @@ function toast(message) {
   window.__vv_toast_timer = setTimeout(() => el.classList.remove("show"), 1400);
 }
 
+function buyNow(productId) {
+  if (getItemQty(productId) <= 0) {
+    addToCart(productId, 1);
+  }
+  window.location.href = "/checkout.html";
+}
+
+function wireBuyNowButtons(root = document) {
+  root.querySelectorAll("[data-buy-now]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const id = btn.getAttribute("data-buy-now");
+      buyNow(id);
+    });
+  });
+}
+
 function wireAddToCartButtons(root = document) {
   root.querySelectorAll("[data-add-to-cart]").forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       const id = btn.getAttribute("data-add-to-cart");
       addToCart(id, 1);
     });
   });
+  wireBuyNowButtons(root);
 }
 
 function renderCartBadge() {
@@ -138,6 +159,7 @@ window.VedVigyanCart = {
   loadCart,
   saveCart,
   addToCart,
+  buyNow,
   removeFromCart,
   setQty,
   changeQty,
@@ -146,6 +168,7 @@ window.VedVigyanCart = {
   cartSubtotal,
   formatINR,
   wireAddToCartButtons,
+  wireBuyNowButtons,
   renderCartBadge,
   toast
 };
