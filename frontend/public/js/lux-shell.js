@@ -24,7 +24,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     <header class="lux-nav is-scrolled" id="luxNav">
       <div class="lux-container lux-nav-inner">
         <a class="lux-brand" href="/index.html" aria-label="Ved Vigyan Home">
-          <img src="/logo.webp" alt="Ved Vigyan" width="44" height="44" />
+          <img src="/logo.webp?v=2" alt="Ved Vigyan" width="44" height="44" />
           <div class="lux-brand-text">
             <div class="lux-brand-name">Ved Vigyan</div>
             <div class="lux-brand-tag">Ancient Wisdom · Modern Living</div>
