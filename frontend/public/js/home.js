@@ -294,7 +294,43 @@
     }
   }
 
+  function renderLuxuryProductCard(p) {
+    if (window.VedVigyanLux?.renderProductCard) {
+      return window.VedVigyanLux.renderProductCard(p);
+    }
+    const price = window.VedVigyanCart?.formatINR(p.price) || `₹${p.price}`;
+    const qty = window.VedVigyanCart?.getItemQty(p.id) || 0;
+    const cartBtn = qty
+      ? `<div class="qty qty-card" data-card-qty="${p.id}">
+           <button type="button" data-card-dec="${p.id}" aria-label="Decrease">−</button>
+           <span>${qty}</span>
+           <button type="button" data-card-inc="${p.id}" aria-label="Increase">+</button>
+         </div>`
+      : `<button class="lux-btn lux-btn-secondary lux-btn-sm" type="button" data-add-to-cart="${p.id}">Add to Cart</button>`;
+    const buyNowBtn = `<button class="lux-btn lux-btn-primary lux-btn-sm" type="button" data-buy-now="${p.id}">Buy Now</button>`;
+
+    return `
+      <article class="lux-product-card" data-product-id="${p.id}">
+        <a class="lux-product-media" href="${p.url}">
+          <img src="${p.image}" alt="${p.imageAlt || p.name}" loading="lazy" width="400" height="400" />
+        </a>
+        <div class="lux-product-body">
+          <h3 class="lux-product-name"><a href="${p.url}">${p.name}</a></h3>
+          <div class="lux-product-price-row">
+            <span class="lux-product-price">${price}</span>
+          </div>
+          <div class="lux-product-footer">
+            ${cartBtn}
+            ${buyNowBtn}
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
   /* ─── Shop by Collection Tabs ─── */
+  let activeCollectionTabIdx = 0;
+
   function initCollectionTabs() {
     const tabsEl = document.getElementById("collectionTabs");
     const panelsEl = document.getElementById("collectionPanels");
@@ -304,7 +340,7 @@
     if (!products.length) return;
 
     tabsEl.innerHTML = COLLECTION_TABS.map((tab, i) =>
-      `<button type="button" role="tab" class="${i === 0 ? "is-active" : ""}" data-pc-tab="${i}" aria-selected="${i === 0}">${tab.label}</button>`
+      `<button type="button" role="tab" class="${i === activeCollectionTabIdx ? "is-active" : ""}" data-pc-tab="${i}" aria-selected="${i === activeCollectionTabIdx}">${tab.label}</button>`
     ).join("");
 
     panelsEl.innerHTML = COLLECTION_TABS.map((tab, i) => {
@@ -312,7 +348,7 @@
       const fallback = products.slice(0, 8);
       const list = items.length ? items : fallback;
       return `
-        <div class="dh-pc-panel${i === 0 ? " is-active" : ""}" data-pc-panel="${i}" role="tabpanel">
+        <div class="dh-pc-panel${i === activeCollectionTabIdx ? " is-active" : ""}" data-pc-panel="${i}" role="tabpanel">
           <div class="dh-ptrack">${list.map(renderLuxuryProductCard).join("")}</div>
         </div>
       `;
@@ -320,13 +356,14 @@
 
     tabsEl.querySelectorAll("button").forEach((btn) => {
       btn.addEventListener("click", () => {
-        const idx = btn.dataset.pcTab;
+        const idx = Number(btn.dataset.pcTab);
+        activeCollectionTabIdx = idx;
         tabsEl.querySelectorAll("button").forEach((b) => {
           b.classList.toggle("is-active", b === btn);
           b.setAttribute("aria-selected", b === btn ? "true" : "false");
         });
         panelsEl.querySelectorAll(".dh-pc-panel").forEach((p) => {
-          p.classList.toggle("is-active", p.dataset.pcPanel === idx);
+          p.classList.toggle("is-active", Number(p.dataset.pcPanel) === idx);
         });
       });
     });
