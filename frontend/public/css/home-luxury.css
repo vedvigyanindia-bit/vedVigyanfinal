@@ -3586,29 +3586,33 @@
   scroll-snap-align: start;
   display: block;
   line-height: 0;
+  background: var(--ivory, #faf6f0);
 }
 
 .dh-hero-slide img {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
 @media (max-width: 767px) {
   .dh-hero-slide img {
-    height: 72vw;
-    min-height: 260px;
-    max-height: 420px;
-    object-position: center;
+    width: 100%;
+    height: auto;
+    min-height: unset;
+    max-height: unset;
+    object-fit: contain;
   }
 }
 
 @media (min-width: 768px) {
   .dh-hero-slide img {
-    max-height: 520px;
     width: 100%;
-    object-fit: cover;
+    height: auto;
+    max-height: 560px;
+    object-fit: contain;
   }
 }
 
