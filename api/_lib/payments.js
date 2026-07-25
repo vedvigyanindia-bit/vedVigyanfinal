@@ -118,11 +118,22 @@ function validateCheckoutPayload(customer, items, amount) {
   }
 }
 
+async function saveOrderRecord({ customer, items, paymentMethod = "razorpay", razorpayOrderId = "", razorpayPaymentId = "" }) {
+  const orderService = require("../../backend/src/services/orderService");
+  if (paymentMethod === "cod") {
+    const res = await orderService.createCodOrder({ customer, items });
+    return { order_id: res.order.orderId, amount: res.order.amount, created_at: res.order.date };
+  }
+  const res = await orderService.createOrder({ customer, items, razorpayOrderId, razorpayPaymentId });
+  return { order_id: res.order.orderId, amount: res.order.amount, created_at: res.order.date };
+}
+
 module.exports = {
   createInternalOrderId,
   createRazorpayOrder,
   createReceipt,
   parseCheckoutPayload,
+  saveOrderRecord,
   sendJson,
   sanitizeText,
   validateCheckoutPayload,

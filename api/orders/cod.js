@@ -1,9 +1,9 @@
 const {
   parseCheckoutPayload,
-  saveOrderRecord,
   sendJson,
   validateCheckoutPayload
 } = require("../_lib/payments");
+const orderService = require("../../backend/src/services/orderService");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -12,30 +12,31 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const { customer, items, amount } = parseCheckoutPayload(req.body);
+    const { customer, items, amount: subtotal } = parseCheckoutPayload(req.body);
+    const shipping = subtotal >= 999 ? 0 : 99;
+    const amount = subtotal + shipping;
     validateCheckoutPayload(customer, items, amount);
 
-    const savedOrder = await saveOrderRecord({
+    const orderResult = await orderService.createCodOrder({
       customer,
-      items,
-      amount,
-      paymentMethod: "cod",
-      paymentStatus: "pending"
+      items
     });
 
     sendJson(res, 200, {
       success: true,
       order: {
-        id: savedOrder.order_id,
-        total: savedOrder.amount,
+        orderId: orderResult.order.orderId,
+        id: orderResult.order.orderId,
+        total: orderResult.order.amount,
         items,
         customer,
         payment: "cod",
-        paymentStatus: "pending",
-        placedAt: savedOrder.created_at
+        paymentStatus: "Cash on Delivery (Pending)",
+        placedAt: orderResult.order.date
       }
     });
   } catch (error) {
+    console.error("[COD API Error]:", error);
     sendJson(res, 500, { error: error.message || "Unable to place COD order" });
   }
 };
