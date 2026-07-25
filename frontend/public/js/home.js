@@ -297,7 +297,7 @@
 
   function renderLuxuryProductCard(p) {
     if (window.VedVigyanLux?.renderProductCard) {
-      return window.VedVigyanLux.renderProductCard(p);
+      return window.VedVigyanLux.renderProductCard(p, { reveal: false });
     }
     const price = window.VedVigyanCart?.formatINR(p.price) || `₹${p.price}`;
     const qty = window.VedVigyanCart?.getItemQty(p.id) || 0;
@@ -811,7 +811,6 @@
   /* ─── Cart Re-render ─── */
   function initCartListener() {
     window.addEventListener("vedvigyan:cart-updated", () => {
-      renderProducts();
       initCollectionTabs();
     });
   }
@@ -836,7 +835,6 @@
     renderReviews();
     renderBlog();
     renderInstagram();
-    renderProducts();
     initCollectionTabs();
     initScrollReveal();
     initCerts();

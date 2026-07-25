@@ -10,7 +10,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
   }
 
   Lux.renderProductCard = function renderProductCard(p, options = {}) {
-    const reveal = options.reveal !== false ? " lux-reveal" : "";
+    const reveal = options.reveal === true ? " lux-reveal" : "";
     const normalized = window.VedVigyanCarousel?.normalizeProductImages(p) || p.images || [p.image];
     const reviewCount = 40 + (p.id.charCodeAt(p.id.length - 1) * 17) % 200;
     const price = window.VedVigyanCart?.formatINR(p.price) || `₹${p.price}`;
