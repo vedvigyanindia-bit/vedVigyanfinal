@@ -14,7 +14,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Checkout | Ved Vigyan</title>
-    <meta name="description" content="Checkout your Ved Vigyan order. Fill your address details and choose COD (payment placeholder)." />
+    <meta name="description" content="Checkout your Ved Vigyan order. Fill delivery details and choose Online Payment or Cash on Delivery (COD)." />
     <link rel="canonical" href="/checkout.html" />
     <meta name="robots" content="noindex,follow" />
     <link rel="stylesheet" href="/public/css/style.css" />
@@ -49,14 +49,12 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
 </head>
   <body class="lux-home" data-lux-shell-inject="true">
 
-    
-
     <main class="page">
       <div class="container">
         <div class="pagecard">
-          <div class="breadcrumbs">Home / Checkout</div>
+          <div class="breadcrumbs"><a href="/index.html">Home</a> / Checkout</div>
           <h1 class="section-title" style="margin:0 0 6px">Checkout</h1>
-          <p class="section-sub" id="checkoutIntro" style="margin:0">Fill delivery details and complete your payment with Razorpay or choose COD.</p>
+          <p class="section-sub" id="checkoutIntro" style="margin:0">Fill delivery details and select Online Payment (Razorpay) or Cash on Delivery (COD).</p>
         </div>
 
         <div style="height:14px"></div>
@@ -96,17 +94,24 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
                     <input id="pincode" name="pincode" inputmode="numeric" autocomplete="postal-code" required />
                   </div>
                   <div class="field" style="grid-column:1/-1">
-                    <label>Payment Method</label>
-                    <div style="padding: 12px 14px; background: #faf9f6; border: 1px solid var(--line); border-radius: var(--radius-sm); font-weight: bold; color: var(--text-dark); display: flex; align-items: center; gap: 8px;">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--gold-dark);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                      Secure Online Payment via Razorpay
+                    <label>Payment Method *</label>
+                    <div class="lux-payment-methods" style="display:flex; flex-direction:column; gap:10px; margin-top:6px;">
+                      <label style="display:flex; align-items:center; gap:12px; padding:14px; background:#fff; border:1.5px solid var(--maroon,#8a1a23); border-radius:10px; cursor:pointer; font-weight:600;">
+                        <input type="radio" name="payment" value="razorpay" checked style="accent-color:var(--maroon,#8a1a23);" />
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold-dark,#b8860b);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>Secure Online Payment (UPI, Cards, Netbanking)</span>
+                      </label>
+                      <label style="display:flex; align-items:center; gap:12px; padding:14px; background:#fff; border:1px solid var(--line); border-radius:10px; cursor:pointer; font-weight:600;">
+                        <input type="radio" name="payment" value="cod" style="accent-color:var(--maroon,#8a1a23);" />
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--maroon,#8a1a23);"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+                        <span>Cash on Delivery (COD)</span>
+                      </label>
                     </div>
-                    <input type="hidden" id="payment" name="payment" value="razorpay" />
                   </div>
                 </div>
                 <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px">
                   <a class="btn small" href="/cart.html">Back to Cart</a>
-                  <button class="btn small primary" type="submit">Place Order</button>
+                  <button class="btn small primary" type="submit" id="placeOrderBtn">Place Order</button>
                 </div>
               </form>
             </div>
@@ -129,7 +134,7 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
                 <div style="font-weight:900" id="checkoutTotal">₹0</div>
               </div>
               <div class="chakra" style="margin-top:12px">
-                <b>Note:</b> Payments are processed securely via Razorpay. Orders are verified and processed automatically upon payment completion.
+                <b>Note:</b> You can pay securely online via UPI/Cards, or select Cash on Delivery to pay when your package is delivered.
               </div>
             </div>
           </aside>
@@ -140,5 +145,3 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
-
-

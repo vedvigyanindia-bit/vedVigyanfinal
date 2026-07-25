@@ -328,7 +328,48 @@ async function handleVerifyRazorpayPayment(req, res) {
 }
 
 async function handleCreateCodOrder(req, res) {
-  sendJson(res, 400, { error: "Cash on Delivery (COD) is currently disabled. Please pay online via Razorpay." });
+  try {
+    const body = await parseJsonBody(req);
+    const customer = sanitizeCustomerInput(body.customer);
+    const items = sanitizeCartItems(body.items);
+
+    if (
+      !customer.name ||
+      !customer.phone ||
+      !customer.email ||
+      !customer.address ||
+      !customer.city ||
+      !customer.state ||
+      !customer.pincode
+    ) {
+      sendJson(res, 400, { error: "Full name, phone, email, address, city, state, and pincode are required" });
+      return;
+    }
+
+    if (!items.length) {
+      sendJson(res, 400, { error: "Cart is empty" });
+      return;
+    }
+
+    const orderResult = await orderService.createCodOrder({ customer, items });
+
+    sendJson(res, 200, {
+      success: true,
+      message: "COD Order Placed Successfully",
+      order: {
+        orderId: orderResult.order.orderId,
+        total: orderResult.order.amount,
+        items,
+        customer,
+        payment: "cod",
+        paymentStatus: "Cash on Delivery (Pending)",
+        placedAt: orderResult.order.date
+      }
+    });
+  } catch (error) {
+    console.error(`[COD Order Error] Failed to process COD order:`, error);
+    sendJson(res, 500, { error: error.message || "Unable to place COD order" });
+  }
 }
 
 function slugify(text) {

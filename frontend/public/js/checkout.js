@@ -131,31 +131,47 @@ function renderOrderConfirmation(order) {
   const totalEl = document.getElementById("checkoutTotal");
   const intro = document.getElementById("checkoutIntro");
   if (!form || !summary || !totalEl) return;
+
+  const isCod = order.payment === "cod" || (order.paymentStatus && order.paymentStatus.includes("Cash on Delivery"));
+
   if (intro) {
-    intro.textContent = "Your payment was received and your order was created successfully.";
+    intro.textContent = isCod
+      ? "Your Cash on Delivery order has been placed successfully."
+      : "Your payment was received and your order was created successfully.";
   }
+
+  const paymentBlock = isCod
+    ? `
+      <div class="pagecard" style="margin-top:14px; padding:14px">
+        <p style="margin:0 0 8px"><b>Payment Method:</b> Cash on Delivery (COD)</p>
+        <p class="muted" style="margin:0">Status: Pending (Pay cash upon delivery at your doorstep)</p>
+      </div>
+    `
+    : `
+      <div class="pagecard" style="margin-top:14px; padding:14px">
+        <p style="margin:0 0 8px"><b>Payment:</b> Paid via Razorpay</p>
+        <p class="muted" style="margin:0">
+          Status: Paid
+          ${order.razorpayPaymentId ? ` | Payment ID: ${order.razorpayPaymentId}` : ""}
+        </p>
+      </div>
+    `;
 
   form.innerHTML = `
     <div class="order-confirm">
-      <div class="eyebrow">Order placed</div>
-      <h2>Your spiritual essentials are booked</h2>
+      <div class="eyebrow" style="color:var(--maroon,#8a1a23); font-weight:bold;">🎉 Order Confirmed</div>
+      <h2 style="font-family:var(--font-display,serif); margin:6px 0 10px;">Thank you for your order!</h2>
       <p class="sub" style="margin:0">
-        Order is confirmed with ${order.items.length} item(s).
+        Your spiritual essentials order #${order.orderId || ""} is booked with ${order.items.length} item(s).
       </p>
       <div class="pagecard" style="margin-top:14px; padding:14px">
         <p style="margin:0 0 8px"><b>Delivery to:</b> ${order.customer.name}, ${order.customer.phone}</p>
         <p class="muted" style="margin:0">${order.customer.address}, ${order.customer.city || ""}, ${order.customer.state || ""}${order.customer.pincode ? ` - ${order.customer.pincode}` : ""}</p>
       </div>
-      <div class="pagecard" style="margin-top:14px; padding:14px">
-        <p style="margin:0 0 8px"><b>Payment:</b> Paid via Razorpay</p>
-        <p class="muted" style="margin:0">
-          Status: paid
-          ${order.razorpayPaymentId ? ` | Payment ID: ${order.razorpayPaymentId}` : ""}
-        </p>
-      </div>
+      ${paymentBlock}
       <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px">
         <a class="btn small primary" href="/shop.html">Continue Shopping</a>
-        <a class="btn small" href="/cart.html">View Cart</a>
+        <a class="btn small" href="/index.html">Back to Home</a>
       </div>
     </div>
   `;
@@ -174,7 +190,7 @@ function renderOrderConfirmation(order) {
     })
     .join("");
 
-  totalEl.textContent = window.VedVigyanCart.formatINR(order.total);
+  totalEl.textContent = window.VedVigyanCart.formatINR(order.total || order.amount);
 }
 
 async function placeCodOrder(payload) {
@@ -216,7 +232,7 @@ async function launchRazorpayCheckout(payload) {
         pincode: customer.pincode || ""
       },
       theme: {
-        color: "#9b6b2f"
+        color: "#8a1a23"
       },
       handler: async function handlePaymentSuccess(paymentResponse) {
         try {
@@ -252,9 +268,22 @@ async function launchRazorpayCheckout(payload) {
 function wireCheckoutForm() {
   const form = document.getElementById("checkoutForm");
   if (!form) return;
+
+  // Sync radio button borders
+  form.querySelectorAll('input[name="payment"]').forEach((radio) => {
+    radio.addEventListener("change", () => {
+      form.querySelectorAll('.lux-payment-methods label').forEach((label) => {
+        const checked = label.querySelector('input').checked;
+        label.style.borderColor = checked ? "var(--maroon,#8a1a23)" : "var(--line)";
+        label.style.borderWidth = checked ? "1.5px" : "1px";
+      });
+    });
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const submitButton = form.querySelector('button[type="submit"]');
+    const isCod = form.elements["payment"]?.value === "cod";
 
     try {
       const payload = collectCheckoutPayload(form);
@@ -263,15 +292,20 @@ function wireCheckoutForm() {
 
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = "Opening Razorpay...";
+        submitButton.textContent = isCod ? "Placing Order..." : "Opening Razorpay...";
       }
 
-      const order = await launchRazorpayCheckout(payload);
+      let order;
+      if (isCod) {
+        order = await placeCodOrder(payload);
+      } else {
+        order = await launchRazorpayCheckout(payload);
+      }
 
       saveOrder(order);
       window.VedVigyanCart.clearCart();
       renderOrderConfirmation(order);
-      window.VedVigyanCart.toast("Payment successful");
+      window.VedVigyanCart.toast(isCod ? "Order Placed via COD" : "Payment successful");
     } catch (error) {
       window.VedVigyanCart.toast(error.message || "Unable to complete checkout");
     } finally {
