@@ -10,10 +10,11 @@
   ];
 
   const HERO_SLIDES = [
-    { href: "/rudraksha.html", img: "/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp", alt: "Authentic Rudraksha Collection" },
-    { href: "/mala.html", img: "/product/Ved vigyan products/Rudraksh Jap Mala/1.webp", alt: "Sacred Malas for Jaap" },
-    { href: "/gem-stone.html", img: "/product/Ved vigyan products/7 Chakra Tree/1.webp", alt: "Healing Crystals & Gemstones" },
-    { href: "/shop.html?cat=zodiac-bracelet", img: "/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp", alt: "Shop by Rashi Bracelets" }
+    { href: "/rudraksha/5-mukhi.html", img: "/public/images/hero/banner-5-mukhi.jpg", alt: "Original 5 Mukhi Rudraksha - Lab Certified" },
+    { href: "/mala.html", img: "/public/images/hero/banner-karungali-mala.jpg", alt: "Original Karungali Mala for Meditation & Energy" },
+    { href: "/rudraksha-mala/5-mukhi-mala-108.html", img: "/public/images/hero/banner-rudraksha-mala.jpg", alt: "Original Rudraksha Mala (108 Beads)" },
+    { href: "/bracelet/rudraksha-bracelet.html", img: "/public/images/hero/banner-rudraksha-bracelet.jpg", alt: "Original Rudraksha Gold Bracelet" },
+    { href: "/mala/tulsi-mala.html", img: "/public/images/hero/banner-tulsi-mala.jpg", alt: "Original Tulsi Jap Mala for Daily Jaap & Devotion" }
   ];
 
   const COLLECTION_TABS = [
