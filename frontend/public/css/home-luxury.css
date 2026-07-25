@@ -3586,34 +3586,13 @@
   scroll-snap-align: start;
   display: block;
   line-height: 0;
-  background: var(--ivory, #faf6f0);
+  width: 100%;
 }
 
 .dh-hero-slide img {
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
-  margin: 0 auto;
-}
-
-@media (max-width: 767px) {
-  .dh-hero-slide img {
-    width: 100%;
-    height: auto;
-    min-height: unset;
-    max-height: unset;
-    object-fit: contain;
-  }
-}
-
-@media (min-width: 768px) {
-  .dh-hero-slide img {
-    width: 100%;
-    height: auto;
-    max-height: 560px;
-    object-fit: contain;
-  }
 }
 
 .dh-hero-dots {
