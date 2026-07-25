@@ -54,7 +54,11 @@ function getOrderConfirmationHtml(order) {
                 <td style="padding: 4px 0;">${new Date(order.date).toLocaleDateString('en-IN', { dateStyle: 'long', timeStyle: 'short' })}</td>
               </tr>
               <tr>
-                <td style="padding: 4px 0; color: #7e6b66;">Payment ID:</td>
+                <td style="padding: 4px 0; color: #7e6b66;">Payment Status:</td>
+                <td style="padding: 4px 0; font-weight: 600; color: #8a1a23;">${order.paymentStatus || 'Paid'}</td>
+              </tr>
+              <tr>
+                <td style="padding: 4px 0; color: #7e6b66;">Reference ID:</td>
                 <td style="padding: 4px 0; font-family: monospace;">${order.razorpayPaymentId}</td>
               </tr>
             </table>
