@@ -303,9 +303,13 @@ function wireCheckoutForm() {
       }
 
       saveOrder(order);
+      try {
+        sessionStorage.setItem("ved_vigyan_last_order", JSON.stringify(order));
+      } catch (e) {
+        console.warn("sessionStorage failed:", e);
+      }
       window.VedVigyanCart.clearCart();
-      renderOrderConfirmation(order);
-      window.VedVigyanCart.toast(isCod ? "Order Placed via COD" : "Payment successful");
+      window.location.href = `/thank-you.html?orderId=${encodeURIComponent(order.orderId || order.id || "")}`;
     } catch (error) {
       window.VedVigyanCart.toast(error.message || "Unable to complete checkout");
     } finally {
