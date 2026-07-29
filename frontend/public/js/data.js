@@ -539,11 +539,11 @@ window.VED_VIGYAN_DATA = {
       "authentic",
       "vedic"
     ],
-    "image": "/product/Ved vigyan products/Evil Eye Pendant/1.jpg",
+    "image": "/product/Ved vigyan products/Evil Eye Pendant/1.webp",
     "imageAlt": "Evil Eye Protection Pendant - Authentic Ved Vigyan Original Product",
     "images": [
-      "/product/Ved vigyan products/Evil Eye Pendant/1.jpg",
-      "/product/Ved vigyan products/Evil Eye Pendant/2.jpg"
+      "/product/Ved vigyan products/Evil Eye Pendant/1.webp",
+      "/product/Ved vigyan products/Evil Eye Pendant/2.webp"
     ],
     "short": "Traditional Evil Eye Protection Pendant to shield from negativity, block harm, and invite peace & balance.",
     "description": "Evil Eye Protection Pendant is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
