@@ -218,6 +218,7 @@ const FOLDER_METADATA = {
   "Piride Braclet": { name: "Natural Pyrite Wealth Bracelet", category: "crystal-bracelet", price: 999, short: "Natural Pyrite (Fool's Gold) crystal bracelet for money magnet & career luck." },
   "Rose Quartz Close": { name: "Natural Rose Quartz Crystal Bracelet", category: "crystal-bracelet", price: 899, short: "Natural Rose Quartz crystal bracelet for love, emotional healing & self-care." },
   "Tiger Eye Loose Big": { name: "Natural Tiger Eye Protection Bracelet", category: "crystal-bracelet", price: 999, short: "Natural Tiger Eye gemstone bracelet for courage, grounding & shielding negative energy." },
+  "Evil Eye Pendant": { name: "Evil Eye Protection Pendant", category: "crystal-bracelet", price: 699, short: "Traditional Evil Eye Protection Pendant to shield from negativity, block harm, and invite peace & balance." },
 
   // Jaap Malas & Sacred Beads
   "Karungali mala": { name: "Natural Karungali Ebony Wood Mala (108 Beads)", category: "mala", price: 999, short: "Authentic Karungali (Ebony wood) 108 bead mala for positive energy & protection." },
@@ -385,10 +386,10 @@ window.VED_VIGYAN_DATA = {
     address: "Dehradun, Uttarakhand, India - 248002"
   },
   categories: [
-    { id: "all", label: "All Products (43)" },
+    { id: "all", label: "All Products (${productsList.length})" },
     { id: "rudraksha", label: "Rudraksha Beads (14)" },
     { id: "zodiac-bracelet", label: "Zodiac Rashi Bracelets (11)" },
-    { id: "crystal-bracelet", label: "Gemstone & Crystal Bracelets (7)" },
+    { id: "crystal-bracelet", label: "Gemstone & Crystals (8)" },
     { id: "mala", label: "Jaap Malas & Sacred Strings (9)" },
     { id: "gemstone-tree", label: "Crystal & Gemstone Trees (2)" }
   ],
