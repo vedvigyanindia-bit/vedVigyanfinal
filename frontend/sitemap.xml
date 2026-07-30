@@ -2,133 +2,133 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
   <url>
-    <loc>http://localhost:8000/</loc>
+    <loc>https://www.vedvigyan.in/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/shop.html</loc>
+    <loc>https://www.vedvigyan.in/shop.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/rudraksha.html</loc>
+    <loc>https://www.vedvigyan.in/rudraksha.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/mala.html</loc>
+    <loc>https://www.vedvigyan.in/mala.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/gem-stone.html</loc>
+    <loc>https://www.vedvigyan.in/gem-stone.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/new-launches.html</loc>
+    <loc>https://www.vedvigyan.in/new-launches.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/gifting.html</loc>
+    <loc>https://www.vedvigyan.in/gifting.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/blog.html</loc>
+    <loc>https://www.vedvigyan.in/blog.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Product & Specific Pages -->
   <url>
-    <loc>http://localhost:8000/product/detail.html</loc>
+    <loc>https://www.vedvigyan.in/product/detail.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/product/detail.html?id=vv_p18</loc>
+    <loc>https://www.vedvigyan.in/product/detail.html?id=vv_p18</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/rudraksha/5-mukhi.html</loc>
+    <loc>https://www.vedvigyan.in/rudraksha/5-mukhi.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/rudraksha/7-mukhi.html</loc>
+    <loc>https://www.vedvigyan.in/rudraksha/7-mukhi.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/rudraksha-mala/5-mukhi-mala-108.html</loc>
+    <loc>https://www.vedvigyan.in/rudraksha-mala/5-mukhi-mala-108.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/gem-stone/amethyst-bracelet.html</loc>
+    <loc>https://www.vedvigyan.in/gem-stone/amethyst-bracelet.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/gem-stone/tiger-eye-bracelet.html</loc>
+    <loc>https://www.vedvigyan.in/gem-stone/tiger-eye-bracelet.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/mala/tulsi-mala.html</loc>
+    <loc>https://www.vedvigyan.in/mala/tulsi-mala.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/puja-items/gangajal.html</loc>
+    <loc>https://www.vedvigyan.in/puja-items/gangajal.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/astrology/kundli-report.html</loc>
+    <loc>https://www.vedvigyan.in/astrology/kundli-report.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Blog Articles -->
   <url>
-    <loc>http://localhost:8000/blog/benefits-of-wearing-rudraksha.html</loc>
+    <loc>https://www.vedvigyan.in/blog/benefits-of-wearing-rudraksha.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/blog/how-to-identify-original-rudraksha.html</loc>
+    <loc>https://www.vedvigyan.in/blog/how-to-identify-original-rudraksha.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Info & Utility Pages -->
   <url>
-    <loc>http://localhost:8000/contact.html</loc>
+    <loc>https://www.vedvigyan.in/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/faq.html</loc>
+    <loc>https://www.vedvigyan.in/faq.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/privacy-policy.html</loc>
+    <loc>https://www.vedvigyan.in/privacy-policy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/terms-and-conditions.html</loc>
+    <loc>https://www.vedvigyan.in/terms-and-conditions.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>http://localhost:8000/refund-cancellation-policy.html</loc>
+    <loc>https://www.vedvigyan.in/refund-cancellation-policy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
