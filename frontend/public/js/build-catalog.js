@@ -230,6 +230,7 @@ const FOLDER_METADATA = {
   "Spatik Mala": { name: "Natural Sphatik (Quartz Crystal) Mala", category: "mala", price: 3999, short: "Original Sphatik crystal 108 bead mala for cooling energy, mental clarity & jaap." },
   "Tulsi Jap Mala": { name: "Original Tulsi Jaap Mala", category: "mala", price: 899, short: "Pure sacred Tulsi wood jaap mala for Vishnu bhakti, peace & daily chanting." },
   "Tulsi Mala": { name: "Natural Tulsi Bead Mala (108 Beads)", category: "mala", price: 999, short: "Natural sacred Tulsi wood 108 bead mala for spiritual purity and protection." },
+  "Silver Cap Karungali Mala": { name: "Silver Cap Original Karungali Mala", category: "mala", price: 999, short: "Authentic Karungali Ebony Wood Mala with pure silver caps for spiritual protection, inner peace & positive energy." },
 
   // Feng Shui & Crystal Trees
   "7 Chakra Tree": { name: "7 Chakra Crystal Gemstone Tree", category: "gemstone-tree", price: 999, short: "Handcrafted 7 Chakra crystal tree for positive home energy & Vastu harmony." },
@@ -390,7 +391,7 @@ window.VED_VIGYAN_DATA = {
     { id: "rudraksha", label: "Rudraksha Beads (14)" },
     { id: "zodiac-bracelet", label: "Zodiac Rashi Bracelets (11)" },
     { id: "crystal-bracelet", label: "Gemstone & Crystals (8)" },
-    { id: "mala", label: "Jaap Malas & Sacred Strings (9)" },
+    { id: "mala", label: "Jaap Malas & Sacred Strings (10)" },
     { id: "gemstone-tree", label: "Crystal & Gemstone Trees (2)" }
   ],
   products: deriveMerchandising(${JSON.stringify(productsList, null, 2)})
