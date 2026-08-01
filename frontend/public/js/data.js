@@ -938,11 +938,57 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp"
     ],
     "short": "Original 5 Mukhi Nepali Rudraksha 108 bead mala for jaap and daily wearing.",
-    "description": "5 Mukhi Nepali Rudraksha Mala (108 Beads) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
+    "description": "The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.",
     "bullets": [
-      "100% Authentic natural product with laboratory certificate",
-      "Energized according to traditional Vedic rituals",
-      "Includes authenticity test certificate & usage guide"
+      "100% Original Nepali 5 Mukhi Rudraksha (108 Beads)",
+      "Supports a calm & focused mind during meditation",
+      "Ideal for daily mantra chanting (108 beads)",
+      "Includes Authenticity Certificate & Usage Guide"
+    ],
+    "detailsHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Benefits of 5 Mukhi Nepali Rudraksha Mala</h4><p>The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.</p><h5 style=\"margin-top: 14px; margin-bottom: 8px; font-weight:600;\">Key Benefits</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✅ Supports a calm and focused mind during meditation</li><li>✅ Ideal for daily mantra chanting (108 beads)</li><li>✅ Traditionally believed to promote inner peace and spiritual growth</li><li>✅ Encourages discipline and mindfulness in daily life</li><li>✅ Comfortable for everyday wear</li><li>✅ Suitable for both beginners and experienced spiritual practitioners</li></ul><p style=\"font-size: 12px; opacity: 0.8; font-style: italic; margin-top: 10px;\">Note: These benefits are based on traditional Hindu beliefs and spiritual practices. They are not intended as medical or therapeutic claims.</p><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">🙏 Who Should Wear This Rudraksha?</h5><p>This Rudraksha Mala is suitable for:</p><ul style=\"list-style: disc; padding-left: 20px; line-height: 1.7;\"><li>Men and women</li><li>Students practicing concentration and meditation</li><li>Professionals seeking a mindful daily routine</li><li>Yoga practitioners</li><li>Spiritual seekers</li><li>Devotees of Lord Shiva</li><li>Individuals who perform daily Jaap</li><li>Anyone looking for an authentic Nepali Rudraksha Mala</li></ul><p style=\"margin-top:8px;\">The 5 Mukhi Rudraksha is traditionally regarded as one of the most universally suitable Rudraksha beads.</p><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">📦 What's Included?</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>● 1 × Original 5 Mukhi Nepali Rudraksha Mala (108 Beads)</li><li>● Authenticity Certificate</li><li>● Usage Guide</li><li>● Premium Packaging</li></ul></div>",
+    "howToUseHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">📿 How to Wear the 5 Mukhi Rudraksha Mala</h4><p>To wear and use your Rudraksha Mala:</p><ol style=\"padding-left: 20px; line-height: 1.8;\"><li>Wake up early and bathe before wearing it.</li><li>Offer a prayer to Lord Shiva.</li><li>Chant \"Om Namah Shivaya\" 108 times (optional but traditionally recommended).</li><li>Wear the mala around your neck or use it for daily Jaap.</li><li>Store it respectfully when not in use.</li></ol><h5 style=\"margin-top: 16px; margin-bottom: 8px; font-weight:600;\">Care Instructions</h5><ul style=\"list-style: disc; padding-left: 20px; line-height: 1.7;\"><li>Avoid exposing it to harsh chemicals.</li><li>Keep away from perfumes and detergents.</li><li>Clean occasionally with a soft cloth.</li><li>Apply a small amount of natural oil every few months to help maintain the beads.</li></ul></div>",
+    "authenticityHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Why Choose Ved Vigyan?</h4><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✔ 100% Original Nepali Rudraksha</li><li>✔ Laboratory Tested Authenticity</li><li>✔ Energized According to Traditional Vedic Rituals</li><li>✔ Premium Quality Beads</li><li>✔ Includes Authenticity Certificate</li><li>✔ Carefully Packed for Safe Delivery</li><li>✔ Trusted by Thousands of Spiritual Seekers</li></ul></div>",
+    "faqs": [
+      {
+        "q": "Is this an original Nepali Rudraksha?",
+        "a": "Yes. Every mala is made using authentic Nepali Rudraksha beads and includes an authenticity certificate."
+      },
+      {
+        "q": "Is the Rudraksha energized?",
+        "a": "Yes. It is energized according to traditional Vedic rituals before dispatch."
+      },
+      {
+        "q": "Can women wear this Rudraksha?",
+        "a": "Yes. The 5 Mukhi Rudraksha is traditionally considered suitable for both men and women."
+      },
+      {
+        "q": "Can I wear it every day?",
+        "a": "Yes. It is suitable for regular use and daily spiritual practices."
+      },
+      {
+        "q": "Can I use it for mantra chanting?",
+        "a": "Absolutely. The 108-bead mala is designed for Jaap and meditation."
+      },
+      {
+        "q": "Does it come with a certificate?",
+        "a": "Yes. Every order includes an authenticity certificate."
+      },
+      {
+        "q": "Is Cash on Delivery available?",
+        "a": "If available in your location, Cash on Delivery can be selected during checkout."
+      },
+      {
+        "q": "What is the delivery time?",
+        "a": "Orders are generally delivered within 3–7 business days, depending on your location."
+      },
+      {
+        "q": "What if I receive a damaged product?",
+        "a": "If your product arrives damaged, contact our support team within the return window for assistance."
+      },
+      {
+        "q": "How do I maintain my Rudraksha Mala?",
+        "a": "Keep it clean and dry, avoid harsh chemicals, and occasionally apply a small amount of natural oil to preserve the beads."
+      }
     ],
     "seoTitle": "5 Mukhi Nepali Rudraksha Mala (108 Beads) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 5 Mukhi Nepali Rudraksha Mala (108 Beads) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",

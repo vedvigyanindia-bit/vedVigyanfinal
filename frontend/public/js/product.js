@@ -217,7 +217,33 @@ function renderProductPage() {
   }
 
   if (descEl) descEl.textContent = isLuxPdp ? product.short : product.description;
-  if (detailsEl) detailsEl.innerHTML = `<p>${product.description}</p>`;
+  if (detailsEl) {
+    detailsEl.innerHTML = product.detailsHtml || `<p>${product.description}</p>`;
+  }
+
+  const howToUseEl = document.getElementById("pdpHowToUse");
+  if (howToUseEl && product.howToUseHtml) {
+    howToUseEl.innerHTML = product.howToUseHtml;
+  }
+
+  const authEl = document.getElementById("pdpAuthenticity");
+  if (authEl && product.authenticityHtml) {
+    authEl.innerHTML = product.authenticityHtml;
+  }
+
+  const faqsEl = document.getElementById("pdpFaqs");
+  if (faqsEl) {
+    if (product.faqs && Array.isArray(product.faqs) && product.faqs.length > 0) {
+      faqsEl.innerHTML = product.faqs.map(faq => `
+        <div class="pdp-faq-item" style="margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px;">
+          <strong style="display:block; color:var(--lux-gold, #d4af37); margin-bottom:4px; font-size:15px;">❓ ${faq.q}</strong>
+          <p style="margin:0; font-size:14px; opacity:0.9; line-height:1.6;">${faq.a}</p>
+        </div>
+      `).join("");
+    } else {
+      faqsEl.innerHTML = `<p>Have questions about this product? Contact our spiritual guidance team on WhatsApp for prompt assistance.</p>`;
+    }
+  }
 
   if (galleryEl && window.VedVigyanCarousel) {
     galleryEl.innerHTML = window.VedVigyanCarousel.renderCarouselHtml(product);
