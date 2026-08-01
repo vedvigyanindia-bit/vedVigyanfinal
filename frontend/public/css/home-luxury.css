@@ -4064,12 +4064,12 @@
 .lux-footer {
   position: relative;
   background-color: #610909 !important;
-  background-image: linear-gradient(180deg, rgba(80, 8, 8, 0.05) 0%, rgba(95, 10, 10, 0.65) 25%, #6a0b0b 55%, #4d0606 100%), url('/public/images/footer-bg.webp') !important;
+  background-image: linear-gradient(180deg, rgba(80, 8, 8, 0.02) 0%, rgba(95, 10, 10, 0.55) 22%, #6a0b0b 50%, #4d0606 100%), url('/public/images/footer-bg.webp') !important;
   background-size: cover, 100% auto !important;
   background-position: center top, center top !important;
   background-repeat: no-repeat !important;
   color: #ffffff !important;
-  padding: 130px 0 24px !important;
+  padding: 140px 0 24px !important;
   box-shadow: inset 0 20px 30px -10px rgba(0, 0, 0, 0.6);
   overflow: hidden;
 }
@@ -4081,10 +4081,12 @@
   position: relative;
   z-index: 2;
   align-items: start;
+  width: 100%;
 }
 
 .lux-footer-brand {
-  max-width: 330px;
+  max-width: 340px;
+  width: 100%;
 }
 
 .lux-footer-brand .lux-brand-title {
@@ -4118,6 +4120,7 @@
   color: #ffffff !important;
   font-size: 13px !important;
   flex: 1;
+  min-width: 0;
   outline: none;
   transition: border-color 0.2s ease;
 }
@@ -4141,6 +4144,7 @@
   letter-spacing: 0.8px !important;
   text-transform: uppercase !important;
   cursor: pointer;
+  white-space: nowrap;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
   transition: transform 0.2s ease, background 0.2s ease;
 }
@@ -4267,10 +4271,68 @@
   color: #ffffff !important;
 }
 
-@media (max-width: 989px) {
-  .lux-whatsapp,
-  .lux-back-top {
-    bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+/* ─── Responsive Footer Breakpoints ─── */
+@media (max-width: 1024px) {
+  .lux-footer {
+    padding-top: 130px !important;
+  }
+  .lux-footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px 24px !important;
+  }
+  .lux-footer-om-seal {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .lux-footer {
+    padding-top: 120px !important;
+  }
+  .lux-footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .lux-footer-brand {
+    max-width: 100% !important;
+  }
+  .lux-newsletter {
+    max-width: 100% !important;
+  }
+  .lux-footer-col {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .lux-footer {
+    padding-top: 110px !important;
+  }
+  .lux-footer-brand .lux-brand-title {
+    font-size: 24px !important;
+  }
+  .lux-footer-brand p {
+    font-size: 13px !important;
+  }
+  .lux-newsletter {
+    flex-direction: row;
+    width: 100%;
+  }
+  .lux-newsletter input {
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+  }
+  .lux-subscribe-btn {
+    padding: 10px 14px !important;
+    font-size: 11px !important;
+  }
+  .lux-footer-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 14px !important;
+  }
+  .lux-social-icons {
+    justify-content: center !important;
   }
 }
 
