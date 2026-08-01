@@ -216,18 +216,15 @@ window.VedVigyanLux = window.VedVigyanLux || {};
       <div class="lux-container">
         <div class="lux-footer-grid">
           <div class="lux-footer-brand">
-            <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px;">
-              <img src="/public/images/logo.jpg" alt="Ved Vigyan" width="42" height="42" style="border-radius:50%; object-fit:cover; border:1.5px solid var(--gold,#d4af37);" />
-              <div>
-                <div class="lux-brand-name" style="font-size:20px;">Ved Vigyan</div>
-                <div style="font-size:11px; color:var(--gold,#d4af37); font-weight:600;">Divine Wisdom & Sacred Jewels</div>
-              </div>
-            </div>
-            <p>Authentic Rudraksha, healing crystals and Vedic wellness products — crafted with integrity.</p>
+            <h2 class="lux-brand-title">Ved Vigyan</h2>
+            <p>Authentic Rudraksha, healing crystals and Vedic wellness products — crafted with integrity for your spiritual journey.</p>
             <form class="lux-newsletter" id="newsletterForm">
               <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required />
-              <button class="lux-btn lux-btn-primary lux-btn-sm" type="submit">Subscribe</button>
+              <button class="lux-subscribe-btn" type="submit">SUBSCRIBE</button>
             </form>
+            <div class="lux-payment-icons">
+              <span>UPI</span><span>VISA</span><span>Mastercard</span><span>RuPay</span><span>COD</span>
+            </div>
           </div>
           <div class="lux-footer-col">
             <h4>Company</h4>
@@ -235,36 +232,42 @@ window.VedVigyanLux = window.VedVigyanLux || {};
             <a href="/contact.html">Contact</a>
             <a href="/blog.html">Blog</a>
             <a href="/new-launches.html">New Launches</a>
+            <a href="/cashback-offer.html" class="lux-offer-link">Offers</a>
           </div>
           <div class="lux-footer-col">
             <h4>Collections</h4>
             <a href="/rudraksha.html">Rudraksha</a>
             <a href="/mala.html">Malas</a>
             <a href="/gem-stone.html">Healing Crystals</a>
+            <a href="/bracelet/rudraksha-bracelet.html">Bracelets</a>
             <a href="/shop.html">All Products</a>
           </div>
-          <div class="lux-footer-col">
+          <div class="lux-footer-col lux-footer-care-col">
             <h4>Customer Care</h4>
             <a href="/faq.html">FAQ</a>
             <a href="/privacy-policy.html">Privacy Policy</a>
+            <a href="/terms-and-conditions.html">Terms & Conditions</a>
             <a href="/refund-cancellation-policy.html">Returns & Refunds</a>
             <a href="https://wa.me/917900811101" target="_blank" rel="noopener noreferrer">WhatsApp Support</a>
           </div>
+          <div class="lux-footer-om-seal" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="46" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="4 2" />
+              <circle cx="50" cy="50" r="40" stroke="#d4af37" stroke-width="1" />
+              <text x="50" y="60" font-size="34" fill="#d4af37" text-anchor="middle" font-weight="bold">ॐ</text>
+            </svg>
+          </div>
         </div>
         <div class="lux-footer-bottom">
-          <div class="lux-payment-icons">
-            <span>UPI</span><span>VISA</span><span>Mastercard</span><span>COD</span>
+          <div class="lux-copyright">
+            © 2026 Ved Vigyan India · Dehradun, Uttarakhand · <a href="mailto:vedvigyanindia@gmail.com">vedvigyanindia@gmail.com</a> · <a href="tel:+917900811101">+91 7900811101</a>
           </div>
           <div class="lux-social-icons">
             <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
             <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
+            <a href="https://in.pinterest.com/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">PT</a>
           </div>
-        </div>
-        <div class="lux-copyright">
-          © 2026 Ved Vigyan India ·
-          <a href="mailto:Vedvigyanindia@gmail.com">Vedvigyanindia@gmail.com</a> ·
-          <a href="tel:+917900811101">+91 7900811101</a>
         </div>
       </div>
     </footer>

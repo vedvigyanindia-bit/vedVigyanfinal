@@ -4060,47 +4060,211 @@
   }
 }
 
-/* Footer — DH dark red */
+/* ─── Divine Vedic Background Footer ─── */
 .lux-footer {
-  background: #990000 !important;
-  color: #f3e9d8;
-  padding: 56px 0 0;
+  position: relative;
+  background-color: #610909 !important;
+  background-image: linear-gradient(180deg, rgba(80, 8, 8, 0.05) 0%, rgba(95, 10, 10, 0.65) 25%, #6a0b0b 55%, #4d0606 100%), url('/public/images/footer-bg.webp') !important;
+  background-size: cover, 100% auto !important;
+  background-position: center top, center top !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+  padding: 130px 0 24px !important;
+  box-shadow: inset 0 20px 30px -10px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.lux-footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr 0.8fr 1fr;
+  gap: 36px;
+  position: relative;
+  z-index: 2;
+  align-items: start;
+}
+
+.lux-footer-brand {
+  max-width: 330px;
+}
+
+.lux-footer-brand .lux-brand-title {
+  font-family: 'Cinzel', 'Playfair Display', 'Georgia', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.2px;
+}
+
+.lux-footer-brand p {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 22px;
+}
+
+.lux-newsletter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+  width: 100%;
+}
+
+.lux-newsletter input {
+  background: rgba(0, 0, 0, 0.38) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 6px !important;
+  padding: 10px 14px !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  flex: 1;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.lux-newsletter input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.lux-newsletter input:focus {
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.lux-subscribe-btn {
+  background: linear-gradient(180deg, #a61515 0%, #750808 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  border-radius: 6px !important;
+  padding: 10px 18px !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.8px !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.lux-subscribe-btn:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, #b81818 0%, #870a0a 100%) !important;
+}
+
+.lux-payment-icons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.lux-payment-icons span {
+  background: rgba(0, 0, 0, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 5px !important;
+  padding: 4px 10px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  letter-spacing: 0.3px;
 }
 
 .lux-footer-col h4 {
-  color: #f3e9d8;
-  font-family: var(--font-body);
-  font-weight: 700;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: 0.2px;
 }
 
 .lux-footer-col a {
-  color: #f3e9d8;
-  opacity: 0.85;
+  display: block;
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: 13.5px !important;
+  text-decoration: none !important;
+  margin-bottom: 10px !important;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
 }
 
 .lux-footer-col a:hover {
-  color: var(--gold);
-  opacity: 1;
+  color: #f6d365 !important;
+  opacity: 1 !important;
+  transform: translateX(2px);
 }
 
-.lux-footer-brand .lux-brand-name {
-  color: #f3e9d8;
+.lux-offer-link {
+  color: #f3a83b !important;
+  font-weight: 600;
+}
+
+.lux-footer-care-col {
+  position: relative;
+}
+
+.lux-footer-om-seal {
+  position: absolute;
+  right: -20px;
+  top: 10px;
+  width: 110px;
+  height: 110px;
+  opacity: 0.22;
+  pointer-events: none;
+  color: #d4af37;
+}
+
+.lux-footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  margin-top: 42px !important;
+  padding-top: 22px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
 }
 
 .lux-copyright {
-  color: #f3e9d8;
-  opacity: 0.7;
+  font-size: 12.5px !important;
+  color: rgba(255, 255, 255, 0.78) !important;
 }
 
 .lux-copyright a {
-  color: #f3e9d8;
+  color: rgba(255, 255, 255, 0.88) !important;
+  text-decoration: none;
 }
 
-/* WhatsApp FAB — DH positioning */
+.lux-social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.lux-social-icons a {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.lux-social-icons a:hover {
+  background: #d4af37 !important;
+  color: #4a0606 !important;
+  border-color: #d4af37 !important;
+  transform: translateY(-2px);
+}
+
 .lux-whatsapp {
-  background: var(--maroon) !important;
-  border: 2px solid #fff;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #7d1010 0%, #4a0505 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+  color: #ffffff !important;
 }
 
 @media (max-width: 989px) {
