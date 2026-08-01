@@ -545,12 +545,41 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Evil Eye Pendant/1.webp",
       "/product/Ved vigyan products/Evil Eye Pendant/2.webp"
     ],
-    "short": "Traditional Evil Eye Protection Pendant to shield from negativity, block harm, and invite peace & balance.",
-    "description": "Evil Eye Protection Pendant is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
+    "short": "Carry a timeless symbol of positivity and mindful living with the Evil Eye Protection Pendant from Ved Vigyan.",
+    "description": "Carry a timeless symbol of positivity and mindful living with the Evil Eye Protection Pendant from Ved Vigyan. Inspired by traditions found across many cultures, the Evil Eye symbol is widely believed to help ward off negative intentions and encourage positive energy. Crafted with premium materials and carefully selected for quality, this pendant is suitable for everyday wear and complements both casual and traditional outfits.",
     "bullets": [
-      "100% Authentic natural product with laboratory certificate",
-      "Energized according to traditional Vedic rituals",
-      "Includes authenticity test certificate & usage guide"
+      "🧿 Premium Evil Eye Protection Pendant",
+      "✅ Lab Certified Quality",
+      "🌿 Energized according to traditional Vedic rituals",
+      "📜 Authenticity Certificate Included",
+      "💙 Elegant Blue Evil Eye Design",
+      "🎁 Ideal for Daily Wear & Gifting",
+      "👨 Suitable for Men & Women"
+    ],
+    "detailsHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Evil Eye Protection Pendant — Product Details</h4><p>Carry a timeless symbol of positivity and mindful living with the Evil Eye Protection Pendant from Ved Vigyan. Inspired by traditions found across many cultures, the Evil Eye symbol is widely believed to help ward off negative intentions and encourage positive energy.</p><p>Crafted with premium materials and carefully selected for quality, this pendant is suitable for everyday wear and complements both casual and traditional outfits.</p><p>Whether you're purchasing it for yourself or gifting it to someone special, this elegant pendant combines meaningful symbolism with stylish design.</p><h5 style=\"margin-top: 16px; margin-bottom: 8px; font-weight:600;\">Product Highlights</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>🧿 Premium Evil Eye Protection Pendant</li><li>✅ Lab Certified Quality</li><li>🌿 Energized according to traditional Vedic rituals</li><li>📜 Authenticity Certificate Included</li><li>💙 Elegant Blue Evil Eye Design</li><li>🎁 Ideal for Daily Wear & Gifting</li><li>👨 Suitable for Men & Women</li></ul><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">🌟 Traditional Significance & Benefits</h5><p>Across many cultures, the Evil Eye symbol has long been regarded as a protective emblem. Traditionally, it is believed to:</p><ul style=\"list-style: disc; padding-left: 20px; line-height: 1.7;\"><li>Encourage positive thoughts and mindful living</li><li>Symbolize protection from negative intentions</li><li>Serve as a meaningful spiritual accessory</li><li>Promote a sense of confidence and emotional balance</li><li>Complement meditation and spiritual practices</li><li>Make a thoughtful gift for loved ones</li></ul><p style=\"font-size: 12px; opacity: 0.8; font-style: italic; margin-top: 10px;\">Disclaimer: These beliefs are based on traditional cultural and spiritual practices and are not scientifically proven. This product is not intended to diagnose, treat, cure, or prevent any disease or guarantee specific outcomes.</p></div>",
+    "howToUseHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">📿 How to Use</h4><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>1. Clean the pendant with a soft dry cloth before first use.</li><li>2. Many people choose to wear it after a personal prayer or meditation, according to their own traditions.</li><li>3. Wear it comfortably around your neck as part of your everyday accessories.</li><li>4. Keep it clean and dry for long-lasting shine.</li></ul></div>",
+    "authenticityHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Authenticity & Quality Guarantee</h4><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✔ Premium Craftsmanship & Materials</li><li>✔ Lab Certified Quality Verification</li><li>✔ Energized According to Traditional Vedic Rituals</li><li>✔ Includes Authenticity Certificate & Usage Guide</li><li>✔ Premium Protective Packaging</li></ul></div>",
+    "faqs": [
+      {
+        "q": "What is the significance of the Evil Eye pendant?",
+        "a": "Across many cultures, the Evil Eye symbol is traditionally believed to ward off negative intentions, encourage positive energy, and serve as a protective emblem."
+      },
+      {
+        "q": "Can men and women both wear this pendant?",
+        "a": "Yes. The Evil Eye Protection Pendant is designed to be versatile and suitable for both men and women."
+      },
+      {
+        "q": "Is an Authenticity Certificate included?",
+        "a": "Yes. Every order includes an authenticity certificate and usage guide."
+      },
+      {
+        "q": "How should I clean and maintain the pendant?",
+        "a": "Wipe it gently with a soft dry cloth before first use and keep it dry and clean for long-lasting shine."
+      },
+      {
+        "q": "Is Cash on Delivery available?",
+        "a": "Yes. Cash on Delivery is available across most pincodes in India."
+      }
     ],
     "seoTitle": "Evil Eye Protection Pendant - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Evil Eye Protection Pendant online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
