@@ -10,6 +10,7 @@
   ];
 
   const HERO_SLIDES = [
+    { href: "/product/detail.html?id=vv_p31", img: "/public/images/5-mukhi-banner.webp", alt: "Original 5 Mukhi Nepali Rudraksha Mala - Connect With Divine Blessings" },
     { href: "/rudraksha/5-mukhi.html", img: "/public/images/hero/banner-5-mukhi.jpg", alt: "Original 5 Mukhi Rudraksha - Lab Certified" },
     { href: "/mala.html", img: "/public/images/hero/banner-karungali-mala.jpg", alt: "Original Karungali Mala for Meditation & Energy" },
     { href: "/rudraksha-mala/5-mukhi-mala-108.html", img: "/public/images/hero/banner-rudraksha-mala.jpg", alt: "Original Rudraksha Mala (108 Beads)" },
