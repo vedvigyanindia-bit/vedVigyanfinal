@@ -21,7 +21,12 @@ async function createOrder({ customer, items, razorpayOrderId, razorpayPaymentId
   const orderId = await googleSheets.getNextOrderId();
 
   // Create products list text
-  const products = items.map(item => `${item.name} ×${item.qty}`).join('\n');
+  const formatProductName = (item) => {
+    const isFree = item.isFreeGift || item.id === 'free_5_mukhi_rudraksha' || (item.name && item.name.toLowerCase().includes('free'));
+    return isFree ? `🎁 [FREE GIFT CLAIMED] ${item.name} ×${item.qty}` : `${item.name} ×${item.qty}`;
+  };
+
+  const products = items.map(formatProductName).join('\n');
   const quantity = items.reduce((sum, item) => sum + item.qty, 0);
 
   const orderData = {
@@ -77,7 +82,7 @@ async function createCodOrder({ customer, items }) {
   const amount = subtotal + shipping;
 
   const orderId = await googleSheets.getNextOrderId();
-  const products = items.map(item => `${item.name} ×${item.qty}`).join('\n');
+  const products = items.map(formatProductName).join('\n');
   const quantity = items.reduce((sum, item) => sum + item.qty, 0);
 
   const orderData = {

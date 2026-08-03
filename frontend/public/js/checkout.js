@@ -71,13 +71,15 @@ function renderCheckoutSummary() {
 
   summary.innerHTML = items
     .map((it) => {
+      const isFree = it.price === 0 || it.isFreeGift;
+      const priceText = isFree ? `<span style="color:#27ae60; font-weight:700;">FREE (₹0)</span>` : window.VedVigyanCart.formatINR((it.price || 0) * (it.qty || 0));
       return `
         <div style="display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px solid var(--line)">
           <div>
             <b>${it.name}</b>
             <div class="muted">Qty: ${it.qty}</div>
           </div>
-          <div><b>${window.VedVigyanCart.formatINR((it.price || 0) * (it.qty || 0))}</b></div>
+          <div><b>${priceText}</b></div>
         </div>
       `;
     })
@@ -178,13 +180,15 @@ function renderOrderConfirmation(order) {
 
   summary.innerHTML = order.items
     .map((item) => {
+      const isFree = item.price === 0 || item.isFreeGift;
+      const priceText = isFree ? `<span style="color:#27ae60; font-weight:700;">FREE (₹0)</span>` : window.VedVigyanCart.formatINR((item.price || 0) * (item.qty || 0));
       return `
         <div style="display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px solid var(--line)">
           <div>
             <b>${item.name}</b>
             <div class="muted">Qty: ${item.qty}</div>
           </div>
-          <div><b>${window.VedVigyanCart.formatINR((item.price || 0) * (item.qty || 0))}</b></div>
+          <div><b>${priceText}</b></div>
         </div>
       `;
     })
