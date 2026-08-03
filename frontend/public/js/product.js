@@ -190,6 +190,19 @@ function renderProductPage() {
   if (addBtn) addBtn.setAttribute("data-add-to-cart", product.id);
   if (buyBtn) buyBtn.setAttribute("data-buy-now", product.id);
   window.VedVigyanCart.wireAddToCartButtons(document);
+
+  const freeGiftBox = document.getElementById("freeGiftBox");
+  const freeGiftSubtitle = document.getElementById("freeGiftSubtitle");
+  const giftCheckbox = document.getElementById("claimFreeGift");
+
+  if (freeGiftBox && freeGiftSubtitle) {
+    if (product.price >= 999) {
+      freeGiftSubtitle.innerHTML = `<strong style="color:var(--gold,#d4af37);">Included FREE</strong> with this order (Applicable on orders ₹999 &amp; above)`;
+      if (giftCheckbox) giftCheckbox.checked = true;
+    } else {
+      freeGiftSubtitle.innerHTML = `FREE on orders ₹999 &amp; above (Add more items to reach ₹999 at checkout)`;
+    }
+  }
   const breadcrumbEl = document.getElementById("pdpBreadcrumb");
   const ratingEl = document.getElementById("pdpRating");
   const detailsEl = document.getElementById("pdpDetails");

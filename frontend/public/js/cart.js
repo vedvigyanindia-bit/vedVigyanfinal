@@ -43,7 +43,35 @@ function getItemQty(productId) {
   return cart.items[productId]?.qty || 0;
 }
 
-function addToCart(productId, qty = 1) {
+const FREE_GIFT_ID = "free_5_mukhi_rudraksha";
+
+function addFreeGiftItem() {
+  const cart = loadCart();
+  if (cart.items[FREE_GIFT_ID]) return;
+
+  cart.items[FREE_GIFT_ID] = {
+    id: FREE_GIFT_ID,
+    name: "FREE 5 Mukhi Nepali Rudraksha Bead",
+    price: 0,
+    url: "/product/detail.html?id=vv_p31",
+    image: "/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp",
+    imageAlt: "FREE 5 Mukhi Nepali Rudraksha Bead Gift",
+    qty: 1,
+    isFreeGift: true,
+    originalPrice: 399
+  };
+  saveCart(cart);
+}
+
+function removeFreeGiftItem() {
+  const cart = loadCart();
+  if (cart.items[FREE_GIFT_ID]) {
+    delete cart.items[FREE_GIFT_ID];
+    saveCart(cart);
+  }
+}
+
+function addToCart(productId, qty = 1, forceFreeGift = null) {
   const product = findProductById(productId);
   if (!product) return;
   const cart = loadCart();
@@ -60,8 +88,17 @@ function addToCart(productId, qty = 1) {
     shopifyVariantId: product.shopifyVariantId || null,
     originalPrice: product.originalPrice || product.price
   };
-  saveCart(cart);
-  toast("Added to cart");
+
+  const giftCheckbox = document.getElementById("claimFreeGift");
+  const shouldClaimGift = forceFreeGift !== null ? forceFreeGift : (giftCheckbox ? giftCheckbox.checked : false);
+
+  if (shouldClaimGift) {
+    addFreeGiftItem();
+    toast("Added to cart + FREE 5 Mukhi Rudraksha!");
+  } else {
+    saveCart(cart);
+    toast("Added to cart");
+  }
 }
 
 function removeFromCart(productId) {
@@ -159,6 +196,8 @@ window.VedVigyanCart = {
   loadCart,
   saveCart,
   addToCart,
+  addFreeGiftItem,
+  removeFreeGiftItem,
   buyNow,
   removeFromCart,
   setQty,
