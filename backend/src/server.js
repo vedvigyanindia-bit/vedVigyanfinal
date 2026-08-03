@@ -330,9 +330,9 @@ async function handleVerifyRazorpayPayment(req, res) {
 
 async function handleCreateCodOrder(req, res) {
   try {
-    const body = await parseJsonBody(req);
-    const customer = sanitizeCustomerInput(body.customer);
-    const items = sanitizeCartItems(body.items);
+    const body = await readJsonBody(req);
+    const customer = sanitizeCustomer(body.customer);
+    const items = sanitizeItems(body.items);
 
     if (
       !customer.name ||
