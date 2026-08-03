@@ -544,7 +544,8 @@ window.VED_VIGYAN_DATA = {
     "images": [
       "/product/Ved vigyan products/Evil Eye Pendant/1.webp",
       "/product/Ved vigyan products/Evil Eye Pendant/2.webp",
-      "/product/Ved vigyan products/Evil Eye Pendant/3.jpg"
+      "/product/Ved vigyan products/Evil Eye Pendant/3.jpg",
+      "/product/Ved vigyan products/Evil Eye Pendant/4.jpg"
     ],
     "short": "Carry a timeless symbol of positivity and mindful living with the Evil Eye Protection Pendant from Ved Vigyan.",
     "description": "Carry a timeless symbol of positivity and mindful living with the Evil Eye Protection Pendant from Ved Vigyan. Inspired by traditions found across many cultures, the Evil Eye symbol is widely believed to help ward off negative intentions and encourage positive energy. Crafted with premium materials and carefully selected for quality, this pendant is suitable for everyday wear and complements both casual and traditional outfits.",
