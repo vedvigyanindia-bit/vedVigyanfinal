@@ -4447,3 +4447,28 @@
   line-height: 1.4;
 }
 
+/* ─── Checkout Place Order Black Button ─── */
+#placeOrderBtn,
+button[type="submit"]#placeOrderBtn {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1.5px solid var(--gold, #d4af37) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  padding: 12px 28px !important;
+  border-radius: 8px !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+#placeOrderBtn:hover,
+button[type="submit"]#placeOrderBtn:hover {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  border-color: #f3a83b !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55) !important;
+  transform: translateY(-2px) !important;
+}
+
