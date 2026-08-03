@@ -1,6 +1,11 @@
 const googleSheets = require('./googleSheets');
 const emailService = require('./email');
 
+function formatProductName(item) {
+  const isFree = item.isFreeGift || item.id === 'free_5_mukhi_rudraksha' || (item.name && item.name.toLowerCase().includes('free'));
+  return isFree ? `🎁 [FREE GIFT CLAIMED] ${item.name} ×${item.qty}` : `${item.name} ×${item.qty}`;
+}
+
 async function createOrder({ customer, items, razorpayOrderId, razorpayPaymentId }) {
   // Duplicate check
   const existingOrder = await googleSheets.findOrderByPaymentId(razorpayPaymentId);
@@ -21,11 +26,6 @@ async function createOrder({ customer, items, razorpayOrderId, razorpayPaymentId
   const orderId = await googleSheets.getNextOrderId();
 
   // Create products list text
-  const formatProductName = (item) => {
-    const isFree = item.isFreeGift || item.id === 'free_5_mukhi_rudraksha' || (item.name && item.name.toLowerCase().includes('free'));
-    return isFree ? `🎁 [FREE GIFT CLAIMED] ${item.name} ×${item.qty}` : `${item.name} ×${item.qty}`;
-  };
-
   const products = items.map(formatProductName).join('\n');
   const quantity = items.reduce((sum, item) => sum + item.qty, 0);
 
