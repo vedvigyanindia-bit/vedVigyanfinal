@@ -196,11 +196,26 @@ function renderProductPage() {
   const giftCheckbox = document.getElementById("claimFreeGift");
 
   if (freeGiftBox && freeGiftSubtitle) {
-    if (giftCheckbox) giftCheckbox.checked = false;
-    if (product.price >= 999) {
-      freeGiftSubtitle.innerHTML = `<strong style="color:#8a1a23; font-weight:800;">Included FREE</strong> with this order (Applicable on orders ₹999 &amp; above)`;
+    const isClaimed = window.VedVigyanCart.isFreeGiftClaimed();
+    if (isClaimed) {
+      if (giftCheckbox) giftCheckbox.checked = true;
+      freeGiftSubtitle.innerHTML = `<strong style="color:#27ae60; font-weight:700;">✓ Free gift already claimed in your cart!</strong> (Only 1 free gift per order)`;
     } else {
-      freeGiftSubtitle.innerHTML = `FREE on orders ₹999 &amp; above (Add more items to reach ₹999 at checkout)`;
+      if (giftCheckbox) giftCheckbox.checked = false;
+      if (product.price >= 999) {
+        freeGiftSubtitle.innerHTML = `<strong style="color:#8a1a23; font-weight:800;">Included FREE</strong> with this order (Applicable on orders ₹999 &amp; above)`;
+      } else {
+        freeGiftSubtitle.innerHTML = `FREE on orders ₹999 &amp; above (Add more items to reach ₹999 at checkout)`;
+      }
+    }
+
+    if (giftCheckbox && !giftCheckbox.__vv_bound) {
+      giftCheckbox.__vv_bound = true;
+      giftCheckbox.addEventListener("change", () => {
+        if (giftCheckbox.checked && window.VedVigyanCart.isFreeGiftClaimed()) {
+          window.VedVigyanCart.toast("Only 1 free gift can be claimed per order!");
+        }
+      });
     }
   }
   const breadcrumbEl = document.getElementById("pdpBreadcrumb");

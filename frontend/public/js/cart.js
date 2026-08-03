@@ -45,9 +45,14 @@ function getItemQty(productId) {
 
 const FREE_GIFT_ID = "free_5_mukhi_rudraksha";
 
+function isFreeGiftClaimed() {
+  const cart = loadCart();
+  return !!cart.items[FREE_GIFT_ID];
+}
+
 function addFreeGiftItem() {
   const cart = loadCart();
-  if (cart.items[FREE_GIFT_ID]) return;
+  if (cart.items[FREE_GIFT_ID]) return false;
 
   cart.items[FREE_GIFT_ID] = {
     id: FREE_GIFT_ID,
@@ -61,6 +66,7 @@ function addFreeGiftItem() {
     originalPrice: 399
   };
   saveCart(cart);
+  return true;
 }
 
 function removeFreeGiftItem() {
@@ -93,8 +99,13 @@ function addToCart(productId, qty = 1, forceFreeGift = null) {
   const shouldClaimGift = forceFreeGift !== null ? forceFreeGift : (giftCheckbox ? giftCheckbox.checked : false);
 
   if (shouldClaimGift) {
-    addFreeGiftItem();
-    toast("Added to cart + FREE 5 Mukhi Rudraksha!");
+    if (isFreeGiftClaimed()) {
+      saveCart(cart);
+      toast("Added to cart! (Only 1 free gift can be claimed per order)");
+    } else {
+      addFreeGiftItem();
+      toast("Added to cart + FREE 5 Mukhi Rudraksha!");
+    }
   } else {
     saveCart(cart);
     toast("Added to cart");
@@ -198,6 +209,7 @@ window.VedVigyanCart = {
   addToCart,
   addFreeGiftItem,
   removeFreeGiftItem,
+  isFreeGiftClaimed,
   buyNow,
   removeFromCart,
   setQty,
