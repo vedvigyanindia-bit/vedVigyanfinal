@@ -112,6 +112,20 @@ function renderCartPage() {
   tableBody.innerHTML = items
     .map((it) => {
       const line = (it.price || 0) * (it.qty || 0);
+      const isFree = it.isFreeGift || it.price === 0 || it.id === "free_5_mukhi_rudraksha";
+      const unitPriceStr = isFree ? `<span style="color:#27ae60; font-weight:700;">FREE</span>` : window.VedVigyanCart.formatINR(it.price);
+      const linePriceStr = isFree ? `<span style="color:#27ae60; font-weight:700;">FREE (₹0)</span>` : window.VedVigyanCart.formatINR(line);
+
+      const qtyDisplay = isFree
+        ? `<span class="lux-free-gift-qty-badge" style="display:inline-block; padding:4px 14px; background:rgba(212,175,55,0.15); border:1px solid var(--gold,#d4af37); border-radius:6px; font-weight:700; font-size:13px; color:#111;">1</span>`
+        : `
+          <div class="qty qty-card" data-qty="${it.id}">
+            <button type="button" data-dec="${it.id}" aria-label="Decrease quantity">−</button>
+            <span>${it.qty}</span>
+            <button type="button" data-inc="${it.id}" aria-label="Increase quantity">+</button>
+          </div>
+        `;
+
       return `
         <tr class="lux-cart-row">
           <td class="lux-cart-col-product">
@@ -119,24 +133,20 @@ function renderCartPage() {
               <img src="${it.image}" alt="${it.imageAlt || it.name}" width="76" height="76" class="lux-cart-thumb" />
               <div class="lux-cart-info">
                 <div class="lux-cart-title">${it.name}</div>
-                <div class="lux-cart-unit-price">${window.VedVigyanCart.formatINR(it.price)}</div>
+                <div class="lux-cart-unit-price">${unitPriceStr}</div>
                 <a class="lux-cart-link" href="${it.url}">View product</a>
               </div>
               <button class="lux-cart-remove-btn" type="button" data-remove="${it.id}" aria-label="Remove item">✕</button>
             </div>
           </td>
-          <td class="lux-cart-col-price desktop-only">${window.VedVigyanCart.formatINR(it.price)}</td>
+          <td class="lux-cart-col-price desktop-only">${unitPriceStr}</td>
           <td class="lux-cart-col-qty">
-            <div class="qty qty-card" data-qty="${it.id}">
-              <button type="button" data-dec="${it.id}" aria-label="Decrease quantity">−</button>
-              <span>${it.qty}</span>
-              <button type="button" data-inc="${it.id}" aria-label="Increase quantity">+</button>
-            </div>
+            ${qtyDisplay}
           </td>
           <td class="lux-cart-col-total">
             <div class="lux-cart-line-price">
               <span class="mobile-only-label">Total: </span>
-              <b>${window.VedVigyanCart.formatINR(line)}</b>
+              <b>${linePriceStr}</b>
             </div>
           </td>
           <td class="lux-cart-col-remove desktop-only">
