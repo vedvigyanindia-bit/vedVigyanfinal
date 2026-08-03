@@ -196,9 +196,9 @@ function renderProductPage() {
   const giftCheckbox = document.getElementById("claimFreeGift");
 
   if (freeGiftBox && freeGiftSubtitle) {
+    if (giftCheckbox) giftCheckbox.checked = false;
     if (product.price >= 999) {
       freeGiftSubtitle.innerHTML = `<strong style="color:var(--gold,#d4af37);">Included FREE</strong> with this order (Applicable on orders ₹999 &amp; above)`;
-      if (giftCheckbox) giftCheckbox.checked = true;
     } else {
       freeGiftSubtitle.innerHTML = `FREE on orders ₹999 &amp; above (Add more items to reach ₹999 at checkout)`;
     }
