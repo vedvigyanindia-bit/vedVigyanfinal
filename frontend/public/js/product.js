@@ -35,19 +35,23 @@ function getRecentlyViewed(currentId) {
   }
 }
 
-function getRelatedProducts(product, products) {
+function getRelatedProducts(product, products, limit = 8) {
   const tags = product.tags || [];
-  return products
+  const scored = products
     .filter((candidate) => candidate.id !== product.id)
     .map((candidate) => {
       const overlap = (candidate.tags || []).filter((tag) => tags.includes(tag)).length;
-      const sameCategory = candidate.category === product.category ? 2 : 0;
+      const sameCategory = candidate.category === product.category ? 3 : 0;
       return { product: candidate, score: overlap + sameCategory };
     })
-    .filter((entry) => entry.score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3)
-    .map((entry) => entry.product);
+    .sort((a, b) => b.score - a.score);
+
+  let result = scored.map((entry) => entry.product);
+  if (result.length < limit) {
+    const fallback = products.filter((c) => c.id !== product.id && !result.find((r) => r.id === c.id));
+    result = [...result, ...fallback];
+  }
+  return result.slice(0, limit);
 }
 
 function createRecommendationCard(product, label) {
@@ -99,12 +103,12 @@ function createRecommendationCard(product, label) {
 function renderDiscoveryRail(product, products) {
   const relatedGrid = document.getElementById("relatedGrid");
   if (relatedGrid) {
-    const related = getRelatedProducts(product, products);
-    const recent = getRecentlyViewed(product.id).slice(0, 2);
+    const related = getRelatedProducts(product, products, 8);
+    const recent = getRecentlyViewed(product.id).slice(0, 4);
     const combined = [
-      ...related.map((item) => item),
+      ...related,
       ...recent.filter((item) => !related.find((r) => r.id === item.id))
-    ].slice(0, 4);
+    ].slice(0, 8);
 
     if (combined.length) {
       relatedGrid.innerHTML = combined
@@ -118,12 +122,12 @@ function renderDiscoveryRail(product, products) {
   const host = document.querySelector(".pagecard");
   if (!host || document.getElementById("productDiscoveryRail")) return;
 
-  const related = getRelatedProducts(product, products);
-  const recent = getRecentlyViewed(product.id).slice(0, 2);
+  const related = getRelatedProducts(product, products, 8);
+  const recent = getRecentlyViewed(product.id).slice(0, 4);
   const combined = [
     ...related.map((item) => ({ item, label: "Related pick" })),
     ...recent.map((item) => ({ item, label: "Recently viewed" }))
-  ].slice(0, 4);
+  ].slice(0, 8);
 
   if (!combined.length) return;
 
