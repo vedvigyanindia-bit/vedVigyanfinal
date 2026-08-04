@@ -2631,15 +2631,18 @@
 }
 
 .lux-pdp-gallery {
-  background: var(--white);
-  border-radius: var(--radius);
+  background: #ffffff;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--line);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 12px;
 }
 
 .lux-pdp-gallery .product-carousel {
-  border-radius: var(--radius);
+  border-radius: 12px;
+  border: none;
+  box-shadow: none;
 }
 
 .lux-pdp-badges {

@@ -17,36 +17,39 @@ const GALLERY_STYLES = `
 .carousel-thumbnails {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
-  padding: 0 4px;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 8px 12px;
+  background: #ffffff;
+  border-radius: 10px;
 }
 .carousel-thumbnail {
-  width: 54px;
-  height: 54px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
+  width: 56px;
+  height: 56px;
+  border: 1.5px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
   overflow: hidden;
-  padding: 0;
-  background: #0d1a12;
+  padding: 2px;
+  background: #ffffff;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 .carousel-thumbnail:hover {
   transform: translateY(-2px);
-  border-color: rgba(212, 175, 55, 0.5);
+  border-color: #8a1a23;
 }
 .carousel-thumbnail.active {
-  border-color: #d4af37;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+  border-color: #8a1a23;
+  box-shadow: 0 0 12px rgba(138, 26, 35, 0.35);
   transform: scale(1.05);
 }
 .carousel-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.7;
+  border-radius: 6px;
+  opacity: 0.8;
   transition: opacity 0.2s;
 }
 .carousel-thumbnail.active img, .carousel-thumbnail:hover img {

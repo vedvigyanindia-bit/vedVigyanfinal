@@ -1786,11 +1786,11 @@ img {
   width: 100%;
   border-radius: var(--radius);
   overflow: hidden;
-  background: #09130e;
+  background: #ffffff;
   outline: none;
   user-select: none;
-  border: 1px solid rgba(199, 159, 60, 0.25);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   margin-bottom: 12px;
 }
 
@@ -1804,7 +1804,8 @@ img {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: radial-gradient(circle at center, #15271d 0%, #08100c 100%);
+  background: #faf8f5;
+  border-radius: var(--radius);
 }
 
 .carousel-track {
@@ -1844,13 +1845,14 @@ img {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  background: rgba(13, 24, 18, 0.75);
-  backdrop-filter: blur(4px);
-  color: var(--gold);
-  border: 1px solid rgba(199, 159, 60, 0.4);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  color: #8a1a23;
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   font-size: 20px;
   line-height: 1;
   display: flex;
@@ -1869,9 +1871,9 @@ img {
 }
 
 .carousel-nav:hover {
-  background: var(--saffron);
+  background: #8a1a23;
   color: #ffffff;
-  border-color: var(--saffron);
+  border-color: #d4af37;
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -1883,14 +1885,15 @@ img {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(11, 22, 16, 0.85);
-  backdrop-filter: blur(6px);
-  color: var(--gold);
-  border: 1px solid rgba(199, 159, 60, 0.35);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
+  color: #8a1a23;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: 4px 10px;
   border-radius: 20px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.03em;
   pointer-events: none;
   z-index: 4;
@@ -1903,15 +1906,15 @@ img {
   justify-content: center;
   gap: 8px;
   padding: 8px 12px;
-  background: rgba(11, 22, 16, 0.95);
-  border-top: 1px solid rgba(199, 159, 60, 0.15);
+  background: #ffffff;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .carousel-dot {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(138, 26, 35, 0.2);
   border: 1px solid transparent;
   padding: 0;
   cursor: pointer;
@@ -1919,16 +1922,16 @@ img {
 }
 
 .carousel-dot:hover {
-  background: rgba(199, 159, 60, 0.6);
+  background: rgba(138, 26, 35, 0.5);
   transform: scale(1.2);
 }
 
 .carousel-dot.active {
-  background: var(--gold);
-  border-color: #ffffff;
+  background: #8a1a23;
+  border-color: #d4af37;
   width: 22px;
   border-radius: 10px;
-  box-shadow: 0 0 8px rgba(199, 159, 60, 0.6);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
 }
 
 @media (max-width: 600px) {
