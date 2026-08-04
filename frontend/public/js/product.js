@@ -35,22 +35,63 @@ function getRecentlyViewed(currentId) {
   }
 }
 
-function getRelatedProducts(product, products, limit = 8) {
-  const tags = product.tags || [];
+function getRelatedProducts(product, products, limit = 12) {
+  if (!product || !Array.isArray(products) || !products.length) return [];
+
+  const currentId = product.id;
+  const currentCat = (product.category || "").toLowerCase();
+  const currentName = (product.name || "").toLowerCase();
+  const currentTags = Array.isArray(product.tags) ? product.tags : [];
+
+  let seed = 0;
+  for (let i = 0; i < (currentId || "").length; i++) {
+    seed = (seed * 31 + currentId.charCodeAt(i)) % 10007;
+  }
+
   const scored = products
-    .filter((candidate) => candidate.id !== product.id)
+    .filter((candidate) => candidate.id !== currentId)
     .map((candidate) => {
-      const overlap = (candidate.tags || []).filter((tag) => tags.includes(tag)).length;
-      const sameCategory = candidate.category === product.category ? 3 : 0;
-      return { product: candidate, score: overlap + sameCategory };
+      const candCat = (candidate.category || "").toLowerCase();
+      const candName = (candidate.name || "").toLowerCase();
+      const candTags = Array.isArray(candidate.tags) ? candidate.tags : [];
+
+      let score = 0;
+
+      // Category match
+      if (candCat && candCat === currentCat) {
+        score += 15;
+      }
+
+      // Keyword / Type match
+      const types = ["mukhi", "mala", "bracelet", "tree", "zodiac", "pendant", "karungali", "tulsi", "sphatik"];
+      for (const t of types) {
+        if (currentName.includes(t) && candName.includes(t)) {
+          score += 8;
+        }
+      }
+
+      // Tag overlap
+      const tagOverlap = candTags.filter((tag) => currentTags.includes(tag)).length;
+      score += tagOverlap * 3;
+
+      // Pseudo-random tie breaker per product ID
+      let tieBreaker = 0;
+      for (let i = 0; i < (candidate.id || "").length; i++) {
+        tieBreaker = (tieBreaker * 17 + candidate.id.charCodeAt(i)) % 100;
+      }
+      const finalScore = score * 100 + ((seed + tieBreaker) % 90);
+
+      return { product: candidate, score: finalScore };
     })
     .sort((a, b) => b.score - a.score);
 
   let result = scored.map((entry) => entry.product);
+
   if (result.length < limit) {
-    const fallback = products.filter((c) => c.id !== product.id && !result.find((r) => r.id === c.id));
-    result = [...result, ...fallback];
+    const remaining = products.filter((c) => c.id !== currentId && !result.find((r) => r.id === c.id));
+    result = [...result, ...remaining];
   }
+
   return result.slice(0, limit);
 }
 
@@ -103,12 +144,12 @@ function createRecommendationCard(product, label) {
 function renderDiscoveryRail(product, products) {
   const relatedGrid = document.getElementById("relatedGrid");
   if (relatedGrid) {
-    const related = getRelatedProducts(product, products, 8);
+    const related = getRelatedProducts(product, products, 12);
     const recent = getRecentlyViewed(product.id).slice(0, 4);
     const combined = [
       ...related,
       ...recent.filter((item) => !related.find((r) => r.id === item.id))
-    ].slice(0, 8);
+    ].slice(0, 12);
 
     if (combined.length) {
       relatedGrid.innerHTML = combined
@@ -122,12 +163,12 @@ function renderDiscoveryRail(product, products) {
   const host = document.querySelector(".pagecard");
   if (!host || document.getElementById("productDiscoveryRail")) return;
 
-  const related = getRelatedProducts(product, products, 8);
+  const related = getRelatedProducts(product, products, 12);
   const recent = getRecentlyViewed(product.id).slice(0, 4);
   const combined = [
     ...related.map((item) => ({ item, label: "Related pick" })),
     ...recent.map((item) => ({ item, label: "Recently viewed" }))
-  ].slice(0, 8);
+  ].slice(0, 12);
 
   if (!combined.length) return;
 
