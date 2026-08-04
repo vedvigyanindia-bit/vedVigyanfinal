@@ -48,10 +48,6 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="7 Mukhi" loading="lazy" /></div>
                   <b>7 Mukhi</b><span>Wealth & abundance</span>
                 </a>
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p18">
-                  <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Ganesh Rudraksh/1.webp" alt="Ganesha" loading="lazy" /></div>
-                  <b>Ganesha</b><span>Removes obstacles</span>
-                </a>
                 <a class="lux-mega-item" href="/product/detail.html?id=vv_p19">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp" alt="Gauri Shankar" loading="lazy" /></div>
                   <b>Gauri Shankar</b><span>Relationship harmony</span>
