@@ -260,7 +260,7 @@ const FOLDER_METADATA = {
       "Ideal for daily mantra chanting (108 beads)",
       "Includes Authenticity Certificate & Usage Guide"
     ],
-    detailsHtml: `<div class="pdp-rich-content"><div class="pdp-comparison-wrap" style="margin-bottom: 24px;"><img src="/public/images/asli-brand-comparison.jpg" alt="Ved Vigyan — The Asli Brand Of Rudraksha Wearables vs Other Sellers" style="width: 100%; height: auto; border-radius: 12px; border: 1.5px solid var(--lux-gold, #d4af37); box-shadow: 0 8px 24px rgba(0,0,0,0.25);" loading="lazy" /></div><h4 style="color:var(--lux-gold, #d4af37); margin-bottom: 8px;">Benefits of 5 Mukhi Nepali Rudraksha Mala</h4><p>The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.</p><h5 style="margin-top: 14px; margin-bottom: 8px; font-weight:600;">Key Benefits</h5><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>✅ Supports a calm and focused mind during meditation</li><li>✅ Ideal for daily mantra chanting (108 beads)</li><li>✅ Traditionally believed to promote inner peace and spiritual growth</li><li>✅ Encourages discipline and mindfulness in daily life</li><li>✅ Comfortable for everyday wear</li><li>✅ Suitable for both beginners and experienced spiritual practitioners</li></ul><p style="font-size: 12px; opacity: 0.8; font-style: italic; margin-top: 10px;">Note: These benefits are based on traditional Hindu beliefs and spiritual practices. They are not intended as medical or therapeutic claims.</p><h5 style="margin-top: 18px; margin-bottom: 8px; font-weight:600;">🙏 Who Should Wear This Rudraksha?</h5><p>This Rudraksha Mala is suitable for:</p><ul style="list-style: disc; padding-left: 20px; line-height: 1.7;"><li>Men and women</li><li>Students practicing concentration and meditation</li><li>Professionals seeking a mindful daily routine</li><li>Yoga practitioners</li><li>Spiritual seekers</li><li>Devotees of Lord Shiva</li><li>Individuals who perform daily Jaap</li><li>Anyone looking for an authentic Nepali Rudraksha Mala</li></ul><p style="margin-top:8px;">The 5 Mukhi Rudraksha is traditionally regarded as one of the most universally suitable Rudraksha beads.</p><h5 style="margin-top: 18px; margin-bottom: 8px; font-weight:600;">📦 What's Included?</h5><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>● 1 × Original 5 Mukhi Nepali Rudraksha Mala (108 Beads)</li><li>● Authenticity Certificate</li><li>● Usage Guide</li><li>● Premium Packaging</li></ul></div>`,
+    detailsHtml: `<div class="pdp-rich-content"><h4 style="color:var(--lux-gold, #d4af37); margin-bottom: 8px;">Benefits of 5 Mukhi Nepali Rudraksha Mala</h4><p>The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.</p><h5 style="margin-top: 14px; margin-bottom: 8px; font-weight:600;">Key Benefits</h5><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>✅ Supports a calm and focused mind during meditation</li><li>✅ Ideal for daily mantra chanting (108 beads)</li><li>✅ Traditionally believed to promote inner peace and spiritual growth</li><li>✅ Encourages discipline and mindfulness in daily life</li><li>✅ Comfortable for everyday wear</li><li>✅ Suitable for both beginners and experienced spiritual practitioners</li></ul><p style="font-size: 12px; opacity: 0.8; font-style: italic; margin-top: 10px;">Note: These benefits are based on traditional Hindu beliefs and spiritual practices. They are not intended as medical or therapeutic claims.</p><h5 style="margin-top: 18px; margin-bottom: 8px; font-weight:600;">🙏 Who Should Wear This Rudraksha?</h5><p>This Rudraksha Mala is suitable for:</p><ul style="list-style: disc; padding-left: 20px; line-height: 1.7;"><li>Men and women</li><li>Students practicing concentration and meditation</li><li>Professionals seeking a mindful daily routine</li><li>Yoga practitioners</li><li>Spiritual seekers</li><li>Devotees of Lord Shiva</li><li>Individuals who perform daily Jaap</li><li>Anyone looking for an authentic Nepali Rudraksha Mala</li></ul><p style="margin-top:8px;">The 5 Mukhi Rudraksha is traditionally regarded as one of the most universally suitable Rudraksha beads.</p><h5 style="margin-top: 18px; margin-bottom: 8px; font-weight:600;">📦 What's Included?</h5><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>● 1 × Original 5 Mukhi Nepali Rudraksha Mala (108 Beads)</li><li>● Authenticity Certificate</li><li>● Usage Guide</li><li>● Premium Packaging</li></ul></div>`,
     howToUseHtml: `<div class="pdp-rich-content"><h4 style="color:var(--lux-gold, #d4af37); margin-bottom: 8px;">📿 How to Wear the 5 Mukhi Rudraksha Mala</h4><p>To wear and use your Rudraksha Mala:</p><ol style="padding-left: 20px; line-height: 1.8;"><li>Wake up early and bathe before wearing it.</li><li>Offer a prayer to Lord Shiva.</li><li>Chant "Om Namah Shivaya" 108 times (optional but traditionally recommended).</li><li>Wear the mala around your neck or use it for daily Jaap.</li><li>Store it respectfully when not in use.</li></ol><h5 style="margin-top: 16px; margin-bottom: 8px; font-weight:600;">Care Instructions</h5><ul style="list-style: disc; padding-left: 20px; line-height: 1.7;"><li>Avoid exposing it to harsh chemicals.</li><li>Keep away from perfumes and detergents.</li><li>Clean occasionally with a soft cloth.</li><li>Apply a small amount of natural oil every few months to help maintain the beads.</li></ul></div>`,
     authenticityHtml: `<div class="pdp-rich-content"><h4 style="color:var(--lux-gold, #d4af37); margin-bottom: 8px;">Why Choose Ved Vigyan?</h4><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>✔ 100% Original Nepali Rudraksha</li><li>✔ Laboratory Tested Authenticity</li><li>✔ Energized According to Traditional Vedic Rituals</li><li>✔ Premium Quality Beads</li><li>✔ Includes Authenticity Certificate</li><li>✔ Carefully Packed for Safe Delivery</li><li>✔ Trusted by Thousands of Spiritual Seekers</li></ul></div>`,
     faqs: [
@@ -288,7 +288,7 @@ const FOLDER_METADATA = {
       "Perfect for Mantra Chaining (Jaap) & Daily Sadhana",
       "Includes Authenticity Certificate & Sacred Packaging"
     ],
-    detailsHtml: `<div class="pdp-rich-content"><div class="pdp-comparison-wrap" style="margin-bottom: 24px;"><img src="/public/images/asli-brand-comparison.jpg" alt="Ved Vigyan — The Asli Brand Of Rudraksha Wearables vs Other Sellers" style="width: 100%; height: auto; border-radius: 12px; border: 1.5px solid var(--lux-gold, #d4af37); box-shadow: 0 8px 24px rgba(0,0,0,0.25);" loading="lazy" /></div><h4 style="color:var(--lux-gold, #d4af37); margin-bottom: 8px;">Original Rudraksha Jaap Mala (108 Beads) — Product Details</h4><p>The Original Rudraksha Jaap Mala (108 Beads) is one of the most trusted spiritual tools in Vedic tradition. Crafted with carefully selected Rudraksha beads and traditional knotting, it aids in mantra repetition, mental clarity, and spiritual elevation.</p><h5 style="margin-top: 14px; margin-bottom: 8px; font-weight:600;">Key Features & Benefits</h5><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>✅ Traditional 108+1 Guru Bead Stringing</li><li>✅ Ideal for Daily Mantra Jaap & Meditation</li><li>✅ Promotes Inner Peace, Focus & Emotional Stability</li><li>✅ Laboratory Certified & Traditional Siddhi Energized</li><li>✅ Suitable for All Seekers, Men & Women</li></ul><h5 style="margin-top: 18px; margin-bottom: 8px; font-weight:600;">📦 Package Includes</h5><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>● 1 × Original Rudraksha Jaap Mala (108 Beads)</li><li>● Laboratory Verification Certificate</li><li>● Usage & Care Instructions</li><li>● Premium Sacred Packaging</li></ul></div>`,
+    detailsHtml: `<div class="pdp-rich-content"><h4 style="color:var(--lux-gold, #d4af37); margin-bottom: 8px;">Original Rudraksha Jaap Mala (108 Beads) — Product Details</h4><p>The Original Rudraksha Jaap Mala (108 Beads) is one of the most trusted spiritual tools in Vedic tradition. Crafted with carefully selected Rudraksha beads and traditional knotting, it aids in mantra repetition, mental clarity, and spiritual elevation.</p><h5 style="margin-top: 14px; margin-bottom: 8px; font-weight:600;">Key Features & Benefits</h5><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>✅ Traditional 108+1 Guru Bead Stringing</li><li>✅ Ideal for Daily Mantra Jaap & Meditation</li><li>✅ Promotes Inner Peace, Focus & Emotional Stability</li><li>✅ Laboratory Certified & Traditional Siddhi Energized</li><li>✅ Suitable for All Seekers, Men & Women</li></ul><h5 style="margin-top: 18px; margin-bottom: 8px; font-weight:600;">📦 Package Includes</h5><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>● 1 × Original Rudraksha Jaap Mala (108 Beads)</li><li>● Laboratory Verification Certificate</li><li>● Usage & Care Instructions</li><li>● Premium Sacred Packaging</li></ul></div>`,
     howToUseHtml: `<div class="pdp-rich-content"><h4 style="color:var(--lux-gold, #d4af37); margin-bottom: 8px;">📿 How to Perform Jaap</h4><ol style="padding-left: 20px; line-height: 1.8;"><li>Sit in a quiet space facing East or North.</li><li>Hold the mala in your right hand, using your thumb and middle finger to turn each bead.</li><li>Chant your chosen mantra (such as Om Namah Shivaya) for each bead.</li><li>Do not cross over the Guru bead; turn the mala around to continue additional rounds.</li></ol></div>`,
     authenticityHtml: `<div class="pdp-rich-content"><h4 style="color:var(--lux-gold, #d4af37); margin-bottom: 8px;">💎 Why Choose Ved Vigyan?</h4><ul style="list-style: none; padding: 0; line-height: 1.8;"><li>✔ Pioneered GRRL Lab Certification In India</li><li>✔ Introduced Product Siddhi Prakriya</li><li>✔ Focus on Quality with Strict QC</li><li>✔ 100% Authentic & Natural Beads</li></ul></div>`,
     faqs: [
@@ -346,24 +346,16 @@ folders.forEach((folderName, idx) => {
     };
   });
 
-  // Keep only images
-  const imageExtensions = ['.png', '.jpg', '.jpeg', '.webp', '.svg'];
+  // Keep only original photo files (excluding generated SVG certificates)
+  const imageExtensions = ['.png', '.jpg', '.jpeg', '.webp'];
   const imageFiles = resolvedFiles.filter(rf => {
     const ext = path.extname(rf.name).toLowerCase();
-    return imageExtensions.includes(ext);
+    const isSvgCert = rf.name.toLowerCase().includes('lab-certificate') || ext === '.svg';
+    return imageExtensions.includes(ext) && !isSvgCert;
   });
 
-  // Helper to identify certificates
-  function isCertificate(name) {
-    const fn = name.toLowerCase();
-    return fn.includes('cert') || fn.includes('lab') || fn.includes('report') || fn.includes('authent') || fn.includes('quality') || fn.includes('verify');
-  }
-
-  const certFiles = imageFiles.filter(rf => isCertificate(rf.name));
-  const productFiles = imageFiles.filter(rf => !isCertificate(rf.name));
-
-  // Sort product files numerically (e.g. 1.png, 2.jpg, 3.webp)
-  productFiles.sort((a, b) => {
+  // Sort image files numerically (e.g. 1.jpg, 2.jpg, 3.jpg, 20260514_...)
+  imageFiles.sort((a, b) => {
     const aNum = parseInt(a.name, 10);
     const bNum = parseInt(b.name, 10);
     if (!isNaN(aNum) && !isNaN(bNum)) {
@@ -374,18 +366,9 @@ folders.forEach((folderName, idx) => {
     return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
   });
 
-  // Build the images array (minimum 2, maximum 4, no duplicates)
-  let images = [];
-  if (certFiles.length > 0) {
-    // If certificate is available, reserve 1 slot for it and take up to 3 product photos
-    const selectedProducts = productFiles.slice(0, 3);
-    const certFile = certFiles[0];
-    images = [...selectedProducts, certFile].map(f => f.url);
-  } else {
-    // Take up to 4 product photos
-    const selectedProducts = productFiles.slice(0, 4);
-    images = selectedProducts.map(f => f.url);
-  }
+  // Build the images array using original real photo files (up to 4 photos per product)
+  const selectedPhotos = imageFiles.slice(0, 4);
+  let images = selectedPhotos.map(f => f.url);
 
   const productSlug = slugify(folderName);
   const productId = `vv_p${String(idx + 1).padStart(2, '0')}`;
@@ -432,6 +415,22 @@ folders.forEach((folderName, idx) => {
     ...(zodiacSigns.length > 0 ? { zodiacSigns } : {})
   });
 });
+
+// Swap Money Magnet and Gauri Shankar in productsList so Gauri Shankar is in Featured Collection (top 8)
+const mmIndex = productsList.findIndex(p => p.name.includes("Money Magnet"));
+const gsIndex = productsList.findIndex(p => p.name.includes("Gauri Shankar"));
+
+if (mmIndex !== -1 && gsIndex !== -1) {
+  const temp = productsList[mmIndex];
+  productsList[mmIndex] = productsList[gsIndex];
+  productsList[gsIndex] = temp;
+
+  // Re-assign IDs and URLs sequentially
+  productsList.forEach((p, idx) => {
+    p.id = `vv_p${String(idx + 1).padStart(2, '0')}`;
+    p.url = `/product/detail.html?id=${p.id}`;
+  });
+}
 
 console.log(`Successfully processed all ${productsList.length} products into 5 categories.`);
 

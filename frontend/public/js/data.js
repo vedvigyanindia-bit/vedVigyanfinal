@@ -209,31 +209,30 @@ window.VED_VIGYAN_DATA = {
   },
   {
     "id": "vv_p07",
-    "category": "crystal-bracelet",
-    "slug": "4-money-magnet",
-    "name": "Money Magnet Bracelet (Pyrite & Citrine)",
-    "price": 699,
+    "category": "rudraksha",
+    "slug": "gauri-sankar-rudraksh",
+    "name": "Original Gauri Shankar Rudraksha",
+    "price": 8999,
     "tags": [
-      "crystal-bracelet",
+      "rudraksha",
       "authentic",
       "vedic"
     ],
-    "image": "/product/Ved vigyan products/4. Money Magnet/1.webp",
-    "imageAlt": "Money Magnet Bracelet (Pyrite & Citrine) - Authentic Ved Vigyan Original Product",
+    "image": "/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp",
+    "imageAlt": "Original Gauri Shankar Rudraksha - Authentic Ved Vigyan Original Product",
     "images": [
-      "/product/Ved vigyan products/4. Money Magnet/1.webp",
-      "/product/Ved vigyan products/4. Money Magnet/2.webp",
-      "/product/Ved vigyan products/4. Money Magnet/3.webp"
+      "/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp",
+      "/product/Ved vigyan products/Gauri Sankar Rudraksh/2.webp"
     ],
-    "short": "Attract wealth, prosperity, and financial growth with natural pyrite & citrine.",
-    "description": "Money Magnet Bracelet (Pyrite & Citrine) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
+    "short": "Rare conjoined Gauri Shankar Rudraksha for strong relationships & family harmony.",
+    "description": "Original Gauri Shankar Rudraksha is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
       "100% Authentic natural product with laboratory certificate",
       "Energized according to traditional Vedic rituals",
       "Includes authenticity test certificate & usage guide"
     ],
-    "seoTitle": "Money Magnet Bracelet (Pyrite & Citrine) - Buy Original Online | Ved Vigyan",
-    "seoDescription": "Shop original Money Magnet Bracelet (Pyrite & Citrine) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "seoTitle": "Original Gauri Shankar Rudraksha - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Original Gauri Shankar Rudraksha online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
     "url": "/product/detail.html?id=vv_p07"
   },
   {
@@ -617,30 +616,31 @@ window.VED_VIGYAN_DATA = {
   },
   {
     "id": "vv_p20",
-    "category": "rudraksha",
-    "slug": "gauri-sankar-rudraksh",
-    "name": "Original Gauri Shankar Rudraksha",
-    "price": 8999,
+    "category": "crystal-bracelet",
+    "slug": "4-money-magnet",
+    "name": "Money Magnet Bracelet (Pyrite & Citrine)",
+    "price": 699,
     "tags": [
-      "rudraksha",
+      "crystal-bracelet",
       "authentic",
       "vedic"
     ],
-    "image": "/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp",
-    "imageAlt": "Original Gauri Shankar Rudraksha - Authentic Ved Vigyan Original Product",
+    "image": "/product/Ved vigyan products/4. Money Magnet/1.webp",
+    "imageAlt": "Money Magnet Bracelet (Pyrite & Citrine) - Authentic Ved Vigyan Original Product",
     "images": [
-      "/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp",
-      "/product/Ved vigyan products/Gauri Sankar Rudraksh/2.webp"
+      "/product/Ved vigyan products/4. Money Magnet/1.webp",
+      "/product/Ved vigyan products/4. Money Magnet/2.webp",
+      "/product/Ved vigyan products/4. Money Magnet/3.webp"
     ],
-    "short": "Rare conjoined Gauri Shankar Rudraksha for strong relationships & family harmony.",
-    "description": "Original Gauri Shankar Rudraksha is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
+    "short": "Attract wealth, prosperity, and financial growth with natural pyrite & citrine.",
+    "description": "Money Magnet Bracelet (Pyrite & Citrine) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
       "100% Authentic natural product with laboratory certificate",
       "Energized according to traditional Vedic rituals",
       "Includes authenticity test certificate & usage guide"
     ],
-    "seoTitle": "Original Gauri Shankar Rudraksha - Buy Original Online | Ved Vigyan",
-    "seoDescription": "Shop original Original Gauri Shankar Rudraksha online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "seoTitle": "Money Magnet Bracelet (Pyrite & Citrine) - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Money Magnet Bracelet (Pyrite & Citrine) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
     "url": "/product/detail.html?id=vv_p20"
   },
   {
@@ -977,7 +977,7 @@ window.VED_VIGYAN_DATA = {
       "Ideal for daily mantra chanting (108 beads)",
       "Includes Authenticity Certificate & Usage Guide"
     ],
-    "detailsHtml": "<div class=\"pdp-rich-content\"><div class=\"pdp-comparison-wrap\" style=\"margin-bottom: 24px;\"><img src=\"/public/images/asli-brand-comparison.jpg\" alt=\"Ved Vigyan — The Asli Brand Of Rudraksha Wearables vs Other Sellers\" style=\"width: 100%; height: auto; border-radius: 12px; border: 1.5px solid var(--lux-gold, #d4af37); box-shadow: 0 8px 24px rgba(0,0,0,0.25);\" loading=\"lazy\" /></div><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Benefits of 5 Mukhi Nepali Rudraksha Mala</h4><p>The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.</p><h5 style=\"margin-top: 14px; margin-bottom: 8px; font-weight:600;\">Key Benefits</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✅ Supports a calm and focused mind during meditation</li><li>✅ Ideal for daily mantra chanting (108 beads)</li><li>✅ Traditionally believed to promote inner peace and spiritual growth</li><li>✅ Encourages discipline and mindfulness in daily life</li><li>✅ Comfortable for everyday wear</li><li>✅ Suitable for both beginners and experienced spiritual practitioners</li></ul><p style=\"font-size: 12px; opacity: 0.8; font-style: italic; margin-top: 10px;\">Note: These benefits are based on traditional Hindu beliefs and spiritual practices. They are not intended as medical or therapeutic claims.</p><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">🙏 Who Should Wear This Rudraksha?</h5><p>This Rudraksha Mala is suitable for:</p><ul style=\"list-style: disc; padding-left: 20px; line-height: 1.7;\"><li>Men and women</li><li>Students practicing concentration and meditation</li><li>Professionals seeking a mindful daily routine</li><li>Yoga practitioners</li><li>Spiritual seekers</li><li>Devotees of Lord Shiva</li><li>Individuals who perform daily Jaap</li><li>Anyone looking for an authentic Nepali Rudraksha Mala</li></ul><p style=\"margin-top:8px;\">The 5 Mukhi Rudraksha is traditionally regarded as one of the most universally suitable Rudraksha beads.</p><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">📦 What's Included?</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>● 1 × Original 5 Mukhi Nepali Rudraksha Mala (108 Beads)</li><li>● Authenticity Certificate</li><li>● Usage Guide</li><li>● Premium Packaging</li></ul></div>",
+    "detailsHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Benefits of 5 Mukhi Nepali Rudraksha Mala</h4><p>The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.</p><h5 style=\"margin-top: 14px; margin-bottom: 8px; font-weight:600;\">Key Benefits</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✅ Supports a calm and focused mind during meditation</li><li>✅ Ideal for daily mantra chanting (108 beads)</li><li>✅ Traditionally believed to promote inner peace and spiritual growth</li><li>✅ Encourages discipline and mindfulness in daily life</li><li>✅ Comfortable for everyday wear</li><li>✅ Suitable for both beginners and experienced spiritual practitioners</li></ul><p style=\"font-size: 12px; opacity: 0.8; font-style: italic; margin-top: 10px;\">Note: These benefits are based on traditional Hindu beliefs and spiritual practices. They are not intended as medical or therapeutic claims.</p><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">🙏 Who Should Wear This Rudraksha?</h5><p>This Rudraksha Mala is suitable for:</p><ul style=\"list-style: disc; padding-left: 20px; line-height: 1.7;\"><li>Men and women</li><li>Students practicing concentration and meditation</li><li>Professionals seeking a mindful daily routine</li><li>Yoga practitioners</li><li>Spiritual seekers</li><li>Devotees of Lord Shiva</li><li>Individuals who perform daily Jaap</li><li>Anyone looking for an authentic Nepali Rudraksha Mala</li></ul><p style=\"margin-top:8px;\">The 5 Mukhi Rudraksha is traditionally regarded as one of the most universally suitable Rudraksha beads.</p><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">📦 What's Included?</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>● 1 × Original 5 Mukhi Nepali Rudraksha Mala (108 Beads)</li><li>● Authenticity Certificate</li><li>● Usage Guide</li><li>● Premium Packaging</li></ul></div>",
     "howToUseHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">📿 How to Wear the 5 Mukhi Rudraksha Mala</h4><p>To wear and use your Rudraksha Mala:</p><ol style=\"padding-left: 20px; line-height: 1.8;\"><li>Wake up early and bathe before wearing it.</li><li>Offer a prayer to Lord Shiva.</li><li>Chant \"Om Namah Shivaya\" 108 times (optional but traditionally recommended).</li><li>Wear the mala around your neck or use it for daily Jaap.</li><li>Store it respectfully when not in use.</li></ol><h5 style=\"margin-top: 16px; margin-bottom: 8px; font-weight:600;\">Care Instructions</h5><ul style=\"list-style: disc; padding-left: 20px; line-height: 1.7;\"><li>Avoid exposing it to harsh chemicals.</li><li>Keep away from perfumes and detergents.</li><li>Clean occasionally with a soft cloth.</li><li>Apply a small amount of natural oil every few months to help maintain the beads.</li></ul></div>",
     "authenticityHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Why Choose Ved Vigyan?</h4><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✔ 100% Original Nepali Rudraksha</li><li>✔ Laboratory Tested Authenticity</li><li>✔ Energized According to Traditional Vedic Rituals</li><li>✔ Premium Quality Beads</li><li>✔ Includes Authenticity Certificate</li><li>✔ Carefully Packed for Safe Delivery</li><li>✔ Trusted by Thousands of Spiritual Seekers</li></ul></div>",
     "faqs": [
@@ -1138,7 +1138,7 @@ window.VED_VIGYAN_DATA = {
       "Perfect for Mantra Chaining (Jaap) & Daily Sadhana",
       "Includes Authenticity Certificate & Sacred Packaging"
     ],
-    "detailsHtml": "<div class=\"pdp-rich-content\"><div class=\"pdp-comparison-wrap\" style=\"margin-bottom: 24px;\"><img src=\"/public/images/asli-brand-comparison.jpg\" alt=\"Ved Vigyan — The Asli Brand Of Rudraksha Wearables vs Other Sellers\" style=\"width: 100%; height: auto; border-radius: 12px; border: 1.5px solid var(--lux-gold, #d4af37); box-shadow: 0 8px 24px rgba(0,0,0,0.25);\" loading=\"lazy\" /></div><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Original Rudraksha Jaap Mala (108 Beads) — Product Details</h4><p>The Original Rudraksha Jaap Mala (108 Beads) is one of the most trusted spiritual tools in Vedic tradition. Crafted with carefully selected Rudraksha beads and traditional knotting, it aids in mantra repetition, mental clarity, and spiritual elevation.</p><h5 style=\"margin-top: 14px; margin-bottom: 8px; font-weight:600;\">Key Features & Benefits</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✅ Traditional 108+1 Guru Bead Stringing</li><li>✅ Ideal for Daily Mantra Jaap & Meditation</li><li>✅ Promotes Inner Peace, Focus & Emotional Stability</li><li>✅ Laboratory Certified & Traditional Siddhi Energized</li><li>✅ Suitable for All Seekers, Men & Women</li></ul><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">📦 Package Includes</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>● 1 × Original Rudraksha Jaap Mala (108 Beads)</li><li>● Laboratory Verification Certificate</li><li>● Usage & Care Instructions</li><li>● Premium Sacred Packaging</li></ul></div>",
+    "detailsHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Original Rudraksha Jaap Mala (108 Beads) — Product Details</h4><p>The Original Rudraksha Jaap Mala (108 Beads) is one of the most trusted spiritual tools in Vedic tradition. Crafted with carefully selected Rudraksha beads and traditional knotting, it aids in mantra repetition, mental clarity, and spiritual elevation.</p><h5 style=\"margin-top: 14px; margin-bottom: 8px; font-weight:600;\">Key Features & Benefits</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✅ Traditional 108+1 Guru Bead Stringing</li><li>✅ Ideal for Daily Mantra Jaap & Meditation</li><li>✅ Promotes Inner Peace, Focus & Emotional Stability</li><li>✅ Laboratory Certified & Traditional Siddhi Energized</li><li>✅ Suitable for All Seekers, Men & Women</li></ul><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">📦 Package Includes</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>● 1 × Original Rudraksha Jaap Mala (108 Beads)</li><li>● Laboratory Verification Certificate</li><li>● Usage & Care Instructions</li><li>● Premium Sacred Packaging</li></ul></div>",
     "howToUseHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">📿 How to Perform Jaap</h4><ol style=\"padding-left: 20px; line-height: 1.8;\"><li>Sit in a quiet space facing East or North.</li><li>Hold the mala in your right hand, using your thumb and middle finger to turn each bead.</li><li>Chant your chosen mantra (such as Om Namah Shivaya) for each bead.</li><li>Do not cross over the Guru bead; turn the mala around to continue additional rounds.</li></ol></div>",
     "authenticityHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">💎 Why Choose Ved Vigyan?</h4><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✔ Pioneered GRRL Lab Certification In India</li><li>✔ Introduced Product Siddhi Prakriya</li><li>✔ Focus on Quality with Strict QC</li><li>✔ 100% Authentic & Natural Beads</li></ul></div>",
     "faqs": [

@@ -113,6 +113,11 @@
 
   <!-- Info & Utility Pages -->
   <url>
+    <loc>https://www.vedvigyan.in/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.vedvigyan.in/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

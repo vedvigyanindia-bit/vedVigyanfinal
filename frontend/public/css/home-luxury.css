@@ -1230,8 +1230,16 @@
   object-fit: cover;
 }
 
-.lux-product-media .carousel-slide img.certificate-image {
+.lux-product-media .carousel-slide img.certificate-image,
+.lux-product-media .carousel-slide img[src*="cert"],
+.lux-product-media .carousel-slide img[src*="lab"],
+.lux-product-media .carousel-slide img[src*="3.webp"],
+.lux-product-media .carousel-slide img[src*="3.jpg"],
+.lux-product-media .carousel-slide img[src*="4.webp"],
+.lux-product-media .carousel-slide img[src*="4.jpg"] {
   object-fit: contain !important;
+  background: #faf7f2 !important;
+  padding: 4px !important;
 }
 
 .lux-product-hover-img {
@@ -2204,8 +2212,16 @@
   object-fit: cover;
 }
 
-.lux-home .product-carousel .carousel-slide img.certificate-image {
+.lux-home .product-carousel .carousel-slide img.certificate-image,
+.lux-home .product-carousel .carousel-slide img[src*="cert"],
+.lux-home .product-carousel .carousel-slide img[src*="lab"],
+.lux-home .product-carousel .carousel-slide img[src*="3.webp"],
+.lux-home .product-carousel .carousel-slide img[src*="3.jpg"],
+.lux-home .product-carousel .carousel-slide img[src*="4.webp"],
+.lux-home .product-carousel .carousel-slide img[src*="4.jpg"] {
   object-fit: contain !important;
+  background: #faf7f2 !important;
+  padding: 4px !important;
 }
 
 .lux-home .product-carousel .carousel-nav {

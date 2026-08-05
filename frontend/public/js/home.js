@@ -606,7 +606,26 @@
     if (!grid) return;
 
     const products = window.VED_VIGYAN_DATA?.products || [];
-    const featured = products.slice(0, 8);
+
+    // Explicitly exclude Money Magnet Bracelet from Featured Collection
+    const filteredProducts = products.filter(p =>
+      !p.name.toLowerCase().includes("money magnet") &&
+      !p.slug.toLowerCase().includes("money-magnet")
+    );
+
+    // Find Gauri Shankar product
+    const gauriShankar = products.find(p =>
+      p.name.toLowerCase().includes("gauri shankar") ||
+      p.slug.toLowerCase().includes("gauri-sankar")
+    );
+
+    let featured = [];
+    if (gauriShankar) {
+      featured = filteredProducts.filter(p => p.id !== gauriShankar.id).slice(0, 7);
+      featured.splice(6, 0, gauriShankar);
+    } else {
+      featured = filteredProducts.slice(0, 8);
+    }
 
     grid.innerHTML = featured.map(renderLuxuryProductCard).join("");
 

@@ -196,6 +196,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
       </div>
       <nav class="lux-mobile-links">
         <a href="/index.html">Home</a>
+        <a href="/about.html">About Us</a>
         <a href="/rudraksha.html">Rudraksha</a>
         <a href="/bracelet/rudraksha-bracelet.html">Bracelets</a>
         <a href="/gem-stone.html">Healing Crystals</a>
@@ -224,7 +225,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
           </div>
           <div class="lux-footer-col">
             <h4>Company</h4>
-            <a href="/index.html">About Us</a>
+            <a href="/about.html">About Us</a>
             <a href="/contact.html">Contact</a>
             <a href="/blog.html">Blog</a>
             <a href="/new-launches.html">New Launches</a>

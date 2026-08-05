@@ -209,7 +209,7 @@ window.VedVigyanCarousel = {
   isCertificateImage(url) {
     if (!url) return false;
     const u = String(url).toLowerCase();
-    return /cert[_-]|certificate|generated\/cert/.test(u);
+    return /cert|lab|report|authent|quality|verify|siddhi|test|3\.webp|3\.jpg|3\.png|3\.jpeg|4\.webp|4\.jpg|4\.png|4\.jpeg/.test(u);
   },
 
   isGeneratedPlaceholderImage(url) {
