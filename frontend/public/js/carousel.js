@@ -230,7 +230,7 @@ window.VedVigyanCarousel = {
     const total = images.length;
 
     const slideLabels = images.map((imgUrl, idx) => {
-      const isCert = this.isCertificateImage(imgUrl) || (idx === total - 1 && total > 1);
+      const isCert = this.isCertificateImage(imgUrl);
       if (isCert) {
         return `${idx + 1}/${total} Lab Certificate`;
       }
@@ -238,7 +238,7 @@ window.VedVigyanCarousel = {
     });
 
     const slideAltLabels = images.map((imgUrl, idx) => {
-      const isCert = this.isCertificateImage(imgUrl) || (idx === total - 1 && total > 1);
+      const isCert = this.isCertificateImage(imgUrl);
       if (isCert) {
         return `Lab Certificate`;
       }
@@ -251,7 +251,7 @@ window.VedVigyanCarousel = {
     const slidesHtml = images.map((imgUrl, idx) => {
       // First slide loads eagerly for LCP, others are lazy loaded
       const isLcp = idx === 0;
-      const isCert = this.isCertificateImage(imgUrl) || (idx === total - 1 && total > 1);
+      const isCert = this.isCertificateImage(imgUrl);
       return `
         <div class="carousel-slide" data-slide-index="${idx}">
           <img src="${imgUrl}" class="${isCert ? 'certificate-image' : ''}" alt="${product.name} - ${slideAltLabels[idx]}" width="400" height="400" ${isLcp ? 'fetchpriority="high"' : 'loading="lazy"'} />
