@@ -63,7 +63,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Gold Rudraksh Bracelet/1.webp" alt="Rudraksha Bracelets" loading="lazy" /></div>
                   <b>Rudraksha Bracelets</b><span>Daily spiritual wear</span>
                 </a>
-                <a class="lux-mega-item" href="/gem-stone.html">
+                <a class="lux-mega-item" href="/product/detail.html?id=vv_p07">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="Crystal Bracelets" loading="lazy" /></div>
                   <b>Crystal Bracelets</b><span>Healing gemstones</span>
                 </a>
