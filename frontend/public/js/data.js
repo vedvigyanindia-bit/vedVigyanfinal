@@ -212,7 +212,7 @@ window.VED_VIGYAN_DATA = {
     "category": "crystal-bracelet",
     "slug": "4-money-magnet",
     "name": "Money Magnet Bracelet (Pyrite & Citrine)",
-    "price": 999,
+    "price": 699,
     "tags": [
       "crystal-bracelet",
       "authentic",
@@ -328,7 +328,7 @@ window.VED_VIGYAN_DATA = {
     "category": "crystal-bracelet",
     "slug": "7-chakra-braclet",
     "name": "7 Chakra Healing Crystal Bracelet",
-    "price": 899,
+    "price": 699,
     "tags": [
       "crystal-bracelet",
       "authentic",
@@ -471,7 +471,7 @@ window.VED_VIGYAN_DATA = {
     "category": "crystal-bracelet",
     "slug": "amethyst-bracelet",
     "name": "Natural Amethyst Healing Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "crystal-bracelet",
       "authentic",
@@ -501,7 +501,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "dhanu-sagittarius-braclet",
     "name": "Dhanu (धनु – Sagittarius) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -676,7 +676,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "kanya-virgo-braclet",
     "name": "Kanya (कन्या – Virgo) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -708,7 +708,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "karka-cancer-braclet",
     "name": "Karka (कर्क – Cancer) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -795,7 +795,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "kumbh-aquarius-braclet",
     "name": "Kumbh (कुंभ – Aquarius) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -827,7 +827,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "makar-capricorn-braclet",
     "name": "Makar (मकर – Capricorn) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -860,7 +860,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "meen-pisces-braclet",
     "name": "Meen (मीन – Pisces) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -892,7 +892,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "mesh-aries-braclet",
     "name": "Mesh (मेष – Aries) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -923,7 +923,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "mithun-gemini-braclet",
     "name": "Mithun (मिथुन – Gemini) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -1031,7 +1031,7 @@ window.VED_VIGYAN_DATA = {
     "category": "crystal-bracelet",
     "slug": "piride-braclet",
     "name": "Natural Pyrite Wealth Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "crystal-bracelet",
       "authentic",
@@ -1060,7 +1060,7 @@ window.VED_VIGYAN_DATA = {
     "category": "crystal-bracelet",
     "slug": "rose-quartz-close",
     "name": "Natural Rose Quartz Crystal Bracelet",
-    "price": 899,
+    "price": 699,
     "tags": [
       "crystal-bracelet",
       "authentic",
@@ -1189,7 +1189,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "singh-leo-braclet",
     "name": "Singh (सिंह – Leo) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -1249,7 +1249,7 @@ window.VED_VIGYAN_DATA = {
     "category": "crystal-bracelet",
     "slug": "tiger-eye-loose-big",
     "name": "Natural Tiger Eye Protection Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "crystal-bracelet",
       "authentic",
@@ -1277,7 +1277,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "tula-libra-braclet",
     "name": "Tula (तुला – Libra) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
@@ -1367,7 +1367,7 @@ window.VED_VIGYAN_DATA = {
     "category": "zodiac-bracelet",
     "slug": "vrishabh-taurus-braclet",
     "name": "Vrishabh (वृषभ – Taurus) Rashi Bracelet",
-    "price": 999,
+    "price": 699,
     "tags": [
       "zodiac-bracelet",
       "authentic",
