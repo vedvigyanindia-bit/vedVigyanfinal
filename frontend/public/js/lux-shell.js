@@ -59,7 +59,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
             <button class="lux-mega-trigger" type="button" aria-expanded="false">Bracelets ${NAV_CHEVRON}</button>
             <div class="lux-mega-panel">
               <div class="lux-mega-grid">
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p20">
+                <a class="lux-mega-item" href="/product/detail.html?id=vv_p21">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Gold Rudraksh Bracelet/1.webp" alt="Rudraksha Bracelets" loading="lazy" /></div>
                   <b>Rudraksha Bracelets</b><span>Daily spiritual wear</span>
                 </a>
