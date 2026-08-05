@@ -832,6 +832,7 @@
     initHero();
     initCounters();
     renderCategories();
+    renderProducts();
     renderPurpose();
     renderReviews();
     renderBlog();
