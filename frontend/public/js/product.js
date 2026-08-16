@@ -400,7 +400,94 @@ function renderProductPage() {
 
   injectProductSchema(product);
   renderDiscoveryRail(product, products);
+  initSectionInteractiveHandlers(product);
   window.VedVigyanLux?.initScrollReveal?.();
+}
+
+function initSectionInteractiveHandlers(product) {
+  // Video Modal Lightbox
+  const videoCards = document.querySelectorAll("[data-vv-video]");
+  const modalBackdrop = document.getElementById("vvVideoModalBackdrop");
+  const modalPlayer = document.getElementById("vvVideoPlayerContainer");
+  const modalClose = document.getElementById("vvVideoModalClose");
+
+  videoCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const src = card.getAttribute("data-vv-video");
+      if (!modalBackdrop || !modalPlayer) return;
+
+      if (src.includes("youtube.com") || src.includes("youtu.be")) {
+        modalPlayer.innerHTML = `<iframe width="100%" height="100%" src="${src}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+      } else {
+        modalPlayer.innerHTML = `<video width="100%" height="100%" controls autoplay style="object-fit:cover"><source src="${src}" type="video/mp4">Your browser does not support HTML5 video.</video>`;
+      }
+      modalBackdrop.classList.add("active");
+      modalBackdrop.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  const closeVideoModal = () => {
+    if (!modalBackdrop) return;
+    modalBackdrop.classList.remove("active");
+    modalBackdrop.setAttribute("aria-hidden", "true");
+    if (modalPlayer) modalPlayer.innerHTML = "";
+  };
+
+  modalClose?.addEventListener("click", closeVideoModal);
+  modalBackdrop?.addEventListener("click", (e) => {
+    if (e.target === modalBackdrop) closeVideoModal();
+  });
+
+  // Bundle & Final Timers
+  let endTime = Date.now() + 14 * 60 * 1000 + 32 * 1000;
+  function updateTimers() {
+    const remaining = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+    const hours = String(Math.floor(remaining / 3600)).padStart(2, "0");
+    const mins = String(Math.floor((remaining % 3600) / 60)).padStart(2, "0");
+    const secs = String(remaining % 60).padStart(2, "0");
+
+    document.querySelectorAll("[data-vv-timer-unit]").forEach((el) => {
+      const unit = el.getAttribute("data-vv-timer-unit");
+      if (unit === "hours") el.textContent = hours;
+      if (unit === "mins") el.textContent = mins;
+      if (unit === "secs") el.textContent = secs;
+    });
+  }
+  setInterval(updateTimers, 1000);
+  updateTimers();
+
+  // Wire bundle CTAs to add exact written bundle product to cart
+  document.querySelectorAll("[data-vv-bundle-buy]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const card = btn.closest(".vv-bundle-card");
+      const titleEl = card ? card.querySelector(".vv-bundle-title") : null;
+      const priceEl = card ? card.querySelector(".vv-bundle-sale-price") : null;
+
+      const bundleTitle = titleEl ? titleEl.textContent.trim() : "Special Offer Bundle";
+      const rawPrice = priceEl ? priceEl.textContent.replace(/[^0-9]/g, "") : "";
+      const bundlePrice = rawPrice ? Number(rawPrice) : (product ? product.price : 999);
+
+      const customBundleItem = {
+        id: `bundle_${product ? product.id : "vv"}_${bundleTitle.replace(/\W+/g, "_").toLowerCase()}`,
+        name: `${product ? product.name : "Ved Vigyan"} (${bundleTitle})`,
+        price: bundlePrice,
+        image: product ? product.image : "/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp",
+        url: window.location.pathname,
+        qty: 1
+      };
+
+      if (window.VedVigyanCart?.addCustomItemToCart) {
+        window.VedVigyanCart.addCustomItemToCart(customBundleItem, true);
+      } else if (window.VedVigyanCart?.addToCart) {
+        window.VedVigyanCart.addToCart(product ? product.id : "p_rud_5m", 1);
+      }
+
+      setTimeout(() => {
+        window.location.href = "/checkout.html";
+      }, 500);
+    });
+  });
 }
 
 function initStickyCart(product) {

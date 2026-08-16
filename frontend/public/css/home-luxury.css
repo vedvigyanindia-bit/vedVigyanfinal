@@ -4491,3 +4491,938 @@ button[type="submit"]#placeOrderBtn:hover {
   transform: translateY(-2px) !important;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   11-SECTION HIGH-CONVERTING PDP DESIGN SYSTEM
+   ───────────────────────────────────────────────────────────── */
+
+/* SECTION 1: Top Offer Marquee & Offer Popup */
+.vv-top-marquee {
+  background: linear-gradient(90deg, #8a1a23 0%, #b82835 50%, #8a1a23 100%);
+  color: #ffffff;
+  padding: 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.vv-marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: vvMarquee 28s linear infinite;
+  gap: 40px;
+}
+
+.vv-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.vv-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vv-marquee-item .vv-badge {
+  background: #d4af37;
+  color: #1a0809;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+@keyframes vvMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Offer Popup / Bottom Sheet */
+.vv-popup-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 10, 8, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.vv-popup-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vv-offer-popup {
+  background: #ffffff;
+  border: 2px solid #d4af37;
+  border-radius: 16px;
+  max-width: 480px;
+  width: 100%;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+}
+
+.vv-popup-backdrop.active .vv-offer-popup {
+  transform: scale(1) translateY(0);
+}
+
+@media (max-width: 640px) {
+  .vv-popup-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+  .vv-offer-popup {
+    border-radius: 20px 20px 0 0;
+    max-width: 100%;
+    transform: translateY(100%);
+  }
+  .vv-popup-backdrop.active .vv-offer-popup {
+    transform: translateY(0);
+  }
+}
+
+.vv-popup-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: rgba(0,0,0,0.06);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  color: #444;
+  transition: background 0.2s;
+}
+
+.vv-popup-close:hover {
+  background: #8a1a23;
+  color: #ffffff;
+}
+
+.vv-popup-headline {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: #8a1a23;
+  margin: 0 0 6px;
+}
+
+.vv-popup-discount {
+  font-size: 15px;
+  color: #27ae60;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.vv-popup-img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 auto 14px;
+  border: 2px solid #f3a83b;
+  display: block;
+}
+
+.vv-timer-box {
+  display: inline-flex;
+  gap: 8px;
+  justify-content: center;
+  background: #faf6f0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #e2d6c3;
+  margin-bottom: 16px;
+}
+
+.vv-timer-unit {
+  text-align: center;
+}
+
+.vv-timer-num {
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: 800;
+  color: #8a1a23;
+  display: block;
+  min-width: 28px;
+}
+
+.vv-timer-label {
+  font-size: 10px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.vv-coupon-code {
+  background: #fef4e5;
+  border: 1px dashed #d4af37;
+  color: #8a1a23;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+
+.vv-popup-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+  color: #1a0809;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.4);
+  transition: transform 0.2s;
+}
+
+.vv-popup-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* SECTION 2 & 3: Enhanced Product Gallery & Introduction */
+.vv-trust-bullets-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+  padding: 14px;
+  background: #faf6f0;
+  border-left: 3px solid #d4af37;
+  border-radius: 6px;
+}
+
+.vv-trust-bullet-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c221e;
+}
+
+.vv-trust-bullet-item span {
+  color: #27ae60;
+  font-weight: 800;
+}
+
+/* SECTION 4: Quality & Authenticity Visual Cards */
+.vv-authenticity-card-section {
+  margin: 40px 0;
+  padding: 32px;
+  background: linear-gradient(135deg, #ffffff 0%, #fcf8f2 100%);
+  border: 1px solid #e8dfd1;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.vv-auth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .vv-auth-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vv-auth-points {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.vv-auth-point-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.vv-auth-point-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fef4e5;
+  border: 1px solid #d4af37;
+  color: #8a1a23;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.vv-auth-point-text h4 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: #1a0809;
+  font-weight: 700;
+}
+
+.vv-auth-point-text p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.vv-cert-preview-box {
+  background: #ffffff;
+  border: 2px solid #d4af37;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.vv-cert-preview-box img {
+  max-width: 100%;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.vv-cert-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #8a1a23;
+}
+
+/* SECTION 5: Offers & Bundles Comparison */
+.vv-bundles-section {
+  margin: 48px 0;
+}
+
+.vv-bundles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .vv-bundles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vv-bundle-card {
+  background: #ffffff;
+  border: 1.5px solid #e0d5c5;
+  border-radius: 16px;
+  padding: 28px 24px;
+  position: relative;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.vv-bundle-card:hover {
+  transform: translateY(-4px);
+  border-color: #d4af37;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+.vv-bundle-card.popular {
+  border: 2.5px solid #d4af37;
+  box-shadow: 0 16px 45px rgba(212, 175, 55, 0.35);
+  background: linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+@media (max-width: 900px) {
+  .vv-bundle-card.popular {
+    transform: none;
+  }
+}
+
+.vv-bundle-popular-badge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #8a1a23 0%, #d4af37 100%);
+  color: #ffffff;
+  padding: 5px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(138, 26, 35, 0.3);
+}
+
+.vv-bundle-header {
+  text-align: center;
+  border-bottom: 1px solid #f0e6d8;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.vv-bundle-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a0809;
+  margin: 0 0 6px;
+}
+
+.vv-bundle-card.popular .vv-bundle-title {
+  font-size: 22px;
+  color: #8a1a23;
+}
+
+.vv-bundle-subtitle {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.vv-bundle-pricing {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.vv-bundle-sale-price {
+  font-size: 26px;
+  font-weight: 800;
+  color: #8a1a23;
+}
+
+.vv-bundle-mrp {
+  font-size: 14px;
+  color: #999;
+  text-decoration: line-through;
+  margin-left: 6px;
+}
+
+.vv-bundle-save-pill {
+  display: inline-block;
+  background: #e8f8f0;
+  color: #27ae60;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.vv-bundle-items {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.vv-bundle-items li {
+  font-size: 13.5px;
+  color: #333;
+  padding: 8px 0;
+  border-bottom: 1px dashed #f0e8dc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vv-bundle-items li span {
+  color: #27ae60;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.vv-bundle-highlight-strip {
+  background: linear-gradient(90deg, #d4af37 0%, #f3a83b 100%);
+  color: #1a0809;
+  font-weight: 800;
+  text-align: center;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+}
+
+.vv-bundle-highlight-tag {
+  background: #fef4e5;
+  border: 1px dashed #d4af37;
+  color: #8a1a23;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.vv-bundle-timer {
+  background: #fef4e5;
+  border: 1px solid #f3a83b;
+  border-radius: 6px;
+  padding: 6px 12px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #8a1a23;
+  margin-bottom: 14px;
+}
+
+/* SECTION 6: 4 Video Section & Video Lightbox Modal */
+.vv-videos-section {
+  margin: 48px 0;
+}
+
+.vv-videos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .vv-videos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .vv-videos-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vv-video-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.vv-video-card:hover {
+  transform: translateY(-4px);
+}
+
+.vv-video-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.82;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.vv-video-card:hover img {
+  opacity: 0.95;
+  transform: scale(1.04);
+}
+
+.vv-video-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(138, 26, 35, 0.9);
+  border: 2px solid #d4af37;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.vv-video-card:hover .vv-video-play-btn {
+  transform: translate(-50%, -50%) scale(1.12);
+  background: #d4af37;
+  color: #1a0809;
+}
+
+.vv-video-caption {
+  position: absolute;
+  bottom: 0;
+  inset-x: 0;
+  padding: 10px 12px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.85) 100%);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Video Lightbox Modal */
+.vv-video-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.vv-video-modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vv-video-modal-content {
+  width: 100%;
+  max-width: 800px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+}
+
+.vv-video-modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* SECTION 7: 3-Step Journey / Roadmap */
+.vv-journey-section {
+  margin: 48px 0;
+  padding: 36px 24px;
+  background: #faf6f0;
+  border-radius: 16px;
+  border: 1px solid #e6dccb;
+}
+
+.vv-journey-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 28px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .vv-journey-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vv-journey-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e0d5c5;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  text-align: center;
+  padding: 20px;
+}
+
+.vv-journey-img-wrap {
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.vv-journey-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vv-journey-step-badge {
+  display: inline-block;
+  background: #8a1a23;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.vv-journey-card h4 {
+  margin: 4px 0 6px;
+  font-size: 16px;
+  color: #1a0809;
+  font-weight: 700;
+}
+
+.vv-journey-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* SECTION 8: Customer Reviews & Social Proof Wall */
+.vv-reviews-section {
+  margin: 48px 0;
+}
+
+.vv-reviews-summary-bar {
+  background: linear-gradient(135deg, #1a0809 0%, #3a0a0e 100%);
+  color: #ffffff;
+  padding: 24px 32px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+  border: 1px solid #d4af37;
+}
+
+@media (max-width: 600px) {
+  .vv-reviews-summary-bar {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.vv-rev-score {
+  font-size: 42px;
+  font-weight: 800;
+  color: #d4af37;
+  line-height: 1;
+}
+
+.vv-rev-stars-lg {
+  color: #d4af37;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.vv-rev-grid-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .vv-rev-grid-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .vv-rev-grid-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.vv-user-rev-card {
+  background: #ffffff;
+  border: 1px solid #e0d5c5;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+}
+
+.vv-rev-author-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.vv-rev-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #8a1a23;
+  color: #ffffff;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.vv-verified-badge {
+  color: #27ae60;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* SECTION 9: FAQ Accordion */
+.vv-faq-section {
+  margin: 48px 0;
+}
+
+.vv-faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.vv-faq-item {
+  background: #ffffff;
+  border: 1.5px solid #e0d5c5;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.25s;
+}
+
+.vv-faq-item[open] {
+  border-color: #d4af37;
+}
+
+.vv-faq-summary {
+  padding: 16px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a0809;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.vv-faq-summary::-webkit-details-marker {
+  display: none;
+}
+
+.vv-faq-summary::after {
+  content: "+";
+  font-size: 20px;
+  color: #8a1a23;
+  font-weight: 700;
+  transition: transform 0.25s;
+}
+
+.vv-faq-item[open] .vv-faq-summary::after {
+  content: "−";
+}
+
+.vv-faq-body {
+  padding: 0 20px 18px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* SECTION 10: Final Offer + CTA + Timer */
+.vv-final-offer-section {
+  margin: 56px 0 32px;
+  background: linear-gradient(135deg, #1a0809 0%, #3a0a0e 100%);
+  color: #ffffff;
+  border: 2px solid #d4af37;
+  border-radius: 20px;
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(26, 8, 9, 0.4);
+}
+
+.vv-final-offer-headline {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 30px;
+  font-weight: 800;
+  color: #d4af37;
+  margin: 0 0 10px;
+}
+
+.vv-final-offer-sub {
+  font-size: 16px;
+  color: #ffffff;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.vv-final-timer-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.vv-final-cta-btn {
+  display: inline-block;
+  padding: 16px 42px;
+  background: linear-gradient(135deg, #d4af37 0%, #f3a83b 100%);
+  color: #1a0809;
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.5);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.vv-final-cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.7);
+}
+
+.vv-final-reassurance-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+  font-size: 13px;
+  color: #d4af37;
+  font-weight: 600;
+}
+
+

@@ -17,6 +17,18 @@ window.VedVigyanLux = window.VedVigyanLux || {};
   const NAV_CHEVRON = `<svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5"/></svg>`;
 
   const SHELL_BEFORE_MAIN = `
+    <div class="vv-top-marquee" id="vvTopMarquee">
+      <div class="vv-marquee-track">
+        <div class="vv-marquee-item"><span class="vv-badge">FIRST BUYER OFFER</span> Extra 10% OFF with Code <b>SHIVA10</b></div>
+        <div class="vv-marquee-item">⚡ <b>LIMITED TIME DISCOUNT:</b> Up to 50% OFF on Original Nepal Rudraksha</div>
+        <div class="vv-marquee-item">🚚 <b>FREE EXPRESS SHIPPING</b> Across India on Orders Above ₹999</div>
+        <div class="vv-marquee-item">🧪 <b>100% LAB CERTIFIED & ENERGIZED</b> Before Dispatch</div>
+        <div class="vv-marquee-item"><span class="vv-badge">FIRST BUYER OFFER</span> Extra 10% OFF with Code <b>SHIVA10</b></div>
+        <div class="vv-marquee-item">⚡ <b>LIMITED TIME DISCOUNT:</b> Up to 50% OFF on Original Nepal Rudraksha</div>
+        <div class="vv-marquee-item">🚚 <b>FREE EXPRESS SHIPPING</b> Across India on Orders Above ₹999</div>
+        <div class="vv-marquee-item">🧪 <b>100% LAB CERTIFIED & ENERGIZED</b> Before Dispatch</div>
+      </div>
+    </div>
     <div class="lux-announce" id="announceBar" aria-live="polite">
       <div class="lux-announce-track" id="announceTrack"></div>
       <div class="lux-announce-dots" id="announceDots"></div>
@@ -48,7 +60,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="7 Mukhi" loading="lazy" /></div>
                   <b>7 Mukhi</b><span>Wealth & abundance</span>
                 </a>
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p19">
+                <a class="lux-mega-item" href="/product/detail.html?id=vv_p07">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp" alt="Gauri Shankar" loading="lazy" /></div>
                   <b>Gauri Shankar</b><span>Relationship harmony</span>
                 </a>
@@ -63,7 +75,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Gold Rudraksh Bracelet/1.webp" alt="Rudraksha Bracelets" loading="lazy" /></div>
                   <b>Rudraksha Bracelets</b><span>Daily spiritual wear</span>
                 </a>
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p07">
+                <a class="lux-mega-item" href="/gem-stone.html">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="Crystal Bracelets" loading="lazy" /></div>
                   <b>Crystal Bracelets</b><span>Healing gemstones</span>
                 </a>
@@ -277,6 +289,23 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     </button>
     <div class="lux-quickview" id="quickView" role="dialog" aria-label="Quick view" aria-hidden="true">
       <div class="lux-quickview-panel" id="quickViewPanel"></div>
+    </div>
+    <!-- Exit-Intent & Timed Offer Popup Modal / Bottom Sheet -->
+    <div class="vv-popup-backdrop" id="vvOfferPopupBackdrop" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="vv-offer-popup">
+        <button class="vv-popup-close" id="vvPopupCloseBtn" type="button" aria-label="Close offer">&times;</button>
+        <h3 class="vv-popup-headline">🎉 Exclusive First-Time Buyer Offer</h3>
+        <div class="vv-popup-discount">Get Extra 10% OFF + Free Lab Certificate!</div>
+        <img class="vv-popup-img" id="vvPopupImg" src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="Sacred Rudraksha" />
+        <div class="vv-timer-box">
+          <div class="vv-timer-unit"><span class="vv-timer-num" id="vvPopupHours">00</span><span class="vv-timer-label">Hours</span></div>
+          <div class="vv-timer-unit"><span class="vv-timer-num" id="vvPopupMins">14</span><span class="vv-timer-label">Mins</span></div>
+          <div class="vv-timer-unit"><span class="vv-timer-num" id="vvPopupSecs">32</span><span class="vv-timer-label">Secs</span></div>
+        </div>
+        <div>Coupon Code:</div>
+        <div class="vv-coupon-code">SHIVA10</div>
+        <button class="vv-popup-btn" id="vvPopupClaimBtn" type="button">Claim Offer &amp; Buy Now &rarr;</button>
+      </div>
     </div>
   `;
 
@@ -511,6 +540,66 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     });
   };
 
+  Lux.initOfferPopup = function initOfferPopup() {
+    const backdrop = document.getElementById("vvOfferPopupBackdrop");
+    const closeBtn = document.getElementById("vvPopupCloseBtn");
+    const claimBtn = document.getElementById("vvPopupClaimBtn");
+    if (!backdrop) return;
+
+    if (sessionStorage.getItem("vv_offer_dismissed") === "true") return;
+
+    let targetTime = Date.now() + 14 * 60 * 1000 + 32 * 1000;
+    function updatePopupTimer() {
+      const remaining = Math.max(0, Math.floor((targetTime - Date.now()) / 1000));
+      const hours = String(Math.floor(remaining / 3600)).padStart(2, "0");
+      const mins = String(Math.floor((remaining % 3600) / 60)).padStart(2, "0");
+      const secs = String(remaining % 60).padStart(2, "0");
+
+      const hEl = document.getElementById("vvPopupHours");
+      const mEl = document.getElementById("vvPopupMins");
+      const sEl = document.getElementById("vvPopupSecs");
+      if (hEl) hEl.textContent = hours;
+      if (mEl) mEl.textContent = mins;
+      if (sEl) sEl.textContent = secs;
+    }
+    setInterval(updatePopupTimer, 1000);
+    updatePopupTimer();
+
+    const openPopup = () => {
+      if (backdrop.classList.contains("active")) return;
+      backdrop.classList.add("active");
+      backdrop.setAttribute("aria-hidden", "false");
+    };
+
+    const closePopup = () => {
+      backdrop.classList.remove("active");
+      backdrop.setAttribute("aria-hidden", "true");
+      sessionStorage.setItem("vv_offer_dismissed", "true");
+    };
+
+    closeBtn?.addEventListener("click", closePopup);
+    backdrop.addEventListener("click", (e) => {
+      if (e.target === backdrop) closePopup();
+    });
+
+    claimBtn?.addEventListener("click", () => {
+      closePopup();
+      if (window.VedVigyanCart?.buyNow) {
+        window.VedVigyanCart.buyNow("p_rud_5m");
+      } else {
+        window.location.href = "/checkout.html";
+      }
+    });
+
+    // Timed popup after 4.5 seconds
+    setTimeout(openPopup, 4500);
+
+    // Exit intent desktop trigger
+    document.addEventListener("mouseleave", (e) => {
+      if (e.clientY <= 10) openPopup();
+    }, { once: true });
+  };
+
   Lux.initShell = function initShell(options = {}) {
     if (document.body.dataset.luxShellInject === "true") {
       Lux.injectShell();
@@ -521,6 +610,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     Lux.initRipple();
     Lux.initNewsletter();
     Lux.initScrollReveal();
+    Lux.initOfferPopup();
   };
 
   Lux.upgradeLegacyPage = function upgradeLegacyPage() {

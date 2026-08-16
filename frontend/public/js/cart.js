@@ -77,6 +77,43 @@ function removeFreeGiftItem() {
   }
 }
 
+function addCustomItemToCart(item, forceFreeGift = true) {
+  if (!item || !item.id || !item.name) return;
+  const cart = loadCart();
+  const id = item.id;
+  const existing = cart.items[id];
+  const nextQty = (existing?.qty || 0) + (item.qty || 1);
+  cart.items[id] = {
+    id: item.id,
+    name: item.name,
+    price: Number(item.price || 0),
+    url: item.url || window.location.pathname,
+    image: item.image || "/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp",
+    imageAlt: item.name,
+    qty: Math.max(1, nextQty),
+    originalPrice: Number(item.originalPrice || item.price || 0)
+  };
+
+  if (forceFreeGift && !isFreeGiftClaimed() && item.price >= 999) {
+    cart.items[FREE_GIFT_ID] = {
+      id: FREE_GIFT_ID,
+      name: "FREE 5 Mukhi Nepali Rudraksha Bead",
+      price: 0,
+      url: "/product/detail.html?id=vv_p31",
+      image: "/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp",
+      imageAlt: "FREE 5 Mukhi Nepali Rudraksha Bead Gift",
+      qty: 1,
+      isFreeGift: true,
+      originalPrice: 399
+    };
+    saveCart(cart);
+    toast(`Added "${item.name}" + FREE Gift to Cart!`);
+  } else {
+    saveCart(cart);
+    toast(`Added "${item.name}" to Cart!`);
+  }
+}
+
 function addToCart(productId, qty = 1, forceFreeGift = null) {
   const product = findProductById(productId);
   if (!product) return;
@@ -207,6 +244,7 @@ window.VedVigyanCart = {
   loadCart,
   saveCart,
   addToCart,
+  addCustomItemToCart,
   addFreeGiftItem,
   removeFreeGiftItem,
   isFreeGiftClaimed,
