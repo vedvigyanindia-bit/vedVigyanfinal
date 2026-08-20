@@ -12,7 +12,8 @@ async function postJson(url, payload) {
 
   const data = await response.json().catch(() => ({}));
   if (!response.ok) {
-    throw new Error(data.error || "Request failed");
+    const errorMsg = data.error || data.message || (typeof data === "string" ? data : null) || `Server Error (${response.status}): Unable to complete request`;
+    throw new Error(errorMsg);
   }
 
   return data;

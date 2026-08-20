@@ -123,14 +123,14 @@ function sanitizeItems(items = []) {
 
   return items
     .map((item) => ({
-      id: sanitizeText(item.id, 80),
-      name: sanitizeText(item.name, 200),
-      qty: Math.max(1, Number(item.qty || 0)),
-      price: Math.max(0, Number(item.price || 0)),
-      url: sanitizeText(item.url, 300),
-      image: sanitizeText(item.image, 300)
+      id: sanitizeText(item.id || item.slug || item.name || `item_${Math.random().toString(36).substring(2, 8)}`, 80),
+      name: sanitizeText(item.name || item.title || "Spiritual Item", 200),
+      qty: Math.max(1, Number(item.qty || item.quantity || 1)),
+      price: Math.max(0, Number(item.price ?? 0)),
+      url: sanitizeText(item.url || "", 300),
+      image: sanitizeText(item.image || "", 300)
     }))
-    .filter((item) => item.id && item.name && Number.isFinite(item.qty) && Number.isFinite(item.price));
+    .filter((item) => item.name && Number.isFinite(item.qty) && Number.isFinite(item.price));
 }
 
 function calculateAmount(items) {
