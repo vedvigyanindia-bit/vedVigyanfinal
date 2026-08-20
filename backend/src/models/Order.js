@@ -64,36 +64,68 @@ try {
   MongooseOrderModel = mongoose.models.Order;
 }
 
-// File DB Fallback Store Path
-const DATA_DIR = path.join(__dirname, '..', '..', 'data');
-const FILE_DB_PATH = path.join(DATA_DIR, 'orders.json');
+const os = require('os');
+
+let memoryDbStore = [];
+
+function getFileDbPath() {
+  try {
+    const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+    if (isServerless) {
+      const tmpDir = path.join(os.tmpdir(), 'ved_vigyan');
+      if (!fs.existsSync(tmpDir)) {
+        fs.mkdirSync(tmpDir, { recursive: true });
+      }
+      return path.join(tmpDir, 'orders.json');
+    }
+  } catch (err) {
+    console.warn('[Order DB] Tmp path notice:', err.message);
+  }
+
+  const localDir = path.join(__dirname, '..', '..', 'data');
+  return path.join(localDir, 'orders.json');
+}
 
 function ensureFileDbExists() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
-  }
-  if (!fs.existsSync(FILE_DB_PATH)) {
-    fs.writeFileSync(FILE_DB_PATH, JSON.stringify([], null, 2), 'utf-8');
+  try {
+    const filePath = getFileDbPath();
+    const dirPath = path.dirname(filePath);
+    if (!fs.existsSync(dirPath)) {
+      fs.mkdirSync(dirPath, { recursive: true });
+    }
+    if (!fs.existsSync(filePath)) {
+      fs.writeFileSync(filePath, JSON.stringify([], null, 2), 'utf-8');
+    }
+  } catch (err) {
+    console.warn('[Order DB] Read-only filesystem notice:', err.message);
   }
 }
 
 function readFileDb() {
-  ensureFileDbExists();
   try {
-    const raw = fs.readFileSync(FILE_DB_PATH, 'utf-8');
-    return JSON.parse(raw || '[]');
+    ensureFileDbExists();
+    const filePath = getFileDbPath();
+    if (!fs.existsSync(filePath)) return memoryDbStore;
+    const raw = fs.readFileSync(filePath, 'utf-8');
+    const list = JSON.parse(raw || '[]');
+    if (Array.isArray(list) && list.length > 0) {
+      memoryDbStore = list;
+    }
+    return memoryDbStore;
   } catch (err) {
-    console.error('[Order DB] Error reading file DB:', err.message);
-    return [];
+    console.warn('[Order DB] File DB read notice:', err.message);
+    return memoryDbStore;
   }
 }
 
 function writeFileDb(data) {
-  ensureFileDbExists();
+  memoryDbStore = data;
   try {
-    fs.writeFileSync(FILE_DB_PATH, JSON.stringify(data, null, 2), 'utf-8');
+    ensureFileDbExists();
+    const filePath = getFileDbPath();
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
   } catch (err) {
-    console.error('[Order DB] Error writing file DB:', err.message);
+    console.warn('[Order DB] File DB write notice:', err.message);
   }
 }
 
@@ -102,7 +134,22 @@ class OrderRepository {
     return mongoose.connection && mongoose.connection.readyState === 1;
   }
 
+  static async connectMongoIfNeeded() {
+    if (this.isMongoConnected()) return;
+    const uri = process.env.MONGODB_URI;
+    if (uri && mongoose.connection.readyState === 0) {
+      try {
+        await mongoose.connect(uri, { bufferCommands: false });
+        console.log('[Order DB] Connected to MongoDB Atlas on demand.');
+      } catch (err) {
+        console.warn('[Order DB] MongoDB connection notice:', err.message);
+      }
+    }
+  }
+
   static async create(orderData) {
+    await this.connectMongoIfNeeded();
+
     const doc = {
       ...orderData,
       createdAt: new Date().toISOString(),
@@ -117,7 +164,7 @@ class OrderRepository {
         writeFileDb(list);
         return mongoDoc.toObject();
       } catch (err) {
-        console.warn('[Order DB] Mongoose save failed, using File DB fallback:', err.message);
+        console.warn('[Order DB] Mongoose save failed, using fallback:', err.message);
       }
     }
 
@@ -133,6 +180,8 @@ class OrderRepository {
   }
 
   static async findByOrderId(orderId) {
+    await this.connectMongoIfNeeded();
+
     if (this.isMongoConnected()) {
       try {
         const mongoDoc = await MongooseOrderModel.findOne({ orderId });
@@ -148,6 +197,8 @@ class OrderRepository {
 
   static async findByPaymentId(paymentId) {
     if (!paymentId) return null;
+    await this.connectMongoIfNeeded();
+
     if (this.isMongoConnected()) {
       try {
         const mongoDoc = await MongooseOrderModel.findOne({ razorpayPaymentId: paymentId });
@@ -162,6 +213,8 @@ class OrderRepository {
   }
 
   static async update(orderId, updateFields) {
+    await this.connectMongoIfNeeded();
+
     const fieldsWithTimestamp = {
       ...updateFields,
       updatedAt: new Date().toISOString()
@@ -193,6 +246,8 @@ class OrderRepository {
   }
 
   static async getAll(filter = {}, limit = 100) {
+    await this.connectMongoIfNeeded();
+
     if (this.isMongoConnected()) {
       try {
         const docs = await MongooseOrderModel.find(filter).sort({ createdAt: -1 }).limit(limit);

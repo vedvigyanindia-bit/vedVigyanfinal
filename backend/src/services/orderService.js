@@ -79,15 +79,18 @@ async function createOrder({ customer, items, razorpayOrderId, razorpayPaymentId
   try {
     await emailService.sendOrderConfirmation({
       orderId: savedOrder.orderId,
+      date: savedOrder.createdAt || new Date().toISOString(),
       customerName: customer.name,
       email: customer.email,
       phone: customer.phone,
       address: customer.address,
       city: customer.city,
+      state: customer.state || '',
       pincode: customer.pincode,
       products: items.map(formatProductName).join('\n'),
       quantity,
       amount,
+      razorpayPaymentId: savedOrder.razorpayPaymentId || 'N/A',
       paymentStatus: 'Paid',
       orderStatus: savedOrder.orderStatus
     });
@@ -155,15 +158,18 @@ async function createCodOrder({ customer, items }) {
   try {
     await emailService.sendOrderConfirmation({
       orderId: savedOrder.orderId,
+      date: savedOrder.createdAt || new Date().toISOString(),
       customerName: customer.name,
       email: customer.email,
       phone: customer.phone,
       address: customer.address,
       city: customer.city,
+      state: customer.state || '',
       pincode: customer.pincode,
       products: items.map(formatProductName).join('\n'),
       quantity,
       amount,
+      razorpayPaymentId: savedOrder.razorpayPaymentId || 'N/A',
       paymentStatus: 'Cash on Delivery (Pending)',
       orderStatus: savedOrder.orderStatus
     });
@@ -210,7 +216,7 @@ async function retryShiprocketSync(orderId) {
  * Helper to sync DB record to Google Sheets asynchronously without throwing or blocking
  */
 function syncToSheetsAsync(order) {
-  setImmediate(async () => {
+  (async () => {
     try {
       const sheetData = {
         orderId: order.orderId,
@@ -234,7 +240,7 @@ function syncToSheetsAsync(order) {
     } catch (err) {
       console.warn(`[Order Service Notice] Google Sheets async sync failed:`, err.message);
     }
-  });
+  })();
 }
 
 async function findOrderByPaymentId(paymentId) {

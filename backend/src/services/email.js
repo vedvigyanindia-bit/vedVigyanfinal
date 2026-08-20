@@ -51,7 +51,10 @@ function getOrderConfirmationHtml(order) {
               </tr>
               <tr>
                 <td style="padding: 4px 0; color: #7e6b66;">Placed At:</td>
-                <td style="padding: 4px 0;">${new Date(order.date).toLocaleDateString('en-IN', { dateStyle: 'long', timeStyle: 'short' })}</td>
+                <td style="padding: 4px 0;">${(() => {
+                  const d = order.date || order.createdAt ? new Date(order.date || order.createdAt) : new Date();
+                  return !isNaN(d.getTime()) ? d.toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }) : new Date().toLocaleDateString('en-IN');
+                })()}</td>
               </tr>
               <tr>
                 <td style="padding: 4px 0; color: #7e6b66;">Payment Status:</td>
