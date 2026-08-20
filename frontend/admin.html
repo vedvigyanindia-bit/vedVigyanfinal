@@ -257,6 +257,7 @@
               <td>
                 ${isFailed || order.shiprocketStatus === 'pending' ? `<button class="btn-action btn-retry" onclick="retrySync('${order.orderId}')">🔄 Retry</button>` : ""}
                 ${order.shiprocketShipmentId ? `<button class="btn-action btn-label" onclick="generateLabel('${order.shiprocketShipmentId}')">🏷️ Label</button>` : ""}
+                ${order.shiprocketShipmentId ? `<button class="btn-action" style="background:#2563eb; color:#fff; margin-left:4px;" onclick="trackShipment('${order.shiprocketShipmentId}')">📍 Track</button>` : ""}
               </td>
             </tr>
           `;
@@ -306,6 +307,21 @@
           }
         } catch (err) {
           alert(`❌ Label Generation Error: ${err.message}`);
+        }
+      }
+
+      async function trackShipment(shipmentId) {
+        try {
+          const res = await fetch(`/api/shiprocket/track?shipment_id=${shipmentId}`);
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Tracking failed");
+          const trackData = data.tracking_data || {};
+          const trackList = trackData.shipment_track || [];
+          const currentStatus = trackList[0]?.current_status || "AWB Generated / Pending Pickup";
+          const courier = trackData.shipment_track_activities?.[0]?.location || "Origin Warehouse";
+          alert(`📦 Live Shiprocket Status (Shipment #${shipmentId}):\n\nStatus: ${currentStatus}\nLocation: ${courier}`);
+        } catch (err) {
+          alert(`❌ Live Tracking Error: ${err.message}`);
         }
       }
 
