@@ -142,6 +142,53 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
       </div>
     </main>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const pincodeInput = document.getElementById("pincode");
+        const infoBox = document.createElement("div");
+        infoBox.id = "shiprocketPincodeInfo";
+        infoBox.style.cssText = "font-size:12px; margin-top:6px; font-weight:600; padding:6px 10px; border-radius:6px; display:none;";
+
+        if (pincodeInput && pincodeInput.parentElement) {
+          pincodeInput.parentElement.appendChild(infoBox);
+
+          let debounceTimer = null;
+          pincodeInput.addEventListener("input", () => {
+            clearTimeout(debounceTimer);
+            const pincode = pincodeInput.value.trim();
+            if (pincode.length !== 6 || !/^\d{6}$/.test(pincode)) {
+              infoBox.style.display = "none";
+              return;
+            }
+
+            infoBox.style.display = "block";
+            infoBox.style.background = "#fff3cd";
+            infoBox.style.color = "#856404";
+            infoBox.innerHTML = "🔍 Checking shipping serviceability...";
+
+            debounceTimer = setTimeout(() => {
+              const isCod = document.querySelector('input[name="payment"]:checked')?.value === 'cod';
+              fetch(`/api/shiprocket/check-pincode?pincode=${pincode}&isCod=${isCod ? 1 : 0}`)
+                .then(r => r.json())
+                .then(data => {
+                  if (data.serviceable) {
+                    infoBox.style.background = "#d4edda";
+                    infoBox.style.color = "#155724";
+                    infoBox.innerHTML = `✓ Express Delivery Available (~${data.estimatedDeliveryDays || 3} days via ${data.fastestCourier || 'Shiprocket Partner'})`;
+                  } else {
+                    infoBox.style.background = "#f8d7da";
+                    infoBox.style.color = "#721c24";
+                    infoBox.innerHTML = `⚠️ ${data.message || 'Delivery serviceability restricted for this pincode'}`;
+                  }
+                })
+                .catch(() => {
+                  infoBox.style.display = "none";
+                });
+            }, 500);
+          });
+        }
+      });
+    </script>
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
   </body>
 </html>

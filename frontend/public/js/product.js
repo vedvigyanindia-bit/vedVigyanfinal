@@ -413,11 +413,22 @@ function initSectionInteractiveHandlers(product) {
 
   videoCards.forEach((card) => {
     card.addEventListener("click", () => {
-      const src = card.getAttribute("data-vv-video");
+      let src = card.getAttribute("data-vv-video") || "https://youtu.be/o9dREd5ZPhw?si=X2tbKalptHS0wmhD";
       if (!modalBackdrop || !modalPlayer) return;
 
       if (src.includes("youtube.com") || src.includes("youtu.be")) {
-        modalPlayer.innerHTML = `<iframe width="100%" height="100%" src="${src}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+        let embedSrc = src;
+        if (src.includes("youtu.be/")) {
+          const videoId = src.split("youtu.be/")[1].split("?")[0];
+          const urlParams = src.includes("?") ? src.split("?")[1] : "";
+          embedSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1${urlParams ? "&" + urlParams : ""}`;
+        } else if (src.includes("youtube.com/embed/")) {
+          embedSrc = src.includes("?") ? `${src}&autoplay=1` : `${src}?autoplay=1`;
+        } else if (src.includes("youtube.com/watch")) {
+          const videoId = new URLSearchParams(src.split("?")[1]).get("v");
+          embedSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        }
+        modalPlayer.innerHTML = `<iframe width="100%" height="100%" src="${embedSrc}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
       } else {
         modalPlayer.innerHTML = `<video width="100%" height="100%" controls autoplay style="object-fit:cover"><source src="${src}" type="video/mp4">Your browser does not support HTML5 video.</video>`;
       }

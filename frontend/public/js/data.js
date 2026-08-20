@@ -394,17 +394,19 @@ window.VED_VIGYAN_DATA = {
     "imageAlt": "7 Mukhi Rudraksha (Sapta Mukhi) - Authentic Ved Vigyan Original Product",
     "images": [
       "/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp",
-      "/product/Ved vigyan products/7 Mukhi Rudraksh/2.webp"
+      "/product/Ved vigyan products/7 Mukhi Rudraksh/2.webp",
+      "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp"
     ],
     "short": "Authentic 7 Mukhi Rudraksha for abundance, career growth, and stability.",
-    "description": "7 Mukhi Rudraksha (Sapta Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
+    "description": "7 Mukhi Rudraksha (Sapta Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each bead is 100% natural, certified by Rudram Lab (Cert No: D2606960, Report PIN: 6669, X-Ray verified with 7 natural compartments), and energized following Vedic traditions for wealth and Shani remedies.",
     "bullets": [
-      "100% Authentic natural product with laboratory certificate",
-      "Energized according to traditional Vedic rituals",
-      "Includes authenticity test certificate & usage guide"
+      "100% Authentic Natural 7 Mukhi Rudraksha (Rudram Lab Certified D2606960)",
+      "X-Ray Tested & Verified: 7 Natural Lines & 7 Internal Compartments",
+      "Energized with traditional Mahalaxmi mantras before shipping",
+      "Includes physical lab test report card with QR verification"
     ],
     "seoTitle": "7 Mukhi Rudraksha (Sapta Mukhi) - Buy Original Online | Ved Vigyan",
-    "seoDescription": "Shop original 7 Mukhi Rudraksha (Sapta Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "seoDescription": "Shop original 7 Mukhi Rudraksha (Sapta Mukhi) online at Ved Vigyan. Certified by Rudram Lab (Cert #D2606960), X-Ray verified 7 compartments. Order now.",
     "url": "/product/detail.html?id=vv_p13"
   },
   {

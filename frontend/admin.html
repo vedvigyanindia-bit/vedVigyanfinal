@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ved Vigyan — Admin &amp; Seller Control Center</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link rel="stylesheet" href="/public/css/home-luxury.css" />
+    <style>
+      .admin-layout { max-width: 1280px; margin: 24px auto; padding: 0 20px; font-family: var(--font-body, system-ui, sans-serif); }
+      .admin-nav { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, #7c1a22 0%, #4a0c11 100%); padding: 16px 24px; border-radius: 16px; color: #fff; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(124,26,34,0.18); }
+      .admin-brand { display: flex; align-items: center; gap: 12px; }
+      .admin-brand h1 { margin: 0; font-size: 20px; color: #ffffff; font-family: var(--font-display, serif); }
+      .admin-brand span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold,#d4af37); font-weight: 700; }
+      
+      .grid-dashboard { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 24px; }
+      @media(max-width: 900px) { .grid-dashboard { grid-template-columns: 1fr; } }
+      
+      .card-box { background: #ffffff; border-radius: 16px; padding: 20px; border: 1px solid var(--line,#ebd9c0); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
+      .card-title { font-size: 16px; font-weight: 700; color: var(--maroon,#7c1a22); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+      
+      .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+      .stat-card { background: #faf7f2; padding: 16px; border-radius: 12px; border: 1px solid #ebd9c0; transition: transform 0.2s; }
+      .stat-card:hover { transform: translateY(-2px); }
+      .stat-label { font-size: 12px; font-weight: 600; color: #666; margin-bottom: 4px; }
+      .stat-num { font-size: 24px; font-weight: 800; color: var(--maroon,#7c1a22); }
+      .stat-sub { font-size: 11px; color: #888; margin-top: 4px; }
+      
+      .actions-box { background: #fff5f5; border: 1px solid #fecaca; border-radius: 12px; padding: 16px; margin-bottom: 20px; display: none; }
+      .actions-box.active { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+      
+      .calculator-box input { width: 100%; padding: 10px; border: 1px solid #d4af37; border-radius: 8px; font-size: 14px; margin-top: 6px; }
+      .calculator-box label { font-size: 12px; font-weight: 700; color: #444; }
+      
+      .orders-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
+      .orders-table th, .orders-table td { padding: 12px; text-align: left; border-bottom: 1px solid #f0e6d6; }
+      .orders-table th { background: #faf7f2; font-weight: 700; color: var(--maroon,#7c1a22); }
+      
+      .badge { padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: 11px; display: inline-block; }
+      .badge-synced { background: #d1fae5; color: #065f46; }
+      .badge-failed { background: #fee2e2; color: #991b1b; }
+      .badge-pending { background: #fef3c7; color: #92400e; }
+      
+      .btn-action { padding: 6px 12px; border-radius: 6px; font-weight: 700; font-size: 12px; cursor: pointer; border: none; }
+      .btn-retry { background: #7c1a22; color: #ffffff; }
+      .btn-retry:hover { background: #591118; }
+      .btn-label { background: #d4af37; color: #1a0809; margin-left: 6px; }
+      .filter-btn { padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; cursor: pointer; border: 1px solid #d4af37; background: #fff; color: #1a0809; }
+      .filter-btn.active { background: #7c1a22; color: #fff; border-color: #7c1a22; }
+    </style>
+  </head>
+  <body class="lux-home" data-lux-shell-inject="true">
+    <div class="admin-layout">
+      
+      <!-- Top Navigation Header -->
+      <header class="admin-nav">
+        <div class="admin-brand">
+          <div style="font-size: 28px;">🔱</div>
+          <div>
+            <span>Ved Vigyan Official</span>
+            <h1>Seller &amp; Admin Control Center</h1>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <a href="/index.html" target="_blank" style="color:var(--gold,#d4af37); text-decoration:none; font-weight:700; font-size:13px;">View Store Front &rarr;</a>
+        </div>
+      </header>
+
+      <!-- Alert Box for Failed Shiprocket Syncs -->
+      <div id="actionsAlertBox" class="actions-box">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="font-size:20px;">⚠️</div>
+          <div>
+            <strong style="color:#991b1b; font-size:14px;">Action Required: Shiprocket Sync Failures Detected</strong>
+            <div style="font-size:12px; color:#7f1d1d;" id="actionsAlertText">Some orders failed to automatically push to Shiprocket API.</div>
+          </div>
+        </div>
+        <button class="btn-action btn-retry" onclick="retryAllFailedSyncs()">🔄 Retry All Failed Syncs</button>
+      </div>
+
+      <!-- Dashboard Grid: Stats + Shipping Rate Calculator -->
+      <div class="grid-dashboard">
+        
+        <!-- Left: Summary Metrics -->
+        <div class="card-box">
+          <div class="card-title">
+            <span>📊 Business Performance Summary</span>
+            <span style="font-size:12px; color:#888; font-weight:normal;" id="lastUpdatedTime">Updated Live</span>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-label">Total Orders</div>
+              <div class="stat-num" id="statTotal">0</div>
+              <div class="stat-sub">Lifetime Orders in DB</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Total Revenue</div>
+              <div class="stat-num" id="statRevenue">₹0</div>
+              <div class="stat-sub">Gross Sales Volume</div>
+            </div>
+            <div class="stat-card" style="background:#ecfdf5; border-color:#a7f3d0;">
+              <div class="stat-label" style="color:#065f46;">Shiprocket Synced</div>
+              <div class="stat-num" style="color:#065f46;" id="statSynced">0</div>
+              <div class="stat-sub" style="color:#047857;">AWB Generated &amp; Active</div>
+            </div>
+            <div class="stat-card" style="background:#fef2f2; border-color:#fecaca;">
+              <div class="stat-label" style="color:#991b1b;">Failed Sync (Retry)</div>
+              <div class="stat-num" style="color:#991b1b;" id="statFailed">0</div>
+              <div class="stat-sub" style="color:#b91c1c;">Requires Action</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Calculate Shipping Rates -->
+        <div class="card-box calculator-box">
+          <div class="card-title">
+            <span>🚚 Calculate Shipping Rates</span>
+            <span style="font-size:11px; color:#7c1a22; font-weight:700;">Shiprocket API</span>
+          </div>
+          <form id="calcForm" onsubmit="calculateShippingRates(event)">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+              <div>
+                <label for="pickupPin">Pickup Pincode</label>
+                <input id="pickupPin" value="110001" maxlength="6" required />
+              </div>
+              <div>
+                <label for="deliveryPin">Delivery Pincode</label>
+                <input id="deliveryPin" placeholder="e.g. 221001" maxlength="6" required />
+              </div>
+            </div>
+            <button class="btn-action btn-label" type="submit" style="width:100%; margin:12px 0 0 0; padding:10px;">Calculate Courier Rates</button>
+          </form>
+          <div id="calcResult" style="margin-top:12px; font-size:12px; line-height:1.5;"></div>
+        </div>
+
+      </div>
+
+      <!-- Main Orders Database Table -->
+      <div class="card-box">
+        <div class="card-title">
+          <span>📦 Order Fulfillment &amp; Database Records</span>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button class="filter-btn active" data-filter="all">All Orders</button>
+            <button class="filter-btn" data-filter="failed">Failed Syncs</button>
+            <button class="filter-btn" data-filter="synced">Shiprocket Synced</button>
+            <button class="filter-btn" data-filter="cod">COD</button>
+            <button class="filter-btn" data-filter="prepaid">Prepaid</button>
+          </div>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer Details</th>
+                <th>Payment</th>
+                <th>Amount</th>
+                <th>Shiprocket Status</th>
+                <th>Shipment &amp; AWB</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ordersTbody">
+              <tr>
+                <td colspan="7" style="text-align:center; padding:30px; color:#666;">Loading orders from database...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      let currentOrders = [];
+
+      async function fetchOrders(filterStatus = "") {
+        const tbody = document.getElementById("ordersTbody");
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#666;">Loading orders...</td></tr>`;
+
+        try {
+          const url = filterStatus ? `/api/admin/orders?shiprocketStatus=${filterStatus}` : `/api/admin/orders`;
+          const res = await fetch(url);
+          const data = await res.json();
+
+          if (!res.ok) throw new Error(data.error || "Failed to fetch orders");
+
+          currentOrders = data.orders || [];
+          renderOrders(currentOrders);
+          updateStats(currentOrders);
+        } catch (err) {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#991b1b;">Error: ${err.message}</td></tr>`;
+        }
+      }
+
+      function updateStats(orders) {
+        document.getElementById("statTotal").textContent = orders.length;
+        
+        const totalRev = orders.reduce((sum, o) => sum + (o.amount || 0), 0);
+        document.getElementById("statRevenue").textContent = `₹${totalRev.toLocaleString("en-IN")}`;
+
+        const syncedCount = orders.filter(o => o.shiprocketStatus === "synced" || o.shiprocketStatus === "shipped").length;
+        const failedCount = orders.filter(o => o.shiprocketStatus === "failed").length;
+
+        document.getElementById("statSynced").textContent = syncedCount;
+        document.getElementById("statFailed").textContent = failedCount;
+
+        const alertBox = document.getElementById("actionsAlertBox");
+        const alertText = document.getElementById("actionsAlertText");
+        if (failedCount > 0) {
+          alertBox.classList.add("active");
+          alertText.textContent = `${failedCount} order(s) failed automatic Shiprocket sync. Click button to retry immediately.`;
+        } else {
+          alertBox.classList.remove("active");
+        }
+
+        document.getElementById("lastUpdatedTime").textContent = `Updated ${new Date().toLocaleTimeString()}`;
+      }
+
+      function renderOrders(orders) {
+        const tbody = document.getElementById("ordersTbody");
+        if (orders.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#666;">No orders found in database.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = orders.map(order => {
+          const isFailed = order.shiprocketStatus === "failed";
+          const isSynced = order.shiprocketStatus === "synced" || order.shiprocketStatus === "shipped";
+          const badgeClass = isSynced ? "badge-synced" : (isFailed ? "badge-failed" : "badge-pending");
+
+          return `
+            <tr>
+              <td>
+                <strong>#${order.orderId}</strong>
+                <div style="font-size:11px; color:#888;">${new Date(order.createdAt || Date.now()).toLocaleDateString('en-IN')}</div>
+              </td>
+              <td>
+                <div><strong>${order.customer?.name || "Customer"}</strong></div>
+                <div style="font-size:11px; color:#666;">${order.customer?.phone || ""}, ${order.customer?.city || ""} (${order.customer?.pincode || ""})</div>
+              </td>
+              <td>
+                <span style="font-weight:600;">${order.paymentMethod}</span>
+                <div style="font-size:11px; color:${order.paymentStatus === 'paid' ? '#059669' : '#d97706'}">${order.paymentStatus}</div>
+              </td>
+              <td><strong>₹${Number(order.amount || 0).toLocaleString("en-IN")}</strong></td>
+              <td>
+                <span class="badge ${badgeClass}">${(order.shiprocketStatus || 'pending').toUpperCase()}</span>
+                ${isFailed && order.shiprocketLastError ? `<div style="font-size:11px; color:#dc2626; margin-top:2px;" title="${order.shiprocketLastError}">⚠️ ${order.shiprocketLastError.slice(0, 35)}...</div>` : ""}
+              </td>
+              <td>
+                ${order.shiprocketShipmentId ? `<div style="font-size:11px;">ID: ${order.shiprocketShipmentId}</div>` : "<span style='color:#aaa;'>—</span>"}
+                ${order.awbCode ? `<div style="font-size:11px; font-weight:700; color:#1e40af;">AWB: ${order.awbCode}</div>` : ""}
+              </td>
+              <td>
+                ${isFailed || order.shiprocketStatus === 'pending' ? `<button class="btn-action btn-retry" onclick="retrySync('${order.orderId}')">🔄 Retry</button>` : ""}
+                ${order.shiprocketShipmentId ? `<button class="btn-action btn-label" onclick="generateLabel('${order.shiprocketShipmentId}')">🏷️ Label</button>` : ""}
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      async function retrySync(orderId) {
+        try {
+          const res = await fetch('/api/admin/orders/shiprocket-retry', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ orderId })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Retry failed");
+          alert(`✓ Order #${orderId} synced to Shiprocket successfully!`);
+          fetchOrders();
+        } catch (err) {
+          alert(`❌ Retry Failed: ${err.message}`);
+        }
+      }
+
+      async function retryAllFailedSyncs() {
+        const failedOrders = currentOrders.filter(o => o.shiprocketStatus === "failed");
+        if (failedOrders.length === 0) return;
+
+        alert(`Retrying Shiprocket sync for ${failedOrders.length} failed order(s)...`);
+        for (const order of failedOrders) {
+          await retrySync(order.orderId);
+        }
+      }
+
+      async function generateLabel(shipmentId) {
+        try {
+          const res = await fetch('/api/admin/orders/shiprocket-label', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ shipmentId })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Label generation failed");
+          const labelUrl = data.labelData?.label_url;
+          if (labelUrl) {
+            window.open(labelUrl, '_blank');
+          } else {
+            alert('Label generated successfully.');
+          }
+        } catch (err) {
+          alert(`❌ Label Generation Error: ${err.message}`);
+        }
+      }
+
+      async function calculateShippingRates(e) {
+        e.preventDefault();
+        const deliveryPin = document.getElementById("deliveryPin").value.trim();
+        const calcResult = document.getElementById("calcResult");
+        calcResult.innerHTML = `⏳ Checking Shiprocket rate cards...`;
+
+        try {
+          const res = await fetch(`/api/shiprocket/check-pincode?pincode=${deliveryPin}`);
+          const data = await res.json();
+
+          if (data.serviceable) {
+            calcResult.innerHTML = `
+              <div style="background:#ecfdf5; padding:10px; border-radius:8px; color:#065f46;">
+                <strong>✓ Serviceable!</strong><br/>
+                Estimated Days: ~${data.estimatedDeliveryDays} days<br/>
+                Fastest Courier: <strong>${data.fastestCourier}</strong><br/>
+                Couriers Available: ${data.totalCouriers} partners
+              </div>
+            `;
+          } else {
+            calcResult.innerHTML = `
+              <div style="background:#fef2f2; padding:10px; border-radius:8px; color:#991b1b;">
+                ⚠️ ${data.message || 'Delivery restricted for this pincode'}
+              </div>
+            `;
+          }
+        } catch (err) {
+          calcResult.innerHTML = `<span style="color:#dc2626;">Error: ${err.message}</span>`;
+        }
+      }
+
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          const filter = btn.dataset.filter;
+          if (filter === "all") renderOrders(currentOrders);
+          else if (filter === "failed") renderOrders(currentOrders.filter(o => o.shiprocketStatus === "failed"));
+          else if (filter === "synced") renderOrders(currentOrders.filter(o => o.shiprocketStatus === "synced" || o.shiprocketStatus === "shipped"));
+          else if (filter === "cod") renderOrders(currentOrders.filter(o => o.paymentMethod === "COD"));
+          else if (filter === "prepaid") renderOrders(currentOrders.filter(o => o.paymentMethod === "Prepaid"));
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", () => fetchOrders());
+    </script>
+  </body>
+</html>

@@ -273,7 +273,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
           </div>
           <div class="lux-social-icons">
             <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
+            <a href="https://youtu.be/o9dREd5ZPhw?si=X2tbKalptHS0wmhD" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
             <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
             <a href="https://in.pinterest.com/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">PT</a>
           </div>

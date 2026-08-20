@@ -5,6 +5,8 @@ const crypto = require("crypto");
 require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 
 const orderService = require("./services/orderService");
+const shiprocketService = require("./services/shiprocketService");
+const { OrderRepository } = require("./models/Order");
 
 // Validate required environment variables
 const requiredEnv = [
@@ -481,12 +483,178 @@ async function handleGetGallery(req, res) {
   }
 }
 
+async function handleCheckPincode(req, res) {
+  try {
+    const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+    const pincode = url.searchParams.get("pincode");
+    const weight = Number(url.searchParams.get("weight") || 0.5);
+    const isCod = url.searchParams.get("isCod") === "true" || url.searchParams.get("isCod") === "1";
+
+    if (!pincode || !/^\d{6}$/.test(pincode.trim())) {
+      sendJson(res, 400, { serviceable: false, message: "Valid 6-digit Indian Pincode is required" });
+      return;
+    }
+
+    const result = await shiprocketService.checkPincodeServiceability(pincode.trim(), weight, isCod);
+    sendJson(res, 200, result);
+  } catch (error) {
+    sendJson(res, 500, { serviceable: false, message: error.message || "Pincode serviceability check failed" });
+  }
+}
+
+async function handleTrackShipment(req, res) {
+  try {
+    const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+    let shipmentId = url.searchParams.get("shipment_id");
+    const orderId = url.searchParams.get("order_id");
+
+    if (!shipmentId && orderId) {
+      const order = await OrderRepository.findByOrderId(orderId);
+      if (order && order.shiprocketShipmentId) {
+        shipmentId = order.shiprocketShipmentId;
+      }
+    }
+
+    if (!shipmentId) {
+      sendJson(res, 400, { error: "shipment_id or valid order_id is required" });
+      return;
+    }
+
+    const data = await shiprocketService.trackShipment(shipmentId);
+    sendJson(res, 200, data);
+  } catch (error) {
+    sendJson(res, 500, { error: error.message || "Tracking lookup failed" });
+  }
+}
+
+async function handleShiprocketWebhook(req, res) {
+  try {
+    const payload = await readJsonBody(req);
+    console.log(`[Shiprocket Webhook] Received payload:`, payload);
+
+    const orderId = payload.order_id || payload.custom_order_id;
+    const shipmentId = payload.shipment_id;
+    const currentStatus = payload.current_status || payload.status;
+    const awb = payload.awb || payload.awb_code;
+    const courierName = payload.courier_name;
+
+    if (!orderId && !shipmentId) {
+      sendJson(res, 400, { error: "Missing order_id or shipment_id in webhook payload" });
+      return;
+    }
+
+    // Step 1: Update Database (Primary Source of Truth)
+    let order = null;
+    if (orderId) {
+      order = await OrderRepository.findByOrderId(orderId);
+    }
+    if (!order && shipmentId) {
+      const allOrders = await OrderRepository.getAll();
+      order = allOrders.find((o) => String(o.shiprocketShipmentId) === String(shipmentId));
+    }
+
+    if (order) {
+      const updatedFields = {
+        shiprocketStatus: currentStatus ? currentStatus.toLowerCase() : order.shiprocketStatus,
+        orderStatus: currentStatus || order.orderStatus,
+        awbCode: awb || order.awbCode,
+        courierName: courierName || order.courierName
+      };
+      await OrderRepository.update(order.orderId, updatedFields);
+      
+      // Step 2: Asynchronously update Google Sheets
+      if (orderService.updateOrderStatus) {
+        orderService.updateOrderStatus(order.orderId, currentStatus).catch((e) => console.warn('[Webhook Sheets Sync Notice]', e.message));
+      }
+    }
+
+    sendJson(res, 200, { success: true, message: "Webhook processed successfully" });
+  } catch (error) {
+    console.error(`[Shiprocket Webhook Error]:`, error);
+    sendJson(res, 500, { error: error.message || "Webhook processing error" });
+  }
+}
+
+async function handleGetAdminOrders(req, res) {
+  try {
+    const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+    const filterStatus = url.searchParams.get("shiprocketStatus");
+    const limit = Number(url.searchParams.get("limit") || 100);
+
+    const filter = {};
+    if (filterStatus) filter.shiprocketStatus = filterStatus;
+
+    const orders = await OrderRepository.getAll(filter, limit);
+    sendJson(res, 200, { success: true, count: orders.length, orders });
+  } catch (error) {
+    sendJson(res, 500, { error: error.message || "Failed to fetch orders" });
+  }
+}
+
+async function handleRetryShiprocketSync(req, res) {
+  try {
+    const { orderId } = await readJsonBody(req);
+    if (!orderId) {
+      sendJson(res, 400, { error: "orderId is required" });
+      return;
+    }
+    const updatedOrder = await orderService.retryShiprocketSync(orderId);
+    sendJson(res, 200, { success: true, message: "Shiprocket sync retried successfully", order: updatedOrder });
+  } catch (error) {
+    sendJson(res, 500, { error: error.message || "Shiprocket retry failed" });
+  }
+}
+
+async function handleGenerateShiprocketLabel(req, res) {
+  try {
+    const { shipmentId } = await readJsonBody(req);
+    if (!shipmentId) {
+      sendJson(res, 400, { error: "shipmentId is required" });
+      return;
+    }
+    const result = await shiprocketService.generateLabel([shipmentId]);
+    sendJson(res, 200, { success: true, labelData: result });
+  } catch (error) {
+    sendJson(res, 500, { error: error.message || "Label generation failed" });
+  }
+}
+
 function handleRequest(req, res) {
   const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
   console.log(`[${new Date().toISOString()}] ${req.method} ${url.pathname}`);
 
   if (req.method === "GET" && url.pathname === "/api/gallery") {
     handleGetGallery(req, res);
+    return;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/shiprocket/check-pincode") {
+    handleCheckPincode(req, res);
+    return;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/shiprocket/track") {
+    handleTrackShipment(req, res);
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/shiprocket/webhook") {
+    handleShiprocketWebhook(req, res);
+    return;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/admin/orders") {
+    handleGetAdminOrders(req, res);
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/admin/orders/shiprocket-retry") {
+    handleRetryShiprocketSync(req, res);
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/admin/orders/shiprocket-label") {
+    handleGenerateShiprocketLabel(req, res);
     return;
   }
 

@@ -99,6 +99,52 @@
       totalEl.textContent = formatCurrency(grandTotal);
     }
 
+    // Live Shiprocket Tracking Widget Integration
+    const trackingBox = document.createElement("div");
+    trackingBox.className = "card";
+    trackingBox.style.cssText = "border-radius:16px; padding:20px; margin-top:24px; background:#faf7f2; border:1px solid #e2d3be;";
+    trackingBox.innerHTML = `
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--maroon,#7c1a22)" stroke-width="2"><path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/><path d="M14 9h4l3 3v5c0 .6-.4 1-1 1h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+          <h3 style="margin:0; font-size:16px; font-weight:700; color:var(--text-dark);">Shipment &amp; Live Tracking</h3>
+        </div>
+        <span id="shiprocketBadge" style="font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px; background:#e0f2fe; color:#0369a1;">Processing Order</span>
+      </div>
+      <div id="shiprocketTrackContent" style="font-size:14px; color:var(--text-muted); line-height:1.6;">
+        <p style="margin:0">📦 Your order is being packed and registered for express dispatch via Shiprocket.</p>
+      </div>
+    `;
+
+    const container = document.querySelector(".container");
+    if (container) {
+      container.appendChild(trackingBox);
+    }
+
+    if (orderId) {
+      fetch(`/api/shiprocket/track?order_id=${encodeURIComponent(orderId)}`)
+        .then(r => r.json())
+        .then(data => {
+          const badge = document.getElementById("shiprocketBadge");
+          const content = document.getElementById("shiprocketTrackContent");
+          if (data && data.tracking_data) {
+            const track = data.tracking_data;
+            if (badge) badge.textContent = track.current_status || "Shipped";
+            if (content) {
+              content.innerHTML = `
+                <p style="margin:0 0 4px"><strong>Courier:</strong> ${track.courier_name || "Express Courier"}</p>
+                <p style="margin:0 0 4px"><strong>AWB / Tracking #:</strong> ${track.awb_code || "Generated"}</p>
+                <p style="margin:0"><strong>Status:</strong> ${track.current_status || "In Transit"} (${track.destination || "En route"})</p>
+                ${track.track_url ? `<a href="${track.track_url}" target="_blank" class="btn small primary" style="margin-top:10px; display:inline-block;">Track on Shiprocket &rarr;</a>` : ""}
+              `;
+            }
+          }
+        })
+        .catch(() => {
+          // Keep default processing state
+        });
+    }
+
     // Trigger Conversion Tracking Events (Meta Pixel & Google Analytics)
     try {
       if (typeof window.fbq === "function") {

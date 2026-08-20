@@ -1,0 +1,35 @@
+[
+  {
+    "orderId": "VV-2026-109234",
+    "customer": {
+      "name": "Aarav Gupta",
+      "phone": "9998887776",
+      "address": "54 Civil Lines",
+      "city": "Delhi",
+      "state": "Delhi",
+      "pincode": "110054",
+      "email": "aarav@example.com"
+    },
+    "items": [
+      {
+        "id": "vv_p13",
+        "name": "7 Mukhi Rudraksha (Sapta Mukhi)",
+        "qty": 1,
+        "price": 999,
+        "url": "",
+        "image": ""
+      }
+    ],
+    "quantity": 1,
+    "amount": 999,
+    "paymentMethod": "COD",
+    "paymentStatus": "Cash on Delivery (Pending)",
+    "razorpayOrderId": "COD-1787138109234",
+    "razorpayPaymentId": "COD-KVHDUJLR",
+    "shiprocketStatus": "failed",
+    "orderStatus": "Pending",
+    "createdAt": "2026-08-19T11:15:09.235Z",
+    "updatedAt": "2026-08-19T11:15:09.244Z",
+    "shiprocketLastError": "Missing SHIPROCKET_EMAIL or SHIPROCKET_PASSWORD in environment"
+  }
+]
