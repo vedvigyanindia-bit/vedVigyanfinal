@@ -330,5 +330,22 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCheckoutSummary();
   wireCheckoutForm();
   window.addEventListener("vedvigyan:cart-updated", renderCheckoutSummary);
+
+  try {
+    const cart = window.VedVigyanCart?.loadCart() || {};
+    const items = Object.values(cart.items || {});
+    const subtotal = window.VedVigyanCart?.cartSubtotal(cart) || 0;
+    if (typeof window.fbq === "function" && items.length > 0) {
+      window.fbq("track", "InitiateCheckout", {
+        content_type: "product",
+        contents: items.map((it) => ({ id: it.id, quantity: it.qty, item_price: it.price })),
+        value: subtotal,
+        currency: "INR",
+        num_items: items.length
+      });
+    }
+  } catch (e) {
+    console.warn("Meta Pixel InitiateCheckout notice:", e);
+  }
 });
 
