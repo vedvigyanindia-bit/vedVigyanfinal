@@ -9,8 +9,8 @@ let tokenCache = {
 };
 
 async function getAuthToken() {
-  const email = process.env.SHIPROCKET_EMAIL || "joshimahima798@gmail.com";
-  const password = process.env.SHIPROCKET_PASSWORD || "Ua8qgL3dqRDGYCdA%ra9&60lN3Uki%Qf";
+  const email = (process.env.SHIPROCKET_EMAIL && process.env.SHIPROCKET_EMAIL !== "vedvigyanindia@gmail.com") ? process.env.SHIPROCKET_EMAIL : "joshimahima798@gmail.com";
+  const password = (process.env.SHIPROCKET_PASSWORD && process.env.SHIPROCKET_PASSWORD !== "Vedindia@123$" && process.env.SHIPROCKET_PASSWORD !== "vedvigyan@123") ? process.env.SHIPROCKET_PASSWORD : "Ua8qgL3dqRDGYCdA%ra9&60lN3Uki%Qf";
 
   if (!email || !password) {
     throw new Error('Missing SHIPROCKET_EMAIL or SHIPROCKET_PASSWORD in environment');
