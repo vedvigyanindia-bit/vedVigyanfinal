@@ -277,11 +277,10 @@ class OrderRepository {
     if (Model) {
       try {
         const docs = await Model.find(filter).sort({ createdAt: -1 }).limit(limit);
-        if (docs && docs.length > 0) {
-          return docs.map((d) => d.toObject());
-        }
+        return docs.map((d) => d.toObject());
       } catch (err) {
-        console.warn('[Order DB] Mongoose getAll failed:', err.message);
+        console.error('[Order DB] Mongoose getAll error:', err.message);
+        throw new Error(`MongoDB Query Error: ${err.message}`);
       }
     }
 
