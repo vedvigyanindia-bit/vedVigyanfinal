@@ -1,4 +1,5 @@
 const { sendJson } = require("../_lib/payments");
+const { OrderRepository } = require("../../backend/src/models/Order");
 
 module.exports = async function handler(req, res) {
   if (req.method !== "GET") {
@@ -7,29 +8,18 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const orderService = require("../../backend/src/services/orderService");
-    const { OrderRepository } = require("../../backend/src/models/Order");
     const filterStatus = req.query?.shiprocketStatus;
     const limit = Number(req.query?.limit || 100);
     const filter = filterStatus ? { shiprocketStatus: filterStatus } : {};
 
-    let debugNotice = "";
-    try {
-      await OrderRepository.connectMongoIfNeeded();
-    } catch (e) {
-      debugNotice = e.message;
-    }
-
-    const orders = await orderService.getOrders(filter, limit);
+    const orders = await OrderRepository.getAll(filter, limit);
     sendJson(res, 200, {
       success: true,
       count: (orders || []).length,
-      orders: orders || [],
-      mongoConnected: OrderRepository.isMongoConnected(),
-      debugNotice
+      orders: orders || []
     });
   } catch (error) {
     console.error("[Admin Orders API Error]:", error);
-    sendJson(res, 200, { success: true, count: 0, orders: [], note: error.message });
+    sendJson(res, 500, { error: error.message || "Failed to fetch orders" });
   }
 };
