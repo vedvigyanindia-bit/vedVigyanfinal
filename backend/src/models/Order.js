@@ -116,9 +116,13 @@ function readFileDb() {
     if (!filePath || !fs.existsSync(filePath)) return memoryDbStore || [];
     const raw = fs.readFileSync(filePath, 'utf-8');
     if (!raw || !raw.trim()) return memoryDbStore || [];
-    const list = JSON.parse(raw);
-    if (Array.isArray(list)) {
-      memoryDbStore = list;
+    try {
+      const list = JSON.parse(raw);
+      if (Array.isArray(list)) {
+        memoryDbStore = list;
+      }
+    } catch (parseErr) {
+      console.warn('[Order DB] JSON parse fallback:', parseErr.message);
     }
     return memoryDbStore || [];
   } catch (err) {
