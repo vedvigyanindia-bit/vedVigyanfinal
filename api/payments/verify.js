@@ -5,8 +5,6 @@ const {
   validateCheckoutPayload,
   verifyRazorpaySignature
 } = require("../_lib/payments");
-const orderService = require("../../backend/src/services/orderService");
-
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     sendJson(res, 405, { error: "Method not allowed" });
@@ -14,6 +12,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    const orderService = require("../../backend/src/services/orderService");
     const { customer, items, amount: subtotal } = parseCheckoutPayload(req.body);
     const shipping = subtotal >= 999 ? 0 : 99;
     const amount = subtotal + shipping;
