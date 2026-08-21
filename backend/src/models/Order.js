@@ -112,27 +112,29 @@ function ensureFileDbExists() {
 
 function readFileDb() {
   try {
-    ensureFileDbExists();
     const filePath = getFileDbPath();
-    if (!fs.existsSync(filePath)) return memoryDbStore;
+    if (!filePath || !fs.existsSync(filePath)) return memoryDbStore || [];
     const raw = fs.readFileSync(filePath, 'utf-8');
-    const list = JSON.parse(raw || '[]');
-    if (Array.isArray(list) && list.length > 0) {
+    if (!raw || !raw.trim()) return memoryDbStore || [];
+    const list = JSON.parse(raw);
+    if (Array.isArray(list)) {
       memoryDbStore = list;
     }
-    return memoryDbStore;
+    return memoryDbStore || [];
   } catch (err) {
     console.warn('[Order DB] File DB read notice:', err.message);
-    return memoryDbStore;
+    return memoryDbStore || [];
   }
 }
 
 function writeFileDb(data) {
-  memoryDbStore = data;
+  memoryDbStore = Array.isArray(data) ? data : [];
   try {
     ensureFileDbExists();
     const filePath = getFileDbPath();
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
+    if (filePath) {
+      fs.writeFileSync(filePath, JSON.stringify(memoryDbStore, null, 2), 'utf-8');
+    }
   } catch (err) {
     console.warn('[Order DB] File DB write notice:', err.message);
   }
