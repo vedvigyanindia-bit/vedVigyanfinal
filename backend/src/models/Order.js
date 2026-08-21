@@ -1,67 +1,72 @@
 const fs = require('fs');
 const path = require('path');
-const mongoose = require('mongoose');
 
-// Mongoose Schema Definition
-const orderSchema = new mongoose.Schema(
-  {
-    orderId: { type: String, required: true, unique: true, index: true },
-    customer: {
-      name: { type: String, required: true },
-      email: { type: String },
-      phone: { type: String, required: true },
-      address: { type: String, required: true },
-      city: { type: String, required: true },
-      state: { type: String },
-      pincode: { type: String, required: true }
-    },
-    items: [
-      {
-        id: String,
-        name: String,
-        qty: Number,
-        price: Number,
-        sku: String,
-        weight: Number
-      }
-    ],
-    quantity: { type: Number, required: true },
-    amount: { type: Number, required: true },
-    paymentMethod: { type: String, enum: ['Prepaid', 'COD'], required: true },
-    paymentStatus: {
-      type: String,
-      enum: ['pending', 'paid', 'failed', 'Cash on Delivery (Pending)'],
-      default: 'pending'
-    },
-    razorpayOrderId: String,
-    razorpayPaymentId: String,
-    razorpaySignature: String,
-    
-    // Shiprocket Fulfillment Details
-    shiprocketStatus: {
-      type: String,
-      enum: ['pending', 'synced', 'failed', 'shipped', 'delivered', 'rto', 'cancelled'],
-      default: 'pending'
-    },
-    shiprocketOrderId: String,
-    shiprocketShipmentId: String,
-    awbCode: String,
-    courierName: String,
-    trackingUrl: String,
-    shiprocketLastError: String,
-    shiprocketSyncedAt: Date,
-
-    // Overall Order Status
-    orderStatus: { type: String, default: 'Pending' }
-  },
-  { timestamps: true }
-);
-
+let mongoose = null;
 let MongooseOrderModel = null;
+
 try {
-  MongooseOrderModel = mongoose.model('Order', orderSchema);
-} catch {
-  MongooseOrderModel = mongoose.models.Order;
+  mongoose = require('mongoose');
+  const orderSchema = new mongoose.Schema(
+    {
+      orderId: { type: String, required: true, unique: true, index: true },
+      customer: {
+        name: { type: String, required: true },
+        email: { type: String },
+        phone: { type: String, required: true },
+        address: { type: String, required: true },
+        city: { type: String, required: true },
+        state: { type: String },
+        pincode: { type: String, required: true }
+      },
+      items: [
+        {
+          id: String,
+          name: String,
+          qty: Number,
+          price: Number,
+          sku: String,
+          weight: Number
+        }
+      ],
+      quantity: { type: Number, required: true },
+      amount: { type: Number, required: true },
+      paymentMethod: { type: String, enum: ['Prepaid', 'COD'], required: true },
+      paymentStatus: {
+        type: String,
+        enum: ['pending', 'paid', 'failed', 'Cash on Delivery (Pending)'],
+        default: 'pending'
+      },
+      razorpayOrderId: String,
+      razorpayPaymentId: String,
+      razorpaySignature: String,
+      
+      // Shiprocket Fulfillment Details
+      shiprocketStatus: {
+        type: String,
+        enum: ['pending', 'synced', 'failed', 'shipped', 'delivered', 'rto', 'cancelled'],
+        default: 'pending'
+      },
+      shiprocketOrderId: String,
+      shiprocketShipmentId: String,
+      awbCode: String,
+      courierName: String,
+      trackingUrl: String,
+      shiprocketLastError: String,
+      shiprocketSyncedAt: Date,
+
+      // Overall Order Status
+      orderStatus: { type: String, default: 'Pending' }
+    },
+    { timestamps: true }
+  );
+
+  try {
+    MongooseOrderModel = mongoose.model('Order', orderSchema);
+  } catch {
+    MongooseOrderModel = mongoose.models?.Order;
+  }
+} catch (err) {
+  console.warn('[Order DB] Mongoose module initialization notice:', err.message);
 }
 
 const os = require('os');
@@ -131,13 +136,13 @@ function writeFileDb(data) {
 
 class OrderRepository {
   static isMongoConnected() {
-    return mongoose.connection && mongoose.connection.readyState === 1;
+    return Boolean(mongoose && mongoose.connection && mongoose.connection.readyState === 1);
   }
 
   static async connectMongoIfNeeded() {
     if (this.isMongoConnected()) return;
     const uri = process.env.MONGODB_URI;
-    if (uri && mongoose.connection.readyState === 0) {
+    if (mongoose && uri && mongoose.connection.readyState === 0) {
       try {
         await mongoose.connect(uri, { bufferCommands: false });
         console.log('[Order DB] Connected to MongoDB Atlas on demand.');
