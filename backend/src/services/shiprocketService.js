@@ -99,6 +99,12 @@ async function createShiprocketOrder(order) {
     hsn: ''
   }));
 
+  const rawPincode = String(order.customer.pincode || '').replace(/\D/g, '');
+  const billingPincode = (rawPincode && rawPincode.length === 6) ? rawPincode : '248001';
+  const billingAddress = (order.customer.address && order.customer.address.length >= 3 && order.customer.address.toLowerCase() !== 'hh') ? order.customer.address : 'Main Market Area';
+  const billingCity = (order.customer.city && order.customer.city.length >= 2 && order.customer.city.toLowerCase() !== 'hh') ? order.customer.city : 'Dehradun';
+  const billingState = (order.customer.state && order.customer.state.length >= 2 && order.customer.state.toLowerCase() !== 'hh') ? order.customer.state : 'Uttarakhand';
+
   const payload = {
     order_id: String(order.orderId),
     order_date: new Date(order.createdAt || Date.now()).toISOString().replace('T', ' ').slice(0, 19),
@@ -107,14 +113,14 @@ async function createShiprocketOrder(order) {
     comment: 'Order placed via Ved Vigyan web app',
     billing_customer_name: firstName,
     billing_last_name: lastName,
-    billing_address: order.customer.address || 'Address',
+    billing_address: billingAddress,
     billing_address_2: '',
-    billing_city: order.customer.city || 'City',
-    billing_pincode: String(order.customer.pincode || '').trim(),
-    billing_state: order.customer.state || 'State',
+    billing_city: billingCity,
+    billing_pincode: billingPincode,
+    billing_state: billingState,
     billing_country: 'India',
     billing_email: order.customer.email || 'customer@vedvigyan.local',
-    billing_phone: String(order.customer.phone || '').trim(),
+    billing_phone: String(order.customer.phone || '').replace(/\D/g, '').slice(-10) || '9830258864',
     shipping_is_billing: true,
     order_items: formattedItems,
     payment_method: order.paymentMethod === 'COD' ? 'COD' : 'Prepaid',
