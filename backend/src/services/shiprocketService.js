@@ -88,7 +88,7 @@ function parseName(fullName = '') {
  */
 async function createShiprocketOrder(order) {
   const { firstName, lastName } = parseName(order.customer.name);
-  const pickupLocation = process.env.SHIPROCKET_PICKUP_LOCATION || 'Primary';
+  const pickupLocation = (process.env.SHIPROCKET_PICKUP_LOCATION && process.env.SHIPROCKET_PICKUP_LOCATION.length < 30) ? process.env.SHIPROCKET_PICKUP_LOCATION : 'work';
   
   const formattedItems = (order.items || []).map((item, idx) => ({
     name: item.name || `Product ${idx + 1}`,
