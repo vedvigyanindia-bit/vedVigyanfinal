@@ -29,6 +29,7 @@ module.exports = async function handler(req, res) {
       razorpayOrder
     });
   } catch (error) {
-    sendJson(res, 500, { error: error.message || "Unable to create payment order" });
+    const status = error.statusCode || (error.message && error.message.includes("required") ? 400 : 500);
+    sendJson(res, status, { error: error.message || "Unable to create payment order" });
   }
 };

@@ -65,6 +65,7 @@ module.exports = async function handler(req, res) {
     });
   } catch (error) {
     console.error(`[Payment Vercel Error] Payment verification and order saving failed:`, error);
-    sendJson(res, 500, { error: error.message || "Order Saved Failed" });
+    const status = error.statusCode || 500;
+    sendJson(res, status, { error: error.message || "Order Saved Failed" });
   }
 };

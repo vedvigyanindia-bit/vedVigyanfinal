@@ -110,11 +110,15 @@ function validateCheckoutPayload(customer, items, amount) {
     !customer.state ||
     !customer.pincode
   ) {
-    throw new Error("Full name, phone, email, address, city, state, and pincode are required");
+    const err = new Error("Full name, phone, email, address, city, state, and pincode are required");
+    err.statusCode = 400;
+    throw err;
   }
 
   if (!items.length || amount <= 0) {
-    throw new Error("Cart is empty or invalid");
+    const err = new Error("Cart is empty or invalid");
+    err.statusCode = 400;
+    throw err;
   }
 }
 

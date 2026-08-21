@@ -37,6 +37,7 @@ module.exports = async function handler(req, res) {
     });
   } catch (error) {
     console.error("[COD API Error]:", error);
-    sendJson(res, 500, { error: error.message || "Unable to place COD order" });
+    const status = error.statusCode || (error.message && error.message.includes("required") ? 400 : 500);
+    sendJson(res, status, { error: error.message || "Unable to place COD order" });
   }
 };
