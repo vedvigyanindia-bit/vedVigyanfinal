@@ -153,15 +153,18 @@ class OrderRepository {
   }
 
   static async connectMongoIfNeeded() {
-    if (this.isMongoConnected()) return;
-    const uri = process.env.MONGODB_URI || "mongodb+srv://vedvigyanindia_db_user:5wZiQXVTatLkjEHe@cluster0.ry3emxv.mongodb.net/ved_vigyan?retryWrites=true&w=majority";
-    if (mongoose && uri && (mongoose.connection.readyState === 0 || !mongoose.connection.readyState)) {
-      try {
-        await mongoose.connect(uri, { bufferCommands: false });
+    try {
+      if (this.isMongoConnected()) return;
+      const uri = process.env.MONGODB_URI || "mongodb+srv://vedvigyanindia_db_user:5wZiQXVTatLkjEHe@cluster0.ry3emxv.mongodb.net/ved_vigyan?retryWrites=true&w=majority";
+      if (mongoose && uri && (mongoose.connection.readyState === 0 || !mongoose.connection.readyState)) {
+        await mongoose.connect(uri, {
+          bufferCommands: false,
+          serverSelectionTimeoutMS: 5000
+        });
         console.log('[Order DB] Connected to MongoDB Atlas on demand.');
-      } catch (err) {
-        console.warn('[Order DB] MongoDB connection notice:', err.message);
       }
+    } catch (err) {
+      console.warn('[Order DB] MongoDB connection notice:', err.message);
     }
   }
 
