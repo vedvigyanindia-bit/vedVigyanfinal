@@ -3,6 +3,7 @@ const path = require('path');
 
 let mongoose = null;
 let orderSchema = null;
+let MongooseOrderModel = null;
 
 try {
   mongoose = require('mongoose');
@@ -59,21 +60,29 @@ try {
     },
     { timestamps: true }
   );
+
+  try {
+    MongooseOrderModel = mongoose.model('Order');
+  } catch {
+    MongooseOrderModel = mongoose.model('Order', orderSchema);
+  }
 } catch (err) {
   console.warn('[Order DB] Mongoose initialization notice:', err.message);
 }
 
 function getOrderModel() {
+  if (MongooseOrderModel) return MongooseOrderModel;
   if (!mongoose || !orderSchema) return null;
   try {
-    return mongoose.model('Order');
+    MongooseOrderModel = mongoose.model('Order');
   } catch {
     try {
-      return mongoose.model('Order', orderSchema);
+      MongooseOrderModel = mongoose.model('Order', orderSchema);
     } catch {
-      return mongoose.models?.Order || null;
+      MongooseOrderModel = mongoose.models?.Order || null;
     }
   }
+  return MongooseOrderModel;
 }
 
 const os = require('os');
