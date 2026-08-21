@@ -27,7 +27,13 @@ async function getAuthToken() {
     body: JSON.stringify({ email, password })
   });
 
-  const data = await response.json();
+  const text = await response.text();
+  let data = {};
+  try {
+    data = text ? JSON.parse(text) : {};
+  } catch (e) {
+    data = { message: text || 'Invalid JSON response from Shiprocket auth' };
+  }
 
   if (!response.ok || !data.token) {
     const reason = data.message || (data.errors ? JSON.stringify(data.errors) : 'Shiprocket login failed');
@@ -54,7 +60,13 @@ async function requestShiprocket(endpoint, method = 'GET', body = null) {
   }
 
   const response = await fetch(`${BASE_URL}${endpoint}`, { ...options });
-  const data = await response.json();
+  const text = await response.text();
+  let data = {};
+  try {
+    data = text ? JSON.parse(text) : {};
+  } catch (e) {
+    data = { message: text || 'Invalid JSON response from Shiprocket API' };
+  }
 
   if (!response.ok) {
     const errorMsg = data.message || (data.errors ? JSON.stringify(data.errors) : `HTTP ${response.status}`);
