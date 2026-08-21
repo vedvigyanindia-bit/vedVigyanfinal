@@ -178,7 +178,7 @@ class OrderRepository {
     };
 
     const Model = getOrderModel();
-    if (this.isMongoConnected() && Model) {
+    if (Model) {
       try {
         const mongoDoc = await Model.create(doc);
         const list = readFileDb();
@@ -205,7 +205,7 @@ class OrderRepository {
     await this.connectMongoIfNeeded();
 
     const Model = getOrderModel();
-    if (this.isMongoConnected() && Model) {
+    if (Model) {
       try {
         const mongoDoc = await Model.findOne({ orderId });
         if (mongoDoc) return mongoDoc.toObject();
@@ -223,7 +223,7 @@ class OrderRepository {
     await this.connectMongoIfNeeded();
 
     const Model = getOrderModel();
-    if (this.isMongoConnected() && Model) {
+    if (Model) {
       try {
         const mongoDoc = await Model.findOne({ razorpayPaymentId: paymentId });
         if (mongoDoc) return mongoDoc.toObject();
@@ -246,7 +246,7 @@ class OrderRepository {
 
     let updatedRecord = null;
     const Model = getOrderModel();
-    if (this.isMongoConnected() && Model) {
+    if (Model) {
       try {
         const mongoDoc = await Model.findOneAndUpdate(
           { orderId },
@@ -274,10 +274,12 @@ class OrderRepository {
     await this.connectMongoIfNeeded();
 
     const Model = getOrderModel();
-    if (this.isMongoConnected() && Model) {
+    if (Model) {
       try {
         const docs = await Model.find(filter).sort({ createdAt: -1 }).limit(limit);
-        return docs.map((d) => d.toObject());
+        if (docs && docs.length > 0) {
+          return docs.map((d) => d.toObject());
+        }
       } catch (err) {
         console.warn('[Order DB] Mongoose getAll failed:', err.message);
       }
