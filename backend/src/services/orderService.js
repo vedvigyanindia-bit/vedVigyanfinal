@@ -256,6 +256,10 @@ async function getOrders(filter = {}, limit = 100) {
   }
 }
 
+async function updateOrderStatus(orderId, status) {
+  return await OrderRepository.update(orderId, { orderStatus: status });
+}
+
 module.exports = {
   createOrder,
   createCodOrder,

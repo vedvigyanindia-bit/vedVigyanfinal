@@ -2,11 +2,11 @@ const fs = require('fs');
 const path = require('path');
 
 let mongoose = null;
-let MongooseOrderModel = null;
+let orderSchema = null;
 
 try {
   mongoose = require('mongoose');
-  const orderSchema = new mongoose.Schema(
+  orderSchema = new mongoose.Schema(
     {
       orderId: { type: String, required: true, unique: true, index: true },
       customer: {
@@ -59,9 +59,12 @@ try {
     },
     { timestamps: true }
   );
+} catch (err) {
+  console.warn('[Order DB] Mongoose initialization notice:', err.message);
+}
 
 function getOrderModel() {
-  if (!mongoose) return null;
+  if (!mongoose || !orderSchema) return null;
   try {
     return mongoose.model('Order');
   } catch {
@@ -290,5 +293,5 @@ class OrderRepository {
 
 module.exports = {
   OrderRepository,
-  MongooseOrderModel
+  getOrderModel
 };
