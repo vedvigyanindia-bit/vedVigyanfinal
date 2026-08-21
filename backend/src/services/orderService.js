@@ -247,13 +247,19 @@ async function findOrderByPaymentId(paymentId) {
   return await OrderRepository.findByPaymentId(paymentId);
 }
 
-async function updateOrderStatus(orderId, status) {
-  return await OrderRepository.update(orderId, { orderStatus: status });
+async function getOrders(filter = {}, limit = 100) {
+  try {
+    return await OrderRepository.getAll(filter, limit);
+  } catch (err) {
+    console.warn('[Order Service Notice] getOrders error:', err.message);
+    return [];
+  }
 }
 
 module.exports = {
   createOrder,
   createCodOrder,
+  getOrders,
   retryShiprocketSync,
   findOrderByPaymentId,
   updateOrderStatus

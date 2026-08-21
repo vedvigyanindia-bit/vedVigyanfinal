@@ -1,24 +1,21 @@
+const { sendJson } = require("../_lib/payments");
+
 module.exports = async function handler(req, res) {
   if (req.method !== "GET") {
-    return res.status(405).json({ error: "Method not allowed" });
+    sendJson(res, 405, { error: "Method not allowed" });
+    return;
   }
 
   try {
-    let orders = [];
-    try {
-      const { OrderRepository } = require("../../backend/src/models/Order");
-      const filterStatus = req.query?.shiprocketStatus;
-      const limit = Number(req.query?.limit || 100);
-      const filter = filterStatus ? { shiprocketStatus: filterStatus } : {};
-      orders = await OrderRepository.getAll(filter, limit);
-    } catch (dbErr) {
-      console.warn("[Admin Orders DB Notice]:", dbErr.message);
-      orders = [];
-    }
+    const orderService = require("../../backend/src/services/orderService");
+    const filterStatus = req.query?.shiprocketStatus;
+    const limit = Number(req.query?.limit || 100);
+    const filter = filterStatus ? { shiprocketStatus: filterStatus } : {};
 
-    return res.status(200).json({ success: true, count: (orders || []).length, orders: orders || [] });
+    const orders = await orderService.getOrders(filter, limit);
+    sendJson(res, 200, { success: true, count: (orders || []).length, orders: orders || [] });
   } catch (error) {
     console.error("[Admin Orders API Error]:", error);
-    return res.status(200).json({ success: true, count: 0, orders: [], note: error.message });
+    sendJson(res, 200, { success: true, count: 0, orders: [], note: error.message });
   }
 };
