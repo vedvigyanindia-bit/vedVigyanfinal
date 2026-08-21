@@ -60,13 +60,17 @@ try {
     { timestamps: true }
   );
 
+function getOrderModel() {
+  if (!mongoose) return null;
   try {
-    MongooseOrderModel = mongoose.model('Order', orderSchema);
+    return mongoose.model('Order');
   } catch {
-    MongooseOrderModel = mongoose.models?.Order;
+    try {
+      return mongoose.model('Order', orderSchema);
+    } catch {
+      return mongoose.models?.Order || null;
+    }
   }
-} catch (err) {
-  console.warn('[Order DB] Mongoose module initialization notice:', err.message);
 }
 
 const os = require('os');
@@ -161,9 +165,10 @@ class OrderRepository {
       updatedAt: new Date().toISOString()
     };
 
-    if (this.isMongoConnected()) {
+    const Model = getOrderModel();
+    if (this.isMongoConnected() && Model) {
       try {
-        const mongoDoc = await MongooseOrderModel.create(doc);
+        const mongoDoc = await Model.create(doc);
         const list = readFileDb();
         list.unshift(mongoDoc.toObject());
         writeFileDb(list);
@@ -187,9 +192,10 @@ class OrderRepository {
   static async findByOrderId(orderId) {
     await this.connectMongoIfNeeded();
 
-    if (this.isMongoConnected()) {
+    const Model = getOrderModel();
+    if (this.isMongoConnected() && Model) {
       try {
-        const mongoDoc = await MongooseOrderModel.findOne({ orderId });
+        const mongoDoc = await Model.findOne({ orderId });
         if (mongoDoc) return mongoDoc.toObject();
       } catch (err) {
         console.warn('[Order DB] Mongoose findByOrderId failed:', err.message);
@@ -204,9 +210,10 @@ class OrderRepository {
     if (!paymentId) return null;
     await this.connectMongoIfNeeded();
 
-    if (this.isMongoConnected()) {
+    const Model = getOrderModel();
+    if (this.isMongoConnected() && Model) {
       try {
-        const mongoDoc = await MongooseOrderModel.findOne({ razorpayPaymentId: paymentId });
+        const mongoDoc = await Model.findOne({ razorpayPaymentId: paymentId });
         if (mongoDoc) return mongoDoc.toObject();
       } catch (err) {
         console.warn('[Order DB] Mongoose findByPaymentId failed:', err.message);
@@ -226,9 +233,10 @@ class OrderRepository {
     };
 
     let updatedRecord = null;
-    if (this.isMongoConnected()) {
+    const Model = getOrderModel();
+    if (this.isMongoConnected() && Model) {
       try {
-        const mongoDoc = await MongooseOrderModel.findOneAndUpdate(
+        const mongoDoc = await Model.findOneAndUpdate(
           { orderId },
           { $set: fieldsWithTimestamp },
           { new: true }
@@ -253,9 +261,10 @@ class OrderRepository {
   static async getAll(filter = {}, limit = 100) {
     await this.connectMongoIfNeeded();
 
-    if (this.isMongoConnected()) {
+    const Model = getOrderModel();
+    if (this.isMongoConnected() && Model) {
       try {
-        const docs = await MongooseOrderModel.find(filter).sort({ createdAt: -1 }).limit(limit);
+        const docs = await Model.find(filter).sort({ createdAt: -1 }).limit(limit);
         return docs.map((d) => d.toObject());
       } catch (err) {
         console.warn('[Order DB] Mongoose getAll failed:', err.message);
