@@ -517,8 +517,10 @@ function initStickyCart(product) {
   if (stickyTitle) stickyTitle.textContent = product.name;
   if (stickyPrice) stickyPrice.textContent = window.VedVigyanCart.formatINR(product.price);
   if (stickyAddBtn) {
-    stickyAddBtn.setAttribute("data-add-to-cart", product.id);
-    window.VedVigyanCart.wireAddToCartButtons(bar);
+    stickyAddBtn.textContent = "BUY NOW";
+    stickyAddBtn.setAttribute("data-buy-now", product.id);
+    stickyAddBtn.removeAttribute("data-add-to-cart");
+    window.VedVigyanCart.wireBuyNowButtons(bar);
   }
 
   const pdpActions = document.querySelector(".lux-pdp-actions");
