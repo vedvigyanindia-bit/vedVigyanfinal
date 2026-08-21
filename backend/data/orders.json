@@ -1,5 +1,42 @@
 [
   {
+    "orderId": "VV-2026-811947",
+    "customer": {
+      "name": "Test User",
+      "email": "joshimahima798@gmail.com",
+      "phone": "8439498909",
+      "address": "test 123",
+      "city": "Bageshwar",
+      "state": "Uttarakhand",
+      "pincode": "263642"
+    },
+    "items": [
+      {
+        "id": "vv_p01",
+        "name": "10 Mukhi Rudraksha",
+        "qty": 1,
+        "price": 2999,
+        "_id": "6a8832dddf72a610a412d98b"
+      }
+    ],
+    "quantity": 1,
+    "amount": 2999,
+    "paymentMethod": "COD",
+    "paymentStatus": "Cash on Delivery (Pending)",
+    "razorpayOrderId": "COD-1787310811948",
+    "razorpayPaymentId": "COD-H3D164GL",
+    "shiprocketStatus": "synced",
+    "orderStatus": "Pending",
+    "_id": "6a8832dddf72a610a412d98a",
+    "createdAt": "2026-08-21T11:13:33.094Z",
+    "updatedAt": "2026-08-21T12:35:14.197Z",
+    "__v": 0,
+    "shiprocketLastError": null,
+    "awbCode": null,
+    "courierName": null,
+    "shiprocketSyncedAt": "2026-08-21T12:35:14.193Z"
+  },
+  {
     "orderId": "VV-2026-082048",
     "customer": {
       "name": "Test User",
@@ -25,12 +62,15 @@
     "paymentStatus": "Cash on Delivery (Pending)",
     "razorpayOrderId": "COD-1787304082048",
     "razorpayPaymentId": "COD-X3EVPEKI",
-    "shiprocketStatus": "failed",
+    "shiprocketStatus": "synced",
     "orderStatus": "Pending",
     "_id": "6a8818923501e5601fa010fc",
     "createdAt": "2026-08-21T09:21:22.819Z",
-    "updatedAt": "2026-08-21T09:21:23.797Z",
+    "updatedAt": "2026-08-21T12:40:12.366Z",
     "__v": 0,
-    "shiprocketLastError": "Shiprocket Auth Error: Access forbidden"
+    "shiprocketLastError": null,
+    "awbCode": null,
+    "courierName": null,
+    "shiprocketSyncedAt": "2026-08-21T12:40:12.366Z"
   }
 ]
