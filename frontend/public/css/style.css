@@ -20,6 +20,8 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+.lux-product-card, .card { cursor: pointer; }
+
 body {
   margin: 0;
   font-family: 'Outfit', sans-serif;

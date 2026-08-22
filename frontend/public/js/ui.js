@@ -342,6 +342,25 @@ function initGlobalSearch() {
   });
 }
 
+function initGlobalProductCardClicks() {
+  document.addEventListener("click", (event) => {
+    const card = event.target.closest(".lux-product-card, .card, [data-product-id]");
+    if (!card) return;
+
+    // Do not intercept interactive buttons/links
+    if (event.target.closest("button, a, input, select, textarea, .carousel-btn, .carousel-dots, .carousel-arrow, .qty, .lux-product-action-btn, [data-wishlist], [data-add-to-cart], [data-buy-now]")) {
+      return;
+    }
+
+    const productId = card.getAttribute("data-product-id") || card.dataset.productId;
+    if (!productId) return;
+
+    const product = window.VED_VIGYAN_DATA?.products?.find((p) => p.id === productId);
+    const targetUrl = product?.url || `/product/detail.html?id=${productId}`;
+    window.location.href = targetUrl;
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initGlobalTopbar();
   syncGlobalContactInfo();
@@ -353,4 +372,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initGlobalSearch();
   initMobileMenu();
   initBackToTop();
+  initGlobalProductCardClicks();
 });
