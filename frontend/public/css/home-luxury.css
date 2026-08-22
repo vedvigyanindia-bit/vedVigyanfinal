@@ -2846,41 +2846,30 @@
 
 @media (max-width: 640px) {
   .lux-sticky-cart-inner {
-    padding: 10px 12px;
-    gap: 8px;
+    padding: 10px 16px;
+    gap: 10px;
+    width: 100%;
   }
   .lux-sticky-cart-info {
-    flex: 1;
-    min-width: 0;
-  }
-  .lux-sticky-cart-info img {
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-  }
-  .lux-sticky-cart-info b {
-    font-size: 11px;
-    line-height: 1.2;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 110px;
-  }
-  .lux-sticky-cart-info span {
-    font-size: 12px;
+    display: none !important;
   }
   .lux-sticky-cart-actions {
     display: flex;
-    gap: 6px;
-    flex-shrink: 0;
+    width: 100%;
+    gap: 10px;
+    flex: 1;
   }
   .lux-sticky-cart-actions .lux-btn {
-    padding: 10px 10px;
-    font-size: 10.5px;
+    flex: 1;
+    width: 50%;
+    padding: 14px 8px;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
     white-space: nowrap;
-    border-radius: 8px;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
   }
 }
 
