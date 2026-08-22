@@ -508,7 +508,6 @@ function initStickyCart(product) {
   const stickyImg = document.getElementById("stickyImg");
   const stickyTitle = document.getElementById("stickyTitle");
   const stickyPrice = document.getElementById("stickyPrice");
-  const stickyAddBtn = document.getElementById("stickyAddBtn");
 
   if (stickyImg) {
     stickyImg.src = product.image;
@@ -516,12 +515,24 @@ function initStickyCart(product) {
   }
   if (stickyTitle) stickyTitle.textContent = product.name;
   if (stickyPrice) stickyPrice.textContent = window.VedVigyanCart.formatINR(product.price);
-  if (stickyAddBtn) {
-    stickyAddBtn.textContent = "BUY NOW";
-    stickyAddBtn.setAttribute("data-buy-now", product.id);
-    stickyAddBtn.removeAttribute("data-add-to-cart");
-    window.VedVigyanCart.wireBuyNowButtons(bar);
+
+  let actionsContainer = bar.querySelector(".lux-sticky-cart-actions");
+  if (!actionsContainer) {
+    actionsContainer = document.createElement("div");
+    actionsContainer.className = "lux-sticky-cart-actions";
+    bar.querySelector(".lux-sticky-cart-inner")?.appendChild(actionsContainer);
   }
+
+  const existingSingleBtn = document.getElementById("stickyAddBtn");
+  if (existingSingleBtn) existingSingleBtn.remove();
+
+  actionsContainer.innerHTML = `
+    <button class="lux-btn lux-btn-secondary lux-btn-sm" type="button" data-add-to-cart="${product.id}">ADD TO CART</button>
+    <button class="lux-btn lux-btn-primary lux-btn-sm" type="button" data-buy-now="${product.id}">BUY NOW</button>
+  `;
+
+  window.VedVigyanCart?.wireAddToCartButtons(actionsContainer);
+  window.VedVigyanCart?.wireBuyNowButtons(actionsContainer);
 
   const pdpActions = document.querySelector(".lux-pdp-actions");
   if (!pdpActions) return;
