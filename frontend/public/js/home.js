@@ -2,6 +2,11 @@
 (function () {
   "use strict";
 
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+  window.scrollTo(0, 0);
+
   const ANNOUNCEMENTS = [
     { icon: "🙏", text: "Free Rudraksha Consultation" },
     { icon: "✓", text: "100% Authentic & Lab Verified Products" },

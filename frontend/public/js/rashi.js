@@ -45,8 +45,10 @@
     // 4. Bind Carousel Scroll Events
     bindCarouselScroll(track);
 
-    // 5. Scroll Active Card into View on Load
-    scrollActiveIntoView(track);
+    // 5. Scroll Active Card into View on Load (only if user selected via query param)
+    if (queryZodiac) {
+      scrollActiveIntoView(track);
+    }
 
     // 6. Listen to Cart updates to sync button state
     window.addEventListener("vedvigyan:cart-updated", () => {
