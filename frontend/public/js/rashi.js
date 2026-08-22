@@ -121,10 +121,12 @@
     url.searchParams.set("zodiac", ZODIACS[index].slug);
     window.history.replaceState({}, "", url.toString());
 
-    // Scroll selected card to center of carousel track if needed
+    // Scroll selected card to center of carousel track horizontally
     const card = track.querySelector(`.rashi-card[data-index="${index}"]`);
     if (card) {
-      card.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      const cardOffset = card.offsetLeft - track.offsetLeft;
+      const centerPos = cardOffset - (track.clientWidth / 2) + (card.clientWidth / 2);
+      track.scrollTo({ left: Math.max(0, centerPos), behavior: "smooth" });
     }
   }
 
@@ -237,7 +239,9 @@
     setTimeout(() => {
       const activeCard = track.querySelector(`.rashi-card[data-index="${activeIndex}"]`);
       if (activeCard) {
-        activeCard.scrollIntoView({ block: "nearest", inline: "center" });
+        const cardOffset = activeCard.offsetLeft - track.offsetLeft;
+        const centerPos = cardOffset - (track.clientWidth / 2) + (activeCard.clientWidth / 2);
+        track.scrollTo({ left: Math.max(0, centerPos), behavior: "smooth" });
       }
     }, 100);
   }
