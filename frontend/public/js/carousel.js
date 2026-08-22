@@ -342,29 +342,19 @@ window.VedVigyanCarousel = {
         });
       });
 
-      // Desktop Zoom on Hover
+      // Image click opens detail page directly without hover zoom or lightbox overlay
       const slideImgs = carousel.querySelectorAll('.carousel-slide img');
-      slideImgs.forEach((img, idx) => {
-        const isDesktop = window.matchMedia('(pointer: fine)').matches;
-        if (isDesktop) {
-          img.addEventListener('mousemove', (e) => {
-            const rect = img.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100;
-            const y = ((e.clientY - rect.top) / rect.height) * 100;
-            img.style.transformOrigin = `${x}% ${y}%`;
-            img.style.transform = 'scale(1.8)';
-          });
-          img.style.transition = 'transform 0.1s ease-out';
-          img.addEventListener('mouseleave', () => {
-            img.style.transform = 'scale(1)';
-            img.style.transformOrigin = 'center center';
-          });
-        }
-
-        // Click to open lightbox
+      slideImgs.forEach((img) => {
         img.addEventListener('click', (e) => {
-          e.preventDefault();
-          openLightbox(idx);
+          const card = img.closest('.lux-product-card, .card, [data-product-id]');
+          if (card) {
+            const productId = card.getAttribute('data-product-id') || card.dataset.productId;
+            const product = window.VED_VIGYAN_DATA?.products?.find((p) => p.id === productId);
+            const targetUrl = product?.url || (productId ? `/product/detail.html?id=${productId}` : null);
+            if (targetUrl) {
+              window.location.href = targetUrl;
+            }
+          }
         });
       });
 
