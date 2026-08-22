@@ -332,6 +332,13 @@ function renderProductPage() {
     }
   }
 
+  const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
+  const certImg = document.getElementById("productCertImg") || document.querySelector(".vv-cert-preview-box img");
+  if (certImg) {
+    certImg.src = product.certificate || defaultCert;
+    certImg.alt = `${product.name} Authenticity Certificate`;
+  }
+
   // Dynamic filesystem scanner fetch
   if (product && product.slug) {
     fetch(`/api/gallery?slug=${product.slug}`)
@@ -340,6 +347,11 @@ function renderProductPage() {
         return response.json();
       })
       .then((data) => {
+        if (data && data.certificate) {
+          product.certificate = data.certificate;
+          if (certImg) certImg.src = data.certificate;
+        }
+
         if (data && Array.isArray(data.images) && data.images.length > 0) {
           const currentImages = product.images || [];
           const isSame = currentImages.length === data.images.length &&

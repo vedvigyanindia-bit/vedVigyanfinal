@@ -448,8 +448,16 @@ async function handleGetGallery(req, res) {
     // Identify certificates
     function isCertificate(name) {
       const fn = name.toLowerCase();
-      return fn.includes("cert") || fn.includes("lab") || fn.includes("report") || fn.includes("authent") || fn.includes("quality") || fn.includes("verify");
+      const fnFolder = (folderName || "").toLowerCase();
+      if (fnFolder.includes("kanya") || fnFolder.includes("silver cap karungali") || fnFolder.includes("spatik")) {
+        return fn.includes("cert") || fn.includes("lab") || fn.includes("report") || fn.includes("authent") || fn.includes("quality") || fn.includes("verify");
+      }
+      return fn === "3.webp" || fn.includes("cert") || fn.includes("lab") || fn.includes("report") || fn.includes("authent") || fn.includes("quality") || fn.includes("verify");
     }
+
+    const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
+    const certFileFound = resolvedFiles.find((rf) => isCertificate(rf.name));
+    const certificate = certFileFound ? certFileFound.url : defaultCert;
 
     const certFiles = imageFiles.filter((rf) => isCertificate(rf.name));
     const productFiles = imageFiles.filter((rf) => !isCertificate(rf.name));
@@ -466,7 +474,7 @@ async function handleGetGallery(req, res) {
       return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
     });
 
-    // Build the images array (minimum 2, maximum 4, no duplicates)
+    // Build the images array (only include certificate in carousel if a certificate file exists in this product folder)
     let images = [];
     if (certFiles.length > 0) {
       const selectedProducts = productFiles.slice(0, 3);
@@ -477,7 +485,7 @@ async function handleGetGallery(req, res) {
       images = selectedProducts.map((f) => f.url);
     }
 
-    sendJson(res, 200, { slug, folderName, images });
+    sendJson(res, 200, { slug, folderName, images, certificate });
   } catch (error) {
     sendJson(res, 500, { error: error.message || "Internal Server Error" });
   }

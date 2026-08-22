@@ -219,10 +219,25 @@ window.VedVigyanCarousel = {
   },
 
   normalizeProductImages(product) {
+    let list = [];
     if (product && Array.isArray(product.images) && product.images.length > 0) {
-      return [...new Set(product.images.filter(Boolean))];
+      list = [...product.images.filter(Boolean)];
+    } else if (product && product.image) {
+      list = [product.image];
     }
-    return product && product.image ? [product.image] : [];
+
+    const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
+    const certIndex = list.findIndex((img) => this.isCertificateImage(img) && (product?.id === "vv_p09" || !img.includes(defaultCert)));
+
+    if (certIndex !== -1) {
+      const foundCert = list[certIndex];
+      const productPhotos = list.filter((img) => !this.isCertificateImage(img)).slice(0, 3);
+      list = [...productPhotos, foundCert];
+    } else {
+      list = list.filter((img) => product?.id === "vv_p09" || !img.includes(defaultCert)).slice(0, 4);
+    }
+
+    return [...new Set(list)];
   },
 
   renderCarouselHtml(product) {

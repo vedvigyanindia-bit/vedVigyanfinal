@@ -1,5 +1,35 @@
 // Auto-generated 43-product Ved Vigyan Catalog Data with 5 Dedicated Categories
 function deriveMerchandising(products) {
+  const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
+  const certMap = {
+    "vv_p01": "/product/Ved vigyan products/10 Mukhi Rudraksh/3.webp",
+    "vv_p02": "/product/Ved vigyan products/11 Mukhi Rudraksh/3.webp",
+    "vv_p03": "/product/Ved vigyan products/12 Mukhi Rudraksh/3.webp",
+    "vv_p04": "/product/Ved vigyan products/2 Mukhi Rudraksh/3.webp",
+    "vv_p05": "/product/Ved vigyan products/3 Mukhi Rudraksh/3.webp",
+    "vv_p06": "/product/Ved vigyan products/4 Mukhi Rudraksh/3.webp",
+    "vv_p08": "/product/Ved vigyan products/5 Mukhi Nepali/3.webp",
+    "vv_p09": "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp",
+    "vv_p10": "/product/Ved vigyan products/6 Mukhi Rudraksh/3.webp",
+    "vv_p11": "/product/Ved vigyan products/7 Chakra Braclet/3.webp",
+    "vv_p13": "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp",
+    "vv_p14": "/product/Ved vigyan products/8 Mukhi Rudraksh/3.webp",
+    "vv_p15": "/product/Ved vigyan products/9 Mukhi Rudraksh/3.webp",
+    "vv_p16": "/product/Ved vigyan products/Amethyst Bracelet/3.webp",
+    "vv_p17": "/product/Ved vigyan products/Dhanu (धनु – Sagittarius) Braclet/3.webp",
+    "vv_p20": "/product/Ved vigyan products/4. Money Magnet/3.webp",
+    "vv_p26": "/product/Ved vigyan products/Kumbh (कुंभ – Aquarius) Braclet/3.webp",
+    "vv_p27": "/product/Ved vigyan products/Makar (मकर – Capricorn) Braclet/3.webp",
+    "vv_p28": "/product/Ved vigyan products/Meen (मीन – Pisces) Braclet/3.webp",
+    "vv_p30": "/product/Ved vigyan products/Mithun (मिथुन – Gemini) Braclet/3.webp",
+    "vv_p31": "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp",
+    "vv_p32": "/product/Ved vigyan products/Piride Braclet/3.webp",
+    "vv_p33": "/product/Ved vigyan products/Rose Quartz Close/3.webp",
+    "vv_p41": "/product/Ved vigyan products/Tulsi Jap Mala/3.webp",
+    "vv_p42": "/product/Ved vigyan products/Tulsi Mala/3.webp",
+    "vv_p43": "/product/Ved vigyan products/Vrishabh (वृषभ – Taurus) Braclet/3.webp"
+  };
+
   return products.map((product, index) => {
     const discountPercent = 18 + ((index * 7) % 23);
     const ratingValue = 4.2 + (((index * 13) % 8) / 10);
@@ -8,11 +38,14 @@ function deriveMerchandising(products) {
       ? Math.round(product.price / (1 - discountPercent / 100))
       : 0;
 
+    const certificate = certMap[product.id] || defaultCert;
+
     return {
       ...product,
       discountPercent,
       originalPrice,
-      rating
+      rating,
+      certificate
     };
   });
 }
