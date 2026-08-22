@@ -2321,6 +2321,14 @@
   margin-bottom: 24px;
 }
 
+.lux-pdp .lux-breadcrumb,
+.pdp-page .lux-breadcrumb,
+.pdp-page .breadcrumbs,
+[data-lux-page="product"] .lux-breadcrumb,
+.breadcrumbs {
+  display: none !important;
+}
+
 .lux-breadcrumb a:hover {
   color: var(--maroon);
 }
