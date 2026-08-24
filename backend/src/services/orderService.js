@@ -26,8 +26,9 @@ async function createOrder({ customer, items, razorpayOrderId, razorpayPaymentId
   }
 
   const subtotal = items.reduce((sum, item) => sum + item.qty * item.price, 0);
+  const prepaidDiscount = Math.round(subtotal * 0.05); // 5% Prepaid Discount
   const shipping = subtotal >= 999 ? 0 : 99;
-  const amount = subtotal + shipping;
+  const amount = subtotal - prepaidDiscount + shipping;
   const quantity = items.reduce((sum, item) => sum + item.qty, 0);
   const orderId = generateUniqueOrderId();
 

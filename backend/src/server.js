@@ -198,10 +198,11 @@ async function handleCreateRazorpayOrder(req, res) {
     const customer = sanitizeCustomer(rawCustomer);
     const items = sanitizeItems(rawItems);
     const subtotal = calculateAmount(items);
+    const prepaidDiscount = Math.round(subtotal * 0.05); // 5% Prepaid Discount
     const shipping = subtotal >= 999 ? 0 : 99;
-    const amount = subtotal + shipping;
+    const amount = subtotal - prepaidDiscount + shipping;
 
-    console.log(`[Payment] Creating Razorpay order for customer: ${customer.name}, amount: INR ${amount}`);
+    console.log(`[Payment] Creating Razorpay order for customer: ${customer.name}, subtotal: INR ${subtotal}, discount: INR ${prepaidDiscount}, amount: INR ${amount}`);
 
     if (
       !customer.name ||
@@ -247,8 +248,9 @@ async function handleVerifyRazorpayPayment(req, res) {
     const customer = sanitizeCustomer(body.customer);
     const items = sanitizeItems(body.items);
     const subtotal = calculateAmount(items);
+    const prepaidDiscount = Math.round(subtotal * 0.05); // 5% Prepaid Discount
     const shipping = subtotal >= 999 ? 0 : 99;
-    const amount = subtotal + shipping;
+    const amount = subtotal - prepaidDiscount + shipping;
     const payment = body.payment || {};
     const razorpayOrderId = sanitizeText(payment.razorpay_order_id, 100);
     const razorpayPaymentId = sanitizeText(payment.razorpay_payment_id, 100);

@@ -24,14 +24,17 @@ function collectCheckoutPayload(form) {
   const cart = window.VedVigyanCart.loadCart();
   const items = Object.values(cart.items);
   const subtotal = window.VedVigyanCart.cartSubtotal(cart);
+  const isPrepaid = customer.payment !== "cod";
+  const prepaidDiscount = isPrepaid ? Math.round(subtotal * 0.05) : 0;
   const shipping = subtotal >= 999 ? 0 : 99;
 
   return {
     customer,
     items,
     subtotal,
+    prepaidDiscount,
     shipping,
-    total: subtotal + shipping
+    total: subtotal - prepaidDiscount + shipping
   };
 }
 
@@ -56,6 +59,8 @@ function validateCheckoutPayload({ customer, items }) {
 function renderCheckoutSummary() {
   const summary = document.getElementById("checkoutSummary");
   const subtotalEl = document.getElementById("checkoutSubtotal");
+  const discountRowEl = document.getElementById("checkoutDiscountRow");
+  const discountEl = document.getElementById("checkoutDiscount");
   const shippingEl = document.getElementById("checkoutShipping");
   const totalEl = document.getElementById("checkoutTotal");
   if (!summary || !totalEl) return;
@@ -65,6 +70,7 @@ function renderCheckoutSummary() {
   if (!items.length) {
     summary.innerHTML = `<p class="sub" style="margin:0">Your cart is empty. <a href="/shop.html">Go to shop</a>.</p>`;
     if (subtotalEl) subtotalEl.textContent = window.VedVigyanCart.formatINR(0);
+    if (discountRowEl) discountRowEl.style.display = "none";
     if (shippingEl) shippingEl.textContent = window.VedVigyanCart.formatINR(0);
     totalEl.textContent = window.VedVigyanCart.formatINR(0);
     return;
@@ -87,10 +93,22 @@ function renderCheckoutSummary() {
     .join("");
 
   const subtotal = window.VedVigyanCart.cartSubtotal(cart);
+  const paymentRadio = document.querySelector('input[name="payment"]:checked');
+  const isPrepaid = paymentRadio ? paymentRadio.value !== "cod" : true;
+  const prepaidDiscount = isPrepaid ? Math.round(subtotal * 0.05) : 0;
   const shipping = subtotal >= 999 ? 0 : 99;
-  const netTotal = subtotal + shipping;
+  const netTotal = subtotal - prepaidDiscount + shipping;
 
   if (subtotalEl) subtotalEl.textContent = window.VedVigyanCart.formatINR(subtotal);
+  if (discountRowEl) {
+    if (prepaidDiscount > 0) {
+      discountRowEl.style.display = "flex";
+      if (discountEl) discountEl.textContent = `- ${window.VedVigyanCart.formatINR(prepaidDiscount)}`;
+    } else {
+      discountRowEl.style.display = "none";
+    }
+  }
+
   if (shippingEl) shippingEl.textContent = shipping === 0 ? "Free" : window.VedVigyanCart.formatINR(shipping);
   totalEl.textContent = window.VedVigyanCart.formatINR(netTotal);
 }
@@ -274,7 +292,7 @@ function wireCheckoutForm() {
   const form = document.getElementById("checkoutForm");
   if (!form) return;
 
-  // Sync radio button borders
+  // Sync radio button borders & update summary total on payment selection change
   form.querySelectorAll('input[name="payment"]').forEach((radio) => {
     radio.addEventListener("change", () => {
       form.querySelectorAll('.lux-payment-methods label').forEach((label) => {
@@ -282,6 +300,7 @@ function wireCheckoutForm() {
         label.style.borderColor = checked ? "var(--maroon,#8a1a23)" : "var(--line)";
         label.style.borderWidth = checked ? "1.5px" : "1px";
       });
+      renderCheckoutSummary();
     });
   });
 

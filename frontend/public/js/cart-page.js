@@ -60,6 +60,7 @@ function renderCartPage() {
   const catalog = (window.VED_VIGYAN_DATA && window.VED_VIGYAN_DATA.products) || [];
 
   if (summaryHost) {
+    const prepaidDiscountPreview = Math.round(subtotal * 0.05);
     summaryHost.innerHTML = `
       <div class="lux-cart-insight lux-reveal">
         <div>
@@ -76,6 +77,13 @@ function renderCartPage() {
                 : "Explore our collection of authentic Rudraksha, malas and crystals."
             }
           </p>
+          ${
+            items.length > 0
+              ? `<div style="margin-top:10px; background:#e8f5e9; border:1px solid #a5d6a7; color:#1b5e20; padding:8px 12px; border-radius:8px; font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px;">
+                  <span>⚡ <b>Prepaid Discount:</b> Pay online at checkout to save extra <b>${window.VedVigyanCart.formatINR(prepaidDiscountPreview)} (5% OFF)</b>!</span>
+                </div>`
+              : ""
+          }
         </div>
         <div class="lux-shipping-progress" aria-hidden="true">
           <span style="width:${Math.min(100, Math.round((subtotal / 999) * 100))}%"></span>
