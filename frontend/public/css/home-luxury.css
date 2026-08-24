@@ -5681,3 +5681,288 @@ button[type="submit"]#placeOrderBtn:hover {
   color: #d4af37;
   font-weight: 600;
 }
+
+/* ─── Watch & Shop Vertical Video Reel Section ─── */
+.vv-watch-shop-section {
+  margin: 56px 0;
+  padding: 40px 0;
+  background: linear-gradient(180deg, #fdfbf7 0%, #faf5ed 100%);
+  border-radius: 20px;
+  border: 1px solid #e8e0d4;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.vv-reel-carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.vv-reel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 6px 20px 6px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.vv-reel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.vv-reel-card {
+  min-width: 240px;
+  max-width: 250px;
+  flex: 0 0 calc(20% - 16px);
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e2d7c5;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1200px) {
+  .vv-reel-card {
+    flex: 0 0 calc(25% - 15px);
+  }
+}
+
+@media (max-width: 900px) {
+  .vv-reel-card {
+    flex: 0 0 calc(33.333% - 14px);
+    min-width: 215px;
+  }
+}
+
+@media (max-width: 600px) {
+  .vv-reel-card {
+    flex: 0 0 calc(72% - 10px);
+    min-width: 205px;
+  }
+}
+
+.vv-reel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+.vv-reel-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 13.5;
+  background: #1a0809;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.vv-reel-video-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.vv-reel-card:hover .vv-reel-video-wrap img {
+  transform: scale(1.05);
+}
+
+.vv-reel-play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.vv-reel-card:hover .vv-reel-play-overlay {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.vv-reel-play-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #8a1a23;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  padding-left: 3px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.vv-reel-card:hover .vv-reel-play-icon {
+  transform: scale(1.15);
+  background: #ffffff;
+}
+
+.vv-reel-meta-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.vv-reel-views {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 12px;
+}
+
+.vv-reel-heart-btn {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 9px;
+  border-radius: 12px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.2s, color 0.2s;
+}
+
+.vv-reel-heart-btn:hover {
+  background: #8a1a23;
+  color: #ffffff;
+}
+
+.vv-reel-product-card {
+  padding: 12px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-grow: 1;
+  justify-content: space-between;
+  border-top: 1px solid #f0e6d8;
+}
+
+.vv-reel-prod-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vv-reel-prod-thumb {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid #e0d5c5;
+}
+
+.vv-reel-prod-text {
+  overflow: hidden;
+}
+
+.vv-reel-prod-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a0809;
+  margin: 0 0 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vv-reel-prod-price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.vv-reel-prod-price .sale {
+  font-weight: 800;
+  color: #8a1a23;
+}
+
+.vv-reel-prod-price .mrp {
+  font-size: 11px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.vv-reel-buy-btn {
+  width: 100%;
+  padding: 8px 0;
+  background: #2e7d32;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.vv-reel-buy-btn:hover {
+  background: #1b5e20;
+  transform: translateY(-1px);
+}
+
+.vv-reel-nav-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #d4af37;
+  color: #1a0809;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+
+.vv-reel-nav-btn.prev {
+  left: -21px;
+}
+
+.vv-reel-nav-btn.next {
+  right: -21px;
+}
+
+.vv-reel-nav-btn:hover {
+  background: #8a1a23;
+  color: #ffffff;
+  border-color: #8a1a23;
+}
+
+@media (max-width: 768px) {
+  .vv-reel-nav-btn {
+    display: none;
+  }
+}

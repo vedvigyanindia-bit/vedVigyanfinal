@@ -290,6 +290,13 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     <div class="lux-quickview" id="quickView" role="dialog" aria-label="Quick view" aria-hidden="true">
       <div class="lux-quickview-panel" id="quickViewPanel"></div>
     </div>
+    <!-- Video Modal Lightbox -->
+    <div class="vv-video-modal-backdrop" id="vvVideoModalBackdrop" role="dialog" aria-hidden="true">
+      <div class="vv-video-modal-content">
+        <button class="vv-video-modal-close" id="vvVideoModalClose" type="button" aria-label="Close video">&times;</button>
+        <div class="vv-video-player-container" id="vvVideoPlayerContainer"></div>
+      </div>
+    </div>
   `;
 
   Lux.injectShell = function injectShell() {
@@ -523,6 +530,80 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     });
   };
 
+  Lux.initWatchShopCarousel = function initWatchShopCarousel() {
+    document.querySelectorAll(".vv-watch-shop-section").forEach((section) => {
+      const track = section.querySelector(".vv-reel-track");
+      const prevBtn = section.querySelector(".vv-reel-nav-btn.prev");
+      const nextBtn = section.querySelector(".vv-reel-nav-btn.next");
+      if (!track) return;
+
+      if (prevBtn && !prevBtn.__vv_bound) {
+        prevBtn.__vv_bound = true;
+        prevBtn.addEventListener("click", () => {
+          track.scrollBy({ left: -260, behavior: "smooth" });
+        });
+      }
+      if (nextBtn && !nextBtn.__vv_bound) {
+        nextBtn.__vv_bound = true;
+        nextBtn.addEventListener("click", () => {
+          track.scrollBy({ left: 260, behavior: "smooth" });
+        });
+      }
+    });
+
+    const videoCards = document.querySelectorAll("[data-vv-video]");
+    const modalBackdrop = document.getElementById("vvVideoModalBackdrop");
+    const modalPlayer = document.getElementById("vvVideoPlayerContainer");
+    const modalClose = document.getElementById("vvVideoModalClose");
+
+    if (modalBackdrop && modalPlayer) {
+      videoCards.forEach((card) => {
+        if (card.__vv_video_bound) return;
+        card.__vv_video_bound = true;
+
+        card.addEventListener("click", (e) => {
+          if (e.target.closest("button") || e.target.closest("a")) return;
+          let src = card.getAttribute("data-vv-video") || "https://youtu.be/o9dREd5ZPhw?si=X2tbKalptHS0wmhD";
+
+          if (src.includes("youtube.com") || src.includes("youtu.be")) {
+            let embedSrc = src;
+            if (src.includes("youtu.be/")) {
+              const videoId = src.split("youtu.be/")[1].split("?")[0];
+              embedSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            } else if (src.includes("youtube.com/embed/")) {
+              embedSrc = src.includes("?") ? `${src}&autoplay=1` : `${src}?autoplay=1`;
+            } else if (src.includes("youtube.com/watch")) {
+              const videoId = new URLSearchParams(src.split("?")[1]).get("v");
+              embedSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            }
+            modalPlayer.innerHTML = `<iframe width="100%" height="100%" src="${embedSrc}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+          } else {
+            modalPlayer.innerHTML = `<video width="100%" height="100%" controls autoplay style="object-fit:cover"><source src="${src}" type="video/mp4">Your browser does not support HTML5 video.</video>`;
+          }
+          modalBackdrop.classList.add("active");
+          modalBackdrop.setAttribute("aria-hidden", "false");
+        });
+      });
+
+      const closeVideoModal = () => {
+        modalBackdrop.classList.remove("active");
+        modalBackdrop.setAttribute("aria-hidden", "true");
+        if (modalPlayer) modalPlayer.innerHTML = "";
+      };
+
+      if (modalClose && !modalClose.__vv_bound) {
+        modalClose.__vv_bound = true;
+        modalClose.addEventListener("click", closeVideoModal);
+      }
+      if (!modalBackdrop.__vv_bound) {
+        modalBackdrop.__vv_bound = true;
+        modalBackdrop.addEventListener("click", (e) => {
+          if (e.target === modalBackdrop) closeVideoModal();
+        });
+      }
+    }
+  };
+
   Lux.initShell = function initShell(options = {}) {
     if (document.body.dataset.luxShellInject === "true") {
       Lux.injectShell();
@@ -533,6 +614,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     Lux.initRipple();
     Lux.initNewsletter();
     Lux.initScrollReveal();
+    Lux.initWatchShopCarousel();
   };
 
   Lux.upgradeLegacyPage = function upgradeLegacyPage() {
