@@ -4673,6 +4673,44 @@ grid-column: span 1;
   border-color: #f3a83b;
 }
 
+/* ─── Free Gift 15-Minute Countdown Timer Header ─── */
+.lux-free-gift-timer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 9px;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed rgba(212, 175, 55, 0.4);
+}
+
+.gift-timer-kicker {
+  font-size: 12px;
+  font-weight: 700;
+  color: #8a1a23;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gift-timer-badge {
+  background: linear-gradient(135deg, #8a1a23 0%, #a81c1c 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(138, 26, 35, 0.25);
+  animation: giftTimerPulse 2s infinite ease-in-out;
+}
+
+@keyframes giftTimerPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.92; }
+}
+
 .lux-free-gift-label {
   display: flex;
   align-items: flex-start;

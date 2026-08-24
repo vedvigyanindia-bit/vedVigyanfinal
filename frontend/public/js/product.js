@@ -475,6 +475,9 @@ function initSectionInteractiveHandlers(product) {
       if (unit === "mins") el.textContent = mins;
       if (unit === "secs") el.textContent = secs;
     });
+
+    document.querySelectorAll("[data-gift-timer-mins]").forEach((el) => el.textContent = mins);
+    document.querySelectorAll("[data-gift-timer-secs]").forEach((el) => el.textContent = secs);
   }
   setInterval(updateTimers, 1000);
   updateTimers();
