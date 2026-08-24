@@ -14,8 +14,9 @@ module.exports = async function handler(req, res) {
 
   try {
     const { customer, items, amount: subtotal } = parseCheckoutPayload(req.body);
+    const prepaidDiscount = Math.round(subtotal * 0.05); // 5% Prepaid Discount
     const shipping = subtotal >= 999 ? 0 : 99;
-    const amount = subtotal + shipping;
+    const amount = subtotal - prepaidDiscount + shipping;
     validateCheckoutPayload(customer, items, amount);
 
     const receipt = createReceipt();
