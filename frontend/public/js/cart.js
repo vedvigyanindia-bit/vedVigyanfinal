@@ -212,6 +212,8 @@ function buyNow(productId) {
 
 function wireBuyNowButtons(root = document) {
   root.querySelectorAll("[data-buy-now]").forEach((btn) => {
+    if (btn.__vv_buynow_bound) return;
+    btn.__vv_buynow_bound = true;
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -223,6 +225,8 @@ function wireBuyNowButtons(root = document) {
 
 function wireAddToCartButtons(root = document) {
   root.querySelectorAll("[data-add-to-cart]").forEach((btn) => {
+    if (btn.__vv_addcart_bound) return;
+    btn.__vv_addcart_bound = true;
     btn.addEventListener("click", (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -232,6 +236,31 @@ function wireAddToCartButtons(root = document) {
   });
   wireBuyNowButtons(root);
 }
+
+// Global delegated click listener for 100% reliable Buy Now & Add to Cart clicks
+document.addEventListener("click", (e) => {
+  const buyBtn = e.target.closest("[data-buy-now]");
+  if (buyBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    const id = buyBtn.getAttribute("data-buy-now");
+    if (id) {
+      buyNow(id);
+    }
+    return;
+  }
+
+  const addBtn = e.target.closest("[data-add-to-cart]");
+  if (addBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    const id = addBtn.getAttribute("data-add-to-cart");
+    if (id) {
+      addToCart(id, 1);
+    }
+    return;
+  }
+});
 
 function renderCartBadge() {
   const badge = document.querySelector("[data-cart-count]");
