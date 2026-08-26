@@ -361,6 +361,135 @@ function initGlobalProductCardClicks() {
   });
 }
 
+function initGlobalReviewsCarousel() {
+  const grids = document.querySelectorAll(".vv-rev-grid-cards, .lux-reviews-grid");
+  if (!grids.length) return;
+
+  const CHAR_LIMIT = 75;
+
+  grids.forEach((grid) => {
+    if (grid.dataset.carouselInitialized === "true") return;
+    grid.dataset.carouselInitialized = "true";
+
+    // 1. Add Read-More truncation to every review card inside grid
+    const cards = grid.querySelectorAll(".vv-user-rev-card, .lux-review-card");
+    cards.forEach((card) => {
+      const textElem = card.querySelector(".lux-review-text, p.lux-review-text, p");
+      if (!textElem || card.querySelector(".lux-read-more-btn")) return;
+
+      const fullText = textElem.textContent.trim();
+      if (fullText.length > CHAR_LIMIT) {
+        const snippet = fullText.slice(0, CHAR_LIMIT) + "...";
+        textElem.textContent = snippet;
+
+        const btn = document.createElement("button");
+        btn.className = "lux-read-more-btn";
+        btn.textContent = "...Read More";
+        btn.setAttribute("aria-expanded", "false");
+        btn.type = "button";
+
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isExpanded = btn.getAttribute("aria-expanded") === "true";
+          if (isExpanded) {
+            textElem.textContent = snippet;
+            btn.setAttribute("aria-expanded", "false");
+            btn.textContent = "...Read More";
+          } else {
+            textElem.textContent = fullText;
+            btn.setAttribute("aria-expanded", "true");
+            btn.textContent = "Read Less";
+          }
+        });
+
+        textElem.parentNode.appendChild(btn);
+      }
+    });
+
+    // 2. Wrap grid in carousel container if not already wrapped
+    let trackContainer = grid.parentElement;
+    let prevBtn = null;
+    let nextBtn = null;
+
+    if (!trackContainer.classList.contains("lux-reviews-carousel-track-container")) {
+      const wrapper = document.createElement("div");
+      wrapper.className = "lux-reviews-carousel-wrapper";
+
+      prevBtn = document.createElement("button");
+      prevBtn.className = "lux-carousel-nav lux-carousel-prev";
+      prevBtn.setAttribute("aria-label", "Previous review");
+      prevBtn.innerHTML = "‹";
+      prevBtn.type = "button";
+
+      nextBtn = document.createElement("button");
+      nextBtn.className = "lux-carousel-nav lux-carousel-next";
+      nextBtn.setAttribute("aria-label", "Next review");
+      nextBtn.innerHTML = "›";
+      nextBtn.type = "button";
+
+      const track = document.createElement("div");
+      track.className = "lux-reviews-carousel-track-container";
+
+      grid.parentNode.insertBefore(wrapper, grid);
+      track.appendChild(grid);
+      wrapper.appendChild(prevBtn);
+      wrapper.appendChild(track);
+      wrapper.appendChild(nextBtn);
+
+      trackContainer = track;
+    } else {
+      const wrapper = trackContainer.parentElement;
+      if (wrapper) {
+        prevBtn = wrapper.querySelector(".lux-carousel-prev");
+        nextBtn = wrapper.querySelector(".lux-carousel-next");
+      }
+    }
+
+    // 3. Arrow buttons click handlers
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        trackContainer.scrollBy({ left: -320, behavior: "smooth" });
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        trackContainer.scrollBy({ left: 320, behavior: "smooth" });
+      });
+    }
+
+    // 4. Auto-scrolling from Left to Right
+    let autoScrollTimer = null;
+    let isHovered = false;
+
+    function autoStep() {
+      if (isHovered || !trackContainer) return;
+      const maxScroll = trackContainer.scrollWidth - trackContainer.clientWidth;
+      if (maxScroll <= 0) return;
+
+      if (trackContainer.scrollLeft >= maxScroll - 5) {
+        trackContainer.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        trackContainer.scrollBy({ left: 1, behavior: "auto" });
+      }
+    }
+
+    function startAutoScroll() {
+      if (autoScrollTimer) clearInterval(autoScrollTimer);
+      autoScrollTimer = setInterval(autoStep, 25);
+    }
+
+    const wrapper = trackContainer.parentElement;
+    if (wrapper) {
+      wrapper.addEventListener("mouseenter", () => { isHovered = true; });
+      wrapper.addEventListener("mouseleave", () => { isHovered = false; });
+      wrapper.addEventListener("touchstart", () => { isHovered = true; }, { passive: true });
+      wrapper.addEventListener("touchend", () => { isHovered = false; }, { passive: true });
+    }
+
+    startAutoScroll();
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initGlobalTopbar();
   syncGlobalContactInfo();
@@ -373,4 +502,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initMobileMenu();
   initBackToTop();
   initGlobalProductCardClicks();
+  initGlobalReviewsCarousel();
 });
