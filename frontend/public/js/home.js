@@ -57,6 +57,7 @@
 
   const REVIEWS = [
     { name: "Arjun Mehta", location: "10 Mukhi Rudraksha", avatar: "/public/images/reviews/arjun-mehta.jpg", rating: 5, text: "Maine 10 Mukhi Rudraksha order kiya tha. Product quality achhi hai aur packaging bhi secure thi. Overall purchase experience bahut achha raha.", verified: true },
+    { name: "Aditya Verma", location: "Nepali Rudraksha Mala", avatar: "/public/images/reviews/aditya-verma.jpg", rating: 5, text: "Maine Nepali Rudraksha Mala order ki thi aur quality dekhkar kaafi satisfied hoon. Mala bahut achhi finish ke saath mili aur packaging bhi proper thi. Overall, very good purchase experience.", verified: true },
     { name: "Rohan Kapoor", location: "Karungali Mala", avatar: "/public/images/reviews/rohan-kapoor.jpg", rating: 5, text: "Maine Karungli Mala purchase ki aur quality dekhkar kaafi satisfied hoon. Mala achhi finish ke saath mili. Overall, good experience.", verified: true },
     { name: "Vikram Joshi", location: "Rudraksha Jaap Mala", avatar: "/public/images/reviews/vikram-joshi.jpg", rating: 5, text: "Maine Rudraksha Jaap Mala order ki thi. Product achhe se packed tha aur quality bhi kaafi achhi lagi. Happy with my purchase.", verified: true },
     { name: "Sanjay Rawat", location: "2 Mukhi Rudraksha", avatar: "/public/images/reviews/sanjay-rawat.jpg", rating: 5, text: "Maine 2 Mukhi Rudraksha order kiya tha aur product exactly expected jaisa mila. Packaging aur overall quality dono achhe the.", verified: true },
