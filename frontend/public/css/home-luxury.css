@@ -1632,25 +1632,129 @@
   margin: 0 0 32px;
 }
 
-/* ─── Reviews ─── */
+/* ─── Reviews Carousel ─── */
+.lux-reviews-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.lux-reviews-carousel-track-container {
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 12px 4px 20px;
+}
+
+.lux-reviews-carousel-track-container::-webkit-scrollbar {
+  display: none;
+}
+
 .lux-reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  align-items: stretch;
 }
 
 .lux-review-card {
   background: var(--white);
   border-radius: var(--radius);
-  padding: 28px;
+  padding: 24px;
+  width: 340px;
+  flex-shrink: 0;
   box-shadow: var(--shadow-sm);
   border: 1px solid var(--line);
   transition: transform 0.35s, box-shadow 0.35s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .lux-review-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
+}
+
+.lux-review-body {
+  margin-top: 10px;
+}
+
+.lux-review-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-dark, #2c221e);
+  margin: 0;
+}
+
+.lux-read-more-btn {
+  background: none;
+  border: none;
+  color: var(--gold, #d4af37);
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px 0 0;
+  display: inline-block;
+  transition: color 0.2s;
+}
+
+.lux-read-more-btn:hover {
+  color: var(--primary, #8b0000);
+  text-decoration: underline;
+}
+
+/* Carousel Arrow Navigation */
+.lux-carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white, #ffffff);
+  border: 1px solid var(--line, #e2d9cd);
+  color: var(--dark, #1a0809);
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s ease;
+}
+
+.lux-carousel-nav:hover {
+  background: var(--gold, #d4af37);
+  color: #ffffff;
+  border-color: var(--gold, #d4af37);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.35);
+}
+
+.lux-carousel-prev {
+  left: -20px;
+}
+
+.lux-carousel-next {
+  right: -20px;
+}
+
+@media (max-width: 768px) {
+  .lux-review-card {
+    width: 280px;
+  }
+  .lux-carousel-prev {
+    left: -8px;
+  }
+  .lux-carousel-next {
+    right: -8px;
+  }
 }
 
 .lux-review-header {

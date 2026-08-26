@@ -67,7 +67,7 @@
   <script src="/public/js/ui.js?v=2" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-  <script src="/public/js/home.js?v=2" defer></script>
+  <script src="/public/js/home.js?v=3" defer></script>
   <script src="/public/js/rashi.js" defer></script>
   <!-- Meta Pixel Code -->
 <script>
@@ -807,15 +807,21 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
     </section>
 
     <!-- 10. Customer Reviews -->
-    <section class="lux-section" id="reviews" style="background:var(--ivory);">
+    <section class="lux-section" id="reviews" style="background:var(--ivory); overflow:hidden;">
       <div class="lux-container">
         <div class="lux-section-head lux-reveal">
           <div class="lux-section-kicker">Testimonials</div>
           <h2 class="lux-section-title">Loved by Seekers</h2>
           <p class="lux-section-sub">Real stories from our community of 25,000+ spiritual practitioners.</p>
         </div>
-        <div class="lux-reviews-grid" id="reviewsGrid"></div>
-        <div style="text-align:center;" class="lux-reveal">
+        <div class="lux-reviews-carousel-wrapper">
+          <button class="lux-carousel-nav lux-carousel-prev" id="reviewsPrev" aria-label="Previous review">‹</button>
+          <div class="lux-reviews-carousel-track-container" id="reviewsTrackContainer">
+            <div class="lux-reviews-grid" id="reviewsGrid"></div>
+          </div>
+          <button class="lux-carousel-nav lux-carousel-next" id="reviewsNext" aria-label="Next review">›</button>
+        </div>
+        <div style="text-align:center; margin-top:24px;" class="lux-reveal">
           <a class="lux-google-badge" href="https://www.google.com/search?q=Ved+Vigyan+reviews" target="_blank"
             rel="noopener noreferrer">
             ⭐ 4.9 on Google Reviews · 2,500+ Reviews

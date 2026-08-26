@@ -499,20 +499,107 @@
   function renderReviews() {
     const grid = document.getElementById("reviewsGrid");
     if (!grid) return;
-    grid.innerHTML = REVIEWS.map((r) => `
-      <article class="lux-review-card lux-reveal">
-        <div class="lux-review-header">
-          <img class="lux-review-avatar" src="${r.avatar}" alt="${r.name}" width="48" height="48" loading="lazy" />
-          <div class="lux-review-meta">
-            <b>${r.name}</b>
-            <span>${r.location}</span>
-            ${r.verified ? '<span class="lux-verified">✓ Verified Purchase</span>' : ""}
+
+    const CHAR_LIMIT = 75;
+
+    grid.innerHTML = REVIEWS.map((r, index) => {
+      const isLong = r.text.length > CHAR_LIMIT;
+      const snippet = isLong ? r.text.slice(0, CHAR_LIMIT) + "..." : r.text;
+
+      return `
+        <article class="lux-review-card lux-reveal" data-index="${index}">
+          <div class="lux-review-header">
+            <img class="lux-review-avatar" src="${r.avatar}" alt="${r.name}" width="48" height="48" loading="lazy" />
+            <div class="lux-review-meta">
+              <b>${r.name}</b>
+              <span>${r.location}</span>
+              ${r.verified ? '<span class="lux-verified">✓ Verified Purchase</span>' : ""}
+            </div>
           </div>
-        </div>
-        <div class="lux-review-stars" aria-label="${r.rating} out of 5 stars">${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}</div>
-        <p class="lux-review-text">${r.text}</p>
-      </article>
-    `).join("");
+          <div class="lux-review-stars" aria-label="${r.rating} out of 5 stars">${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}</div>
+          <div class="lux-review-body">
+            <p class="lux-review-text" id="review-text-${index}">${snippet}</p>
+            ${isLong ? `<button class="lux-read-more-btn" data-index="${index}" aria-expanded="false">...Read More</button>` : ""}
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    grid.querySelectorAll(".lux-read-more-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const idx = Number(btn.dataset.index);
+        const textElem = document.getElementById(`review-text-${idx}`);
+        const isExpanded = btn.getAttribute("aria-expanded") === "true";
+        const r = REVIEWS[idx];
+
+        if (isExpanded) {
+          textElem.textContent = r.text.slice(0, CHAR_LIMIT) + "...";
+          btn.setAttribute("aria-expanded", "false");
+          btn.textContent = "...Read More";
+        } else {
+          textElem.textContent = r.text;
+          btn.setAttribute("aria-expanded", "true");
+          btn.textContent = "Read Less";
+        }
+      });
+    });
+
+    initReviewsCarousel();
+  }
+
+  function initReviewsCarousel() {
+    const container = document.getElementById("reviewsTrackContainer");
+    const prevBtn = document.getElementById("reviewsPrev");
+    const nextBtn = document.getElementById("reviewsNext");
+    if (!container) return;
+
+    let autoScrollTimer = null;
+    let isHovered = false;
+
+    function autoStep() {
+      if (isHovered || !container) return;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (container.scrollLeft >= maxScroll - 5) {
+        container.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        container.scrollBy({ left: 1, behavior: "auto" });
+      }
+    }
+
+    function startAutoScroll() {
+      stopAutoScroll();
+      autoScrollTimer = setInterval(autoStep, 25);
+    }
+
+    function stopAutoScroll() {
+      if (autoScrollTimer) {
+        clearInterval(autoScrollTimer);
+        autoScrollTimer = null;
+      }
+    }
+
+    const wrapper = container.parentElement;
+    if (wrapper) {
+      wrapper.addEventListener("mouseenter", () => { isHovered = true; });
+      wrapper.addEventListener("mouseleave", () => { isHovered = false; });
+      wrapper.addEventListener("touchstart", () => { isHovered = true; }, { passive: true });
+      wrapper.addEventListener("touchend", () => { isHovered = false; }, { passive: true });
+    }
+
+    startAutoScroll();
+
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        container.scrollBy({ left: -320, behavior: "smooth" });
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        container.scrollBy({ left: 320, behavior: "smooth" });
+      });
+    }
   }
 
   function renderBlog() {
