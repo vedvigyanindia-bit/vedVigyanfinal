@@ -49,41 +49,28 @@ function renderRudrakshaPage() {
 
   function renderCatalog() {
     if (!catalogHost) return;
-    catalogHost.innerHTML = products
-      .map(
-        (product) => `
-          <article class="card">
-            ${window.VedVigyanCarousel ? window.VedVigyanCarousel.renderCarouselHtml(product) : `<div class="thumb"><img src="${product.image}" alt="${product.imageAlt}" width="420" height="260" loading="lazy"></div>`}
-            <div class="pillrow">
-              <span class="pill">Rudraksha</span>
-              <span class="pill">${product.slug.replace(/-/g, " ")}</span>
-            </div>
-            <div class="body">
-              <h3>${product.name}</h3>
-              <div class="muted">${product.short}</div>
-              ${renderPriceBlock(product)}
-              <div class="actions">
-                <a class="btn small" href="${product.url}">View Details</a>
-                ${renderCartControl(product.id)}
+    if (window.VedVigyanLux?.renderProductCard) {
+      catalogHost.innerHTML = products.map((product) => window.VedVigyanLux.renderProductCard(product)).join("");
+      window.VedVigyanLux.wireProductGrid(catalogHost);
+    } else {
+      catalogHost.innerHTML = products
+        .map(
+          (product) => `
+            <article class="lux-product-card">
+              <a class="lux-product-media" href="${product.url}">
+                ${window.VedVigyanCarousel ? window.VedVigyanCarousel.renderCarouselHtml(product) : `<img src="${product.image}" alt="${product.imageAlt}" loading="lazy">`}
+              </a>
+              <div class="lux-product-body">
+                <h3 class="lux-product-name"><a href="${product.url}">${product.name}</a></h3>
+                <div class="lux-product-price-row">
+                  <span class="lux-product-price">₹${product.price}</span>
+                </div>
               </div>
-            </div>
-          </article>
-        `
-      )
-      .join("");
-
-    window.VedVigyanCarousel?.bindCarouselEvents(catalogHost);
-    window.VedVigyanCart.wireAddToCartButtons(catalogHost);
-    catalogHost.querySelectorAll("[data-card-inc]").forEach((button) => {
-      button.addEventListener("click", () => {
-        window.VedVigyanCart.changeQty(button.getAttribute("data-card-inc"), 1);
-      });
-    });
-    catalogHost.querySelectorAll("[data-card-dec]").forEach((button) => {
-      button.addEventListener("click", () => {
-        window.VedVigyanCart.changeQty(button.getAttribute("data-card-dec"), -1);
-      });
-    });
+            </article>
+          `
+        )
+        .join("");
+    }
   }
   renderCatalog();
   window.addEventListener("vedvigyan:cart-updated", renderCatalog);

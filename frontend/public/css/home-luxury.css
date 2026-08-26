@@ -6113,3 +6113,165 @@ button[type="submit"]#placeOrderBtn:hover {
     display: none;
   }
 }
+
+/* ─── Mobile Screen Optimization Rules (Only applies below 768px) ─── */
+@media screen and (max-width: 768px) {
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .pagecard {
+    padding: 16px 14px !important;
+    border-radius: 14px !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03) !important;
+    border: 1px solid rgba(212, 175, 55, 0.25) !important;
+  }
+
+  /* 2-Column Luxury Mobile Product Grid */
+  #malaCatalog, #rudrakshaCatalog, #gemstoneCatalog, #catalogGrid, .lux-products-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  #malaCatalog .lux-product-card, 
+  #rudrakshaCatalog .lux-product-card, 
+  #gemstoneCatalog .lux-product-card, 
+  #catalogGrid .lux-product-card, 
+  .lux-products-grid .lux-product-card,
+  #malaCatalog .card,
+  #rudrakshaCatalog .card,
+  #gemstoneCatalog .card {
+    grid-column: span 1 !important;
+    margin: 0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05) !important;
+    border: 1px solid rgba(212, 175, 55, 0.22) !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+  }
+
+  .lux-product-media {
+    aspect-ratio: 1 / 1 !important;
+    overflow: hidden !important;
+  }
+
+  .lux-product-media img, .product-carousel {
+    border-radius: 0 !important;
+  }
+
+  .lux-product-body {
+    padding: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    justify-content: space-between !important;
+  }
+
+  .lux-product-name, .card h3 {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+    margin: 4px 0 6px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    min-height: 2.7em !important;
+    font-weight: 700 !important;
+    color: #1a0809 !important;
+  }
+
+  .lux-product-rating {
+    font-size: 11px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .lux-product-price-row, .price-stack {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+    margin-bottom: 8px !important;
+  }
+
+  .lux-product-price, .price {
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    color: #8a1a23 !important;
+  }
+
+  .lux-product-old-price, .old-price {
+    font-size: 11px !important;
+    color: #999 !important;
+    text-decoration: line-through !important;
+  }
+
+  .lux-product-discount, .discount-badge {
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+    background: rgba(39, 174, 96, 0.12) !important;
+    color: #27ae60 !important;
+    border-radius: 4px !important;
+    font-weight: 700 !important;
+  }
+
+  .lux-product-footer {
+    display: flex !important;
+    gap: 6px !important;
+    margin-top: auto !important;
+  }
+
+  .lux-product-footer .lux-btn {
+    padding: 8px 6px !important;
+    font-size: 11px !important;
+    flex: 1 !important;
+    text-align: center !important;
+    border-radius: 6px !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* Fix Floating Widgets Overlapping Cards */
+  .lux-whatsapp {
+    width: 46px !important;
+    height: 46px !important;
+    bottom: 74px !important;
+    right: 14px !important;
+    z-index: 999 !important;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45) !important;
+  }
+
+  .lux-whatsapp svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .lux-back-top, .scroll-top {
+    width: 38px !important;
+    height: 38px !important;
+    bottom: 24px !important;
+    right: 14px !important;
+    font-size: 16px !important;
+    z-index: 999 !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+  }
+
+  .breadcrumbs {
+    font-size: 12px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .section-title {
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+  }
+
+  .section-sub {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+  }
+}
