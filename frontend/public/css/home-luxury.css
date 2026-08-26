@@ -4171,6 +4171,8 @@ grid-column: span 1;
 
 /* Product cards — Divine Hindu style */
 .dh-ptrack .lux-product-card {
+  grid-column: span 1 !important;
+  width: 100% !important;
   display: flex;
   flex-direction: column;
   height: 100%;
