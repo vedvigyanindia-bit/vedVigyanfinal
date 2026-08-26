@@ -1,35 +1,5 @@
 // Auto-generated 43-product Ved Vigyan Catalog Data with 5 Dedicated Categories
 function deriveMerchandising(products) {
-  const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
-  const certMap = {
-    "vv_p01": "/product/Ved vigyan products/10 Mukhi Rudraksh/3.webp",
-    "vv_p02": "/product/Ved vigyan products/11 Mukhi Rudraksh/3.webp",
-    "vv_p03": "/product/Ved vigyan products/12 Mukhi Rudraksh/3.webp",
-    "vv_p04": "/product/Ved vigyan products/2 Mukhi Rudraksh/3.webp",
-    "vv_p05": "/product/Ved vigyan products/3 Mukhi Rudraksh/3.webp",
-    "vv_p06": "/product/Ved vigyan products/4 Mukhi Rudraksh/3.webp",
-    "vv_p08": "/product/Ved vigyan products/5 Mukhi Nepali/3.webp",
-    "vv_p09": "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp",
-    "vv_p10": "/product/Ved vigyan products/6 Mukhi Rudraksh/3.webp",
-    "vv_p11": "/product/Ved vigyan products/7 Chakra Braclet/3.webp",
-    "vv_p13": "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp",
-    "vv_p14": "/product/Ved vigyan products/8 Mukhi Rudraksh/3.webp",
-    "vv_p15": "/product/Ved vigyan products/9 Mukhi Rudraksh/3.webp",
-    "vv_p16": "/product/Ved vigyan products/Amethyst Bracelet/3.webp",
-    "vv_p17": "/product/Ved vigyan products/Dhanu (धनु – Sagittarius) Braclet/3.webp",
-    "vv_p20": "/product/Ved vigyan products/4. Money Magnet/3.webp",
-    "vv_p26": "/product/Ved vigyan products/Kumbh (कुंभ – Aquarius) Braclet/3.webp",
-    "vv_p27": "/product/Ved vigyan products/Makar (मकर – Capricorn) Braclet/3.webp",
-    "vv_p28": "/product/Ved vigyan products/Meen (मीन – Pisces) Braclet/3.webp",
-    "vv_p30": "/product/Ved vigyan products/Mithun (मिथुन – Gemini) Braclet/3.webp",
-    "vv_p31": "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp",
-    "vv_p32": "/product/Ved vigyan products/Piride Braclet/3.webp",
-    "vv_p33": "/product/Ved vigyan products/Rose Quartz Close/3.webp",
-    "vv_p41": "/product/Ved vigyan products/Tulsi Jap Mala/3.webp",
-    "vv_p42": "/product/Ved vigyan products/Tulsi Mala/3.webp",
-    "vv_p43": "/product/Ved vigyan products/Vrishabh (वृषभ – Taurus) Braclet/3.webp"
-  };
-
   return products.map((product, index) => {
     const discountPercent = 18 + ((index * 7) % 23);
     const ratingValue = 4.2 + (((index * 13) % 8) / 10);
@@ -38,14 +8,11 @@ function deriveMerchandising(products) {
       ? Math.round(product.price / (1 - discountPercent / 100))
       : 0;
 
-    const certificate = certMap[product.id] || defaultCert;
-
     return {
       ...product,
       discountPercent,
       originalPrice,
-      rating,
-      certificate
+      rating
     };
   });
 }
@@ -431,15 +398,14 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp"
     ],
     "short": "Authentic 7 Mukhi Rudraksha for abundance, career growth, and stability.",
-    "description": "7 Mukhi Rudraksha (Sapta Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each bead is 100% natural, certified by Rudram Lab (Cert No: D2606960, Report PIN: 6669, X-Ray verified with 7 natural compartments), and energized following Vedic traditions for wealth and Shani remedies.",
+    "description": "7 Mukhi Rudraksha (Sapta Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
-      "100% Authentic Natural 7 Mukhi Rudraksha (Rudram Lab Certified D2606960)",
-      "X-Ray Tested & Verified: 7 Natural Lines & 7 Internal Compartments",
-      "Energized with traditional Mahalaxmi mantras before shipping",
-      "Includes physical lab test report card with QR verification"
+      "100% Authentic natural product with laboratory certificate",
+      "Energized according to traditional Vedic rituals",
+      "Includes authenticity test certificate & usage guide"
     ],
     "seoTitle": "7 Mukhi Rudraksha (Sapta Mukhi) - Buy Original Online | Ved Vigyan",
-    "seoDescription": "Shop original 7 Mukhi Rudraksha (Sapta Mukhi) online at Ved Vigyan. Certified by Rudram Lab (Cert #D2606960), X-Ray verified 7 compartments. Order now.",
+    "seoDescription": "Shop original 7 Mukhi Rudraksha (Sapta Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
     "url": "/product/detail.html?id=vv_p13"
   },
   {
@@ -1002,7 +968,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/1.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/2.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp",
-      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/asli-brand-comparison.jpg"
+      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/4.webp"
     ],
     "short": "Original 5 Mukhi Nepali Rudraksha 108 bead mala for jaap and daily wearing.",
     "description": "The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.",
