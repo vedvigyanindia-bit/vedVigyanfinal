@@ -641,7 +641,7 @@ img {
 }
 
 /* Card Revamp */
-.card {
+.card, .lux-product-card {
   grid-column: span 4;
   background: #ffffff;
   border: 1px solid var(--line);

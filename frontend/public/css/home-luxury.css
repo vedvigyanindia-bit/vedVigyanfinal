@@ -6114,6 +6114,27 @@ button[type="submit"]#placeOrderBtn:hover {
   }
 }
 
+/* ─── Desktop Product Grid Rules (Only applies above 768px) ─── */
+@media screen and (min-width: 769px) {
+  #malaCatalog, #rudrakshaCatalog, #gemstoneCatalog, #catalogGrid, .lux-products-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  #malaCatalog .lux-product-card, 
+  #rudrakshaCatalog .lux-product-card, 
+  #gemstoneCatalog .lux-product-card, 
+  #catalogGrid .lux-product-card, 
+  .lux-products-grid .lux-product-card,
+  #malaCatalog .card,
+  #rudrakshaCatalog .card,
+  #gemstoneCatalog .card {
+    grid-column: auto !important;
+    width: 100% !important;
+  }
+}
+
 /* ─── Mobile Screen Optimization Rules (Only applies below 768px) ─── */
 @media screen and (max-width: 768px) {
   .container {
@@ -6144,7 +6165,7 @@ button[type="submit"]#placeOrderBtn:hover {
   #malaCatalog .card,
   #rudrakshaCatalog .card,
   #gemstoneCatalog .card {
-    grid-column: span 1 !important;
+    grid-column: auto !important;
     margin: 0 !important;
     border-radius: 12px !important;
     box-shadow: 0 3px 12px rgba(0,0,0,0.05) !important;
