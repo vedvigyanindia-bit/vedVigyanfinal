@@ -450,22 +450,15 @@ async function handleGetGallery(req, res) {
     // Identify certificates
     function isCertificate(name) {
       const fn = name.toLowerCase();
-      const fnFolder = (folderName || "").toLowerCase();
-      if (fnFolder.includes("kanya") || fnFolder.includes("silver cap karungali") || fnFolder.includes("spatik")) {
-        return fn.includes("cert") || fn.includes("lab") || fn.includes("report") || fn.includes("authent") || fn.includes("quality") || fn.includes("verify");
-      }
-      return fn === "3.webp" || fn.includes("cert") || fn.includes("lab") || fn.includes("report") || fn.includes("authent") || fn.includes("quality") || fn.includes("verify");
+      return fn.includes("cert") || fn.includes("lab-certificate") || fn.includes("report") || fn.includes("authenticity") || fn.includes("asli-brand-comparison");
     }
 
     const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
     const certFileFound = resolvedFiles.find((rf) => isCertificate(rf.name));
     const certificate = certFileFound ? certFileFound.url : defaultCert;
 
-    const certFiles = imageFiles.filter((rf) => isCertificate(rf.name));
-    const productFiles = imageFiles.filter((rf) => !isCertificate(rf.name));
-
-    // Sort product files numerically (e.g. 1.png, 2.jpg, 3.webp)
-    productFiles.sort((a, b) => {
+    // Sort product files numerically (e.g. 1.png, 2.jpg, 3.webp, 4.webp, etc.)
+    imageFiles.sort((a, b) => {
       const aNum = parseInt(a.name, 10);
       const bNum = parseInt(b.name, 10);
       if (!isNaN(aNum) && !isNaN(bNum)) {
@@ -476,16 +469,7 @@ async function handleGetGallery(req, res) {
       return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
     });
 
-    // Build the images array (only include certificate in carousel if a certificate file exists in this product folder)
-    let images = [];
-    if (certFiles.length > 0) {
-      const selectedProducts = productFiles.slice(0, 3);
-      const certFile = certFiles[0];
-      images = [...selectedProducts, certFile].map((f) => f.url);
-    } else {
-      const selectedProducts = productFiles.slice(0, 4);
-      images = selectedProducts.map((f) => f.url);
-    }
+    let images = imageFiles.map((f) => f.url);
 
     sendJson(res, 200, { slug, folderName, images, certificate });
   } catch (error) {

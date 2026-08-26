@@ -357,7 +357,7 @@ function renderProductPage() {
           const isSame = currentImages.length === data.images.length &&
             currentImages.every((val, index) => val === data.images[index]);
 
-          if (!isSame) {
+          if (!isSame && data.images.length >= currentImages.length) {
             product.images = data.images;
             product.image = data.images[0];
 
