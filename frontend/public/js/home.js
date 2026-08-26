@@ -56,9 +56,11 @@
   ];
 
   const REVIEWS = [
-    { name: "Priya Sharma", location: "Mumbai", avatar: "https://i.pravatar.cc/96?img=1", rating: 5, text: "The 5 Mukhi Rudraksha I received is absolutely authentic. Lab certificate included and the energization guide was very helpful. Highly recommend Ved Vigyan!", verified: true },
-    { name: "Rajesh Kumar", location: "Delhi", avatar: "https://i.pravatar.cc/96?img=3", rating: 5, text: "Ordered a Tulsi Mala for daily jaap. Beautiful craftsmanship, fast delivery, and the WhatsApp consultation helped me choose the right mukhi for my needs.", verified: true },
-    { name: "Ananya Patel", location: "Bangalore", avatar: "https://i.pravatar.cc/96?img=5", rating: 5, text: "Third purchase from Ved Vigyan. Their zodiac bracelet collection is stunning. Genuine crystals, elegant packaging — feels like a luxury brand.", verified: true }
+    { name: "Arjun Mehta", location: "10 Mukhi Rudraksha", avatar: "/public/images/reviews/arjun-mehta.jpg", rating: 5, text: "Maine 10 Mukhi Rudraksha order kiya tha. Product quality achhi hai aur packaging bhi secure thi. Overall purchase experience bahut achha raha.", verified: true },
+    { name: "Rohan Kapoor", location: "Karungali Mala", avatar: "/public/images/reviews/rohan-kapoor.jpg", rating: 5, text: "Maine Karungli Mala purchase ki aur quality dekhkar kaafi satisfied hoon. Mala achhi finish ke saath mili. Overall, good experience.", verified: true },
+    { name: "Vikram Joshi", location: "Rudraksha Jaap Mala", avatar: "/public/images/reviews/vikram-joshi.jpg", rating: 5, text: "Maine Rudraksha Jaap Mala order ki thi. Product achhe se packed tha aur quality bhi kaafi achhi lagi. Happy with my purchase.", verified: true },
+    { name: "Sanjay Rawat", location: "2 Mukhi Rudraksha", avatar: "/public/images/reviews/sanjay-rawat.jpg", rating: 5, text: "Maine 2 Mukhi Rudraksha order kiya tha aur product exactly expected jaisa mila. Packaging aur overall quality dono achhe the.", verified: true },
+    { name: "Mohan Sharma", location: "4 Rashi Bracelets", avatar: "/public/images/reviews/mohan-sharma.jpg", rating: 5, text: "Maine apni poori family ke liye 4 Rashi bracelets order kiye — 2 Dhanu Rashi bracelets mere aur meri daughter ke liye, aur Meen aur Singh Rashi bracelets meri wife aur son ke liye. Sabhi bracelets ki quality aur finishing bahut achhi lagi. Overall, very happy with the purchase!", verified: true }
   ];
 
   const BLOG_POSTS = [
