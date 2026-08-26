@@ -968,8 +968,13 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/1.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/2.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp",
-      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/4.webp"
+      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/4.webp",
+      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/5.webp",
+      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/6.webp",
+      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/7.webp",
+      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/asli-brand-comparison.jpg"
     ],
+    "url": "/rudraksha-mala/5-mukhi-mala-108.html",
     "short": "Original 5 Mukhi Nepali Rudraksha 108 bead mala for jaap and daily wearing.",
     "description": "The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.",
     "bullets": [

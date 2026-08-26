@@ -209,7 +209,7 @@ window.VedVigyanCarousel = {
   isCertificateImage(url) {
     if (!url) return false;
     const u = String(url).toLowerCase();
-    return /cert|lab|report|authent|quality|verify|siddhi|test|3\.webp|3\.jpg|3\.png|3\.jpeg|4\.webp|4\.jpg|4\.png|4\.jpeg/.test(u);
+    return /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(u);
   },
 
   isGeneratedPlaceholderImage(url) {
@@ -224,17 +224,6 @@ window.VedVigyanCarousel = {
       list = [...product.images.filter(Boolean)];
     } else if (product && product.image) {
       list = [product.image];
-    }
-
-    const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
-    const certIndex = list.findIndex((img) => this.isCertificateImage(img) && (product?.id === "vv_p09" || !img.includes(defaultCert)));
-
-    if (certIndex !== -1) {
-      const foundCert = list[certIndex];
-      const productPhotos = list.filter((img) => !this.isCertificateImage(img)).slice(0, 3);
-      list = [...productPhotos, foundCert];
-    } else {
-      list = list.filter((img) => product?.id === "vv_p09" || !img.includes(defaultCert)).slice(0, 4);
     }
 
     return [...new Set(list)];
