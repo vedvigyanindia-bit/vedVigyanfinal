@@ -194,6 +194,10 @@ function renderDiscoveryRail(product, products) {
 function renderProductPage() {
   const data = window.VED_VIGYAN_DATA;
   const products = data?.products || [];
+  if (!products.length) {
+    setTimeout(renderProductPage, 50);
+    return;
+  }
   const params = new URLSearchParams(window.location.search);
   const idParam = params.get("id");
   let slug = getSlugFromPath();
@@ -587,5 +591,9 @@ function injectProductSchema(product) {
   document.head.appendChild(script);
 }
 
-document.addEventListener("DOMContentLoaded", renderProductPage);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderProductPage);
+} else {
+  renderProductPage();
+}
 
