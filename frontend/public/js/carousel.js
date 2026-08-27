@@ -209,7 +209,7 @@ window.VedVigyanCarousel = {
   isCertificateImage(url) {
     if (!url) return false;
     const u = String(url).toLowerCase();
-    return /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(u);
+    return /cert|lab-certificate|report|authenticity|asli-brand-comparison|\/4\.webp/.test(u);
   },
 
   isGeneratedPlaceholderImage(url) {
