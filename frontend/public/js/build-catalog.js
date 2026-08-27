@@ -232,6 +232,11 @@ folders.forEach((folderName, idx) => {
   const selectedPhotos = imageFiles.slice(0, 4);
   let images = selectedPhotos.map(f => f.url);
 
+  // Certificate image determination
+  const certFile = imageFiles.find(rf => rf.name.toLowerCase() === "4.webp") ||
+                   imageFiles.find(rf => /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(rf.name.toLowerCase()));
+  const certificate = certFile ? certFile.url : (images.length >= 4 ? images[3] : images[images.length - 1]);
+
   const productSlug = slugify(folderName);
   const productId = `vv_p${String(idx + 1).padStart(2, '0')}`;
 
@@ -260,6 +265,7 @@ folders.forEach((folderName, idx) => {
     image: images[0],
     imageAlt: `${meta.name} - Authentic Ved Vigyan Original Product`,
     images,
+    certificate,
     short: meta.short,
     description: meta.description || `${meta.name} is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.`,
     bullets: meta.bullets || [

@@ -85,13 +85,9 @@ module.exports = async function handler(req, res) {
     });
 
     // Identify certificates
-    function isCertificate(name) {
-      const fn = name.toLowerCase();
-      return fn.includes("cert") || fn.includes("lab-certificate") || fn.includes("report") || fn.includes("authenticity") || fn.includes("asli-brand-comparison") || fn.includes("4.webp");
-    }
-
+    const certFileFound = resolvedFiles.find((rf) => rf.name.toLowerCase() === "4.webp") ||
+                          resolvedFiles.find((rf) => /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(rf.name.toLowerCase()));
     const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
-    const certFileFound = resolvedFiles.find((rf) => isCertificate(rf.name));
     const certificate = certFileFound ? certFileFound.url : defaultCert;
 
     // Sort product files numerically (e.g. 1.png, 2.jpg, 3.webp, 4.webp, etc.)

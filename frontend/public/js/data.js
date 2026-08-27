@@ -54,6 +54,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/10 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/10 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/10 Mukhi Rudraksh/3.webp",
     "short": "Authentic 10 Mukhi Rudraksha for divine protection from negative energies & peace.",
     "description": "10 Mukhi Rudraksha (Dasha Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -83,6 +84,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/11 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/11 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/11 Mukhi Rudraksh/3.webp",
     "short": "Authentic 11 Mukhi Rudraksha for courage, devotion, and Lord Hanuman's grace.",
     "description": "11 Mukhi Rudraksha (Ekadasha Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -112,6 +114,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/12 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/12 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/12 Mukhi Rudraksh/3.webp",
     "short": "Authentic 12 Mukhi Rudraksha (Surya Rudraksha) for leadership, radiant aura, and vitality.",
     "description": "12 Mukhi Rudraksha (Dwadasha Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -141,6 +144,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/2 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/2 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/2 Mukhi Rudraksh/3.webp",
     "short": "Authentic 2 Mukhi Rudraksha for unity, harmony, and peace of mind.",
     "description": "2 Mukhi Rudraksha (Dwi Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -171,6 +175,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/3 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/3 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/3 Mukhi Rudraksh/3.webp",
     "short": "Authentic 3 Mukhi Rudraksha for self-confidence, energy, and vitality.",
     "description": "3 Mukhi Rudraksha (Tri Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -201,6 +206,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/4 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/4 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/4 Mukhi Rudraksh/3.webp",
     "short": "Authentic 4 Mukhi Rudraksha for wisdom, communication, and intellect.",
     "description": "4 Mukhi Rudraksha (Chatur Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -229,6 +235,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp",
       "/product/Ved vigyan products/Gauri Sankar Rudraksh/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Gauri Sankar Rudraksh/2.webp",
     "short": "Rare conjoined Gauri Shankar Rudraksha for strong relationships & family harmony.",
     "description": "Original Gauri Shankar Rudraksha is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -258,6 +265,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/5 Mukhi Nepali/2.webp",
       "/product/Ved vigyan products/5 Mukhi Nepali/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/5 Mukhi Nepali/3.webp",
     "short": "Premium 5 Mukhi Nepali Rudraksha bead for health, focus, and daily protection.",
     "description": "5 Mukhi Nepali Rudraksha is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -287,6 +295,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/5 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp",
     "short": "Everyday authentic Panchmukhi Rudraksha for calmness, balance & focus.",
     "description": "5 Mukhi Rudraksha (Panchmukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -316,6 +325,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/6 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/6 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/6 Mukhi Rudraksh/3.webp",
     "short": "Authentic 6 Mukhi Rudraksha for willpower, courage, and emotional balance.",
     "description": "6 Mukhi Rudraksha (Shad Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -345,6 +355,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/7 Chakra Braclet/2.webp",
       "/product/Ved vigyan products/7 Chakra Braclet/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/7 Chakra Braclet/3.webp",
     "short": "Natural 7 Chakra gemstone bracelet for energy alignment and inner peace.",
     "description": "7 Chakra Healing Crystal Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -373,6 +384,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/7 Chakra Tree/1.webp",
       "/product/Ved vigyan products/7 Chakra Tree/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/7 Chakra Tree/2.webp",
     "short": "Handcrafted 7 Chakra crystal tree for positive home energy & Vastu harmony.",
     "description": "7 Chakra Crystal Gemstone Tree is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -403,6 +415,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp",
       "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp"
     ],
+    "certificate": "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp",
     "short": "Authentic 7 Mukhi Rudraksha for abundance, career growth, and stability.",
     "description": "7 Mukhi Rudraksha (Sapta Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -432,6 +445,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/8 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/8 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/8 Mukhi Rudraksh/3.webp",
     "short": "Authentic 8 Mukhi Rudraksha to remove obstacles and invoke Lord Ganesha blessings.",
     "description": "8 Mukhi Rudraksh (Ashta Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -461,6 +475,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/9 Mukhi Rudraksh/2.webp",
       "/product/Ved vigyan products/9 Mukhi Rudraksh/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/9 Mukhi Rudraksh/3.webp",
     "short": "Authentic 9 Mukhi Rudraksha for spiritual power, fearlessness, and Goddess Durga protection.",
     "description": "9 Mukhi Rudraksh (Nava Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -491,6 +506,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Amethyst Bracelet/3.webp",
       "/product/Ved vigyan products/Amethyst Bracelet/Amethyst Bracelet (2).webp"
     ],
+    "certificate": "/product/Ved vigyan products/Amethyst Bracelet/Amethyst Bracelet (2).webp",
     "short": "Natural Amethyst crystal bracelet for stress relief, deep calm, and intuition.",
     "description": "Natural Amethyst Healing Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -520,6 +536,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Dhanu (धनु – Sagittarius) Braclet/2.webp",
       "/product/Ved vigyan products/Dhanu (धनु – Sagittarius) Braclet/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Dhanu (धनु – Sagittarius) Braclet/3.webp",
     "short": "Tailored Rashi gemstone bracelet for Dhanu (Sagittarius) zodiac luck & focus.",
     "description": "Dhanu (धनु – Sagittarius) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -553,6 +570,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Evil Eye Pendant/3.jpg",
       "/product/Ved vigyan products/Evil Eye Pendant/4.jpg"
     ],
+    "certificate": "/product/Ved vigyan products/Evil Eye Pendant/4.jpg",
     "short": "Carry a timeless symbol of positivity and mindful living with the Evil Eye Protection Pendant from Ved Vigyan.",
     "description": "Carry a timeless symbol of positivity and mindful living with the Evil Eye Protection Pendant from Ved Vigyan. Inspired by traditions found across many cultures, the Evil Eye symbol is widely believed to help ward off negative intentions and encourage positive energy. Crafted with premium materials and carefully selected for quality, this pendant is suitable for everyday wear and complements both casual and traditional outfits.",
     "bullets": [
@@ -610,6 +628,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Ganesh Rudraksh/1.webp",
       "/product/Ved vigyan products/Ganesh Rudraksh/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Ganesh Rudraksh/2.webp",
     "short": "Authentic Ganesh Rudraksha bead with natural trunk formation for success & wisdom.",
     "description": "Original Ganesh Rudraksha is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -639,6 +658,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/4. Money Magnet/2.webp",
       "/product/Ved vigyan products/4. Money Magnet/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/4. Money Magnet/3.webp",
     "short": "Attract wealth, prosperity, and financial growth with natural pyrite & citrine.",
     "description": "Money Magnet Bracelet (Pyrite & Citrine) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -667,6 +687,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Gold Rudraksh Bracelet/1.webp",
       "/product/Ved vigyan products/Gold Rudraksh Bracelet/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Gold Rudraksh Bracelet/2.webp",
     "short": "Premium Rudraksha bracelet with elegant gold-tone capping for spiritual luxury.",
     "description": "Gold Capped Rudraksha Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -696,6 +717,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Kanya (कन्या – Virgo) Braclet/2.webp",
       "/product/Ved vigyan products/Kanya (कन्या – Virgo) Braclet/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Kanya (कन्या – Virgo) Braclet/3.webp",
     "short": "Tailored Rashi gemstone bracelet for Kanya (Virgo) zodiac prosperity & clarity.",
     "description": "Kanya (कन्या – Virgo) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -727,6 +749,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Karka (कर्क – Cancer) Braclet/1.webp",
       "/product/Ved vigyan products/Karka (कर्क – Cancer) Braclet/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Karka (कर्क – Cancer) Braclet/2.webp",
     "short": "Tailored Rashi gemstone bracelet for Karka (Cancer) zodiac emotional balance & peace.",
     "description": "Karka (कर्क – Cancer) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -758,6 +781,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Karungali mala/1.webp",
       "/product/Ved vigyan products/Karungali mala/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Karungali mala/2.webp",
     "short": "Authentic Karungali (Ebony wood) 108 bead mala for positive energy & protection.",
     "description": "Natural Karungali Ebony Wood Mala (108 Beads) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -786,6 +810,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Karungali Rudraksh Silver Cap Mala/1.webp",
       "/product/Ved vigyan products/Karungali Rudraksh Silver Cap Mala/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Karungali Rudraksh Silver Cap Mala/2.webp",
     "short": "Combination Karungali wood and Rudraksha mala with pure silver cap finish.",
     "description": "Karungali Rudraksha Silver Cap Mala is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -815,6 +840,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Kumbh (कुंभ – Aquarius) Braclet/2.webp",
       "/product/Ved vigyan products/Kumbh (कुंभ – Aquarius) Braclet/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Kumbh (कुंभ – Aquarius) Braclet/3.webp",
     "short": "Tailored Rashi gemstone bracelet for Kumbh (Aquarius) zodiac focus & success.",
     "description": "Kumbh (कुंभ – Aquarius) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -848,6 +874,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Makar (मकर – Capricorn) Braclet/3.webp",
       "/product/Ved vigyan products/Makar (मकर – Capricorn) Braclet/makar rasi.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Makar (मकर – Capricorn) Braclet/makar rasi.webp",
     "short": "Tailored Rashi gemstone bracelet for Makar (Capricorn) zodiac stability & ambition.",
     "description": "Makar (मकर – Capricorn) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -880,6 +907,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Meen (मीन – Pisces) Braclet/2.webp",
       "/product/Ved vigyan products/Meen (मीन – Pisces) Braclet/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Meen (मीन – Pisces) Braclet/3.webp",
     "short": "Tailored Rashi gemstone bracelet for Meen (Pisces) zodiac intuition & spiritual calm.",
     "description": "Meen (मीन – Pisces) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -911,6 +939,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp",
       "/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/2.webp",
     "short": "Tailored Rashi gemstone bracelet for Mesh (Aries) zodiac confidence & energy.",
     "description": "Mesh (मेष – Aries) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -943,6 +972,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Mithun (मिथुन – Gemini) Braclet/2.webp",
       "/product/Ved vigyan products/Mithun (मिथुन – Gemini) Braclet/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Mithun (मिथुन – Gemini) Braclet/3.webp",
     "short": "Tailored Rashi gemstone bracelet for Mithun (Gemini) zodiac intelligence & growth.",
     "description": "Mithun (मिथुन – Gemini) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -976,6 +1006,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/4.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/4.webp",
     "short": "Original 5 Mukhi Nepali Rudraksha 108 bead mala for jaap and daily wearing.",
     "description": "The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.",
     "bullets": [
@@ -1051,6 +1082,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Piride Braclet/2.webp",
       "/product/Ved vigyan products/Piride Braclet/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Piride Braclet/3.webp",
     "short": "Natural Pyrite (Fool's Gold) crystal bracelet for money magnet & career luck.",
     "description": "Natural Pyrite Wealth Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1080,6 +1112,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Rose Quartz Close/2.webp",
       "/product/Ved vigyan products/Rose Quartz Close/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Rose Quartz Close/3.webp",
     "short": "Natural Rose Quartz crystal bracelet for love, emotional healing & self-care.",
     "description": "Natural Rose Quartz Crystal Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1108,6 +1141,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Rose Quartz Tree/1.webp",
       "/product/Ved vigyan products/Rose Quartz Tree/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Rose Quartz Tree/2.webp",
     "short": "Handcrafted Rose Quartz crystal tree for harmony, warmth & positive Vastu vibes.",
     "description": "Rose Quartz Healing Gemstone Tree is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1137,6 +1171,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Rudraksh Jap Mala/2.webp",
       "/product/Ved vigyan products/Rudraksh Jap Mala/asli-brand-comparison.jpg"
     ],
+    "certificate": "/product/Ved vigyan products/Rudraksh Jap Mala/asli-brand-comparison.jpg",
     "short": "Traditional 108 bead Rudraksha jaap mala for daily chanting, meditation & sadhana.",
     "description": "The Original Rudraksha Jaap Mala (108 Beads) is handcrafted from authentic Rudraksha beads selected for purity, texture, and spiritual energy. Ideal for daily mantra chanting, meditation, and spiritual sadhana.",
     "bullets": [
@@ -1180,6 +1215,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Silver Cap Karungali Mala/2.webp",
       "/product/Ved vigyan products/Silver Cap Karungali Mala/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Silver Cap Karungali Mala/3.webp",
     "short": "Authentic Karungali Ebony Wood Mala with pure silver caps for spiritual protection, inner peace & positive energy.",
     "description": "Silver Cap Original Karungali Mala is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1208,6 +1244,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Singh (सिंह – Leo) Braclet/1.webp",
       "/product/Ved vigyan products/Singh (सिंह – Leo) Braclet/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Singh (सिंह – Leo) Braclet/2.webp",
     "short": "Tailored Rashi gemstone bracelet for Singh (Leo) zodiac leadership & magnetic aura.",
     "description": "Singh (सिंह – Leo) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1240,6 +1277,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Spatik Mala/2.webp",
       "/product/Ved vigyan products/Spatik Mala/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Spatik Mala/3.webp",
     "short": "Original Sphatik crystal 108 bead mala for cooling energy, mental clarity & jaap.",
     "description": "Natural Sphatik (Quartz Crystal) Mala is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1268,6 +1306,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Tiger Eye Loose Big/1.webp",
       "/product/Ved vigyan products/Tiger Eye Loose Big/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Tiger Eye Loose Big/2.webp",
     "short": "Natural Tiger Eye gemstone bracelet for courage, grounding & shielding negative energy.",
     "description": "Natural Tiger Eye Protection Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1296,6 +1335,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Tula (तुला – Libra) Braclet/1.webp",
       "/product/Ved vigyan products/Tula (तुला – Libra) Braclet/2.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Tula (तुला – Libra) Braclet/2.webp",
     "short": "Tailored Rashi gemstone bracelet for Tula (Libra) zodiac harmony & career success.",
     "description": "Tula (तुला – Libra) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1328,6 +1368,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Tulsi Jap Mala/2.webp",
       "/product/Ved vigyan products/Tulsi Jap Mala/3.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Tulsi Jap Mala/3.webp",
     "short": "Pure sacred Tulsi wood jaap mala for Vishnu bhakti, peace & daily chanting.",
     "description": "Original Tulsi Jaap Mala is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1358,6 +1399,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Tulsi Mala/3.webp",
       "/product/Ved vigyan products/Tulsi Mala/tulsi jap mala.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Tulsi Mala/tulsi jap mala.webp",
     "short": "Natural sacred Tulsi wood 108 bead mala for spiritual purity and protection.",
     "description": "Natural Tulsi Bead Mala (108 Beads) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [
@@ -1388,6 +1430,7 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Vrishabh (वृषभ – Taurus) Braclet/3.webp",
       "/product/Ved vigyan products/Vrishabh (वृषभ – Taurus) Braclet/vrisab rashi braclet.webp"
     ],
+    "certificate": "/product/Ved vigyan products/Vrishabh (वृषभ – Taurus) Braclet/vrisab rashi braclet.webp",
     "short": "Tailored Rashi gemstone bracelet for Vrishabh (Taurus) zodiac stability & luxury.",
     "description": "Vrishabh (वृषभ – Taurus) Rashi Bracelet is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
     "bullets": [

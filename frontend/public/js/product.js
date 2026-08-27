@@ -332,10 +332,10 @@ function renderProductPage() {
     }
   }
 
-  const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
   const certImg = document.getElementById("productCertImg") || document.querySelector(".vv-cert-preview-box img");
   if (certImg) {
-    certImg.src = product.certificate || defaultCert;
+    const certSrc = product.certificate || (product.images && product.images.length >= 4 ? product.images[3] : "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp");
+    certImg.src = certSrc;
     certImg.alt = `${product.name} Authenticity Certificate`;
   }
 
