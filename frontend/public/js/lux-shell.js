@@ -695,13 +695,15 @@ window.VedVigyanLux = window.VedVigyanLux || {};
   // Helper to load script if missing
   function loadScript(src) {
     return new Promise((resolve) => {
-      const existing = document.querySelector(`script[src="${src}"]`);
+      const cleanSrc = src.split("?")[0];
+      const existing = Array.from(document.querySelectorAll("script")).find((s) => s.src && s.src.includes(cleanSrc));
       if (existing) {
-        if (window.VED_VIGYAN_DATA && src.includes("data.js")) { resolve(true); return; }
-        if (window.VedVigyanCart && src.includes("cart.js")) { resolve(true); return; }
-        if (window.VedVigyanWishlist && src.includes("wishlist.js")) { resolve(true); return; }
+        if (window.VED_VIGYAN_DATA && cleanSrc.includes("data.js")) { resolve(true); return; }
+        if (window.VedVigyanCart && cleanSrc.includes("cart.js")) { resolve(true); return; }
+        if (window.VedVigyanWishlist && cleanSrc.includes("wishlist.js")) { resolve(true); return; }
         existing.addEventListener("load", () => resolve(true));
         existing.addEventListener("error", () => resolve(false));
+        setTimeout(() => resolve(true), 100);
         return;
       }
       const script = document.createElement("script");
@@ -714,27 +716,30 @@ window.VedVigyanLux = window.VedVigyanLux || {};
   }
 
   async function ensureGlobalScripts() {
-    const promises = [];
-    if (!window.VED_VIGYAN_DATA) promises.push(loadScript("/public/js/data.js"));
-    if (!window.VedVigyanCart) promises.push(loadScript("/public/js/cart.js"));
-    if (!window.VedVigyanWishlist) promises.push(loadScript("/public/js/wishlist.js"));
+    try {
+      const promises = [];
+      if (!window.VED_VIGYAN_DATA) promises.push(loadScript("/public/js/data.js"));
+      if (!window.VedVigyanCart) promises.push(loadScript("/public/js/cart.js"));
+      if (!window.VedVigyanWishlist) promises.push(loadScript("/public/js/wishlist.js"));
 
-    if (promises.length > 0) {
-      await Promise.all(promises);
-    }
-    if (window.VedVigyanCart && typeof window.VedVigyanCart.renderCartBadge === "function") {
-      window.VedVigyanCart.renderCartBadge();
-    }
-    if (window.VedVigyanWishlist && typeof window.VedVigyanWishlist.renderWishlistBadge === "function") {
-      window.VedVigyanWishlist.renderWishlistBadge();
+      if (promises.length > 0) {
+        await Promise.all(promises);
+      }
+      if (window.VedVigyanCart && typeof window.VedVigyanCart.renderCartBadge === "function") {
+        window.VedVigyanCart.renderCartBadge();
+      }
+      if (window.VedVigyanWishlist && typeof window.VedVigyanWishlist.renderWishlistBadge === "function") {
+        window.VedVigyanWishlist.renderWishlistBadge();
+      }
+    } catch (e) {
+      console.warn("Global script check notice:", e);
     }
   }
 
   function bootLuxShell() {
-    ensureGlobalScripts();
-
     if (document.querySelector(".topbar") || document.querySelector("header.nav:not(.lux-nav)")) {
       Lux.upgradeLegacyPage();
+      ensureGlobalScripts();
       return;
     }
 
@@ -754,6 +759,8 @@ window.VedVigyanLux = window.VedVigyanLux || {};
         Lux.initScrollReveal();
       }
     }
+
+    ensureGlobalScripts();
   }
 
 if (document.readyState === "loading") {
