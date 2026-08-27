@@ -552,18 +552,36 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     });
 
     const videoCards = document.querySelectorAll("[data-vv-video]");
-    const modalBackdrop = document.getElementById("vvVideoModalBackdrop");
-    const modalPlayer = document.getElementById("vvVideoPlayerContainer");
-    const modalClose = document.getElementById("vvVideoModalClose");
+    videoCards.forEach((card) => {
+      if (card.__vv_video_bound) return;
+      card.__vv_video_bound = true;
 
-    if (modalBackdrop && modalPlayer) {
-      videoCards.forEach((card) => {
-        if (card.__vv_video_bound) return;
-        card.__vv_video_bound = true;
+      card.addEventListener("click", (e) => {
+        if (e.target.closest("button") || e.target.closest("a")) return;
+        let src = card.getAttribute("data-vv-video") || "https://youtu.be/o9dREd5ZPhw?si=X2tbKalptHS0wmhD";
+        if (!src) return;
 
-        card.addEventListener("click", (e) => {
-          if (e.target.closest("button") || e.target.closest("a")) return;
-          let src = card.getAttribute("data-vv-video") || "https://youtu.be/o9dREd5ZPhw?si=X2tbKalptHS0wmhD";
+        // If video is already playing inline, let HTML5 video controls handle it
+        if (card.classList.contains("is-playing") && card.querySelector(".vv-inline-player")) {
+          return;
+        }
+
+        // Pause and stop all other inline reel videos on the page
+        document.querySelectorAll(".vv-reel-video-wrap.is-playing").forEach((otherCard) => {
+          if (otherCard !== card) {
+            otherCard.classList.remove("is-playing");
+            const oldPlayer = otherCard.querySelector(".vv-inline-player");
+            if (oldPlayer) oldPlayer.remove();
+          }
+        });
+
+        card.classList.add("is-playing");
+
+        // Create inline player container inside the reel video wrap frame
+        let inlinePlayer = card.querySelector(".vv-inline-player");
+        if (!inlinePlayer) {
+          inlinePlayer = document.createElement("div");
+          inlinePlayer.className = "vv-inline-player";
 
           if (src.includes("youtube.com") || src.includes("youtu.be")) {
             let embedSrc = src;
@@ -576,14 +594,14 @@ window.VedVigyanLux = window.VedVigyanLux || {};
               const videoId = new URLSearchParams(src.split("?")[1]).get("v");
               embedSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
             }
-            modalPlayer.innerHTML = `<iframe width="100%" height="100%" src="${embedSrc}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+            inlinePlayer.innerHTML = `<iframe src="${embedSrc}" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen style="width:100%; height:100%; object-fit:cover; border:none;"></iframe>`;
           } else {
-            modalPlayer.innerHTML = `<video width="100%" height="100%" controls autoplay style="object-fit:cover"><source src="${src}" type="video/mp4">Your browser does not support HTML5 video.</video>`;
+            inlinePlayer.innerHTML = `<video src="${src}" autoplay controls playsinline style="width:100%; height:100%; object-fit:cover; display:block;"></video>`;
           }
-          modalBackdrop.classList.add("active");
-          modalBackdrop.setAttribute("aria-hidden", "false");
-        });
+          card.appendChild(inlinePlayer);
+        }
       });
+    });
 
       const closeVideoModal = () => {
         modalBackdrop.classList.remove("active");

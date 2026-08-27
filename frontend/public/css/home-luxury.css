@@ -5910,6 +5910,26 @@ button[type="submit"]#placeOrderBtn:hover {
   cursor: pointer;
 }
 
+.vv-reel-video-wrap.is-playing .vv-reel-play-overlay {
+  display: none !important;
+}
+
+.vv-reel-video-wrap .vv-inline-player {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: #000;
+}
+
+.vv-reel-video-wrap .vv-inline-player video,
+.vv-reel-video-wrap .vv-inline-player iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  display: block;
+}
+
 .vv-reel-video-wrap img {
   width: 100%;
   height: 100%;
