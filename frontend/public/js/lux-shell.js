@@ -749,15 +749,14 @@ window.VedVigyanLux = window.VedVigyanLux || {};
       Lux.injectShell();
       Lux.initShell({ transparentOnTop: false });
     } else {
-      if (document.body.dataset.page !== "home-luxury") {
-        document.body.classList.add("lux-home");
-        Lux.initAnnouncement();
-        Lux.initNav({ transparentOnTop: false });
-        Lux.initBackToTop();
-        Lux.initRipple();
-        Lux.initNewsletter();
-        Lux.initScrollReveal();
-      }
+      document.body.classList.add("lux-home");
+      Lux.initAnnouncement();
+      Lux.initNav({ transparentOnTop: false });
+      Lux.initBackToTop();
+      Lux.initRipple();
+      Lux.initNewsletter();
+      Lux.initScrollReveal();
+      Lux.initWatchShopCarousel();
     }
 
     ensureGlobalScripts();
