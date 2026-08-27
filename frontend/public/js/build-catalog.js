@@ -44,8 +44,8 @@ function sanitizeUrlPath(fullPath) {
 
 // Precise Folder Metadata & Exact 5 Categories Mapping
 const FOLDER_METADATA = {
-  "2 Mukhi Rudraksh": { name: "2 Mukhi Rudraksha (Dwi Mukhi)", category: "rudraksha", price: 999, short: "Authentic 2 Mukhi Rudraksha for unity, harmony, and peace of mind." },
-  "3 Mukhi Rudraksh": { name: "3 Mukhi Rudraksha (Tri Mukhi)", category: "rudraksha", price: 999, short: "Authentic 3 Mukhi Rudraksha for self-confidence, energy, and vitality." },
+  "2 Mukhi Rudraksh": { name: "2 Mukhi Rudraksha (Dwi Mukhi)", category: "rudraksha", price: 1999, originalPrice: 2500, short: "Authentic 2 Mukhi Rudraksha for unity, harmony, and peace of mind." },
+  "3 Mukhi Rudraksh": { name: "3 Mukhi Rudraksha (Tri Mukhi)", category: "rudraksha", price: 1999, originalPrice: 2500, short: "Authentic 3 Mukhi Rudraksha for self-confidence, energy, and vitality." },
   "4 Mukhi Rudraksh": { name: "4 Mukhi Rudraksha (Chatur Mukhi)", category: "rudraksha", price: 999, short: "Authentic 4 Mukhi Rudraksha for wisdom, communication, and intellect." },
   "5 Mukhi Nepali": { name: "5 Mukhi Nepali Rudraksha", category: "rudraksha", price: 599, short: "Premium 5 Mukhi Nepali Rudraksha bead for health, focus, and daily protection." },
   "5 Mukhi Rudraksh": { name: "5 Mukhi Rudraksha (Panchmukhi)", category: "rudraksha", price: 699, short: "Everyday authentic Panchmukhi Rudraksha for calmness, balance & focus." },
@@ -274,6 +274,7 @@ folders.forEach((folderName, idx) => {
     seoTitle: `${meta.name} - Buy Original Online | Ved Vigyan`,
     seoDescription: `Shop original ${meta.name} online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.`,
     url: `/product/detail.html?id=${productId}`,
+    ...(meta.originalPrice ? { originalPrice: meta.originalPrice } : {}),
     ...(zodiacSigns.length > 0 ? { zodiacSigns } : {})
   });
 });
@@ -299,12 +300,15 @@ console.log(`Successfully processed all ${productsList.length} products into 5 c
 const dataJsContent = `// Auto-generated 43-product Ved Vigyan Catalog Data with 5 Dedicated Categories
 function deriveMerchandising(products) {
   return products.map((product, index) => {
-    const discountPercent = 18 + ((index * 7) % 23);
+    const customOriginal = product.originalPrice;
+    const discountPercent = customOriginal && product.price
+      ? Math.round(((customOriginal - product.price) / customOriginal) * 100)
+      : (18 + ((index * 7) % 23));
     const ratingValue = 4.2 + (((index * 13) % 8) / 10);
     const rating = Math.min(5.0, Number(ratingValue.toFixed(1)));
-    const originalPrice = product.price > 0
+    const originalPrice = customOriginal || (product.price > 0
       ? Math.round(product.price / (1 - discountPercent / 100))
-      : 0;
+      : 0);
 
     return {
       ...product,

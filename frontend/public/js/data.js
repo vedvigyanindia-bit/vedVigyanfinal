@@ -1,12 +1,15 @@
 // Auto-generated 43-product Ved Vigyan Catalog Data with 5 Dedicated Categories
 function deriveMerchandising(products) {
   return products.map((product, index) => {
-    const discountPercent = 18 + ((index * 7) % 23);
+    const customOriginal = product.originalPrice;
+    const discountPercent = customOriginal && product.price
+      ? Math.round(((customOriginal - product.price) / customOriginal) * 100)
+      : (18 + ((index * 7) % 23));
     const ratingValue = 4.2 + (((index * 13) % 8) / 10);
     const rating = Math.min(5.0, Number(ratingValue.toFixed(1)));
-    const originalPrice = product.price > 0
+    const originalPrice = customOriginal || (product.price > 0
       ? Math.round(product.price / (1 - discountPercent / 100))
-      : 0;
+      : 0);
 
     return {
       ...product,
@@ -125,7 +128,7 @@ window.VED_VIGYAN_DATA = {
     "category": "rudraksha",
     "slug": "2-mukhi-rudraksh",
     "name": "2 Mukhi Rudraksha (Dwi Mukhi)",
-    "price": 999,
+    "price": 1999,
     "tags": [
       "rudraksha",
       "authentic",
@@ -147,14 +150,15 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "2 Mukhi Rudraksha (Dwi Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 2 Mukhi Rudraksha (Dwi Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p04"
+    "url": "/product/detail.html?id=vv_p04",
+    "originalPrice": 2500
   },
   {
     "id": "vv_p05",
     "category": "rudraksha",
     "slug": "3-mukhi-rudraksh",
     "name": "3 Mukhi Rudraksha (Tri Mukhi)",
-    "price": 999,
+    "price": 1999,
     "tags": [
       "rudraksha",
       "authentic",
@@ -176,7 +180,8 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "3 Mukhi Rudraksha (Tri Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 3 Mukhi Rudraksha (Tri Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p05"
+    "url": "/product/detail.html?id=vv_p05",
+    "originalPrice": 2500
   },
   {
     "id": "vv_p06",
@@ -968,13 +973,8 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/1.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/2.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp",
-      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/4.webp",
-      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/5.webp",
-      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/6.webp",
-      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/7.webp",
-      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/asli-brand-comparison.jpg"
+      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/4.webp"
     ],
-    "url": "/rudraksha-mala/5-mukhi-mala-108.html",
     "short": "Original 5 Mukhi Nepali Rudraksha 108 bead mala for jaap and daily wearing.",
     "description": "The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.",
     "bullets": [
