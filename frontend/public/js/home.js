@@ -354,7 +354,18 @@
     ).join("");
 
     panelsEl.innerHTML = COLLECTION_TABS.map((tab, i) => {
-      const items = products.filter(tab.filter).slice(0, 8);
+      let items = products.filter(tab.filter);
+      if (tab.label === "Best Seller") {
+        const priorityIds = ["vv_p31", "vv_p13", "vv_p42"];
+        const priorityProducts = priorityIds
+          .map((id) => products.find((p) => p.id === id))
+          .filter(Boolean);
+        const otherBestSellers = items.filter((p) => !priorityIds.includes(p.id));
+        const rest = products.filter((p) => !priorityIds.includes(p.id) && !otherBestSellers.includes(p));
+        items = [...priorityProducts, ...otherBestSellers, ...rest].slice(0, 8);
+      } else {
+        items = items.slice(0, 8);
+      }
       const fallback = products.slice(0, 8);
       const list = items.length ? items : fallback;
       return `
@@ -702,25 +713,19 @@
 
     const products = window.VED_VIGYAN_DATA?.products || [];
 
-    // Explicitly exclude Money Magnet Bracelet from Featured Collection
-    const filteredProducts = products.filter(p =>
-      !p.name.toLowerCase().includes("money magnet") &&
-      !p.slug.toLowerCase().includes("money-magnet")
+    const priorityIds = ["vv_p31", "vv_p13", "vv_p42"];
+    const priorityProducts = priorityIds
+      .map((id) => products.find((p) => p.id === id))
+      .filter(Boolean);
+
+    const remaining = products.filter(
+      (p) =>
+        !priorityIds.includes(p.id) &&
+        !p.name.toLowerCase().includes("money magnet") &&
+        !p.slug.toLowerCase().includes("money-magnet")
     );
 
-    // Find Gauri Shankar product
-    const gauriShankar = products.find(p =>
-      p.name.toLowerCase().includes("gauri shankar") ||
-      p.slug.toLowerCase().includes("gauri-sankar")
-    );
-
-    let featured = [];
-    if (gauriShankar) {
-      featured = filteredProducts.filter(p => p.id !== gauriShankar.id).slice(0, 7);
-      featured.splice(6, 0, gauriShankar);
-    } else {
-      featured = filteredProducts.slice(0, 8);
-    }
+    const featured = [...priorityProducts, ...remaining].slice(0, 8);
 
     grid.innerHTML = featured.map(renderLuxuryProductCard).join("");
 
