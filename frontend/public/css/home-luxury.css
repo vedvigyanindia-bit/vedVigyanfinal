@@ -2227,6 +2227,10 @@
 }
 
 body[data-lux-page="product"] .lux-reveal,
+body[data-lux-page="shop"] .lux-reveal,
+body[data-lux-page="cart"] .lux-reveal,
+body[data-lux-page="wishlist"] .lux-reveal,
+body[data-lux-page="checkout"] .lux-reveal,
 .lux-pdp-grid,
 .lux-pdp-gallery,
 .lux-pdp-info {

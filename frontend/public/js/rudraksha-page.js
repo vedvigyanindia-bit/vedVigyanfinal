@@ -90,4 +90,8 @@ function renderRudrakshaPage() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", renderRudrakshaPage);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderRudrakshaPage);
+} else {
+  renderRudrakshaPage();
+}

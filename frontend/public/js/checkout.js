@@ -345,7 +345,7 @@ function wireCheckoutForm() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+const initCheckoutPage = () => {
   prefillCheckoutForm();
   renderCheckoutSummary();
   wireCheckoutForm();
@@ -367,5 +367,11 @@ document.addEventListener("DOMContentLoaded", () => {
   } catch (e) {
     console.warn("Meta Pixel InitiateCheckout notice:", e);
   }
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initCheckoutPage);
+} else {
+  initCheckoutPage();
+}
 

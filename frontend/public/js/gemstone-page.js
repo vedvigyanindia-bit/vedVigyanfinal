@@ -30,4 +30,8 @@ function renderGemstonePage() {
   window.addEventListener("vedvigyan:cart-updated", render);
 }
 
-document.addEventListener('DOMContentLoaded', renderGemstonePage);
+if (document.readyState === "loading") {
+  document.addEventListener('DOMContentLoaded', renderGemstonePage);
+} else {
+  renderGemstonePage();
+}

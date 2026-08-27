@@ -389,5 +389,9 @@ function renderShop() {
   window.addEventListener("vedvigyan:cart-updated", apply);
 }
 
-document.addEventListener("DOMContentLoaded", renderShop);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderShop);
+} else {
+  renderShop();
+}
 

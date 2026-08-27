@@ -210,8 +210,14 @@ function renderCartPage() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+const initCartPage = () => {
   renderCartPage();
   window.addEventListener("vedvigyan:cart-updated", renderCartPage);
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initCartPage);
+} else {
+  initCartPage();
+}
 

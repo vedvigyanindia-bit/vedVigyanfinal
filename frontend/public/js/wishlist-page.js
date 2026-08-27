@@ -36,4 +36,8 @@ function renderWishlistPage() {
   window.addEventListener("vedvigyan:wishlist-updated", render);
 }
 
-document.addEventListener("DOMContentLoaded", renderWishlistPage);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderWishlistPage);
+} else {
+  renderWishlistPage();
+}

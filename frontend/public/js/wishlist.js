@@ -79,9 +79,15 @@ window.addEventListener("vedvigyan:wishlist-updated", () => {
   renderWishlistBadge();
   updateWishButtons(document);
 });
-document.addEventListener("DOMContentLoaded", () => {
+const initWishlistGlobal = () => {
   renderWishlistBadge();
   updateWishButtons(document);
   wireWishlistButtons(document);
-});
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initWishlistGlobal);
+} else {
+  initWishlistGlobal();
+}
 

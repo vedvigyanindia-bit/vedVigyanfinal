@@ -292,5 +292,9 @@ window.VedVigyanCart = {
 };
 
 window.addEventListener("vedvigyan:cart-updated", renderCartBadge);
-document.addEventListener("DOMContentLoaded", renderCartBadge);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderCartBadge);
+} else {
+  renderCartBadge();
+}
 

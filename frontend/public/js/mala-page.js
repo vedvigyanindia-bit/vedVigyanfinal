@@ -30,4 +30,8 @@ function renderMalaPage() {
   window.addEventListener("vedvigyan:cart-updated", render);
 }
 
-document.addEventListener('DOMContentLoaded', renderMalaPage);
+if (document.readyState === "loading") {
+  document.addEventListener('DOMContentLoaded', renderMalaPage);
+} else {
+  renderMalaPage();
+}
