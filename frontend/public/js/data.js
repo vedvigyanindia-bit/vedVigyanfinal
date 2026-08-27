@@ -400,7 +400,8 @@ window.VED_VIGYAN_DATA = {
     "images": [
       "/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp",
       "/product/Ved vigyan products/7 Mukhi Rudraksh/2.webp",
-      "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp"
+      "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp",
+      "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp"
     ],
     "short": "Authentic 7 Mukhi Rudraksha for abundance, career growth, and stability.",
     "description": "7 Mukhi Rudraksha (Sapta Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
