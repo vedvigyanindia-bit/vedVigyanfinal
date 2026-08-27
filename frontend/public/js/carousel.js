@@ -277,7 +277,6 @@ window.VedVigyanCarousel = {
           </div>
           <button class="carousel-nav prev" type="button" aria-label="Previous image">‹</button>
           <button class="carousel-nav next" type="button" aria-label="Next image">›</button>
-          <div class="carousel-badge">${slideLabels[0] || ""}</div>
         </div>
         <div class="carousel-thumbnails">
           ${thumbnailsHtml}

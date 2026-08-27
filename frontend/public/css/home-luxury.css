@@ -6362,3 +6362,7 @@ button[type="submit"]#placeOrderBtn:hover {
     line-height: 1.4 !important;
   }
 }
+
+.carousel-badge {
+  display: none !important;
+}
