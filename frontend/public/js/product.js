@@ -191,11 +191,32 @@ function renderDiscoveryRail(product, products) {
   window.VedVigyanCart.wireAddToCartButtons(section);
 }
 
+let renderRetryCount = 0;
+let isFetchingFallback = false;
+
 function renderProductPage() {
   const data = window.VED_VIGYAN_DATA;
   const products = data?.products || [];
   if (!products.length) {
-    setTimeout(renderProductPage, 50);
+    renderRetryCount++;
+    if (renderRetryCount < 30) {
+      setTimeout(renderProductPage, 50);
+      return;
+    }
+    if (!isFetchingFallback) {
+      isFetchingFallback = true;
+      fetch("/public/js/data.js")
+        .then((res) => res.text())
+        .then((code) => {
+          try {
+            new Function(code)();
+            if (window.VED_VIGYAN_DATA?.products?.length) {
+              renderProductPage();
+            }
+          } catch (e) {}
+        })
+        .catch(() => {});
+    }
     return;
   }
   const params = new URLSearchParams(window.location.search);
