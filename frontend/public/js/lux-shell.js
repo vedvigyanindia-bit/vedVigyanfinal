@@ -752,5 +752,9 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     }
   }
 
+if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", bootLuxShell);
+} else {
+  bootLuxShell();
+}
 })(window.VedVigyanLux);
