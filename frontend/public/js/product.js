@@ -438,6 +438,7 @@ function renderProductPage() {
   injectProductSchema(product);
   renderDiscoveryRail(product, products);
   initSectionInteractiveHandlers(product);
+  document.querySelectorAll(".lux-reveal").forEach((el) => el.classList.add("visible"));
   window.VedVigyanLux?.initScrollReveal?.();
 }
 

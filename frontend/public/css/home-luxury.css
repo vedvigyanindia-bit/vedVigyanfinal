@@ -2226,6 +2226,14 @@
   transform: translateY(0);
 }
 
+body[data-lux-page="product"] .lux-reveal,
+.lux-pdp-grid,
+.lux-pdp-gallery,
+.lux-pdp-info {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 /* ─── Toast override ─── */
 .lux-home .toast {
   z-index: 300;
