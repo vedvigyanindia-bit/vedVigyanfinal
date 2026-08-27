@@ -85,10 +85,16 @@ module.exports = async function handler(req, res) {
     });
 
     // Identify certificates
-    const certFileFound = resolvedFiles.find((rf) => rf.name.toLowerCase() === "4.webp") ||
-                          resolvedFiles.find((rf) => /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(rf.name.toLowerCase()));
     const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
-    const certificate = certFileFound ? certFileFound.url : defaultCert;
+    let certificate = defaultCert;
+    if (folderName === "Nepali Rudrakasha Mala Close for wearing") {
+      certificate = "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp";
+    } else if (folderName === "7 Mukhi Rudraksh") {
+      certificate = "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp";
+    } else {
+      const certFileFound = resolvedFiles.find((rf) => /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(rf.name.toLowerCase()));
+      if (certFileFound) certificate = certFileFound.url;
+    }
 
     // Sort product files numerically (e.g. 1.png, 2.jpg, 3.webp, 4.webp, etc.)
     imageFiles.sort((a, b) => {

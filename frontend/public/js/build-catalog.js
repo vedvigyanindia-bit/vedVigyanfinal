@@ -228,14 +228,9 @@ folders.forEach((folderName, idx) => {
     return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
   });
 
-  // Build the images array using original real photo files (up to 4 photos per product)
-  const selectedPhotos = imageFiles.slice(0, 4);
+  // Build the images array using all original real photo files (up to 12 photos per product)
+  const selectedPhotos = imageFiles.slice(0, 12);
   let images = selectedPhotos.map(f => f.url);
-
-  // Certificate image determination
-  const certFile = imageFiles.find(rf => rf.name.toLowerCase() === "4.webp") ||
-                   imageFiles.find(rf => /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(rf.name.toLowerCase()));
-  const certificate = certFile ? certFile.url : (images.length >= 4 ? images[3] : images[images.length - 1]);
 
   const productSlug = slugify(folderName);
   const productId = `vv_p${String(idx + 1).padStart(2, '0')}`;
@@ -246,6 +241,19 @@ folders.forEach((folderName, idx) => {
     price: 999,
     short: "Authentic spiritual product from Ved Vigyan."
   };
+
+  // Certificate image determination
+  let certificate = meta.certificate;
+  if (!certificate) {
+    if (folderName === "Nepali Rudrakasha Mala Close for wearing") {
+      certificate = "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp";
+    } else if (folderName === "7 Mukhi Rudraksh") {
+      certificate = "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp";
+    } else {
+      const certFile = imageFiles.find(rf => /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(rf.name.toLowerCase()));
+      certificate = certFile ? certFile.url : (images.length >= 4 ? images[3] : images[images.length - 1]);
+    }
+  }
 
   let zodiacSigns = [];
   if (meta.category === 'zodiac-bracelet') {
