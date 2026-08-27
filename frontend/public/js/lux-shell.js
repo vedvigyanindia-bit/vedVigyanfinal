@@ -300,10 +300,15 @@ window.VedVigyanLux = window.VedVigyanLux || {};
   `;
 
   Lux.injectShell = function injectShell() {
+    if (document.getElementById("luxNav")) return;
     const main = document.querySelector("main");
-    if (!main || document.getElementById("luxNav")) return;
-    main.insertAdjacentHTML("beforebegin", SHELL_BEFORE_MAIN);
-    main.insertAdjacentHTML("afterend", SHELL_AFTER_MAIN);
+    if (main) {
+      main.insertAdjacentHTML("beforebegin", SHELL_BEFORE_MAIN);
+      main.insertAdjacentHTML("afterend", SHELL_AFTER_MAIN);
+    } else {
+      document.body.insertAdjacentHTML("afterbegin", SHELL_BEFORE_MAIN);
+      document.body.insertAdjacentHTML("beforeend", SHELL_AFTER_MAIN);
+    }
   };
 
   Lux.initAnnouncement = function initAnnouncement() {
@@ -728,7 +733,17 @@ window.VedVigyanLux = window.VedVigyanLux || {};
   function bootLuxShell() {
     ensureGlobalScripts();
 
-    if (document.getElementById("luxNav")) {
+    if (document.querySelector(".topbar") || document.querySelector("header.nav:not(.lux-nav)")) {
+      Lux.upgradeLegacyPage();
+      return;
+    }
+
+    if (!document.getElementById("luxNav")) {
+      document.body.classList.add("lux-home");
+      document.body.dataset.luxShellInject = "true";
+      Lux.injectShell();
+      Lux.initShell({ transparentOnTop: false });
+    } else {
       if (document.body.dataset.page !== "home-luxury") {
         document.body.classList.add("lux-home");
         Lux.initAnnouncement();
@@ -738,17 +753,6 @@ window.VedVigyanLux = window.VedVigyanLux || {};
         Lux.initNewsletter();
         Lux.initScrollReveal();
       }
-      return;
-    }
-
-    if (document.querySelector(".topbar") || document.querySelector("header.nav:not(.lux-nav)")) {
-      Lux.upgradeLegacyPage();
-      return;
-    }
-
-    if (document.body.dataset.luxShellInject === "true") {
-      Lux.injectShell();
-      Lux.initShell({ transparentOnTop: false });
     }
   }
 
