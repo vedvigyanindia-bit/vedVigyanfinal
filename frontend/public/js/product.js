@@ -443,6 +443,26 @@ function renderProductPage() {
 }
 
 function initSectionInteractiveHandlers(product) {
+  const stopInlinePlayer = (wrapEl) => {
+    wrapEl.classList.remove("is-playing");
+    const inlinePlayer = wrapEl.querySelector(".vv-inline-player");
+    if (inlinePlayer) {
+      const v = inlinePlayer.querySelector("video");
+      if (v) {
+        try {
+          v.pause();
+          v.removeAttribute("src");
+          v.load();
+        } catch (e) {}
+      }
+      const iframe = inlinePlayer.querySelector("iframe");
+      if (iframe) {
+        try { iframe.src = "about:blank"; } catch (e) {}
+      }
+      inlinePlayer.remove();
+    }
+  };
+
   // Inline Video Player for Reels
   const videoCards = document.querySelectorAll("[data-vv-video]");
   videoCards.forEach((card) => {
@@ -451,15 +471,22 @@ function initSectionInteractiveHandlers(product) {
       let src = card.getAttribute("data-vv-video") || "https://youtu.be/o9dREd5ZPhw?si=X2tbKalptHS0wmhD";
       if (!src) return;
 
-      if (card.classList.contains("is-playing") && card.querySelector(".vv-inline-player")) {
-        return;
+      if (card.classList.contains("is-playing")) {
+        const v = card.querySelector("video");
+        if (v && e.target !== v) {
+          if (v.paused) {
+            v.play();
+          } else {
+            v.pause();
+          }
+          return;
+        }
+        if (card.querySelector(".vv-inline-player")) return;
       }
 
       document.querySelectorAll(".vv-reel-video-wrap.is-playing").forEach((otherCard) => {
         if (otherCard !== card) {
-          otherCard.classList.remove("is-playing");
-          const oldPlayer = otherCard.querySelector(".vv-inline-player");
-          if (oldPlayer) oldPlayer.remove();
+          stopInlinePlayer(otherCard);
         }
       });
 

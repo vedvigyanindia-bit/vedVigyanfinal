@@ -551,6 +551,26 @@ window.VedVigyanLux = window.VedVigyanLux || {};
       }
     });
 
+    const stopInlinePlayer = (wrapEl) => {
+      wrapEl.classList.remove("is-playing");
+      const inlinePlayer = wrapEl.querySelector(".vv-inline-player");
+      if (inlinePlayer) {
+        const v = inlinePlayer.querySelector("video");
+        if (v) {
+          try {
+            v.pause();
+            v.removeAttribute("src");
+            v.load();
+          } catch (e) {}
+        }
+        const iframe = inlinePlayer.querySelector("iframe");
+        if (iframe) {
+          try { iframe.src = "about:blank"; } catch (e) {}
+        }
+        inlinePlayer.remove();
+      }
+    };
+
     const videoCards = document.querySelectorAll("[data-vv-video]");
     videoCards.forEach((card) => {
       if (card.__vv_video_bound) return;
@@ -561,17 +581,24 @@ window.VedVigyanLux = window.VedVigyanLux || {};
         let src = card.getAttribute("data-vv-video") || "https://youtu.be/o9dREd5ZPhw?si=X2tbKalptHS0wmhD";
         if (!src) return;
 
-        // If video is already playing inline, let HTML5 video controls handle it
-        if (card.classList.contains("is-playing") && card.querySelector(".vv-inline-player")) {
-          return;
+        // If card is already playing, check click target for play/pause toggle
+        if (card.classList.contains("is-playing")) {
+          const v = card.querySelector("video");
+          if (v && e.target !== v) {
+            if (v.paused) {
+              v.play();
+            } else {
+              v.pause();
+            }
+            return;
+          }
+          if (card.querySelector(".vv-inline-player")) return;
         }
 
         // Pause and stop all other inline reel videos on the page
         document.querySelectorAll(".vv-reel-video-wrap.is-playing").forEach((otherCard) => {
           if (otherCard !== card) {
-            otherCard.classList.remove("is-playing");
-            const oldPlayer = otherCard.querySelector(".vv-inline-player");
-            if (oldPlayer) oldPlayer.remove();
+            stopInlinePlayer(otherCard);
           }
         });
 
@@ -601,6 +628,14 @@ window.VedVigyanLux = window.VedVigyanLux || {};
           card.appendChild(inlinePlayer);
         }
       });
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        document.querySelectorAll(".vv-reel-video-wrap.is-playing video").forEach((v) => {
+          try { v.pause(); } catch (e) {}
+        });
+      }
     });
 
       const closeVideoModal = () => {
