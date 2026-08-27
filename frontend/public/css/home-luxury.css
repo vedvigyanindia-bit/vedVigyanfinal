@@ -3696,13 +3696,43 @@ grid-column: span 1;
 }
 
 .lux-promo-bar {
-  background: linear-gradient(90deg, var(--maroon-deep), var(--maroon));
-  color: #fff;
-  text-align: center;
+  background: linear-gradient(90deg, #8a1a23 0%, #b82835 50%, #8a1a23 100%);
+  color: #ffffff;
+  padding: 7px 0;
   font-size: 12px;
   font-weight: 600;
-  padding: 8px 16px;
-  letter-spacing: 0.02em;
+  overflow: hidden;
+  position: relative;
+  z-index: 101;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.lux-promo-marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: luxPromoMarquee 22s linear infinite;
+  gap: 36px;
+  width: max-content;
+}
+
+.lux-promo-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.lux-promo-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.3px;
+}
+
+@keyframes luxPromoMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Scrolling marquee (mobile) */
