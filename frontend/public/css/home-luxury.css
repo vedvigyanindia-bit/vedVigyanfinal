@@ -5203,7 +5203,9 @@ button[type="submit"]#placeOrderBtn:hover {
 
 .vv-cert-preview-box img {
   max-width: 100%;
-  max-height: 240px;
+  max-height: 480px;
+  width: auto;
+  height: auto;
   object-fit: contain;
   border-radius: 6px;
   border: 1px solid #eee;
