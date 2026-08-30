@@ -105,6 +105,13 @@ async function createShiprocketOrder(order) {
   const billingCity = (order.customer.city && order.customer.city.length >= 2 && order.customer.city.toLowerCase() !== 'hh') ? order.customer.city : 'Dehradun';
   const billingState = (order.customer.state && order.customer.state.length >= 2 && order.customer.state.toLowerCase() !== 'hh') ? order.customer.state : 'Uttarakhand';
 
+  const itemsSubtotal = (order.items || []).reduce((sum, item) => sum + (Number(item.price || 0) * Number(item.qty || 1)), 0);
+  const shippingCharges = (typeof order.shipping === 'number')
+    ? order.shipping
+    : (itemsSubtotal >= 999 || (order.amount && order.amount >= 999) ? 0 : 99);
+  
+  const discountAmount = Math.max(0, itemsSubtotal + shippingCharges - Number(order.amount || itemsSubtotal));
+
   const payload = {
     order_id: String(order.orderId),
     order_date: new Date(order.createdAt || Date.now()).toISOString().replace('T', ' ').slice(0, 19),
@@ -124,11 +131,11 @@ async function createShiprocketOrder(order) {
     shipping_is_billing: true,
     order_items: formattedItems,
     payment_method: order.paymentMethod === 'COD' ? 'COD' : 'Prepaid',
-    shipping_charges: order.amount >= 999 ? 0 : 99,
+    shipping_charges: shippingCharges,
     giftwrap_charges: 0,
     transaction_charges: 0,
-    total_discount: 0,
-    sub_total: Number(order.amount || 0),
+    total_discount: discountAmount,
+    sub_total: itemsSubtotal > 0 ? itemsSubtotal : Number(order.amount || 0),
     length: 10,
     breadth: 10,
     height: 10,
