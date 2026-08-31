@@ -6182,7 +6182,7 @@ button[type="submit"]#placeOrderBtn:hover {
 
 /* ─── Desktop Product Grid Rules (Only applies above 768px) ─── */
 @media screen and (min-width: 769px) {
-  #malaCatalog, #rudrakshaCatalog, #gemstoneCatalog, #catalogGrid, .lux-products-grid {
+  #malaCatalog, #rudrakshaCatalog, #gemstoneCatalog, #gemStoneCatalog, #catalogGrid, #productGrid, #giftingGrid, #pujaGrid, #wishlistGrid, #braceletGrid, .lux-products-grid, .page > .container > section > .grid {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 24px !important;
@@ -6191,11 +6191,21 @@ button[type="submit"]#placeOrderBtn:hover {
   #malaCatalog .lux-product-card, 
   #rudrakshaCatalog .lux-product-card, 
   #gemstoneCatalog .lux-product-card, 
+  #gemStoneCatalog .lux-product-card, 
   #catalogGrid .lux-product-card, 
+  #productGrid .lux-product-card, 
+  #giftingGrid .lux-product-card, 
+  #pujaGrid .lux-product-card, 
+  #wishlistGrid .lux-product-card, 
+  #braceletGrid .lux-product-card, 
   .lux-products-grid .lux-product-card,
+  .page > .container > section > .grid .lux-product-card,
   #malaCatalog .card,
   #rudrakshaCatalog .card,
-  #gemstoneCatalog .card {
+  #gemstoneCatalog .card,
+  #gemStoneCatalog .card,
+  #productGrid .card,
+  .page > .container > section > .grid .card {
     grid-column: auto !important;
     width: 100% !important;
   }
@@ -6217,7 +6227,7 @@ button[type="submit"]#placeOrderBtn:hover {
   }
 
   /* 2-Column Luxury Mobile Product Grid */
-  #malaCatalog, #rudrakshaCatalog, #gemstoneCatalog, #catalogGrid, .lux-products-grid {
+  #malaCatalog, #rudrakshaCatalog, #gemstoneCatalog, #gemStoneCatalog, #catalogGrid, #productGrid, #giftingGrid, #pujaGrid, #wishlistGrid, #braceletGrid, .lux-products-grid, .page > .container > section > .grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px !important;
@@ -6226,11 +6236,21 @@ button[type="submit"]#placeOrderBtn:hover {
   #malaCatalog .lux-product-card, 
   #rudrakshaCatalog .lux-product-card, 
   #gemstoneCatalog .lux-product-card, 
+  #gemStoneCatalog .lux-product-card, 
   #catalogGrid .lux-product-card, 
+  #productGrid .lux-product-card, 
+  #giftingGrid .lux-product-card, 
+  #pujaGrid .lux-product-card, 
+  #wishlistGrid .lux-product-card, 
+  #braceletGrid .lux-product-card, 
   .lux-products-grid .lux-product-card,
+  .page > .container > section > .grid .lux-product-card,
   #malaCatalog .card,
   #rudrakshaCatalog .card,
-  #gemstoneCatalog .card {
+  #gemstoneCatalog .card,
+  #gemStoneCatalog .card,
+  #productGrid .card,
+  .page > .container > section > .grid .card {
     grid-column: auto !important;
     margin: 0 !important;
     border-radius: 12px !important;
