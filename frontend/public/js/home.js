@@ -15,21 +15,39 @@
   ];
 
   const HERO_SLIDES = [
-    { href: "/product/detail.html?id=vv_p31", img: "/public/images/5-mukhi-banner.webp", alt: "Original 5 Mukhi Nepali Rudraksha Mala - Connect With Divine Blessings" },
-    { href: "/rudraksha/5-mukhi.html", img: "/public/images/hero/banner-5-mukhi.jpg", alt: "Original 5 Mukhi Rudraksha - Lab Certified" },
-    { href: "/mala.html", img: "/public/images/hero/banner-karungali-mala.jpg", alt: "Original Karungali Mala for Meditation & Energy" },
-    { href: "/rudraksha-mala/5-mukhi-mala-108.html", img: "/public/images/hero/banner-rudraksha-mala.jpg", alt: "Original Rudraksha Mala (108 Beads)" },
-    { href: "/bracelet/rudraksha-bracelet.html", img: "/public/images/hero/banner-rudraksha-bracelet.jpg", alt: "Original Rudraksha Gold Bracelet" },
-    { href: "/mala/tulsi-mala.html", img: "/public/images/hero/banner-tulsi-mala.jpg", alt: "Original Tulsi Jap Mala for Daily Jaap & Devotion" }
+    {
+      href: "/rudraksha/5-mukhi.html",
+      img: "/public/images/banner/1.png",
+      mobileImg: "/public/images/banner/1.png",
+      alt: "Ved Vigyan 5 Mukhi Nepali Rudraksha - Connect With Divine Blessings"
+    },
+    {
+      href: "/products/karungali-rudraksh-silver-cap-mala",
+      img: "/public/images/banner/2.png",
+      mobileImg: "/public/images/banner/2.png",
+      alt: "Karungali Mala - Natural, Spiritual, Powerful"
+    },
+    {
+      href: "/rudraksha-mala/5-mukhi-mala-108.html",
+      img: "/public/images/banner/3.png",
+      mobileImg: "/public/images/banner/3.png",
+      alt: "Original 5 Mukhi Nepali Rudraksha Mala - Lab Certified"
+    },
+    {
+      href: "/mala/tulsi-mala.html",
+      img: "/public/images/banner/4.png",
+      mobileImg: "/public/images/banner/4.png",
+      alt: "Original Tulsi Mala - Pure, Sacred, Divine"
+    }
   ];
 
   const COLLECTION_TABS = [
     { label: "Best Seller", filter: (p) => p.rating >= 4.8 },
     { label: "Rashi Bracelet", filter: (p) => p.category === "zodiac-bracelet" },
-    { label: "Malas", filter: (p) => p.category === "mala" },
-    { label: "Crystals", filter: (p) => p.category === "crystal-bracelet" || p.category === "gemstone-tree" },
-    { label: "Rudraksha", filter: (p) => p.category === "rudraksha" },
-    { label: "Bracelets", filter: (p) => p.category === "crystal-bracelet" || p.category === "zodiac-bracelet" }
+    { label: "Karungali", filter: (p) => p.category === "mala" || (p.name && p.name.includes("Karungali")) },
+    { label: "Pyrite", filter: (p) => (p.name && p.name.toLowerCase().includes("pyrite")) || p.id === "vv_p07" },
+    { label: "Gemstones", filter: (p) => p.category === "crystal-bracelet" || p.category === "gemstone-tree" },
+    { label: "Rudraksha", filter: (p) => p.category === "rudraksha" }
   ];
 
   const CATEGORIES = [
@@ -37,7 +55,7 @@
     { title: "Rudraksha Malas", desc: "108-bead sacred strings", href: "/mala.html", img: "/product/Ved vigyan products/Rudraksh Jap Mala/1.webp", icon: "📿" },
     { title: "Bracelets", desc: "Daily spiritual wear", href: "/bracelet/rudraksha-bracelet.html", img: "/product/Ved vigyan products/Gold Rudraksh Bracelet/1.webp", icon: "💫" },
     { title: "Healing Crystals", desc: "Natural gemstone power", href: "/gem-stone.html", img: "/product/Ved vigyan products/7 Chakra Tree/1.webp", icon: "💎" },
-    { title: "Zodiac Collection", desc: "Rashi-aligned bracelets", href: "/shop.html?cat=zodiac-bracelet", img: "/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp", icon: "♈" },
+    { title: "Zodiac Collection", desc: "Rashi-aligned bracelets", href: "/collections/zodiac-bracelet", img: "/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp", icon: "♈" },
     { title: "Tulsi Collection", desc: "Sacred basil malas", href: "/mala/tulsi-mala.html", img: "/product/Ved vigyan products/Tulsi Mala/1.webp", icon: "🌿" },
     { title: "Meditation Essentials", desc: "Tools for inner peace", href: "/shop.html", img: "/product/Ved vigyan products/Spatik Mala/1.webp", icon: "🧘" },
     { title: "Prosperity Collection", desc: "Abundance & wealth", href: "/gem-stone/tiger-eye-bracelet.html", img: "/product/Ved vigyan products/4. Money Magnet/1.webp", icon: "💰" }
@@ -69,7 +87,7 @@
     { title: "Healing Crystals Guide", excerpt: "A beginner's guide to choosing and using healing crystals for daily wellness.", tag: "Crystals", href: "/gem-stone.html", img: "/product/Ved vigyan products/7 Chakra Tree/1.webp" },
     { title: "How to Wear Rudraksha", excerpt: "Traditional guidelines for wearing Rudraksha — timing, mantras and care tips.", tag: "Guide", href: "/blog/how-to-identify-original-rudraksha.html", img: "/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" },
     { title: "Meditation Tips", excerpt: "Simple meditation practices using mala beads for beginners and advanced seekers.", tag: "Meditation", href: "/mala.html", img: "/product/Ved vigyan products/Tulsi Mala/1.webp" },
-    { title: "Astrology Guide", excerpt: "Match your zodiac sign with the perfect Rudraksha mukhi and healing crystal.", tag: "Astrology", href: "/shop.html?cat=zodiac-bracelet", img: "/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp" }
+    { title: "Astrology Guide", excerpt: "Match your zodiac sign with the perfect Rudraksha mukhi and healing crystal.", tag: "Astrology", href: "/collections/zodiac-bracelet", img: "/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp" }
   ];
 
   const INSTA_IMAGES = [
@@ -272,11 +290,16 @@
     const dotsWrap = document.getElementById("heroDots");
     if (!track) return;
 
-    track.innerHTML = HERO_SLIDES.map((slide, i) => `
-      <a class="dh-hero-slide" href="${slide.href}">
-        <img src="${slide.img}" alt="${slide.alt}" loading="${i === 0 ? "eager" : "lazy"}" width="1300" height="540" />
-      </a>
-    `).join("");
+    if (!track.children.length) {
+      track.innerHTML = HERO_SLIDES.map((slide, i) => `
+        <a class="hero__slide dh-hero-slide" href="${slide.href}">
+          <picture>
+            <source media="(max-width:767px)" srcset="${slide.mobileImg || slide.img}">
+            <img class="hero__img" src="${slide.img}" alt="${slide.alt}" loading="${i === 0 ? "eager" : "lazy"}" fetchpriority="${i === 0 ? "high" : "low"}" width="1300" height="540" />
+          </picture>
+        </a>
+      `).join("");
+    }
 
     let index = 0;
     const slides = track.children;
@@ -305,36 +328,51 @@
   }
 
   function renderLuxuryProductCard(p) {
-    if (window.VedVigyanLux?.renderProductCard) {
-      return window.VedVigyanLux.renderProductCard(p, { reveal: false });
-    }
     const price = window.VedVigyanCart?.formatINR(p.price) || `₹${p.price}`;
+    const oldPrice = p.originalPrice > p.price
+      ? window.VedVigyanCart?.formatINR(p.originalPrice)
+      : "";
+    const discount = p.discountPercent || (p.originalPrice ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0);
+    const reviewCount = 40 + (p.id.charCodeAt(p.id.length - 1) * 17) % 200;
+    const ratingVal = p.rating ? p.rating.toFixed(1) : "5.0";
+
     const qty = window.VedVigyanCart?.getItemQty(p.id) || 0;
     const cartBtn = qty
-      ? `<div class="qty qty-card" data-card-qty="${p.id}">
+      ? `<div class="qty qty-card" data-card-qty="${p.id}" style="width:100%; margin-top:8px;">
            <button type="button" data-card-dec="${p.id}" aria-label="Decrease">−</button>
            <span>${qty}</span>
            <button type="button" data-card-inc="${p.id}" aria-label="Increase">+</button>
          </div>`
-      : `<button class="lux-btn lux-btn-secondary lux-btn-sm" type="button" data-add-to-cart="${p.id}">Add to Cart</button>`;
-    const buyNowBtn = `<button class="lux-btn lux-btn-primary lux-btn-sm" type="button" data-buy-now="${p.id}">Buy Now</button>`;
+      : `<button class="btn btn--sm btn--block dh-cart-btn" type="button" data-add-to-cart="${p.id}" style="background:#8a1a23; color:#ffffff; border-radius:10px; padding:9px 12px; width:100%; font-weight:700; font-size:12.5px; border:none; margin-top:8px; cursor:pointer;">Add to cart</button>`;
 
     return `
-      <article class="lux-product-card" data-product-id="${p.id}">
-        <a class="lux-product-media" href="${p.url}">
+      <div class="product-card lux-product-card" data-product-id="${p.id}" style="background:#FDF9F1; border:1px solid #ead9bd; border-radius:12px; overflow:hidden;">
+        <a class="product-card__media lux-product-media" href="${p.url}">
           <img src="${p.image}" alt="${p.imageAlt || p.name}" loading="lazy" width="400" height="400" />
         </a>
-        <div class="lux-product-body">
-          <h3 class="lux-product-name"><a href="${p.url}">${p.name}</a></h3>
-          <div class="lux-product-price-row">
-            <span class="lux-product-price">${price}</span>
+        <div class="product-card__body lux-product-body" style="padding:12px 10px 10px; text-align:center;">
+          <a href="${p.url}"><div class="product-card__title" style="font-size:12px; font-weight:600; color:#1a1a1a; line-height:1.3; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${p.name}</div></a>
+          <div class="product-card__rating" style="display:flex; align-items:center; justify-content:center; gap:6px; margin:2px 0 6px;">
+            <span style="color:#efe3d3; font-size:12px; letter-spacing:1px; position:relative; display:inline-block;">
+              ★★★★★
+              <span style="position:absolute; left:0; top:0; overflow:hidden; white-space:nowrap; color:#F76A00; width:100%">★★★★★</span>
+            </span>
+            <span style="font-size:11.5px; font-weight:700; color:#470601">${ratingVal}</span>
+            <span style="font-size:11.5px; color:#8a8474">(${reviewCount})</span>
           </div>
-          <div class="lux-product-footer">
-            ${cartBtn}
-            ${buyNowBtn}
+          <div class="product-card__certs" style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:8px;">
+            <img src="https://cdn.shopify.com/s/files/1/0790/4988/3955/files/image_325.png?v=1771487474" alt="Certified" width="36" height="20" style="height:20px; width:auto;" />
+            <img src="https://cdn.shopify.com/s/files/1/0790/4988/3955/files/image_326.png?v=1771487540" alt="Govt Lab" width="36" height="20" style="height:20px; width:auto;" />
+            <img src="https://cdn.shopify.com/s/files/1/0790/4988/3955/files/image_327.png?v=1771487541" alt="Original" width="36" height="20" style="height:20px; width:auto;" />
           </div>
+          <div class="product-card__price" style="display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:4px;">
+            ${discount ? `<span class="off" style="background:#43A047; color:#fff; font-size:10px; font-weight:800; border-radius:999px; padding:3px 9px;">${discount}% OFF</span>` : ""}
+            ${oldPrice ? `<span class="was" style="text-decoration:line-through; font-size:13px; color:#9b9b9b;">${oldPrice}</span>` : ""}
+            <span class="now" style="font-size:15.5px; font-weight:800; color:#111;">${price}</span>
+          </div>
+          ${cartBtn}
         </div>
-      </article>
+      </div>
     `;
   }
 
@@ -368,9 +406,22 @@
       }
       const fallback = products.slice(0, 8);
       const list = items.length ? items : fallback;
+      const tabUrls = [
+        "/shop.html",
+        "/collections/zodiac-bracelet",
+        "/mala.html",
+        "/products/9-mukhi-rudraksh",
+        "/gem-stone.html",
+        "/rudraksha.html"
+      ];
+      const viewAllUrl = tabUrls[i] || "/shop.html";
+
       return `
         <div class="dh-pc-panel${i === activeCollectionTabIdx ? " is-active" : ""}" data-pc-panel="${i}" role="tabpanel">
           <div class="dh-ptrack">${list.map(renderLuxuryProductCard).join("")}</div>
+          <div class="view-all-pill" style="text-align: center; margin: 24px 0 12px;">
+            <a href="${viewAllUrl}" class="dh-view-all-btn" style="display: inline-flex; align-items: center; justify-content: center; background: #8a1a23; color: #ffffff; font-size: 13.5px; font-weight: 700; padding: 11px 32px; border-radius: 999px; text-decoration: none; box-shadow: 0 4px 14px rgba(138, 26, 35, 0.25); transition: background 0.2s, transform 0.2s;">View All ›</a>
+          </div>
         </div>
       `;
     }).join("");

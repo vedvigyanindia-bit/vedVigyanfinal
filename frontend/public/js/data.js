@@ -11,8 +11,16 @@ function deriveMerchandising(products) {
       ? Math.round(product.price / (1 - discountPercent / 100))
       : 0);
 
+    const nameSlug = product.name
+      ? String(product.name).toLowerCase().trim().replace(/[()]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+      : (product.slug || product.id);
+
+    const cleanUrl = `/products/${nameSlug}`;
+
     return {
       ...product,
+      slug: nameSlug,
+      url: cleanUrl,
       discountPercent,
       originalPrice,
       rating
@@ -39,7 +47,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p01",
     "category": "rudraksha",
-    "slug": "10-mukhi-rudraksh",
+    "slug": "10-mukhi-rudraksha-dasha-mukhi",
     "name": "10 Mukhi Rudraksha (Dasha Mukhi)",
     "price": 2999,
     "tags": [
@@ -64,12 +72,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "10 Mukhi Rudraksha (Dasha Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 10 Mukhi Rudraksha (Dasha Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p01"
+    "url": "/products/10-mukhi-rudraksh"
   },
   {
     "id": "vv_p02",
     "category": "rudraksha",
-    "slug": "11-mukhi-rudraksh",
+    "slug": "11-mukhi-rudraksha-ekadasha-mukhi",
     "name": "11 Mukhi Rudraksha (Ekadasha Mukhi)",
     "price": 5999,
     "tags": [
@@ -94,12 +102,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "11 Mukhi Rudraksha (Ekadasha Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 11 Mukhi Rudraksha (Ekadasha Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p02"
+    "url": "/products/11-mukhi-rudraksh"
   },
   {
     "id": "vv_p03",
     "category": "rudraksha",
-    "slug": "12-mukhi-rudraksh",
+    "slug": "12-mukhi-rudraksha-dwadasha-mukhi",
     "name": "12 Mukhi Rudraksha (Dwadasha Mukhi)",
     "price": 5999,
     "tags": [
@@ -124,12 +132,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "12 Mukhi Rudraksha (Dwadasha Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 12 Mukhi Rudraksha (Dwadasha Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p03"
+    "url": "/products/12-mukhi-rudraksh"
   },
   {
     "id": "vv_p04",
     "category": "rudraksha",
-    "slug": "2-mukhi-rudraksh",
+    "slug": "2-mukhi-rudraksha-dwi-mukhi",
     "name": "2 Mukhi Rudraksha (Dwi Mukhi)",
     "price": 1999,
     "tags": [
@@ -154,13 +162,13 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "2 Mukhi Rudraksha (Dwi Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 2 Mukhi Rudraksha (Dwi Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p04",
+    "url": "/products/2-mukhi-rudraksh",
     "originalPrice": 2500
   },
   {
     "id": "vv_p05",
     "category": "rudraksha",
-    "slug": "3-mukhi-rudraksh",
+    "slug": "3-mukhi-rudraksha-tri-mukhi",
     "name": "3 Mukhi Rudraksha (Tri Mukhi)",
     "price": 1999,
     "tags": [
@@ -185,13 +193,13 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "3 Mukhi Rudraksha (Tri Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 3 Mukhi Rudraksha (Tri Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p05",
+    "url": "/products/3-mukhi-rudraksh",
     "originalPrice": 2500
   },
   {
     "id": "vv_p06",
     "category": "rudraksha",
-    "slug": "4-mukhi-rudraksh",
+    "slug": "4-mukhi-rudraksha-chatur-mukhi",
     "name": "4 Mukhi Rudraksha (Chatur Mukhi)",
     "price": 999,
     "tags": [
@@ -216,12 +224,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "4 Mukhi Rudraksha (Chatur Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 4 Mukhi Rudraksha (Chatur Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p06"
+    "url": "/products/4-mukhi-rudraksh"
   },
   {
     "id": "vv_p07",
     "category": "rudraksha",
-    "slug": "gauri-sankar-rudraksh",
+    "slug": "original-gauri-shankar-rudraksha",
     "name": "Original Gauri Shankar Rudraksha",
     "price": 8999,
     "tags": [
@@ -245,12 +253,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Original Gauri Shankar Rudraksha - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Original Gauri Shankar Rudraksha online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p07"
+    "url": "/products/gauri-sankar-rudraksh"
   },
   {
     "id": "vv_p08",
     "category": "rudraksha",
-    "slug": "5-mukhi-nepali",
+    "slug": "5-mukhi-nepali-rudraksha",
     "name": "5 Mukhi Nepali Rudraksha",
     "price": 599,
     "tags": [
@@ -275,12 +283,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "5 Mukhi Nepali Rudraksha - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 5 Mukhi Nepali Rudraksha online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p08"
+    "url": "/products/5-mukhi-nepali"
   },
   {
     "id": "vv_p09",
     "category": "rudraksha",
-    "slug": "5-mukhi-rudraksh",
+    "slug": "5-mukhi-rudraksha-panchmukhi",
     "name": "5 Mukhi Rudraksha (Panchmukhi)",
     "price": 699,
     "tags": [
@@ -305,12 +313,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "5 Mukhi Rudraksha (Panchmukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 5 Mukhi Rudraksha (Panchmukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p09"
+    "url": "/products/5-mukhi-rudraksh"
   },
   {
     "id": "vv_p10",
     "category": "rudraksha",
-    "slug": "6-mukhi-rudraksh",
+    "slug": "6-mukhi-rudraksha-shad-mukhi",
     "name": "6 Mukhi Rudraksha (Shad Mukhi)",
     "price": 999,
     "tags": [
@@ -335,12 +343,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "6 Mukhi Rudraksha (Shad Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 6 Mukhi Rudraksha (Shad Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p10"
+    "url": "/products/6-mukhi-rudraksh"
   },
   {
     "id": "vv_p11",
     "category": "crystal-bracelet",
-    "slug": "7-chakra-braclet",
+    "slug": "7-chakra-healing-crystal-bracelet",
     "name": "7 Chakra Healing Crystal Bracelet",
     "price": 699,
     "tags": [
@@ -365,12 +373,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "7 Chakra Healing Crystal Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 7 Chakra Healing Crystal Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p11"
+    "url": "/products/7-chakra-braclet"
   },
   {
     "id": "vv_p12",
     "category": "gemstone-tree",
-    "slug": "7-chakra-tree",
+    "slug": "7-chakra-crystal-gemstone-tree",
     "name": "7 Chakra Crystal Gemstone Tree",
     "price": 999,
     "tags": [
@@ -394,12 +402,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "7 Chakra Crystal Gemstone Tree - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 7 Chakra Crystal Gemstone Tree online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p12"
+    "url": "/products/7-chakra-tree"
   },
   {
     "id": "vv_p13",
     "category": "rudraksha",
-    "slug": "7-mukhi-rudraksh",
+    "slug": "7-mukhi-rudraksha-sapta-mukhi",
     "name": "7 Mukhi Rudraksha (Sapta Mukhi)",
     "price": 999,
     "tags": [
@@ -425,12 +433,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "7 Mukhi Rudraksha (Sapta Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 7 Mukhi Rudraksha (Sapta Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p13"
+    "url": "/products/7-mukhi-rudraksh"
   },
   {
     "id": "vv_p14",
     "category": "rudraksha",
-    "slug": "8-mukhi-rudraksh",
+    "slug": "8-mukhi-rudraksh-ashta-mukhi",
     "name": "8 Mukhi Rudraksh (Ashta Mukhi)",
     "price": 2999,
     "tags": [
@@ -455,12 +463,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "8 Mukhi Rudraksh (Ashta Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 8 Mukhi Rudraksh (Ashta Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p14"
+    "url": "/products/8-mukhi-rudraksh"
   },
   {
     "id": "vv_p15",
     "category": "rudraksha",
-    "slug": "9-mukhi-rudraksh",
+    "slug": "9-mukhi-rudraksh-nava-mukhi",
     "name": "9 Mukhi Rudraksh (Nava Mukhi)",
     "price": 2999,
     "tags": [
@@ -485,12 +493,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "9 Mukhi Rudraksh (Nava Mukhi) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 9 Mukhi Rudraksh (Nava Mukhi) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p15"
+    "url": "/products/9-mukhi-rudraksh"
   },
   {
     "id": "vv_p16",
     "category": "crystal-bracelet",
-    "slug": "amethyst-bracelet",
+    "slug": "natural-amethyst-healing-bracelet",
     "name": "Natural Amethyst Healing Bracelet",
     "price": 699,
     "tags": [
@@ -516,12 +524,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Natural Amethyst Healing Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Natural Amethyst Healing Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p16"
+    "url": "/products/amethyst-bracelet"
   },
   {
     "id": "vv_p17",
     "category": "zodiac-bracelet",
-    "slug": "dhanu-sagittarius-braclet",
+    "slug": "dhanu-sagittarius-rashi-bracelet",
     "name": "Dhanu (धनु – Sagittarius) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -546,7 +554,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Dhanu (धनु – Sagittarius) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Dhanu (धनु – Sagittarius) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p17",
+    "url": "/products/dhanu-sagittarius-braclet",
     "zodiacSigns": [
       "Sagittarius"
     ]
@@ -554,7 +562,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p18",
     "category": "crystal-bracelet",
-    "slug": "evil-eye-pendant",
+    "slug": "evil-eye-protection-pendant",
     "name": "Evil Eye Protection Pendant",
     "price": 699,
     "tags": [
@@ -609,12 +617,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Evil Eye Protection Pendant - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Evil Eye Protection Pendant online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p18"
+    "url": "/products/evil-eye-pendant"
   },
   {
     "id": "vv_p19",
     "category": "rudraksha",
-    "slug": "ganesh-rudraksh",
+    "slug": "original-ganesh-rudraksha",
     "name": "Original Ganesh Rudraksha",
     "price": 5999,
     "tags": [
@@ -638,12 +646,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Original Ganesh Rudraksha - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Original Ganesh Rudraksha online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p19"
+    "url": "/products/ganesh-rudraksh"
   },
   {
     "id": "vv_p20",
     "category": "crystal-bracelet",
-    "slug": "4-money-magnet",
+    "slug": "money-magnet-bracelet-pyrite-citrine",
     "name": "Money Magnet Bracelet (Pyrite & Citrine)",
     "price": 699,
     "tags": [
@@ -668,12 +676,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Money Magnet Bracelet (Pyrite & Citrine) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Money Magnet Bracelet (Pyrite & Citrine) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p20"
+    "url": "/products/4-money-magnet"
   },
   {
     "id": "vv_p21",
     "category": "crystal-bracelet",
-    "slug": "gold-rudraksh-bracelet",
+    "slug": "gold-capped-rudraksha-bracelet",
     "name": "Gold Capped Rudraksha Bracelet",
     "price": 999,
     "tags": [
@@ -697,12 +705,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Gold Capped Rudraksha Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Gold Capped Rudraksha Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p21"
+    "url": "/products/gold-rudraksh-bracelet"
   },
   {
     "id": "vv_p22",
     "category": "zodiac-bracelet",
-    "slug": "kanya-virgo-braclet",
+    "slug": "kanya-virgo-rashi-bracelet",
     "name": "Kanya (कन्या – Virgo) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -727,7 +735,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Kanya (कन्या – Virgo) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Kanya (कन्या – Virgo) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p22",
+    "url": "/products/kanya-virgo-braclet",
     "zodiacSigns": [
       "Virgo"
     ]
@@ -735,7 +743,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p23",
     "category": "zodiac-bracelet",
-    "slug": "karka-cancer-braclet",
+    "slug": "karka-cancer-rashi-bracelet",
     "name": "Karka (कर्क – Cancer) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -759,7 +767,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Karka (कर्क – Cancer) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Karka (कर्क – Cancer) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p23",
+    "url": "/products/karka-cancer-braclet",
     "zodiacSigns": [
       "Cancer"
     ]
@@ -767,7 +775,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p24",
     "category": "mala",
-    "slug": "karungali-mala",
+    "slug": "natural-karungali-ebony-wood-mala-108-beads",
     "name": "Natural Karungali Ebony Wood Mala (108 Beads)",
     "price": 999,
     "tags": [
@@ -791,12 +799,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Natural Karungali Ebony Wood Mala (108 Beads) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Natural Karungali Ebony Wood Mala (108 Beads) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p24"
+    "url": "/products/karungali-mala"
   },
   {
     "id": "vv_p25",
     "category": "mala",
-    "slug": "karungali-rudraksh-silver-cap-mala",
+    "slug": "karungali-rudraksha-silver-cap-mala",
     "name": "Karungali Rudraksha Silver Cap Mala",
     "price": 999,
     "tags": [
@@ -820,12 +828,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Karungali Rudraksha Silver Cap Mala - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Karungali Rudraksha Silver Cap Mala online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p25"
+    "url": "/products/karungali-rudraksh-silver-cap-mala"
   },
   {
     "id": "vv_p26",
     "category": "zodiac-bracelet",
-    "slug": "kumbh-aquarius-braclet",
+    "slug": "kumbh-aquarius-rashi-bracelet",
     "name": "Kumbh (कुंभ – Aquarius) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -850,7 +858,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Kumbh (कुंभ – Aquarius) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Kumbh (कुंभ – Aquarius) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p26",
+    "url": "/products/kumbh-aquarius-braclet",
     "zodiacSigns": [
       "Aquarius"
     ]
@@ -858,7 +866,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p27",
     "category": "zodiac-bracelet",
-    "slug": "makar-capricorn-braclet",
+    "slug": "makar-capricorn-rashi-bracelet",
     "name": "Makar (मकर – Capricorn) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -884,7 +892,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Makar (मकर – Capricorn) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Makar (मकर – Capricorn) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p27",
+    "url": "/products/makar-capricorn-braclet",
     "zodiacSigns": [
       "Capricorn"
     ]
@@ -892,7 +900,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p28",
     "category": "zodiac-bracelet",
-    "slug": "meen-pisces-braclet",
+    "slug": "meen-pisces-rashi-bracelet",
     "name": "Meen (मीन – Pisces) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -917,7 +925,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Meen (मीन – Pisces) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Meen (मीन – Pisces) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p28",
+    "url": "/products/meen-pisces-braclet",
     "zodiacSigns": [
       "Pisces"
     ]
@@ -925,7 +933,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p29",
     "category": "zodiac-bracelet",
-    "slug": "mesh-aries-braclet",
+    "slug": "mesh-aries-rashi-bracelet",
     "name": "Mesh (मेष – Aries) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -949,7 +957,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Mesh (मेष – Aries) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Mesh (मेष – Aries) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p29",
+    "url": "/products/mesh-aries-braclet",
     "zodiacSigns": [
       "Aries"
     ]
@@ -957,7 +965,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p30",
     "category": "zodiac-bracelet",
-    "slug": "mithun-gemini-braclet",
+    "slug": "mithun-gemini-rashi-bracelet",
     "name": "Mithun (मिथुन – Gemini) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -982,7 +990,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Mithun (मिथुन – Gemini) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Mithun (मिथुन – Gemini) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p30",
+    "url": "/products/mithun-gemini-braclet",
     "zodiacSigns": [
       "Gemini"
     ]
@@ -990,7 +998,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p31",
     "category": "mala",
-    "slug": "nepali-rudrakasha-mala-close-for-wearing",
+    "slug": "5-mukhi-nepali-rudraksha-mala-108-beads",
     "name": "5 Mukhi Nepali Rudraksha Mala (108 Beads)",
     "price": 999,
     "tags": [
@@ -1066,12 +1074,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "5 Mukhi Nepali Rudraksha Mala (108 Beads) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original 5 Mukhi Nepali Rudraksha Mala (108 Beads) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p31"
+    "url": "/products/nepali-rudrakasha-mala-close-for-wearing"
   },
   {
     "id": "vv_p32",
     "category": "crystal-bracelet",
-    "slug": "piride-braclet",
+    "slug": "natural-pyrite-wealth-bracelet",
     "name": "Natural Pyrite Wealth Bracelet",
     "price": 699,
     "tags": [
@@ -1096,12 +1104,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Natural Pyrite Wealth Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Natural Pyrite Wealth Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p32"
+    "url": "/products/piride-braclet"
   },
   {
     "id": "vv_p33",
     "category": "crystal-bracelet",
-    "slug": "rose-quartz-close",
+    "slug": "natural-rose-quartz-crystal-bracelet",
     "name": "Natural Rose Quartz Crystal Bracelet",
     "price": 699,
     "tags": [
@@ -1126,12 +1134,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Natural Rose Quartz Crystal Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Natural Rose Quartz Crystal Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p33"
+    "url": "/products/rose-quartz-close"
   },
   {
     "id": "vv_p34",
     "category": "gemstone-tree",
-    "slug": "rose-quartz-tree",
+    "slug": "rose-quartz-healing-gemstone-tree",
     "name": "Rose Quartz Healing Gemstone Tree",
     "price": 999,
     "tags": [
@@ -1155,12 +1163,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Rose Quartz Healing Gemstone Tree - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Rose Quartz Healing Gemstone Tree online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p34"
+    "url": "/products/rose-quartz-tree"
   },
   {
     "id": "vv_p35",
     "category": "mala",
-    "slug": "rudraksh-jap-mala",
+    "slug": "original-rudraksha-jaap-mala-108-beads",
     "name": "Original Rudraksha Jaap Mala (108 Beads)",
     "price": 999,
     "tags": [
@@ -1199,12 +1207,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Original Rudraksha Jaap Mala (108 Beads) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Original Rudraksha Jaap Mala (108 Beads) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p35"
+    "url": "/products/rudraksh-jap-mala"
   },
   {
     "id": "vv_p36",
     "category": "mala",
-    "slug": "silver-cap-karungali-mala",
+    "slug": "silver-cap-original-karungali-mala",
     "name": "Silver Cap Original Karungali Mala",
     "price": 999,
     "tags": [
@@ -1229,12 +1237,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Silver Cap Original Karungali Mala - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Silver Cap Original Karungali Mala online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p36"
+    "url": "/products/silver-cap-karungali-mala"
   },
   {
     "id": "vv_p37",
     "category": "zodiac-bracelet",
-    "slug": "singh-leo-braclet",
+    "slug": "singh-leo-rashi-bracelet",
     "name": "Singh (सिंह – Leo) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -1258,7 +1266,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Singh (सिंह – Leo) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Singh (सिंह – Leo) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p37",
+    "url": "/products/singh-leo-braclet",
     "zodiacSigns": [
       "Leo"
     ]
@@ -1266,7 +1274,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p38",
     "category": "mala",
-    "slug": "spatik-mala",
+    "slug": "natural-sphatik-quartz-crystal-mala",
     "name": "Natural Sphatik (Quartz Crystal) Mala",
     "price": 3999,
     "tags": [
@@ -1291,12 +1299,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Natural Sphatik (Quartz Crystal) Mala - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Natural Sphatik (Quartz Crystal) Mala online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p38"
+    "url": "/products/spatik-mala"
   },
   {
     "id": "vv_p39",
     "category": "crystal-bracelet",
-    "slug": "tiger-eye-loose-big",
+    "slug": "natural-tiger-eye-protection-bracelet",
     "name": "Natural Tiger Eye Protection Bracelet",
     "price": 699,
     "tags": [
@@ -1320,12 +1328,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Natural Tiger Eye Protection Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Natural Tiger Eye Protection Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p39"
+    "url": "/products/tiger-eye-loose-big"
   },
   {
     "id": "vv_p40",
     "category": "zodiac-bracelet",
-    "slug": "tula-libra-braclet",
+    "slug": "tula-libra-rashi-bracelet",
     "name": "Tula (तुला – Libra) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -1349,7 +1357,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Tula (तुला – Libra) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Tula (तुला – Libra) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p40",
+    "url": "/products/tula-libra-braclet",
     "zodiacSigns": [
       "Libra"
     ]
@@ -1357,7 +1365,7 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p41",
     "category": "mala",
-    "slug": "tulsi-jap-mala",
+    "slug": "original-tulsi-jaap-mala",
     "name": "Original Tulsi Jaap Mala",
     "price": 899,
     "tags": [
@@ -1382,12 +1390,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Original Tulsi Jaap Mala - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Original Tulsi Jaap Mala online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p41"
+    "url": "/products/tulsi-jap-mala"
   },
   {
     "id": "vv_p42",
     "category": "mala",
-    "slug": "tulsi-mala",
+    "slug": "natural-tulsi-bead-mala-108-beads",
     "name": "Natural Tulsi Bead Mala (108 Beads)",
     "price": 999,
     "tags": [
@@ -1413,12 +1421,12 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Natural Tulsi Bead Mala (108 Beads) - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Natural Tulsi Bead Mala (108 Beads) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p42"
+    "url": "/products/tulsi-mala"
   },
   {
     "id": "vv_p43",
     "category": "zodiac-bracelet",
-    "slug": "vrishabh-taurus-braclet",
+    "slug": "vrishabh-taurus-rashi-bracelet",
     "name": "Vrishabh (वृषभ – Taurus) Rashi Bracelet",
     "price": 699,
     "tags": [
@@ -1444,7 +1452,7 @@ window.VED_VIGYAN_DATA = {
     ],
     "seoTitle": "Vrishabh (वृषभ – Taurus) Rashi Bracelet - Buy Original Online | Ved Vigyan",
     "seoDescription": "Shop original Vrishabh (वृषभ – Taurus) Rashi Bracelet online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/product/detail.html?id=vv_p43",
+    "url": "/products/vrishabh-taurus-braclet",
     "zodiacSigns": [
       "Taurus"
     ]

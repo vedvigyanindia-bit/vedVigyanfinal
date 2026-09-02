@@ -25,6 +25,21 @@ async function createOrder({ customer, items, razorpayOrderId, razorpayPaymentId
     }
   }
 
+  // For Prepaid Orders: Automatically attach FREE 5 Mukhi Rudraksha (worth ₹499)
+  const hasFreeGift = items.some(it => it.id === 'free_5_mukhi_rudraksha' || (it.name && it.name.toLowerCase().includes('free')));
+  if (!hasFreeGift) {
+    items.push({
+      id: 'free_5_mukhi_rudraksha',
+      name: 'FREE 5 Mukhi Nepali Rudraksha Bead (Prepaid Gift)',
+      price: 0,
+      url: '/product/detail.html?id=vv_p31',
+      image: '/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp',
+      qty: 1,
+      isFreeGift: true,
+      originalPrice: 499
+    });
+  }
+
   const subtotal = items.reduce((sum, item) => sum + item.qty * item.price, 0);
   const prepaidDiscount = Math.round(subtotal * 0.05); // 5% Prepaid Discount
   const shipping = subtotal >= 999 ? 0 : 99;

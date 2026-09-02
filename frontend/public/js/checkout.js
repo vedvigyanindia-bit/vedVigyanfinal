@@ -76,10 +76,24 @@ function renderCheckoutSummary() {
     return;
   }
 
-  summary.innerHTML = items
+  const paymentRadio = document.querySelector('input[name="payment"]:checked');
+  const isPrepaid = paymentRadio ? paymentRadio.value !== "cod" : true;
+
+  if (isPrepaid) {
+    if (!window.VedVigyanCart.isFreeGiftClaimed()) {
+      window.VedVigyanCart.addFreeGiftItem();
+    }
+  } else {
+    window.VedVigyanCart.removeFreeGiftItem();
+  }
+
+  const updatedCart = window.VedVigyanCart.loadCart();
+  let updatedItems = Object.values(updatedCart.items);
+
+  summary.innerHTML = updatedItems
     .map((it) => {
       const isFree = it.price === 0 || it.isFreeGift;
-      const priceText = isFree ? `<span style="color:#27ae60; font-weight:700;">FREE (₹0)</span>` : window.VedVigyanCart.formatINR((it.price || 0) * (it.qty || 0));
+      const priceText = isFree ? `<span style="color:#27ae60; font-weight:700;">FREE (₹499 Gift)</span>` : window.VedVigyanCart.formatINR((it.price || 0) * (it.qty || 0));
       return `
         <div style="display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px solid var(--line)">
           <div>
@@ -92,9 +106,7 @@ function renderCheckoutSummary() {
     })
     .join("");
 
-  const subtotal = window.VedVigyanCart.cartSubtotal(cart);
-  const paymentRadio = document.querySelector('input[name="payment"]:checked');
-  const isPrepaid = paymentRadio ? paymentRadio.value !== "cod" : true;
+  const subtotal = window.VedVigyanCart.cartSubtotal(updatedCart);
   const prepaidDiscount = isPrepaid ? Math.round(subtotal * 0.05) : 0;
   const shipping = subtotal >= 999 ? 0 : 99;
   const netTotal = subtotal - prepaidDiscount + shipping;
@@ -350,6 +362,10 @@ const initCheckoutPage = () => {
   renderCheckoutSummary();
   wireCheckoutForm();
   window.addEventListener("vedvigyan:cart-updated", renderCheckoutSummary);
+
+  document.querySelectorAll('input[name="payment"]').forEach((radio) => {
+    radio.addEventListener("change", renderCheckoutSummary);
+  });
 
   try {
     const cart = window.VedVigyanCart?.loadCart() || {};

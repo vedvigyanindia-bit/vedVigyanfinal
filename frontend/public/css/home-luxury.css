@@ -123,11 +123,13 @@
 
 /* ─── Navigation ─── */
 .lux-nav {
-  position: sticky;
-  top: 0;
-  z-index: 55;
-  transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s, border-color 0.4s;
-  border-bottom: 1px solid transparent;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+  background: #FDF9F1 !important;
+  border-bottom: 1px solid #ead9bd !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+  transition: box-shadow 0.3s ease;
 }
 
 .lux-nav .lux-container {
@@ -135,18 +137,10 @@
   padding: 0 clamp(16px, 2.5vw, 40px);
 }
 
-.lux-nav.is-transparent {
-  background: rgba(250, 246, 240, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
+.lux-nav.is-transparent,
 .lux-nav.is-scrolled {
-  background: var(--glass);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--shadow-sm);
-  border-bottom-color: var(--line);
+  background: #FDF9F1 !important;
+  border-bottom: 1px solid #ead9bd !important;
 }
 
 .lux-nav-inner {
@@ -348,40 +342,144 @@
   display: none;
 }
 
-/* Mega Menu */
+/* ─── Divine Hindu Mega Menu Dropdown ─── */
+.lux-navlinks {
+  position: relative !important;
+}
+
 .lux-mega-wrap {
-  position: relative;
+  position: static !important;
 }
 
-.lux-mega-panel {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%) translateY(8px);
+.mega {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 100% !important;
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  background: #FDF9F1 !important;
+  border-top: 1px solid #ead9bd !important;
+  border-bottom: 1px solid #ead9bd !important;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.16) !important;
+  display: none !important;
+  z-index: 9999 !important;
+  padding: 24px 0 !important;
+}
+
+.lux-mega-wrap:hover > .mega,
+.lux-mega-wrap.open > .mega {
+  display: block !important;
+}
+
+.mega__inner {
+  max-width: 1300px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: 280px 1fr !important;
+  gap: 28px !important;
+  padding: 0 24px !important;
+}
+
+.mega__cats {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.mega__cat {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  background: #e8e2d8 !important;
+  color: #4a3b30 !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  font-size: 13px !important;
+  padding: 14px 18px !important;
+  border-radius: 12px !important;
+  transition: background 0.15s, color 0.15s !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+.mega__cat > span {
   opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.35s, transform 0.35s, visibility 0.35s;
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--line);
-  padding: 24px;
-  min-width: 520px;
-  z-index: 100;
+  font-size: 18px;
+  line-height: 1;
 }
 
-.lux-mega-wrap.open .lux-mega-panel {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
+.mega__cat.is-active,
+.mega__cat:hover {
+  background: #8a1a23 !important;
+  color: #ffffff !important;
 }
 
-.lux-mega-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+.mega__cat.is-active > span,
+.mega__cat:hover > span {
+  opacity: 1 !important;
+}
+
+.mega__panels {
+  min-width: 0 !important;
+}
+
+.mega__panel {
+  display: none !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 18px 16px !important;
+}
+
+.mega__panel.is-active {
+  display: grid !important;
+}
+
+.mega__card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  text-align: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.mega__card:hover {
+  transform: translateY(-3px) !important;
+}
+
+.mega__card img {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  border-radius: 14px !important;
+  background: #fff !important;
+  border: 1px solid #ead9bd !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.mega__card span {
+  display: block !important;
+  margin-top: 8px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #1a1a1a !important;
+  line-height: 1.32 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 1100px) {
+  .mega__panel {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .mega__inner {
+    grid-template-columns: 240px 1fr !important;
+  }
 }
 
 .lux-mega-wrap[data-mega="rudraksha"] .lux-mega-panel {
@@ -1749,9 +1847,11 @@
   .lux-review-card {
     width: 280px;
   }
+
   .lux-carousel-prev {
     left: -8px;
   }
+
   .lux-carousel-next {
     right: -8px;
   }
@@ -2514,26 +2614,226 @@ body[data-lux-page="checkout"] .lux-reveal,
   text-align: center;
 }
 
-.lux-home .toast {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%) translateY(80px);
-  background: var(--maroon);
-  color: var(--white);
-  padding: 14px 28px;
-  border-radius: var(--radius-sm);
-  font-size: 14px;
-  font-weight: 500;
-  box-shadow: var(--shadow-lg);
-  opacity: 0;
-  transition: transform 0.4s, opacity 0.4s;
-  z-index: 300;
+.vv-bundles-section {
+  display: none !important;
 }
 
+/* ─── Luxury Added To Cart Popup Toast ─── */
+.toast,
+.lux-home .toast {
+  position: fixed !important;
+  top: 24px !important;
+  right: 24px !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: translateY(-30px) scale(0.95) !important;
+  background: #ffffff !important;
+  color: #1a0809 !important;
+  padding: 0 !important;
+  border-radius: 14px !important;
+  font-family: var(--font-body, system-ui, sans-serif) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22), 0 4px 16px rgba(138, 26, 35, 0.12) !important;
+  border: 1.5px solid #d4af37 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, visibility 0.3s ease !important;
+  z-index: 999999 !important;
+  max-width: 400px !important;
+  width: calc(100vw - 32px) !important;
+  pointer-events: none !important;
+}
+
+.toast.show,
 .lux-home .toast.show {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
+  pointer-events: auto !important;
+}
+
+.vv-toast-inner {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 14px 18px !important;
+  background: linear-gradient(135deg, #ffffff 0%, #fdf9f3 100%) !important;
+  border-radius: 13px !important;
+}
+
+.vv-toast-icon {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: #8a1a23 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 800 !important;
+  font-size: 16px !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 2px 8px rgba(138, 26, 35, 0.3) !important;
+}
+
+.vv-toast-content {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+.vv-toast-title {
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: #1a0809 !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.vv-toast-sub {
+  font-size: 11.5px !important;
+  color: #777777 !important;
+  margin-top: 2px !important;
+}
+
+.vv-toast-btn {
+  background: #8a1a23 !important;
+  color: #ffffff !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  white-space: nowrap !important;
+  transition: background 0.2s ease !important;
+  display: inline-block !important;
+}
+
+.vv-toast-btn:hover {
+  background: #6a131a !important;
+  color: #ffffff !important;
+}
+
+/* ─── Modern Luxury Checkout Form Styling ─── */
+.vv-checkout-card {
+  background: #ffffff !important;
+  border-radius: 18px !important;
+  border: 1.5px solid #ebdccb !important;
+  box-shadow: 0 12px 35px rgba(26, 8, 9, 0.05) !important;
+  padding: 28px !important;
+  margin-bottom: 24px !important;
+}
+
+.vv-checkout-title {
+  font-family: var(--font-display, Georgia, serif) !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #1a0809 !important;
+  margin: 0 0 20px 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid #f0e4d4 !important;
+}
+
+.vv-form-grid {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 18px 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.vv-field {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  box-sizing: border-box !important;
+}
+
+.vv-field--full {
+  grid-column: span 6 !important;
+}
+
+.vv-field--half {
+  grid-column: span 3 !important;
+}
+
+.vv-field--third {
+  grid-column: span 2 !important;
+}
+
+.vv-label {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #1a0809 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.6px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.vv-label span.req {
+  color: #8a1a23 !important;
+  font-size: 14px !important;
+}
+
+.vv-input,
+.field input,
+.field textarea,
+.field select {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: #fcfaf7 !important;
+  border: 1.5px solid #e5d8c7 !important;
+  border-radius: 10px !important;
+  padding: 13px 16px !important;
+  font-size: 14.5px !important;
+  font-family: var(--font-body, system-ui, sans-serif) !important;
+  color: #1a0809 !important;
+  outline: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+}
+
+.vv-input:focus,
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: #8a1a23 !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 4px rgba(138, 26, 35, 0.12) !important;
+}
+
+.vv-input::placeholder,
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #a09588 !important;
+  font-size: 13.5px !important;
+}
+
+.field textarea,
+textarea.vv-input {
+  min-height: 90px !important;
+  resize: vertical !important;
+  line-height: 1.5 !important;
+}
+
+@media (max-width: 768px) {
+  .vv-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .vv-field--full,
+  .vv-field--half,
+  .vv-field--third {
+    grid-column: span 1 !important;
+  }
+  .vv-checkout-card {
+    padding: 18px !important;
+  }
 }
 
 .lux-quickview {
@@ -3730,6 +4030,7 @@ grid-column: span 1;
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -3941,14 +4242,21 @@ grid-column: span 1;
   background: #fdf2e2;
 }
 
-/* Hero banner carousel */
+/* Hero banner carousel (Divine Hindu specification) */
+.hero,
 .dh-hero-carousel {
   position: relative;
   width: 100%;
+  max-width: 1300px;
+  margin: 16px auto;
   overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   background: var(--section-bg);
 }
 
+.hero__track,
 .dh-hero-track {
   display: flex;
   overflow-x: auto;
@@ -3958,10 +4266,12 @@ grid-column: span 1;
   -ms-overflow-style: none;
 }
 
+.hero__track::-webkit-scrollbar,
 .dh-hero-track::-webkit-scrollbar {
   display: none;
 }
 
+.hero__slide,
 .dh-hero-slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
@@ -3970,10 +4280,78 @@ grid-column: span 1;
   width: 100%;
 }
 
+.hero__slide picture,
+.dh-hero-slide picture {
+  display: block;
+  line-height: 0;
+  width: 100%;
+}
+
+.hero__slide .hero__img,
 .dh-hero-slide img {
   width: 100%;
   height: auto;
+  max-height: 540px;
+  aspect-ratio: 1300 / 540;
+  object-fit: cover;
   display: block;
+  border-radius: 16px;
+}
+
+@media (max-width: 767px) {
+
+  .hero,
+  .dh-hero-carousel {
+    border-radius: 12px;
+    margin: 8px auto 16px auto;
+    border: none;
+    box-shadow: none;
+  }
+
+  .hero__slide .hero__img,
+  .dh-hero-slide img {
+    height: 81vw;
+    max-height: none;
+    aspect-ratio: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px;
+  }
+}
+
+/* Card Banners (Divine Hindu promo banners: gif1 & gif2) */
+.image-banner,
+.dh-card-banner {
+  display: block;
+  width: 100%;
+  max-width: 1300px;
+  margin: 32px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.image-banner picture,
+.dh-card-banner picture {
+  display: block;
+  line-height: 0;
+}
+
+.image-banner img,
+.dh-card-banner img {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  transition: transform 0.4s ease;
+}
+
+.image-banner:hover img,
+.dh-card-banner:hover img {
+  transform: scale(1.015);
 }
 
 .dh-hero-dots {
@@ -4097,10 +4475,37 @@ grid-column: span 1;
   }
 }
 
-/* Shop by Collection tabs */
 .dh-collection-section {
   background: var(--slider-bg);
-  padding: 40px 0 48px;
+  padding: 40px 0 36px;
+}
+
+.view-all-pill {
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.view-all-pill a.dh-view-all-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #8a1a23 !important;
+  color: #ffffff !important;
+  font-family: var(--font-body);
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  padding: 11px 32px !important;
+  border-radius: 999px !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(138, 26, 35, 0.25) !important;
+  transition: background 0.2s ease, transform 0.2s ease !important;
+}
+
+.view-all-pill a.dh-view-all-btn:hover {
+  background: #6a0b12 !important;
+  transform: translateY(-2px) !important;
+  color: #ffffff !important;
 }
 
 .dh-collection-section .lux-section-head {
@@ -4168,67 +4573,53 @@ grid-column: span 1;
 }
 
 .dh-ptrack {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  padding: 12px 0 24px;
-}
-
-@media (max-width: 1024px) {
-  .dh-ptrack {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-}
-
-@media (max-width: 768px) {
-  .dh-ptrack {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .dh-ptrack {
-    display: flex;
-    overflow-x: auto;
-    gap: 14px;
-    padding: 8px 16px 16px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .dh-ptrack .lux-product-card {
-    flex: 0 0 75%;
-    min-width: 220px;
-    max-width: 260px;
-    scroll-snap-align: center;
-  }
+  display: flex !important;
+  overflow-x: auto !important;
+  gap: 18px !important;
+  padding: 12px 8px 24px 8px !important;
+  scroll-snap-type: x mandatory !important;
+  scroll-behavior: smooth !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 .dh-ptrack::-webkit-scrollbar {
-  display: none;
+  display: none !important;
 }
 
-/* Product cards — Divine Hindu style */
-.dh-ptrack .lux-product-card {
-  grid-column: span 1 !important;
-  width: 100% !important;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  background: var(--white, #fff);
-  border: 1px solid rgba(138, 26, 35, 0.1);
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Product cards inside horizontal collection carousel — Divine Hindu specification */
+.dh-ptrack .lux-product-card,
+.dh-ptrack .product-card {
+  flex: 0 0 270px !important;
+  min-width: 240px !important;
+  max-width: 280px !important;
+  scroll-snap-align: start !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  background: #FDF9F1 !important;
+  border: 1px solid #ead9bd !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06) !important;
+  overflow: hidden !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
-.dh-ptrack .lux-product-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(138, 26, 35, 0.15);
+@media (max-width: 768px) {
+
+  .dh-ptrack .lux-product-card,
+  .dh-ptrack .product-card {
+    flex: 0 0 72% !important;
+    min-width: 220px !important;
+    max-width: 250px !important;
+  }
+}
+
+.dh-ptrack .lux-product-card:hover,
+.dh-ptrack .product-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 28px rgba(138, 26, 35, 0.14) !important;
 }
 
 .dh-ptrack .lux-product-media {
@@ -4855,8 +5246,17 @@ grid-column: span 1;
 }
 
 @keyframes giftTimerPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.04); opacity: 0.92; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.04);
+    opacity: 0.92;
+  }
 }
 
 .lux-free-gift-label {
@@ -5811,6 +6211,7 @@ button[type="submit"]#placeOrderBtn:hover {
 
 /* SECTION 10: Final Offer + CTA + Timer */
 .vv-final-offer-section {
+  display: none !important;
   margin: 56px 0 32px;
   background: linear-gradient(135deg, #1a0809 0%, #3a0a0e 100%);
   color: #ffffff;
@@ -5876,6 +6277,346 @@ button[type="submit"]#placeOrderBtn:hover {
 }
 
 /* ─── Watch & Shop Vertical Video Reel Section ─── */
+
+/* ─── PDP Tabbed Content Section (Description, Specification, Benefits, FAQs) ─── */
+.pdp-tabs-section {
+  background: #ffffff;
+  border: 1px solid rgba(138, 26, 35, 0.12);
+  border-radius: 16px;
+  padding: 32px;
+  margin: 48px auto;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+}
+
+.pdp-tabs-header {
+  display: flex;
+  gap: 36px;
+  border-bottom: 2px solid #eae2d6;
+  margin-bottom: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.pdp-tabs-header::-webkit-scrollbar { display: none; }
+
+.pdp-tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-heading, 'Inter', serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: #718096;
+  padding: 12px 6px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.pdp-tab-btn:hover {
+  color: #8a1a23;
+}
+
+.pdp-tab-btn.active {
+  color: #8a1a23;
+}
+
+.pdp-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #8a1a23;
+  border-radius: 3px 3px 0 0;
+}
+
+.pdp-tab-panel {
+  display: none !important;
+}
+
+/* Tab 4: Interactive Luxury FAQ Accordion */
+.pdp-faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.pdp-faq-accordion-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pdp-faq-accordion-item.active {
+  border-color: #8a1a23;
+  box-shadow: 0 4px 18px rgba(138, 26, 35, 0.08);
+}
+
+.pdp-faq-accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: #ffffff;
+  cursor: pointer;
+  user-select: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a202c;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pdp-faq-accordion-item.active .pdp-faq-accordion-header {
+  color: #8a1a23;
+  background: #faf5f0;
+}
+
+.pdp-faq-toggle-icon {
+  font-size: 20px;
+  font-weight: 700;
+  color: #8a1a23;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(138, 26, 35, 0.06);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.pdp-faq-accordion-body {
+  display: none;
+  padding: 16px 24px 20px 24px;
+  background: #faf5f0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4a5568;
+  border-top: 1px solid #f0e6dd;
+}
+
+.pdp-faq-accordion-item.active .pdp-faq-accordion-body {
+  display: block !important;
+  animation: pdpFaqSlideDown 0.25s ease forwards;
+}
+
+@keyframes pdpFaqSlideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pdp-faq-whatsapp-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #fffcf7 0%, #f7efe5 100%);
+  border: 1px dashed #d4af37;
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin-top: 24px;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pdp-faq-whatsapp-cta p {
+  margin: 0;
+  font-size: 14px;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.pdp-faq-wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25d366;
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.pdp-faq-wa-btn:hover {
+  background: #1eb956;
+  transform: translateY(-2px);
+}
+
+@keyframes pdpTabFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tab 1: Description */
+.pdp-tab-content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.pdp-desc-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #2d3748;
+}
+
+.pdp-desc-bullets {
+  background: #fdfbf7;
+  border: 1px solid #f0e6d6;
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+
+.pdp-bullets-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pdp-bullets-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.pdp-bullets-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #8a1a23;
+  font-weight: bold;
+}
+
+/* Tab 2: Specification Table */
+.pdp-spec-table-wrap {
+  overflow-x: auto;
+}
+
+.pdp-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.pdp-spec-table th, .pdp-spec-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #edf2f7;
+  text-align: left;
+}
+
+.pdp-spec-table th {
+  width: 30%;
+  font-weight: 700;
+  color: #8a1a23;
+  background: #fdfbf7;
+}
+
+.pdp-spec-table td {
+  color: #4a5568;
+}
+
+/* Tab 3: Benefits Grid */
+.pdp-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.pdp-benefit-card {
+  background: #fdfbf7;
+  border: 1px solid #f0e6d6;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pdp-benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(138, 26, 35, 0.08);
+}
+
+.pdp-benefit-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.pdp-benefit-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a0809;
+  margin: 0 0 8px 0;
+}
+
+.pdp-benefit-card p {
+  font-size: 13px;
+  color: #718096;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Tab 4: FAQs */
+.pdp-faqs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pdp-faq-item {
+  background: #fdfbf7;
+  border: 1px solid #f0e6d6;
+  border-radius: 10px;
+  padding: 16px 20px;
+}
+
+.pdp-faq-item strong {
+  display: block;
+  font-size: 15px;
+  color: #8a1a23;
+  margin-bottom: 6px;
+}
+
+.pdp-faq-item p {
+  font-size: 14px;
+  color: #4a5568;
+  margin: 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .pdp-tabs-section {
+    padding: 20px 16px;
+  }
+  .pdp-tabs-header {
+    gap: 20px;
+  }
+  .pdp-tab-btn {
+    font-size: 16px;
+  }
+  .pdp-tab-content-grid {
+    grid-template-columns: 1fr;
+  }
+  .pdp-benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .pdp-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .vv-watch-shop-section {
   margin: 56px 0;
   padding: 40px 0;
@@ -6182,30 +6923,42 @@ button[type="submit"]#placeOrderBtn:hover {
 
 /* ─── Desktop Product Grid Rules (Only applies above 768px) ─── */
 @media screen and (min-width: 769px) {
-  #malaCatalog, #rudrakshaCatalog, #gemstoneCatalog, #gemStoneCatalog, #catalogGrid, #productGrid, #giftingGrid, #pujaGrid, #wishlistGrid, #braceletGrid, .lux-products-grid, .page > .container > section > .grid {
+
+  #malaCatalog,
+  #rudrakshaCatalog,
+  #gemstoneCatalog,
+  #gemStoneCatalog,
+  #catalogGrid,
+  #productGrid,
+  #giftingGrid,
+  #pujaGrid,
+  #wishlistGrid,
+  #braceletGrid,
+  .lux-products-grid,
+  .page>.container>section>.grid {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 24px !important;
   }
 
-  #malaCatalog .lux-product-card, 
-  #rudrakshaCatalog .lux-product-card, 
-  #gemstoneCatalog .lux-product-card, 
-  #gemStoneCatalog .lux-product-card, 
-  #catalogGrid .lux-product-card, 
-  #productGrid .lux-product-card, 
-  #giftingGrid .lux-product-card, 
-  #pujaGrid .lux-product-card, 
-  #wishlistGrid .lux-product-card, 
-  #braceletGrid .lux-product-card, 
+  #malaCatalog .lux-product-card,
+  #rudrakshaCatalog .lux-product-card,
+  #gemstoneCatalog .lux-product-card,
+  #gemStoneCatalog .lux-product-card,
+  #catalogGrid .lux-product-card,
+  #productGrid .lux-product-card,
+  #giftingGrid .lux-product-card,
+  #pujaGrid .lux-product-card,
+  #wishlistGrid .lux-product-card,
+  #braceletGrid .lux-product-card,
   .lux-products-grid .lux-product-card,
-  .page > .container > section > .grid .lux-product-card,
+  .page>.container>section>.grid .lux-product-card,
   #malaCatalog .card,
   #rudrakshaCatalog .card,
   #gemstoneCatalog .card,
   #gemStoneCatalog .card,
   #productGrid .card,
-  .page > .container > section > .grid .card {
+  .page>.container>section>.grid .card {
     grid-column: auto !important;
     width: 100% !important;
   }
@@ -6222,39 +6975,50 @@ button[type="submit"]#placeOrderBtn:hover {
     padding: 16px 14px !important;
     border-radius: 14px !important;
     margin-bottom: 12px !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.03) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
     border: 1px solid rgba(212, 175, 55, 0.25) !important;
   }
 
   /* 2-Column Luxury Mobile Product Grid */
-  #malaCatalog, #rudrakshaCatalog, #gemstoneCatalog, #gemStoneCatalog, #catalogGrid, #productGrid, #giftingGrid, #pujaGrid, #wishlistGrid, #braceletGrid, .lux-products-grid, .page > .container > section > .grid {
+  #malaCatalog,
+  #rudrakshaCatalog,
+  #gemstoneCatalog,
+  #gemStoneCatalog,
+  #catalogGrid,
+  #productGrid,
+  #giftingGrid,
+  #pujaGrid,
+  #wishlistGrid,
+  #braceletGrid,
+  .lux-products-grid,
+  .page>.container>section>.grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px !important;
   }
 
-  #malaCatalog .lux-product-card, 
-  #rudrakshaCatalog .lux-product-card, 
-  #gemstoneCatalog .lux-product-card, 
-  #gemStoneCatalog .lux-product-card, 
-  #catalogGrid .lux-product-card, 
-  #productGrid .lux-product-card, 
-  #giftingGrid .lux-product-card, 
-  #pujaGrid .lux-product-card, 
-  #wishlistGrid .lux-product-card, 
-  #braceletGrid .lux-product-card, 
+  #malaCatalog .lux-product-card,
+  #rudrakshaCatalog .lux-product-card,
+  #gemstoneCatalog .lux-product-card,
+  #gemStoneCatalog .lux-product-card,
+  #catalogGrid .lux-product-card,
+  #productGrid .lux-product-card,
+  #giftingGrid .lux-product-card,
+  #pujaGrid .lux-product-card,
+  #wishlistGrid .lux-product-card,
+  #braceletGrid .lux-product-card,
   .lux-products-grid .lux-product-card,
-  .page > .container > section > .grid .lux-product-card,
+  .page>.container>section>.grid .lux-product-card,
   #malaCatalog .card,
   #rudrakshaCatalog .card,
   #gemstoneCatalog .card,
   #gemStoneCatalog .card,
   #productGrid .card,
-  .page > .container > section > .grid .card {
+  .page>.container>section>.grid .card {
     grid-column: auto !important;
     margin: 0 !important;
     border-radius: 12px !important;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.05) !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05) !important;
     border: 1px solid rgba(212, 175, 55, 0.22) !important;
     background: #ffffff !important;
     overflow: hidden !important;
@@ -6268,7 +7032,8 @@ button[type="submit"]#placeOrderBtn:hover {
     overflow: hidden !important;
   }
 
-  .lux-product-media img, .product-carousel {
+  .lux-product-media img,
+  .product-carousel {
     border-radius: 0 !important;
   }
 
@@ -6280,7 +7045,8 @@ button[type="submit"]#placeOrderBtn:hover {
     justify-content: space-between !important;
   }
 
-  .lux-product-name, .card h3 {
+  .lux-product-name,
+  .card h3 {
     font-size: 13px !important;
     line-height: 1.35 !important;
     margin: 4px 0 6px !important;
@@ -6298,7 +7064,8 @@ button[type="submit"]#placeOrderBtn:hover {
     margin-bottom: 4px !important;
   }
 
-  .lux-product-price-row, .price-stack {
+  .lux-product-price-row,
+  .price-stack {
     display: flex !important;
     align-items: center !important;
     gap: 6px !important;
@@ -6306,19 +7073,22 @@ button[type="submit"]#placeOrderBtn:hover {
     margin-bottom: 8px !important;
   }
 
-  .lux-product-price, .price {
+  .lux-product-price,
+  .price {
     font-size: 15px !important;
     font-weight: 800 !important;
     color: #8a1a23 !important;
   }
 
-  .lux-product-old-price, .old-price {
+  .lux-product-old-price,
+  .old-price {
     font-size: 11px !important;
     color: #999 !important;
     text-decoration: line-through !important;
   }
 
-  .lux-product-discount, .discount-badge {
+  .lux-product-discount,
+  .discount-badge {
     font-size: 10px !important;
     padding: 2px 6px !important;
     background: rgba(39, 174, 96, 0.12) !important;
@@ -6357,14 +7127,15 @@ button[type="submit"]#placeOrderBtn:hover {
     height: 24px !important;
   }
 
-  .lux-back-top, .scroll-top {
+  .lux-back-top,
+  .scroll-top {
     width: 38px !important;
     height: 38px !important;
     bottom: 24px !important;
     right: 14px !important;
     font-size: 16px !important;
     z-index: 999 !important;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18) !important;
   }
 
   .breadcrumbs {
@@ -6376,13 +7147,682 @@ button[type="submit"]#placeOrderBtn:hover {
     font-size: 20px !important;
     line-height: 1.25 !important;
   }
+}
 
-  .section-sub {
+/* ─── Divine Hindu Product Detail Page (PDP) Exact Styles ─── */
+.pdp-top-offer-bar {
+  background: #198754 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.03em !important;
+}
+
+.pdp-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 36px !important;
+  align-items: start !important;
+  margin-top: 20px !important;
+}
+
+.pdp-feats-row {
+  margin-bottom: 12px !important;
+}
+
+.pdp-feats {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+}
+
+.pdp-pill {
+  background: #f4ece1 !important;
+  color: #4a3b30 !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  letter-spacing: 0.02em !important;
+  border: 1px solid #ead9bd !important;
+}
+
+.pdp-title {
+  font-family: var(--font-heading, Georgia, serif) !important;
+  font-size: clamp(22px, 3vw, 30px) !important;
+  font-weight: 800 !important;
+  color: #1a0809 !important;
+  line-height: 1.25 !important;
+  margin: 0 0 12px 0 !important;
+}
+
+.pdp-rating {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin-bottom: 16px !important;
+  font-size: 13px !important;
+}
+
+.pdp-stars {
+  color: #F76A00 !important;
+  letter-spacing: 1.5px !important;
+  font-size: 14px !important;
+}
+
+.pdp-rating-num {
+  font-weight: 800 !important;
+  color: #470601 !important;
+}
+
+.pdp-reviews {
+  color: #8a1a23 !important;
+  text-decoration: underline !important;
+  font-weight: 600 !important;
+}
+
+.pdp-sold {
+  color: #c84d12 !important;
+  font-weight: 700 !important;
+  margin-left: 4px !important;
+}
+
+.pdp-priceline {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin-bottom: 4px !important;
+}
+
+.pdp-price .now {
+  font-size: clamp(24px, 3vw, 32px) !important;
+  font-weight: 800 !important;
+  color: #1a0809 !important;
+}
+
+.pdp-price .was {
+  font-size: 16px !important;
+  color: #888 !important;
+  text-decoration: line-through !important;
+  margin-left: 8px !important;
+}
+
+.pdp-price .off {
+  background: #1a1a1a !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  margin-left: 10px !important;
+}
+
+.pdp-viewoffers {
+  color: #8a1a23 !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  text-decoration: underline !important;
+}
+
+.pdp-tax {
+  font-size: 12px !important;
+  color: #777 !important;
+  margin-bottom: 16px !important;
+}
+
+.pdp-count {
+  background: #e6f4ea !important;
+  color: #137333 !important;
+  border-radius: 10px !important;
+  padding: 12px 18px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  margin-bottom: 20px !important;
+  display: inline-block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.pdp-count span {
+  font-weight: 800 !important;
+}
+
+.pdp-qtyrow {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-bottom: 20px !important;
+}
+
+.pdp-qtyrow .lbl {
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  color: #333 !important;
+}
+
+.pdp-qty {
+  display: inline-flex !important;
+  align-items: center !important;
+  border: 1px solid #ccc !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: #fff !important;
+}
+
+.pdp-qty button {
+  width: 38px !important;
+  height: 38px !important;
+  background: #8a1a23 !important;
+  color: #fff !important;
+  border: none !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+}
+
+.pdp-qty input {
+  width: 48px !important;
+  height: 38px !important;
+  border: none !important;
+  text-align: center !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+.pdp-siddhi {
+  background: #fff9e6 !important;
+  border: 1.5px solid #d4af37 !important;
+  border-radius: 12px !important;
+  padding: 14px 18px !important;
+  margin-bottom: 20px !important;
+}
+
+.pdp-review-slider-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 24px !important;
+}
+
+.pdp-review-slider-wrap .pdp-review-card {
+  flex: 1 !important;
+  margin-bottom: 0 !important;
+  min-height: 98px !important;
+  box-sizing: border-box !important;
+}
+
+.pdp-rev-nav {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  border: 1.5px solid #8a1a23 !important;
+  color: #8a1a23 !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 20 !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  line-height: 1 !important;
+  user-select: none !important;
+}
+
+.pdp-rev-nav:hover {
+  background: #8a1a23 !important;
+  color: #ffffff !important;
+}
+
+.pdp-review-card {
+  background: #f8f5ff !important;
+  border: 1px solid #e0d5f5 !important;
+  border-radius: 14px !important;
+  padding: 16px 18px !important;
+  display: flex !important;
+  gap: 14px !important;
+  align-items: flex-start !important;
+}
+
+.pdp-rev-avatar {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 50% !important;
+  background: #6b46c1 !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-size: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.pdp-rev-body strong {
+  font-size: 14px !important;
+  color: #1a1a1a !important;
+}
+
+.pdp-rev-body .v-badge {
+  background: #1a1a1a !important;
+  color: #fff !important;
+  font-size: 10px !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  margin-left: 6px !important;
+}
+
+.pdp-rev-stars {
+  color: #F76A00 !important;
+  font-size: 12px !important;
+  margin: 4px 0 !important;
+}
+
+.pdp-rev-text {
+  font-size: 13px !important;
+  color: #444 !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+}
+
+.pdp-main-btns {
+  display: flex !important;
+  gap: 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.pdp-btn-atc {
+  flex: 1 !important;
+  height: 52px !important;
+  background: #8a1a23 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: background 0.2s, transform 0.2s !important;
+  box-shadow: 0 4px 14px rgba(138, 26, 35, 0.25) !important;
+}
+
+.pdp-btn-atc:hover {
+  background: #6a0b12 !important;
+  transform: translateY(-2px) !important;
+}
+
+.pdp-btn-buynow {
+  flex: 1 !important;
+  height: 52px !important;
+  background: #d49e19 !important;
+  color: #1a1a1a !important;
+  border: none !important;
+  border-radius: 999px !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: background 0.2s, transform 0.2s !important;
+  box-shadow: 0 4px 14px rgba(212, 158, 25, 0.25) !important;
+}
+
+.pdp-btn-buynow:hover {
+  background: #b8860d !important;
+  transform: translateY(-2px) !important;
+}
+
+.pdp-trust-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  background: #fdf9f1 !important;
+  border: 1px solid #ead9bd !important;
+  border-radius: 10px !important;
+  padding: 10px 14px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: #4a3b30 !important;
+}
+
+.pdp-cert-box {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: #ffffff !important;
+  border: 1px solid #ead9bd !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  margin-top: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+}
+
+.pdp-cert-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+}
+
+.pdp-cert-download-btn {
+  background: #8a1a23 !important;
+  color: #ffffff !important;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  transition: background 0.2s !important;
+}
+
+.pdp-cert-download-btn:hover {
+  background: #6a0b12 !important;
+}
+
+/* Sticky PDP Bottom Bar Wrapper (Divine Hindu Exact Match) */
+.pdp-sticky-wrapper {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 99999 !important;
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.16) !important;
+}
+
+.pdp-sticky-offer-bar {
+  background: #198754 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  padding: 7px 16px !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.pdp-sticky-bar {
+  background: #ffffff !important;
+  border-top: 1px solid #ead9bd !important;
+  padding: 10px 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+}
+
+.pdp-sticky-price {
+  display: flex !important;
+  align-items: baseline !important;
+}
+
+.pdp-sticky-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.pdp-sticky-btn-atc {
+  background: #ffffff !important;
+  color: #8a1a23 !important;
+  border: 2px solid #8a1a23 !important;
+  padding: 10px 26px !important;
+  border-radius: 999px !important;
+  font-size: 14.5px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.pdp-sticky-btn-atc:hover {
+  background: #fdf9f1 !important;
+}
+
+.pdp-sticky-btn-buynow {
+  background: #8a1a23 !important;
+  color: #ffffff !important;
+  border: 2px solid #8a1a23 !important;
+  padding: 10px 28px !important;
+  border-radius: 999px !important;
+  font-size: 14.5px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.pdp-sticky-btn-buynow:hover {
+  background: #6a0b12 !important;
+  border-color: #6a0b12 !important;
+}
+
+@media (max-width: 600px) {
+  .pdp-sticky-bar {
+    padding: 8px 14px !important;
+  }
+  .pdp-sticky-price .now {
+    font-size: 18px !important;
+  }
+  .pdp-sticky-btn-atc,
+  .pdp-sticky-btn-buynow {
+    padding: 8px 14px !important;
     font-size: 13px !important;
-    line-height: 1.4 !important;
+  }
+}
+
+.pdp-sticky-btn-atc {
+  background: #ffffff !important;
+  color: #8a1a23 !important;
+  border: 2px solid #8a1a23 !important;
+}
+
+.pdp-sticky-btn-buynow {
+  background: #8a1a23 !important;
+  color: #ffffff !important;
+}
+
+@media (max-width: 768px) {
+  .pdp-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
   }
 }
 
 .carousel-badge {
   display: none !important;
+}
+
+/* ─── Divine Hindu Continuous Red Marquee Ticker Carousel ─── */
+.dh-marquee-ticker {
+  background: #8a1a23 !important; /* Rich Divine Red / Maroon */
+  color: #ffffff !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  padding: 14px 0 !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.4) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4) !important;
+  box-shadow: 0 4px 14px rgba(138, 26, 35, 0.2) !important;
+}
+
+.dh-marquee-ticker .marquee__inner {
+  display: inline-flex !important;
+  align-items: center !important;
+  white-space: nowrap !important;
+  animation: dh-marquee-scroll-loop 22s linear infinite !important;
+  will-change: transform !important;
+}
+
+.dh-marquee-ticker .marquee__inner:hover {
+  animation-play-state: paused !important;
+}
+
+.dh-marquee-ticker .marquee__inner span {
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: #ffffff !important;
+  padding: 0 18px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.dh-marquee-ticker .marquee__inner span .bullet {
+  color: #d4af37 !important; /* Gold bullet dot */
+  font-size: 18px !important;
+  margin-left: 18px !important;
+}
+
+@keyframes dh-marquee-scroll-loop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ─── Exact VedVigyan.in Horizontal Card Dropdown Pattern ─── */
+.lux-mega-wrap {
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.lux-mega-trigger {
+  background: transparent !important;
+  border: none !important;
+  font-family: var(--font-body, system-ui, sans-serif) !important;
+  font-size: 14.5px !important;
+  font-weight: 700 !important;
+  color: #1a0809 !important;
+  padding: 8px 16px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: color 0.2s ease, background 0.2s ease !important;
+  border-radius: 8px !important;
+}
+
+.lux-mega-wrap:hover .lux-mega-trigger,
+.lux-mega-wrap:focus-within .lux-mega-trigger {
+  color: #8a1a23 !important;
+  background: #f9f3ea !important;
+}
+
+.vv-card-dropdown {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  right: auto !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  padding: 18px 20px !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid #f0e6d8 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(10px) !important;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease !important;
+  z-index: 99999 !important;
+  width: max-content !important;
+  max-width: calc(100vw - 32px) !important;
+}
+
+/* Smart Alignment: Align rightmost dropdowns to the right edge of trigger */
+.lux-mega-wrap[data-mega="bestsellers"] .vv-card-dropdown,
+.lux-mega-wrap[data-mega="shopall"] .vv-card-dropdown {
+  left: auto !important;
+  right: 0 !important;
+}
+
+.lux-mega-wrap[data-mega="malas"] .vv-card-dropdown {
+  left: 50% !important;
+  right: auto !important;
+  transform: translate(-50%, 10px) !important;
+}
+
+.lux-mega-wrap[data-mega="malas"]:hover .vv-card-dropdown,
+.lux-mega-wrap[data-mega="malas"]:focus-within .vv-card-dropdown {
+  transform: translate(-50%, 0) !important;
+}
+
+.lux-mega-wrap:hover .vv-card-dropdown,
+.lux-mega-wrap:focus-within .vv-card-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.lux-mega-wrap:not([data-mega="malas"]):hover .vv-card-dropdown,
+.lux-mega-wrap:not([data-mega="malas"]):focus-within .vv-card-dropdown {
+  transform: translateY(0) !important;
+}
+
+.vv-card-dropdown__grid {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 14px !important;
+}
+
+.vv-card-item {
+  display: block !important;
+  text-decoration: none !important;
+  width: 130px !important;
+  text-align: left !important;
+  transition: transform 0.2s ease !important;
+}
+
+.vv-card-item:hover {
+  transform: translateY(-2px) !important;
+}
+
+.vv-card-item__img {
+  width: 130px !important;
+  height: 92px !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background: #f7f3ec !important;
+  margin-bottom: 8px !important;
+  border: 1px solid #ebdccb !important;
+}
+
+.vv-card-item__img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.3s ease !important;
+}
+
+.vv-card-item:hover .vv-card-item__img img {
+  transform: scale(1.05) !important;
+}
+
+.vv-card-item__title {
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  color: #1a0809 !important;
+  line-height: 1.3 !important;
+  margin-bottom: 2px !important;
+}
+
+.vv-card-item:hover .vv-card-item__title {
+  color: #8a1a23 !important;
+}
+
+.vv-card-item__sub {
+  font-size: 11.5px !important;
+  font-weight: 400 !important;
+  color: #777777 !important;
+  line-height: 1.3 !important;
 }

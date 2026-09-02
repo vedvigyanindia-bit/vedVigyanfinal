@@ -670,12 +670,45 @@ function handleRequest(req, res) {
     return;
   }
 
-  if (req.method === "POST" && url.pathname === "/api/orders/cod") {
-    handleCreateCodOrder(req, res);
+  const filePath = resolvePath(req.url);
+  const ext = path.extname(url.pathname).toLowerCase();
+
+  // 1. Serve physical static asset files (JS, CSS, WebP, PNG, JPG, etc.)
+  if (ext && ext !== ".html") {
+    fs.stat(filePath, (err, stat) => {
+      if (!err && stat.isFile()) {
+        sendFile(filePath, res);
+      } else {
+        const relativeAsset = url.pathname.replace(/^\/(?:products|product|collections|collection)\//, "/");
+        const assetPath = path.join(FRONTEND_ROOT, relativeAsset);
+        fs.stat(assetPath, (assetErr, assetStat) => {
+          if (!assetErr && assetStat.isFile()) {
+            sendFile(assetPath, res);
+          } else {
+            res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
+            res.end("Asset not found");
+          }
+        });
+      }
+    });
     return;
   }
 
-  const filePath = resolvePath(req.url);
+  // 2. Clean Product URLs: /products/:slug or /product/:slug
+  if (req.method === "GET" && (url.pathname.startsWith("/products/") || url.pathname.startsWith("/product/"))) {
+    const detailPath = path.join(FRONTEND_ROOT, "product", "detail.html");
+    sendFile(detailPath, res);
+    return;
+  }
+
+  // 3. Clean Collection URLs: /collections/:category or /collections
+  if (req.method === "GET" && (url.pathname.startsWith("/collections/") || url.pathname.startsWith("/collections") || url.pathname.startsWith("/collection/"))) {
+    const shopPath = path.join(FRONTEND_ROOT, "shop.html");
+    sendFile(shopPath, res);
+    return;
+  }
+
+  // 4. Default Static HTML Page Server
   fs.stat(filePath, (err, stat) => {
     if (!err && stat.isFile()) {
       sendFile(filePath, res);

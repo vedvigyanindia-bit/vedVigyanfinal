@@ -222,29 +222,88 @@ function renderProductPage() {
   const params = new URLSearchParams(window.location.search);
   const idParam = params.get("id");
   let slug = getSlugFromPath();
-  if (slug === "rudraksha-bracelet") {
-    slug = "gold-rudraksh-bracelet";
-  }
   const category = getCategoryFromPath();
 
+  // If navigating to generic bracelet page without specific product ID, redirect to shop bracelet collection
+  if (!idParam && (slug === "rudraksha-bracelet" || slug === "product") && window.location.pathname.includes("/bracelet/")) {
+    window.location.href = "/collections/zodiac-bracelet";
+    return;
+  }
+
   let product = null;
+  const cleanSlug = (slug || "").toLowerCase().trim();
+
+  // 1. Direct ID Match (e.g. vv_p07, vv_p30)
   if (idParam) {
     product = products.find((p) => p.id === idParam);
   }
-  if (!product && slug) {
-    product = products.find((p) => (p.category === category || !category) && (p.slug === slug || p.slug.includes(slug) || slug.includes(p.slug)));
+
+  // 2. Exact ID / Slug Match
+  if (!product && cleanSlug) {
+    product = products.find((p) => p.id.toLowerCase() === cleanSlug || (p.slug && p.slug.toLowerCase() === cleanSlug));
   }
-  if (!product && slug) {
-    product = products.find((p) => p.slug === slug || p.slug.includes(slug) || slug.includes(p.slug));
+
+  // 3. Exact Normalized Name Match
+  if (!product && cleanSlug) {
+    product = products.find((p) => {
+      const normName = (p.name || "").toLowerCase().replace(/[()]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      return normName === cleanSlug;
+    });
   }
+
+  // 4. Smart Token-Based Fuzzy Match (Handles typos like "braclet", "rudrakasha", "jap", missing words)
+  if (!product && cleanSlug) {
+    const searchTokens = cleanSlug.split("-").map(t => {
+      if (t === "braclet") return "bracelet";
+      if (t === "rudrakasha") return "rudraksha";
+      if (t === "jap") return "jaap";
+      return t;
+    }).filter(t => t.length > 1);
+
+    let maxScore = 0;
+    let bestMatch = null;
+
+    products.forEach((p) => {
+      const pNameNorm = (p.name || "").toLowerCase();
+      const pSlugNorm = (p.slug || "").toLowerCase();
+      const pTagsNorm = (p.tags || []).join(" ").toLowerCase();
+      const haystack = `${p.id.toLowerCase()} ${pNameNorm} ${pSlugNorm} ${pTagsNorm}`;
+
+      let score = 0;
+      searchTokens.forEach((token) => {
+        if (haystack.includes(token)) {
+          score += (token.length >= 4 ? 3 : 1);
+        }
+      });
+
+      if (score > maxScore) {
+        maxScore = score;
+        bestMatch = p;
+      }
+    });
+
+    if (maxScore >= 3 && bestMatch) {
+      product = bestMatch;
+    }
+  }
+
+  // 5. Category Fallback
   if (!product && category) {
     product = products.find((p) => p.category === category);
   }
+
+  // 6. Default Catalog Item
   if (!product) {
     product = products[0];
   }
   if (!product) return;
   saveRecentlyViewed(product);
+
+  try {
+    initPDPReviewSlider(product);
+  } catch (err) {
+    console.warn("Review slider init failed:", err);
+  }
 
   const isLuxPdp = document.body.dataset.luxPage === "product";
 
@@ -301,46 +360,31 @@ function renderProductPage() {
   const reviewCount = 40 + (product.id.charCodeAt(product.id.length - 1) * 17) % 200;
 
   if (ratingEl) {
-    ratingEl.innerHTML = `<span class="stars">${stars}</span><span>${product.rating}</span><span class="count">(${reviewCount} reviews)</span>`;
+    const unitsSold = (1100 + (reviewCount * 13) % 900).toLocaleString();
+    ratingEl.innerHTML = `<span class="pdp-stars">${stars}</span><span class="pdp-rating-num">${product.rating || "5.0"}</span><a class="pdp-reviews" href="#dh-reviews">${reviewCount} Reviews</a><span class="pdp-sold">${unitsSold} units sold last week</span>`;
   }
 
   if (priceEl) {
-    priceEl.innerHTML = product.originalPrice && product.originalPrice > product.price
-      ? `
-          <span class="lux-product-price">${window.VedVigyanCart.formatINR(product.price)}</span>
-          <span class="lux-product-old-price">${window.VedVigyanCart.formatINR(product.originalPrice)}</span>
-          <span class="lux-product-discount">${product.discountPercent}% OFF</span>
-        `
-      : `<span class="lux-product-price">${window.VedVigyanCart.formatINR(product.price)}</span>`;
+    const origPrice = product.originalPrice || Math.round(product.price * 1.8);
+    const disc = product.discountPercent || Math.round(((origPrice - product.price) / origPrice) * 100);
+    priceEl.innerHTML = `
+      <span class="now">${window.VedVigyanCart.formatINR(product.price)}</span>
+      <span class="was">MRP ${window.VedVigyanCart.formatINR(origPrice)}</span>
+      <span class="off">${disc}% + Extra 26% OFF</span>
+    `;
   }
 
-  if (descEl) descEl.textContent = isLuxPdp ? product.short : product.description;
+  // PDP Quantity Controls
+  const qtyInput = document.getElementById("pdpQtyInput");
+  const qtyInc = document.getElementById("pdpQtyInc");
+  const qtyDec = document.getElementById("pdpQtyDec");
+  if (qtyInput && qtyInc && qtyDec) {
+    qtyInc.onclick = () => { qtyInput.value = Math.max(1, (parseInt(qtyInput.value) || 1) + 1); };
+    qtyDec.onclick = () => { qtyInput.value = Math.max(1, (parseInt(qtyInput.value) || 1) - 1); };
+  }
+
   if (detailsEl) {
     detailsEl.innerHTML = product.detailsHtml || `<p>${product.description}</p>`;
-  }
-
-  const howToUseEl = document.getElementById("pdpHowToUse");
-  if (howToUseEl && product.howToUseHtml) {
-    howToUseEl.innerHTML = product.howToUseHtml;
-  }
-
-  const authEl = document.getElementById("pdpAuthenticity");
-  if (authEl && product.authenticityHtml) {
-    authEl.innerHTML = product.authenticityHtml;
-  }
-
-  const faqsEl = document.getElementById("pdpFaqs");
-  if (faqsEl) {
-    if (product.faqs && Array.isArray(product.faqs) && product.faqs.length > 0) {
-      faqsEl.innerHTML = product.faqs.map(faq => `
-        <div class="pdp-faq-item" style="margin-bottom: 14px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px;">
-          <strong style="display:block; color:var(--lux-gold, #d4af37); margin-bottom:4px; font-size:15px;">${faq.q}</strong>
-          <p style="margin:0; font-size:14px; opacity:0.9; line-height:1.6;">${faq.a}</p>
-        </div>
-      `).join("");
-    } else {
-      faqsEl.innerHTML = `<p>Have questions about this product? Contact our spiritual guidance team on WhatsApp for prompt assistance.</p>`;
-    }
   }
 
   if (galleryEl && window.VedVigyanCarousel) {
@@ -362,6 +406,18 @@ function renderProductPage() {
     const certSrc = product.certificate || (product.images && product.images.length >= 4 ? product.images[3] : "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp");
     certImg.src = certSrc;
     certImg.alt = `${product.name} Authenticity Certificate`;
+  }
+
+  // 3-Step Sacred Journey section: Show ONLY for Rudraksha & Mala related products
+  const journeySection = document.querySelector(".vv-journey-section");
+  if (journeySection) {
+    const isRudraksha = (
+      (product.category && (product.category === "rudraksha" || product.category === "mala" || product.category === "rudraksha-mala")) ||
+      (product.name && /rudraksh|mala/i.test(product.name)) ||
+      (product.tags && Array.isArray(product.tags) && product.tags.some(t => /rudraksh|mala/i.test(t))) ||
+      (product.id && (product.id.includes("rud") || ["vv_p01","vv_p02","vv_p03","vv_p04","vv_p05","vv_p06","vv_p18","vv_p19","vv_p20","vv_p21","vv_p22","vv_p23","vv_p25","vv_p31"].includes(product.id)))
+    );
+    journeySection.style.display = isRudraksha ? "block" : "none";
   }
 
   // Dynamic filesystem scanner fetch
@@ -438,9 +494,250 @@ function renderProductPage() {
   injectProductSchema(product);
   renderDiscoveryRail(product, products);
   initSectionInteractiveHandlers(product);
+  initPDPReviewSlider(product);
+  window.initPDPTabs?.(product);
   document.querySelectorAll(".lux-reveal").forEach((el) => el.classList.add("visible"));
   window.VedVigyanLux?.initScrollReveal?.();
 }
+
+window.__pdpReviewsList = [];
+window.__pdpCurrentReviewIdx = 0;
+
+function initPDPReviewSlider(product) {
+  const pId = product ? product.id : "";
+  const pSlug = product ? product.slug : "";
+  const reviewsObj = window.VED_VIGYAN_PRODUCT_REVIEWS;
+  const customReviews = reviewsObj ? (reviewsObj[pId] || (pSlug && reviewsObj[pSlug])) : null;
+
+  if (customReviews && customReviews.length) {
+    window.__pdpReviewsList = customReviews;
+  } else {
+    const pName = product ? product.name : "Product";
+    window.__pdpReviewsList = [
+      {
+        name: "Aarav Sharma",
+        avatar: "A",
+        stars: "★★★★★",
+        text: `Bohot dino se ${pName} dhoondh raha tha. Finally Ved Vigyan se mila. Government certified — no doubts on authenticity.`
+      }
+    ];
+  }
+
+  window.__pdpCurrentReviewIdx = 0;
+  window.updatePDPReviewDisplay();
+}
+
+window.updatePDPReviewDisplay = function() {
+  const reviews = window.__pdpReviewsList;
+  if (!reviews || !reviews.length) return;
+
+  const idx = window.__pdpCurrentReviewIdx;
+  const rev = reviews[idx];
+
+  const nameEl = document.getElementById("pdpRevName");
+  const avatarEl = document.getElementById("pdpRevAvatar");
+  const starsEl = document.getElementById("pdpRevStars");
+  const textEl = document.getElementById("pdpRevText");
+  const counterEl = document.getElementById("pdpRevCounter");
+
+  if (nameEl) nameEl.textContent = rev.name;
+  if (avatarEl) avatarEl.textContent = rev.avatar;
+  if (starsEl) starsEl.textContent = rev.stars;
+  if (textEl) textEl.textContent = rev.text;
+  if (counterEl) counterEl.textContent = `${idx + 1} / ${reviews.length}`;
+};
+
+window.changePDPReview = function(delta) {
+  const reviews = window.__pdpReviewsList;
+  if (!reviews || !reviews.length) return;
+
+  window.__pdpCurrentReviewIdx = (window.__pdpCurrentReviewIdx + delta + reviews.length) % reviews.length;
+  window.updatePDPReviewDisplay();
+};
+
+window.switchPDPTab = function(btn, evt) {
+  if (evt) {
+    try { evt.preventDefault(); evt.stopPropagation(); } catch (e) {}
+  }
+  if (!btn) return;
+  const container = btn.closest(".pdp-tabs-section") || document.querySelector(".pdp-tabs-section");
+  if (!container) return;
+
+  const targetId = btn.getAttribute("data-tab");
+  if (!targetId) return;
+
+  const btns = container.querySelectorAll(".pdp-tab-btn");
+  const panels = container.querySelectorAll(".pdp-tab-panel");
+
+  btns.forEach((b) => {
+    b.classList.remove("active");
+    b.style.color = "#718096";
+  });
+
+  panels.forEach((p) => {
+    p.classList.remove("active");
+    p.style.cssText = "display: none !important;";
+  });
+
+  btn.classList.add("active");
+  btn.style.color = "#8a1a23";
+
+  const targetPanel = document.getElementById(targetId);
+  if (targetPanel) {
+    targetPanel.classList.add("active");
+    targetPanel.style.cssText = "display: block !important; animation: pdpTabFade 0.35s ease forwards;";
+  }
+};
+
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".pdp-tab-btn");
+  if (btn) {
+    window.switchPDPTab(btn, e);
+  }
+});
+
+window.togglePDPFaq = function(headerEl) {
+  if (!headerEl) return;
+  const item = headerEl.closest(".pdp-faq-accordion-item");
+  if (!item) return;
+
+  const isOpen = item.classList.contains("active");
+  const accordion = item.closest(".pdp-faq-accordion");
+
+  if (accordion) {
+    accordion.querySelectorAll(".pdp-faq-accordion-item").forEach(el => {
+      el.classList.remove("active");
+      const icon = el.querySelector(".pdp-faq-toggle-icon");
+      if (icon) icon.textContent = "+";
+    });
+  }
+
+  if (!isOpen) {
+    item.classList.add("active");
+    const icon = item.querySelector(".pdp-faq-toggle-icon");
+    if (icon) icon.textContent = "−";
+  }
+};
+
+window.initPDPTabs = function(product) {
+  // Auto-resolve product if omitted
+  if (!product && window.VED_VIGYAN_CURRENT_PRODUCT) {
+    product = window.VED_VIGYAN_CURRENT_PRODUCT;
+  }
+  if (!product && window.VED_VIGYAN_DATA?.products) {
+    const params = new URLSearchParams(window.location.search);
+    const pId = params.get("id");
+    if (pId) {
+      product = window.VED_VIGYAN_DATA.products.find(p => p.id === pId);
+    }
+  }
+
+  const container = document.querySelector(".pdp-tabs-section");
+  const descEl = document.getElementById("productDesc");
+
+  if (!container || !descEl) {
+    if (!window.__pdp_tabs_retry_count) window.__pdp_tabs_retry_count = 0;
+    if (window.__pdp_tabs_retry_count < 10) {
+      window.__pdp_tabs_retry_count++;
+      setTimeout(() => window.initPDPTabs(product), 50);
+    }
+    return;
+  }
+
+  if (!product) return;
+
+  const tabsObj = window.VED_VIGYAN_PRODUCT_TABS;
+  const pData = tabsObj ? (tabsObj[product.id] || (product.slug && tabsObj[product.slug])) : null;
+
+  // 1. Description
+  if (descEl) {
+    const finalDesc = (pData && pData.description) ? pData.description : (product.description || product.short || "Authentic spiritual item ethically sourced and pre-energized with traditional Vedic mantras.");
+    descEl.textContent = finalDesc;
+  }
+
+  // 2. Specifications Table
+  const specPanel = document.getElementById("tabSpecification");
+  if (specPanel) {
+    const specs = (pData && Array.isArray(pData.specs) && pData.specs.length) ? pData.specs : [
+      { label: "Product Name", value: product.name || "Authentic Vedic Product" },
+      { label: "Authenticity & Testing", value: "100% Natural, Govt. Approved Lab Certified with QR Report" },
+      { label: "Ritual Energization", value: "Pre-energized via Traditional Vedic Mantra Pran Pratishtha" },
+      { label: "Origin & Sourcing", value: "Ethically sourced directly from sacred Himalayan regions" },
+      { label: "Package Includes", value: "Product + Physical Lab Test Certificate + Usage Guide + Box" },
+      { label: "Care Instructions", value: "Wipe gently with clean dry cotton cloth. Keep away from perfumes." }
+    ];
+
+    specPanel.innerHTML = `
+      <div class="pdp-spec-table-wrap">
+        <table class="pdp-spec-table">
+          <tbody>
+            ${specs.map(s => `
+              <tr>
+                <th>${s.label}</th>
+                <td>${s.value}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 3. Benefits Grid
+  const benefitsGrid = document.getElementById("pdpBenefitsGrid");
+  if (benefitsGrid) {
+    const benefits = (pData && Array.isArray(pData.benefits) && pData.benefits.length) ? pData.benefits : [
+      { title: "Spiritual Protection", desc: "Shields the wearer from negative energies, evil eye, and stressful aura.", icon: "🛡️" },
+      { title: "Mental Peace & Focus", desc: "Calms an overactive mind, enhances concentration during meditation.", icon: "🧘" },
+      { title: "Chakra Harmonization", desc: "Balances internal energy centers to promote emotional equilibrium.", icon: "✨" },
+      { title: "Confidence & Growth", desc: "Attracts positive cosmic vibrations, supporting personal growth & wealth.", icon: "💼" }
+    ];
+
+    benefitsGrid.innerHTML = benefits.map(b => `
+      <div class="pdp-benefit-card">
+        <div class="pdp-benefit-icon">${b.icon || "✨"}</div>
+        <h4>${b.title}</h4>
+        <p>${b.desc}</p>
+      </div>
+    `).join("");
+  }
+
+  // 4. FAQs List & Accordion
+  const faqsEl = document.getElementById("pdpFaqs");
+  if (faqsEl) {
+    const faqList = (pData && Array.isArray(pData.faqs) && pData.faqs.length) ? pData.faqs : [
+      { q: "Is this product 100% authentic and certified?", a: "Yes! Every single piece is individually lab tested and comes with a physical test report featuring a QR code for online verification." },
+      { q: "How do I wear or use this spiritual item?", a: "All products are pre-energized with Vedic mantras. You can wear it on an auspicious morning after bathing while chanting sacred mantras." },
+      { q: "Can anyone wear this regardless of age or gender?", a: "Absolutely! Authentic Rudraksha beads, gemstones, and malas can be worn by anyone irrespective of gender, age, or horoscope." },
+      { q: "How long does delivery take?", a: "We dispatch within 24 hours. Express delivery across India takes 3 to 5 business days with full tracking updates via SMS/WhatsApp." }
+    ];
+
+    faqsEl.innerHTML = `
+      <div class="pdp-faq-accordion">
+        ${faqList.map((faq, idx) => `
+          <div class="pdp-faq-accordion-item ${idx === 0 ? 'active' : ''}">
+            <div class="pdp-faq-accordion-header" onclick="window.togglePDPFaq(this)">
+              <span>Q: ${faq.q}</span>
+              <span class="pdp-faq-toggle-icon">${idx === 0 ? '−' : '+'}</span>
+            </div>
+            <div class="pdp-faq-accordion-body">
+              <p>A: ${faq.a}</p>
+            </div>
+          </div>
+        `).join("")}
+      </div>
+      <div class="pdp-faq-whatsapp-cta">
+        <p>💬 Have additional questions about ritual energization or custom guidance?</p>
+        <a href="https://wa.me/919876543210?text=Namaste!%20I%20have%20a%20question%20about%20${encodeURIComponent(product.name || 'Ved Vigyan Products')}" target="_blank" rel="noopener" class="pdp-faq-wa-btn">
+          Ask on WhatsApp
+        </a>
+      </div>
+    `;
+  }
+};
+
+document.addEventListener("DOMContentLoaded", () => window.initPDPTabs());
+window.addEventListener("load", () => window.initPDPTabs());
 
 function initSectionInteractiveHandlers(product) {
   const stopInlinePlayer = (wrapEl) => {
@@ -586,48 +883,35 @@ function initSectionInteractiveHandlers(product) {
 }
 
 function initStickyCart(product) {
-  const bar = document.getElementById("stickyCart");
-  if (!bar) return;
+  if (!product) return;
 
-  const stickyImg = document.getElementById("stickyImg");
-  const stickyTitle = document.getElementById("stickyTitle");
-  const stickyPrice = document.getElementById("stickyPrice");
-
-  if (stickyImg) {
-    stickyImg.src = product.image;
-    stickyImg.alt = product.name;
-  }
-  if (stickyTitle) stickyTitle.textContent = product.name;
-  if (stickyPrice) stickyPrice.textContent = window.VedVigyanCart.formatINR(product.price);
-
-  let actionsContainer = bar.querySelector(".lux-sticky-cart-actions");
-  if (!actionsContainer) {
-    actionsContainer = document.createElement("div");
-    actionsContainer.className = "lux-sticky-cart-actions";
-    bar.querySelector(".lux-sticky-cart-inner")?.appendChild(actionsContainer);
+  let wrapper = document.getElementById("pdpStickyWrapper");
+  if (!wrapper) {
+    wrapper = document.createElement("div");
+    wrapper.id = "pdpStickyWrapper";
+    wrapper.className = "pdp-sticky-wrapper";
+    document.body.appendChild(wrapper);
   }
 
-  const existingSingleBtn = document.getElementById("stickyAddBtn");
-  if (existingSingleBtn) existingSingleBtn.remove();
+  const origPrice = product.originalPrice || Math.round(product.price * 1.8);
 
-  actionsContainer.innerHTML = `
-    <button class="lux-btn lux-btn-secondary lux-btn-sm" type="button" data-add-to-cart="${product.id}">ADD TO CART</button>
-    <button class="lux-btn lux-btn-primary lux-btn-sm" type="button" data-buy-now="${product.id}">BUY NOW</button>
+  wrapper.innerHTML = `
+    <div class="pdp-sticky-offer-bar">
+      FREE 5 Mukhi Rudraksha of ₹499 on prepaid orders
+    </div>
+    <div class="pdp-sticky-bar">
+      <div class="pdp-sticky-price" id="stickyPriceDisplay">
+        <span class="now" style="font-size:22px; font-weight:800; color:#1a0809;">${window.VedVigyanCart.formatINR(product.price)}</span>
+        <span class="was" style="font-size:13px; color:#888; text-decoration:line-through; margin-left:8px;">MRP ${window.VedVigyanCart.formatINR(origPrice)}</span>
+      </div>
+      <div class="pdp-sticky-actions">
+        <button type="button" class="pdp-sticky-btn-atc" data-add-to-cart="${product.id}">Add to Cart</button>
+        <button type="button" class="pdp-sticky-btn-buynow" data-buy-now="${product.id}">Buy Now</button>
+      </div>
+    </div>
   `;
 
-  window.VedVigyanCart?.wireAddToCartButtons(actionsContainer);
-  window.VedVigyanCart?.wireBuyNowButtons(actionsContainer);
-
-  const pdpActions = document.querySelector(".lux-pdp-actions");
-  if (!pdpActions) return;
-
-  const observer = new IntersectionObserver(([entry]) => {
-    const visible = !entry.isIntersecting;
-    bar.classList.toggle("visible", visible);
-    bar.setAttribute("aria-hidden", visible ? "false" : "true");
-  }, { threshold: 0 });
-
-  observer.observe(pdpActions);
+  window.VedVigyanCart?.wireAddToCartButtons(wrapper);
 }
 
 function injectProductSchema(product) {
@@ -656,9 +940,73 @@ function injectProductSchema(product) {
   document.head.appendChild(script);
 }
 
+function initPDPOfferTimer() {
+  const STORAGE_KEY = "ved_vigyan_offer_end_time_v1";
+  let targetTime = 0;
+
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      targetTime = parseInt(saved, 10);
+    }
+  } catch (e) {}
+
+  const now = Date.now();
+  if (!targetTime || targetTime <= now) {
+    const initialSeconds = (23 * 3600) + (26 * 60) + 55;
+    targetTime = now + (initialSeconds * 1000);
+    try {
+      localStorage.setItem(STORAGE_KEY, targetTime.toString());
+    } catch (e) {}
+  }
+
+  function updateTimer() {
+    const current = Date.now();
+    let diff = Math.max(0, Math.floor((targetTime - current) / 1000));
+
+    if (diff <= 0) {
+      const resetSeconds = (23 * 3600) + (26 * 60) + 55;
+      targetTime = current + (resetSeconds * 1000);
+      try {
+        localStorage.setItem(STORAGE_KEY, targetTime.toString());
+      } catch (e) {}
+      diff = resetSeconds;
+    }
+
+    const hours = Math.floor(diff / 3600);
+    const minutes = Math.floor((diff % 3600) / 60);
+    const seconds = diff % 60;
+
+    const pad = (num) => String(num).padStart(2, "0");
+
+    document.querySelectorAll("[data-count-h], .count-h").forEach(el => {
+      el.textContent = pad(hours);
+    });
+    document.querySelectorAll("[data-count-m], .count-m").forEach(el => {
+      el.textContent = pad(minutes);
+    });
+    document.querySelectorAll("[data-count-s], .count-s").forEach(el => {
+      el.textContent = pad(seconds);
+    });
+  }
+
+  updateTimer();
+  if (window.__pdpOfferTimerInterval) {
+    clearInterval(window.__pdpOfferTimerInterval);
+  }
+  window.__pdpOfferTimerInterval = setInterval(updateTimer, 1000);
+}
+
+window.initPDPOfferTimer = initPDPOfferTimer;
+
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", renderProductPage);
+  document.addEventListener("DOMContentLoaded", () => {
+    renderProductPage();
+    initPDPOfferTimer();
+  });
 } else {
   renderProductPage();
+  initPDPOfferTimer();
 }
+window.addEventListener("load", initPDPOfferTimer);
 

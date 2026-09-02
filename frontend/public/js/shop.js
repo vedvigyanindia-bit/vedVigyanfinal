@@ -125,8 +125,11 @@ function renderShop() {
     const params = new URLSearchParams(window.location.search);
     const qFromUrl = params.get("q");
     const catFromUrl = params.get("cat");
+    const pathCat = window.location.pathname.startsWith("/collections/") 
+      ? window.location.pathname.replace(/^\/collections\/?/, "").split("/")[0] 
+      : "";
 
-    if (!qFromUrl && !catFromUrl) {
+    if (!qFromUrl && !catFromUrl && !pathCat) {
       active = "all";
       query = "";
       minPrice = "";
@@ -136,7 +139,10 @@ function renderShop() {
       return;
     }
 
-    if (catFromUrl) {
+    if (pathCat) {
+      active = pathCat;
+      syncInputs();
+    } else if (catFromUrl) {
       active = catFromUrl;
       syncInputs();
     }

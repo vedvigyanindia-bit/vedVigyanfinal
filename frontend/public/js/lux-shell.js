@@ -60,7 +60,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="7 Mukhi" loading="lazy" /></div>
                   <b>7 Mukhi</b><span>Wealth & abundance</span>
                 </a>
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p07">
+                <a class="lux-mega-item" href="/products/gauri-sankar-rudraksh">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp" alt="Gauri Shankar" loading="lazy" /></div>
                   <b>Gauri Shankar</b><span>Relationship harmony</span>
                 </a>
@@ -71,7 +71,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
             <button class="lux-mega-trigger" type="button" aria-expanded="false">Bracelets ${NAV_CHEVRON}</button>
             <div class="lux-mega-panel">
               <div class="lux-mega-grid">
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p21">
+                <a class="lux-mega-item" href="/products/gold-rudraksh-bracelet">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Gold Rudraksh Bracelet/1.webp" alt="Rudraksha Bracelets" loading="lazy" /></div>
                   <b>Rudraksha Bracelets</b><span>Daily spiritual wear</span>
                 </a>
@@ -79,7 +79,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="Crystal Bracelets" loading="lazy" /></div>
                   <b>Crystal Bracelets</b><span>Healing gemstones</span>
                 </a>
-                <a class="lux-mega-item" href="/shop.html?cat=zodiac-bracelet">
+                <a class="lux-mega-item" href="/collections/zodiac-bracelet">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp" alt="Zodiac" loading="lazy" /></div>
                   <b>Zodiac Collection</b><span>Rashi bracelets</span>
                 </a>
@@ -94,11 +94,11 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="All Crystals" loading="lazy" /></div>
                   <b>All Crystals</b><span>Healing gemstone bracelets</span>
                 </a>
-                <a class="lux-mega-item" href="/shop.html?cat=gemstone-tree">
+                <a class="lux-mega-item" href="/collections/gemstone-tree">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Chakra Tree/1.webp" alt="Gemstone Trees" loading="lazy" /></div>
                   <b>Crystal Trees</b><span>Vastu & energy trees</span>
                 </a>
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p16">
+                <a class="lux-mega-item" href="/products/amethyst-bracelet">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Amethyst Bracelet/1.webp" alt="Amethyst" loading="lazy" /></div>
                   <b>Amethyst</b><span>Calmness & stress relief</span>
                 </a>
@@ -113,11 +113,11 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Rudraksh Jap Mala/1.webp" alt="All Malas" loading="lazy" /></div>
                   <b>All Malas</b><span>108 bead chanting strings</span>
                 </a>
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p23">
+                <a class="lux-mega-item" href="/products/karka-cancer-braclet">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Karungali mala/1.webp" alt="Karungali Malas" loading="lazy" /></div>
                   <b>Karungali Malas</b><span>Ebony wood positive energy</span>
                 </a>
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p40">
+                <a class="lux-mega-item" href="/products/tula-libra-braclet">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Tulsi Mala/1.webp" alt="Tulsi Malas" loading="lazy" /></div>
                   <b>Tulsi Malas</b><span>Sacred Vaishnav jaap malas</span>
                 </a>
@@ -128,15 +128,15 @@ window.VedVigyanLux = window.VedVigyanLux || {};
             <button class="lux-mega-trigger" type="button" aria-expanded="false">Best Sellers ${NAV_CHEVRON}</button>
             <div class="lux-mega-panel">
               <div class="lux-mega-grid">
-                <a class="lux-mega-item" href="/new-launches.html">
+                <a class="lux-mega-item" href="/shop.html">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="Top Sellers" loading="lazy" /></div>
                   <b>Top Sellers</b><span>Most trusted spiritual picks</span>
                 </a>
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p07">
+                <a class="lux-mega-item" href="/products/gauri-sankar-rudraksh">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="Money Magnet" loading="lazy" /></div>
                   <b>Money Magnet</b><span>Attract wealth & prosperity</span>
                 </a>
-                <a class="lux-mega-item" href="/product/detail.html?id=vv_p12">
+                <a class="lux-mega-item" href="/products/7-chakra-tree">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Chakra Tree/1.webp" alt="7 Chakra Tree" loading="lazy" /></div>
                   <b>7 Chakra Tree</b><span>Vastu & harmony balancer</span>
                 </a>
@@ -151,7 +151,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="Complete Shop" loading="lazy" /></div>
                   <b>Complete Shop</b><span>Explore all 41 sacred items</span>
                 </a>
-                <a class="lux-mega-item" href="/shop.html?cat=zodiac-bracelet">
+                <a class="lux-mega-item" href="/collections/zodiac-bracelet">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp" alt="Zodiac Rashi" loading="lazy" /></div>
                   <b>Zodiac Rashi</b><span>Custom Rashi gemstones</span>
                 </a>
@@ -240,7 +240,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
             <a href="/about.html">About Us</a>
             <a href="/contact.html">Contact</a>
             <a href="/blog.html">Blog</a>
-            <a href="/new-launches.html">New Launches</a>
+            <a href="/shop.html">New Launches</a>
             <a href="/cashback-offer.html" class="lux-offer-link">Offers</a>
           </div>
           <div class="lux-footer-col">
@@ -566,11 +566,11 @@ window.VedVigyanLux = window.VedVigyanLux || {};
             v.pause();
             v.removeAttribute("src");
             v.load();
-          } catch (e) {}
+          } catch (e) { }
         }
         const iframe = inlinePlayer.querySelector("iframe");
         if (iframe) {
-          try { iframe.src = "about:blank"; } catch (e) {}
+          try { iframe.src = "about:blank"; } catch (e) { }
         }
         inlinePlayer.remove();
       }
@@ -638,7 +638,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         document.querySelectorAll(".vv-reel-video-wrap.is-playing video").forEach((v) => {
-          try { v.pause(); } catch (e) {}
+          try { v.pause(); } catch (e) { }
         });
       }
     });
@@ -767,9 +767,9 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     ensureGlobalScripts();
   }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", bootLuxShell);
-} else {
-  bootLuxShell();
-}
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootLuxShell);
+  } else {
+    bootLuxShell();
+  }
 })(window.VedVigyanLux);

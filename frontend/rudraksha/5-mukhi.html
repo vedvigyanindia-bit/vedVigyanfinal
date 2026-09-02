@@ -29,6 +29,7 @@
   <script src="/public/js/lux-shell.js" defer></script>
   <script src="/public/js/lux-cards.js" defer></script>
   <script src="/public/js/ui.js?v=3" defer></script>
+  <script src="/public/js/pdp-tabs-data.js" defer></script>
   <script src="/public/js/product.js" defer></script>
 
   <script type="application/ld+json">
@@ -103,195 +104,269 @@
       <div class="lux-promo-item">✨ <b>VEDIC MANTRA PURIFIED</b> Before Dispatch</div>
     </div>
   </div>
-  <div class="lux-announce" id="announceBar" aria-live="polite">
-    <div class="lux-announce-track" id="announceTrack"></div>
-    <div class="lux-announce-dots" id="announceDots"></div>
-  </div>
 
   <!-- 2. Navigation -->
-  <header class="lux-nav is-scrolled" id="luxNav">
+  <header class="lux-nav" id="luxNav">
     <div class="lux-container lux-nav-inner">
       <a class="lux-brand" href="/index.html" aria-label="Ved Vigyan Home">
-        <img src="/logo.webp?v=2" alt="Ved Vigyan" width="44" height="44" />
+        <img src="/public/images/logo.jpg" alt="Ved Vigyan" width="44" height="44" style="border-radius:50%; object-fit:cover; border:1.5px solid #d4af37;" />
         <div class="lux-brand-text">
-          <div class="lux-brand-name">Ved Vigyan</div>
-          <div class="lux-brand-tag">Ancient Wisdom · Modern Living</div>
+          <div class="lux-brand-name" style="font-size:20px; font-weight:700; color:#8a1a23;">Ved Vigyan</div>
+          <div class="lux-brand-tag" style="font-size:9px; color:#d4af37; font-weight:600; text-transform:uppercase;">Ancient Wisdom · Modern Living</div>
         </div>
       </a>
 
+      
+      
+      
+      
+      
+      
+      
       <nav class="lux-navlinks" aria-label="Primary">
         <a class="lux-nav-link" href="/index.html">Home</a>
+
+        <!-- 1. Rudraksha Card Dropdown -->
         <div class="lux-mega-wrap" data-mega="rudraksha">
           <button class="lux-mega-trigger" type="button" aria-expanded="false">
-            Rudraksha
-            <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"
-              aria-hidden="true">
-              <path d="M2 3.5 5 6.5 8 3.5" />
-            </svg>
+            Rudraksha <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" /></svg>
           </button>
-          <div class="lux-mega-panel">
-            <div class="lux-mega-grid">
-              <a class="lux-mega-item" href="/rudraksha.html">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp"
-                    alt="All Rudraksha" loading="lazy" /></div>
-                <b>All Rudraksha</b><span>14 authentic mukhi beads</span>
+          <div class="vv-card-dropdown">
+            <div class="vv-card-dropdown__grid">
+              <a class="vv-card-item" href="/rudraksha.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="All Rudraksha" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">All Rudraksha</div>
+                <div class="vv-card-item__sub">14 authentic mukhi beads</div>
               </a>
-              <a class="lux-mega-item" href="/rudraksha/5-mukhi.html">
-                <div class="lux-mega-thumb"><img
-                    src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="5 Mukhi"
-                    loading="lazy" /></div>
-                <b>5 Mukhi</b><span>Bestseller for daily wear</span>
+              <a class="vv-card-item" href="/rudraksha/5-mukhi.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="5 Mukhi" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">5 Mukhi</div>
+                <div class="vv-card-item__sub">Bestseller for daily wear</div>
               </a>
-              <a class="lux-mega-item" href="/rudraksha/7-mukhi.html">
-                <div class="lux-mega-thumb"><img
-                    src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="7 Mukhi"
-                    loading="lazy" /></div>
-                <b>7 Mukhi</b><span>Wealth & abundance</span>
+              <a class="vv-card-item" href="/rudraksha/7-mukhi.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="7 Mukhi" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">7 Mukhi</div>
+                <div class="vv-card-item__sub">Wealth &amp; abundance</div>
               </a>
-              <a class="lux-mega-item" href="/product/detail.html?id=vv_p19">
-                <div class="lux-mega-thumb"><img
-                    src="/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp" alt="Gauri Shankar"
-                    loading="lazy" /></div>
-                <b>Gauri Shankar</b><span>Relationship harmony</span>
+              <a class="vv-card-item" href="/products/ganesh-rudraksh">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Gauri Sankar Rudraksh/1.webp" alt="Gauri Shankar" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Gauri Shankar</div>
+                <div class="vv-card-item__sub">Relationship harmony</div>
               </a>
             </div>
           </div>
         </div>
+
+        <!-- 2. Bracelets Card Dropdown -->
         <div class="lux-mega-wrap" data-mega="bracelets">
           <button class="lux-mega-trigger" type="button" aria-expanded="false">
-            Bracelets
-            <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"
-              aria-hidden="true">
-              <path d="M2 3.5 5 6.5 8 3.5" />
-            </svg>
+            Bracelets <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" /></svg>
           </button>
-          <div class="lux-mega-panel">
-            <div class="lux-mega-grid">
-              <a class="lux-mega-item" href="/product/detail.html?id=vv_p21">
-                <div class="lux-mega-thumb"><img
-                    src="/product/Ved vigyan products/Gold Rudraksh Bracelet/1.webp"
-                    alt="Rudraksha Bracelets" loading="lazy" /></div>
-                <b>Rudraksha Bracelets</b><span>Daily spiritual wear</span>
+          <div class="vv-card-dropdown">
+            <div class="vv-card-dropdown__grid">
+              <a class="vv-card-item" href="/products/gold-rudraksh-bracelet">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Gold Rudraksh Bracelet/1.webp" alt="Gold Rudraksha Bracelet" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Gold Rudraksha</div>
+                <div class="vv-card-item__sub">Original gold capped</div>
               </a>
-              <a class="lux-mega-item" href="/product/detail.html?id=vv_p07">
-                <div class="lux-mega-thumb"><img
-                    src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="Crystal Bracelets"
-                    loading="lazy" /></div>
-                <b>Crystal Bracelets</b><span>Healing gemstones</span>
+              <a class="vv-card-item" href="/products/gauri-sankar-rudraksh">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="Money Magnet" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Money Magnet</div>
+                <div class="vv-card-item__sub">Wealth &amp; prosperity</div>
               </a>
-              <a class="lux-mega-item" href="/shop.html?cat=zodiac-bracelet">
-                <div class="lux-mega-thumb"><img
-                    src="/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp"
-                    alt="Zodiac Collection" loading="lazy" /></div>
-                <b>Zodiac Collection</b><span>Rashi bracelets</span>
+              <a class="vv-card-item" href="/gem-stone/amethyst-bracelet.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Amethyst Bracelet/1.webp" alt="Amethyst Bracelet" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Amethyst Bracelet</div>
+                <div class="vv-card-item__sub">Peace &amp; mental calm</div>
+              </a>
+              <a class="vv-card-item" href="/gem-stone/tiger-eye-bracelet.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Tiger Eye Loose Big/1.webp" alt="Tiger Eye" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Tiger Eye</div>
+                <div class="vv-card-item__sub">Courage &amp; confidence</div>
               </a>
             </div>
           </div>
         </div>
+
+        <!-- 3. Crystals Card Dropdown -->
         <div class="lux-mega-wrap" data-mega="crystals">
           <button class="lux-mega-trigger" type="button" aria-expanded="false">
-            Crystals
-            <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"
-              aria-hidden="true">
-              <path d="M2 3.5 5 6.5 8 3.5" />
-            </svg>
+            Crystals <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" /></svg>
           </button>
-          <div class="lux-mega-panel">
-            <div class="lux-mega-grid">
-              <a class="lux-mega-item" href="/gem-stone.html">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="All Crystals" loading="lazy" /></div>
-                <b>All Crystals</b><span>Healing gemstone bracelets</span>
+          <div class="vv-card-dropdown">
+            <div class="vv-card-dropdown__grid">
+              <a class="vv-card-item" href="/gem-stone.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Amethyst Bracelet/1.webp" alt="Crystal Bracelets" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Crystal Bracelets</div>
+                <div class="vv-card-item__sub">Natural healing gems</div>
               </a>
-              <a class="lux-mega-item" href="/shop.html?cat=gemstone-tree">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Chakra Tree/1.webp" alt="Gemstone Trees" loading="lazy" /></div>
-                <b>Crystal Trees</b><span>Vastu & energy trees</span>
+              <a class="vv-card-item" href="/products/7-chakra-tree">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/7 Chakra Tree/1.webp" alt="7 Chakra Tree" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">7 Chakra Tree</div>
+                <div class="vv-card-item__sub">Vastu energy balancer</div>
               </a>
-              <a class="lux-mega-item" href="/product/detail.html?id=vv_p16">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Amethyst Bracelet/1.webp" alt="Amethyst" loading="lazy" /></div>
-                <b>Amethyst</b><span>Calmness & stress relief</span>
+              <a class="vv-card-item" href="/products/7-mukhi-rudraksh">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Rose Quartz Tree/1.webp" alt="Rose Quartz Tree" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Rose Quartz Tree</div>
+                <div class="vv-card-item__sub">Love &amp; emotional harmony</div>
+              </a>
+              <a class="vv-card-item" href="/products/9-mukhi-rudraksh">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Piride Braclet/1.webp" alt="Pyrite Bracelet" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Pyrite Bracelet</div>
+                <div class="vv-card-item__sub">Money &amp; protection</div>
               </a>
             </div>
           </div>
         </div>
 
+        <!-- 4. Malas Card Dropdown -->
         <div class="lux-mega-wrap" data-mega="malas">
           <button class="lux-mega-trigger" type="button" aria-expanded="false">
-            Malas
-            <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"
-              aria-hidden="true">
-              <path d="M2 3.5 5 6.5 8 3.5" />
-            </svg>
+            Malas <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" /></svg>
           </button>
-          <div class="lux-mega-panel">
-            <div class="lux-mega-grid">
-              <a class="lux-mega-item" href="/mala.html">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Rudraksh Jap Mala/1.webp" alt="All Malas" loading="lazy" /></div>
-                <b>All Malas</b><span>108 bead chanting strings</span>
+          <div class="vv-card-dropdown">
+            <div class="vv-card-dropdown__grid">
+              <a class="vv-card-item" href="/rudraksha-mala/5-mukhi-mala-108.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/1.webp" alt="5 Mukhi Mala" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">5 Mukhi Mala</div>
+                <div class="vv-card-item__sub">108 authentic beads</div>
               </a>
-              <a class="lux-mega-item" href="/product/detail.html?id=vv_p23">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Karungali mala/1.webp" alt="Karungali Malas" loading="lazy" /></div>
-                <b>Karungali Malas</b><span>Ebony wood positive energy</span>
+              <a class="vv-card-item" href="/products/karungali-rudraksh-silver-cap-mala">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Karungali Rudraksh Silver Cap Mala/1.webp" alt="Karungali Mala" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Karungali Mala</div>
+                <div class="vv-card-item__sub">Ebony wood protection</div>
               </a>
-              <a class="lux-mega-item" href="/product/detail.html?id=vv_p40">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Tulsi Mala/1.webp" alt="Tulsi Malas" loading="lazy" /></div>
-                <b>Tulsi Malas</b><span>Sacred Vaishnav jaap malas</span>
+              <a class="vv-card-item" href="/mala/tulsi-mala.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Tulsi Mala/1.webp" alt="Tulsi Mala" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Tulsi Mala</div>
+                <div class="vv-card-item__sub">Sacred Vishnu jaap mala</div>
+              </a>
+              <a class="vv-card-item" href="/products/spatik-mala">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Spatik Mala/1.webp" alt="Spatik Mala" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Spatik Mala</div>
+                <div class="vv-card-item__sub">Cooling crystal jaap mala</div>
               </a>
             </div>
           </div>
         </div>
 
+        <!-- 5. Best Sellers Card Dropdown -->
         <div class="lux-mega-wrap" data-mega="bestsellers">
           <button class="lux-mega-trigger" type="button" aria-expanded="false">
-            Best Sellers
-            <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"
-              aria-hidden="true">
-              <path d="M2 3.5 5 6.5 8 3.5" />
-            </svg>
+            Best Sellers <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" /></svg>
           </button>
-          <div class="lux-mega-panel">
-            <div class="lux-mega-grid">
-              <a class="lux-mega-item" href="/new-launches.html">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="Top Sellers" loading="lazy" /></div>
-                <b>Top Sellers</b><span>Most trusted spiritual picks</span>
+          <div class="vv-card-dropdown">
+            <div class="vv-card-dropdown__grid">
+              <a class="vv-card-item" href="/rudraksha/5-mukhi.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="5 Mukhi Rudraksha" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">5 Mukhi Rudraksha</div>
+                <div class="vv-card-item__sub">Top rated Nepali bead</div>
               </a>
-              <a class="lux-mega-item" href="/product/detail.html?id=vv_p07">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="Money Magnet" loading="lazy" /></div>
-                <b>Money Magnet</b><span>Attract wealth & prosperity</span>
+              <a class="vv-card-item" href="/products/gauri-sankar-rudraksh">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/4. Money Magnet/1.webp" alt="Money Magnet" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Money Magnet</div>
+                <div class="vv-card-item__sub">#1 selling bracelet</div>
               </a>
-              <a class="lux-mega-item" href="/product/detail.html?id=vv_p12">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Chakra Tree/1.webp" alt="7 Chakra Tree" loading="lazy" /></div>
-                <b>7 Chakra Tree</b><span>Vastu & harmony balancer</span>
+              <a class="vv-card-item" href="/products/7-chakra-tree">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/7 Chakra Tree/1.webp" alt="7 Chakra Tree" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">7 Chakra Tree</div>
+                <div class="vv-card-item__sub">Vastu bestseller</div>
+              </a>
+              <a class="vv-card-item" href="/collections/zodiac-bracelet">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp" alt="Rashi Bracelets" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">Rashi Bracelets</div>
+                <div class="vv-card-item__sub">Personalized zodiac</div>
               </a>
             </div>
           </div>
         </div>
 
+        <!-- 6. Shop All Card Dropdown -->
         <div class="lux-mega-wrap" data-mega="shopall">
           <button class="lux-mega-trigger" type="button" aria-expanded="false">
-            Shop All
-            <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5"
-              aria-hidden="true">
-              <path d="M2 3.5 5 6.5 8 3.5" />
-            </svg>
+            Shop All <svg class="lux-nav-chevron" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" /></svg>
           </button>
-          <div class="lux-mega-panel">
-            <div class="lux-mega-grid">
-              <a class="lux-mega-item" href="/shop.html">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="Complete Shop" loading="lazy" /></div>
-                <b>Complete Shop</b><span>Explore all 41 sacred items</span>
+          <div class="vv-card-dropdown">
+            <div class="vv-card-dropdown__grid">
+              <a class="vv-card-item" href="/rudraksha.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="All Rudraksha" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">All Rudraksha</div>
+                <div class="vv-card-item__sub">1 to 14 Mukhi beads</div>
               </a>
-              <a class="lux-mega-item" href="/shop.html?cat=zodiac-bracelet">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp" alt="Zodiac Rashi" loading="lazy" /></div>
-                <b>Zodiac Rashi</b><span>Custom Rashi gemstones</span>
+              <a class="vv-card-item" href="/mala.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/1.webp" alt="All Malas" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">All Malas</div>
+                <div class="vv-card-item__sub">Sacred 108 jaap malas</div>
               </a>
-              <a class="lux-mega-item" href="/rudraksha.html">
-                <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="Rudraksha Beads" loading="lazy" /></div>
-                <b>Rudraksha Beads</b><span>1 to 12 Mukhi collections</span>
+              <a class="vv-card-item" href="/collections/zodiac-bracelet">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/Amethyst Bracelet/1.webp" alt="All Bracelets" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">All Bracelets</div>
+                <div class="vv-card-item__sub">Rudraksha &amp; Crystals</div>
+              </a>
+              <a class="vv-card-item" href="/gem-stone.html">
+                <div class="vv-card-item__img">
+                  <img src="/product/Ved vigyan products/7 Chakra Tree/1.webp" alt="All Crystals" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">All Crystals</div>
+                <div class="vv-card-item__sub">Vastu trees &amp; gems</div>
               </a>
             </div>
           </div>
         </div>
       </nav>
+
+
+
+
+
+
+
 
       <div class="lux-nav-actions">
         <button class="lux-icon-btn" id="searchOpen" type="button" aria-label="Search">
@@ -334,83 +409,101 @@
     <section class="lux-pdp">
       <div class="lux-container">
 
-        <!-- SECTION 2 & 3: GALLERY + INTRO PRODUCT GRID -->
-        <div class="lux-pdp-grid">
+                <!-- Divine Hindu PDP Layout -->
+                <!-- Divine Hindu PDP Layout -->
+                <!-- Divine Hindu PDP Layout -->
+                <!-- Divine Hindu PDP Layout -->
+                <!-- Divine Hindu PDP Layout -->
+        <div class="pdp-grid">
+          <div>
+            <div class="lux-pdp-gallery lux-reveal" id="pdpGallery">
+              <img id="productImg" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Crect width='100%25' height='100%25' fill='%23f9f6f0'/%3E%3C/svg%3E" alt="Product" width="600" height="600" />
+            </div>
 
-          <!-- SECTION 2: 5 Visual Image Gallery -->
-          <div class="lux-pdp-gallery lux-reveal" id="pdpGallery">
-            <img id="productImg" src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp"
-              alt="Authentic 5 Mukhi Rudraksha" width="600" height="600" />
+            <!-- Download Certificate Box under Gallery -->
+            <div class="pdp-cert-box">
+              <div class="pdp-cert-left">
+                <img src="https://cdn.shopify.com/s/files/1/0790/4988/3955/files/image_325.png?v=1771487474" alt="certified by DRGTL" width="40" height="22">
+                <span>certified by DRGTL</span>
+              </div>
+              <a id="pdpCertDownloadBtn" href="/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp" target="_blank" download class="pdp-cert-download-btn">Download Certificate</a>
+            </div>
           </div>
 
-          <!-- SECTION 3: Product Introduction & Primary CTA -->
-          <div class="lux-pdp-info lux-reveal">
-            <div class="lux-pdp-badges">
-              <span class="lux-badge-pill lux-badge-cert">Lab Certified</span>
-              <span class="lux-badge-pill lux-badge-auth">100% Authentic Nepal</span>
-              <span class="lux-badge-pill lux-badge-cert">Vedic Energized</span>
-            </div>
-            <h1 class="lux-pdp-title" id="productTitle">5 Mukhi Rudraksha (Panchmukhi)</h1>
+          <div class="pdp-info lux-reveal">
+            <h1 class="pdp-title" id="productTitle">Loading…</h1>
 
-            <!-- Review Summary Badge -->
-            <div class="lux-product-rating" id="pdpRating">
-              <span class="stars">★★★★★</span>
-              <span style="font-weight:700; color:#1a0809">4.9/5</span>
-              <span class="count">(324 Verified Reviews)</span>
-            </div>
-
-            <!-- Price Row -->
-            <div class="lux-pdp-price" id="productPrice">
-              <span class="lux-product-price">₹599</span>
-              <span class="lux-product-old-price">₹1,199</span>
-              <span class="lux-product-discount">50% OFF</span>
-            </div>
-            <p class="lux-pdp-desc" id="productDesc">
-              Sacred 5 Mukhi Rudraksha representing Lord Kalagni Rudra &amp; ruled by Jupiter (Guru). Enhances mental
-              peace, self-confidence, heart health &amp; spiritual clarity.
-            </p>
-
-            <!-- Key Trust Points below CTA -->
-            <div class="vv-trust-bullets-row">
-              <div class="vv-trust-bullet-item"><span>✓</span> 100% Original Lab Certified</div>
-              <div class="vv-trust-bullet-item"><span>✓</span> Energized with Shiva Mantras</div>
-              <div class="vv-trust-bullet-item"><span>✓</span> 7-Day Easy Replacement</div>
-              <div class="vv-trust-bullet-item"><span>✓</span> Free Express Shipping</div>
-            </div>
-
-            <!-- Free Gift Box -->
-            <div class="lux-free-gift-box" id="freeGiftBox">
-              <div class="lux-free-gift-timer-header">
-                <span class="gift-timer-kicker">⏰ FREE GIFT OFFER EXPIRES IN:</span>
-                <div class="gift-timer-badge">
-                  <span data-gift-timer-mins>14</span>m <span data-gift-timer-secs>59</span>s
-                </div>
+            <div class="pdp-feats-row">
+              <div class="pdp-feats">
+                <span class="pdp-pill">Natural Stone</span>
+                <span class="pdp-pill">Lab Certified</span>
+                <span class="pdp-pill">100% Made in India</span>
               </div>
-              <label class="lux-free-gift-label" for="claimFreeGift">
-                <input type="checkbox" id="claimFreeGift" />
-                <div class="lux-free-gift-info">
-                  <div class="lux-free-gift-title">🎁 Claim Your Free 5 Mukhi Rudraksha Bead</div>
-                  <div class="lux-free-gift-subtitle" id="freeGiftSubtitle">Included FREE on orders ₹999 &amp; above
-                  </div>
+            </div>
+
+            <div class="pdp-rating" id="pdpRating">
+              <!-- Rendered dynamically by JS -->
+            </div>
+
+            <div class="pdp-priceline">
+              <div class="pdp-price" id="productPrice">
+                <!-- Rendered dynamically by JS -->
+              </div>
+              <a class="pdp-viewoffers" href="#pdp-offers">View Offers</a>
+            </div>
+            <div class="pdp-tax">(Inclusive of all taxes)</div>
+
+            <div class="pdp-count" id="pdpCountTimer">
+              Offer ends in <span data-count-h>23</span> hr : <span data-count-m>26</span> min : <span data-count-s>55</span> sec
+            </div>
+
+            <div class="pdp-qtyrow">
+              <span class="lbl">Quantity</span>
+              <span class="pdp-qty">
+                <button type="button" id="pdpQtyDec" aria-label="Decrease">-</button>
+                <input type="number" id="pdpQtyInput" value="1" min="1" aria-label="Quantity">
+                <button type="button" id="pdpQtyInc" aria-label="Increase">+</button>
+              </span>
+            </div>
+
+            <div class="pdp-siddhi" id="pdpSiddhiBox">
+              <label for="siddhiChk" style="display:flex; align-items:flex-start; gap:12px; cursor:pointer;">
+                <input type="checkbox" id="siddhiChk" style="width:18px; height:18px; margin-top:2px; accent-color:#8a1a23;">
+                <div>
+                  <strong style="display:block; color:#1a1a1a; font-size:13.5px; font-weight:700;">Get Siddhi · Pran Pratishtha · Energised</strong>
+                  <span style="display:block; color:#666; font-size:12px; margin-top:2px;">Sacred energization for your product — from ₹101</span>
                 </div>
               </label>
             </div>
 
-            <!-- Action CTAs -->
-            <div class="lux-pdp-actions">
-              <button class="lux-btn lux-btn-secondary" id="addToCartBtn" type="button" data-add-to-cart="p_rud_5m">Add
-                to Cart</button>
-              <button class="lux-btn lux-btn-primary" id="buyNowBtn" type="button" data-buy-now="p_rud_5m">Buy Now — 50%
-                OFF</button>
-              <button class="lux-product-action-btn lux-pdp-wish" type="button" data-wishlist="p_rud_5m"
-                aria-label="Add to wishlist">♡</button>
-              <a class="lux-btn lux-btn-secondary" href="https://wa.me/917900811101" target="_blank"
-                rel="noopener noreferrer">Ask Expert</a>
+            <div class="pdp-review-slider-wrap" id="pdpReviewCardWidget">
+              <button type="button" class="pdp-rev-nav prev" id="pdpRevPrevBtn" onclick="window.changePDPReview(-1)" aria-label="Previous review">&lsaquo;</button>
+              <div class="pdp-review-card">
+                <div class="pdp-rev-avatar" id="pdpRevAvatar">★</div>
+                <div class="pdp-rev-body" style="width: 100%;">
+                  <div style="display:flex; align-items:center; justify-content:space-between;">
+                    <div>
+                      <strong id="pdpRevName">Verified Customer</strong>
+                      <span class="v-badge">✓ Verified</span>
+                    </div>
+                    <span class="pdp-rev-counter" id="pdpRevCounter" style="font-size:11px; color:#6b46c1; font-weight:700;">1 / 8</span>
+                  </div>
+                  <div class="pdp-rev-stars" id="pdpRevStars">★★★★★</div>
+                  <p class="pdp-rev-text" id="pdpRevText">Authentic product with official lab test certificate included.</p>
+                </div>
+              </div>
+              <button type="button" class="pdp-rev-nav next" id="pdpRevNextBtn" onclick="window.changePDPReview(1)" aria-label="Next review">&rsaquo;</button>
             </div>
 
-            <div class="lux-pdp-trust-row">
-              <span>🔒 256-Bit Encrypted Payment</span>
-              <span>📦 Safe Tamper-Proof Packaging</span>
+            <div class="pdp-main-btns">
+              <button class="pdp-btn-atc" id="addToCartBtn" type="button">Add to Cart</button>
+              <button class="pdp-btn-buynow" id="buyNowBtn" type="button">Buy Now</button>
+            </div>
+
+            <div class="pdp-trust-bar">
+              <span>🔒 Secure UPI · Cards · COD</span>
+              <span>🧪 Govt. Lab Certified</span>
+              <span>🚚 Free Shipping</span>
             </div>
           </div>
         </div>
@@ -463,87 +556,111 @@
           </div>
         </section>
 
-        <!-- SECTION 5: Offers & Special Bundles -->
-        <section class="vv-bundles-section lux-reveal">
-          <div class="lux-section-head">
-            <div class="lux-section-kicker">Save More Today</div>
-            <h2 class="lux-section-title">Offers &amp; Special Bundles</h2>
-            <p class="lux-section-sub">Choose your preferred package to unlock maximum savings &amp; free divine gifts.
-            </p>
+        
+        
+
+        
+        
+        
+        
+        
+        <!-- SECTION 5.5: PDP Description, Specification, Benefits, FAQs Tabbed Content Section -->
+        <section class="pdp-tabs-section lux-reveal" style="max-width: 1200px; margin: 48px auto; padding: 32px;">
+          <div class="pdp-tabs-header">
+            <button class="pdp-tab-btn active" type="button" data-tab="tabDescription" onclick="window.switchPDPTab(this, event)">Description</button>
+            <button class="pdp-tab-btn" type="button" data-tab="tabSpecification" onclick="window.switchPDPTab(this, event)">Specification</button>
+            <button class="pdp-tab-btn" type="button" data-tab="tabBenefits" onclick="window.switchPDPTab(this, event)">Benefits</button>
+            <button class="pdp-tab-btn" type="button" data-tab="tabFaqs" onclick="window.switchPDPTab(this, event)">FAQs</button>
           </div>
-          <div class="vv-bundles-grid">
 
-            <!-- Card 1: Sacred Essential -->
-            <div class="vv-bundle-card">
-              <div class="vv-bundle-header">
-                <h3 class="vv-bundle-title">Sacred Essential</h3>
-                <div class="vv-bundle-subtitle">Perfect for personal devotion</div>
+          <div class="pdp-tabs-body">
+            <!-- 1. Description Tab Panel -->
+            <div class="pdp-tab-panel active" id="tabDescription" style="display: block;">
+              <div class="pdp-desc-text" id="productDesc" style="font-size: 16px; line-height: 1.85; color: #2d3748; max-width: 960px;">
+                5 Mukhi Nepali Rudraksha is one of the most commonly used Rudraksha varieties. Traditionally associated with Lord Shiva, it is valued for meditation, spiritual discipline, calmness, and everyday devotional practices.
               </div>
-              <div class="vv-bundle-pricing">
-                <span class="vv-bundle-sale-price">₹599</span>
-                <span class="vv-bundle-mrp">₹1,199</span>
-                <div><span class="vv-bundle-save-pill">SAVE 50%</span></div>
-              </div>
-              <ul class="vv-bundle-items">
-                <li><span>✓</span> 1 Authentic Rudraksha / Spiritual Product</li>
-                <li><span>✓</span> Product authenticity assurance</li>
-                <li><span>✓</span> Premium packaging</li>
-                <li><span>✓</span> Easy gifting option</li>
-              </ul>
-              <button class="lux-btn lux-btn-secondary" type="button" data-vv-bundle-buy="p_rud_5m">EXPLORE PRODUCT
-                &rarr;</button>
             </div>
 
-            <!-- Card 2: Complete Puja Collection (Featured Card) -->
-            <div class="vv-bundle-card popular">
-              <div class="vv-bundle-popular-badge">MOST POPULAR</div>
-              <div class="vv-bundle-header">
-                <h3 class="vv-bundle-title">Complete Puja Collection ⭐</h3>
-                <div class="vv-bundle-subtitle">Everything you need for a meaningful spiritual practice</div>
+            <!-- 2. Specification Tab Panel -->
+            <div class="pdp-tab-panel" id="tabSpecification" style="display: none;">
+              <div class="pdp-spec-table-wrap">
+                <table class="pdp-spec-table">
+                  <tbody>
+                    <tr>
+                      <th>Authenticity &amp; Testing</th>
+                      <td>100% Natural, Government Approved Lab Certified with QR Code Report</td>
+                    </tr>
+                    <tr>
+                      <th>Ritual Energization</th>
+                      <td>Pre-energized via Traditional Vedic Mantra Pran Pratishtha rituals</td>
+                    </tr>
+                    <tr>
+                      <th>Origin &amp; Harvest</th>
+                      <td>Ethically sourced directly from sacred Himalayan regions</td>
+                    </tr>
+                    <tr>
+                      <th>Package Includes</th>
+                      <td>Product + Physical Test Report Certificate + Usage Guide + Sacred Packaging Box</td>
+                    </tr>
+                    <tr>
+                      <th>Care Instructions</th>
+                      <td>Wipe gently with a clean dry cotton cloth. Keep away from perfumes and harsh chemicals.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <div class="vv-bundle-pricing">
-                <span class="vv-bundle-sale-price">₹999</span>
-                <span class="vv-bundle-mrp">₹1,999</span>
-                <div><span class="vv-bundle-save-pill">SAVE 50% + FREE SHIPPING</span></div>
-              </div>
-              <ul class="vv-bundle-items">
-                <li><span>✓</span> Main Sacred Product</li>
-                <li><span>✓</span> Complimentary Rudraksha / Mala</li>
-                <li><span>✓</span> Ganga Jal / Bhasma Sample</li>
-                <li><span>✓</span> Authenticity Certificate</li>
-                <li><span>✓</span> Premium Spiritual Packaging</li>
-              </ul>
-              <div class="vv-bundle-highlight-strip">✨ BEST VALUE COLLECTION</div>
-              <button class="lux-btn lux-btn-primary" type="button" data-vv-bundle-buy="p_rud_5m">SHOP THE COLLECTION
-                &rarr;</button>
             </div>
 
-            <!-- Card 3: Divine Gift Collection -->
-            <div class="vv-bundle-card">
-              <div class="vv-bundle-highlight-tag">🎁 PERFECT FOR GIFTING</div>
-              <div class="vv-bundle-header">
-                <h3 class="vv-bundle-title">Divine Gift Collection</h3>
-                <div class="vv-bundle-subtitle">Thoughtfully curated for loved ones</div>
+            <!-- 3. Benefits Tab Panel -->
+            <div class="pdp-tab-panel" id="tabBenefits" style="display: none;">
+              <div class="pdp-benefits-grid" id="pdpBenefitsGrid">
+                <div class="pdp-benefit-card">
+                  <div class="pdp-benefit-icon">🛡️</div>
+                  <h4>Spiritual Protection</h4>
+                  <p>Shields the wearer from negative energies, evil eye, and stressful environmental aura.</p>
+                </div>
+                <div class="pdp-benefit-card">
+                  <div class="pdp-benefit-icon">🧘</div>
+                  <h4>Mental Peace &amp; Focus</h4>
+                  <p>Calms an overactive mind, enhances concentration during meditation and daily work.</p>
+                </div>
+                <div class="pdp-benefit-card">
+                  <div class="pdp-benefit-icon">✨</div>
+                  <h4>Chakra Harmonization</h4>
+                  <p>Balances internal energy centers to promote emotional equilibrium and vitality.</p>
+                </div>
+                <div class="pdp-benefit-card">
+                  <div class="pdp-benefit-icon">💼</div>
+                  <h4>Confidence &amp; Growth</h4>
+                  <p>Attracts positive cosmic vibrations, supporting personal growth, wealth, and clarity.</p>
+                </div>
               </div>
-              <div class="vv-bundle-pricing">
-                <span class="vv-bundle-sale-price">₹1,499</span>
-                <span class="vv-bundle-mrp">₹2,999</span>
-                <div><span class="vv-bundle-save-pill">SPECIAL COMBO PRICING</span></div>
-              </div>
-              <ul class="vv-bundle-items">
-                <li><span>✓</span> 2+ Sacred Products</li>
-                <li><span>✓</span> Premium Gift Packaging</li>
-                <li><span>✓</span> Complimentary Spiritual Accessory</li>
-                <li><span>✓</span> Special Combo Pricing</li>
-              </ul>
-              <button class="lux-btn lux-btn-secondary" type="button" data-vv-bundle-buy="p_rud_5m">EXPLORE GIFT SET
-                &rarr;</button>
             </div>
 
+            <!-- 4. FAQs Tab Panel -->
+            <div class="pdp-tab-panel" id="tabFaqs" style="display: none;">
+              <div class="pdp-faqs-list" id="pdpFaqs">
+                <div class="pdp-faq-item">
+                  <strong>Q: Is this product 100% authentic and certified?</strong>
+                  <p>A: Yes! Every single piece is individually lab tested and comes with a physical test report featuring a QR code for online verification.</p>
+                </div>
+                <div class="pdp-faq-item">
+                  <strong>Q: How do I wear or use this spiritual item?</strong>
+                  <p>A: All products are pre-energized with Vedic mantras. You can wear it on an auspicious morning after bathing while chanting sacred mantras.</p>
+                </div>
+                <div class="pdp-faq-item">
+                  <strong>Q: Can anyone wear this regardless of age or gender?</strong>
+                  <p>A: Absolutely! Authentic Rudraksha beads, gemstones, and malas can be worn by anyone irrespective of gender, age, or horoscope.</p>
+                </div>
+                <div class="pdp-faq-item">
+                  <strong>Q: How long does delivery take?</strong>
+                  <p>A: We dispatch within 24 hours. Express delivery across India takes 3 to 5 business days with full tracking updates via SMS/WhatsApp.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
-
-        <!-- SECTION 6: Watch & Shop Video Section -->
+<!-- SECTION 6: Watch & Shop Video Section -->
         <section class="vv-watch-shop-section lux-reveal" id="watchShop" style="margin: 40px 0;">
           <div class="lux-section-head" style="text-align: center; margin-bottom: 20px;">
             <div class="lux-section-kicker" style="color:#8a1a23; font-weight:700;">Reels &amp; Customer Experiences</div>
@@ -919,29 +1036,7 @@
         </section>
 
         <!-- SECTION 10: Final Offer + CTA + Timer -->
-        <section class="vv-final-offer-section lux-reveal">
-          <h2 class="vv-final-offer-headline">Claim Your Original Nepal 5 Mukhi Today</h2>
-          <div class="vv-final-offer-sub">Limited Time Offer • Extra 5% Instant Discount on Prepaid Orders</div>
-
-          <div class="vv-final-timer-container">
-            <div class="vv-timer-unit"><span class="vv-timer-num" data-vv-timer-unit="hours">00</span><span
-                class="vv-timer-label" style="color:#d4af37">Hours</span></div>
-            <div class="vv-timer-unit"><span class="vv-timer-num" data-vv-timer-unit="mins">14</span><span
-                class="vv-timer-label" style="color:#d4af37">Mins</span></div>
-            <div class="vv-timer-unit"><span class="vv-timer-num" data-vv-timer-unit="secs">32</span><span
-                class="vv-timer-label" style="color:#d4af37">Secs</span></div>
-          </div>
-
-          <button class="vv-final-cta-btn" type="button" onclick="window.VedVigyanCart?.buyNow('p_rud_5m')">BUY NOW
-            &mdash; ₹599 (50% OFF) &rarr;</button>
-
-          <div class="vv-final-reassurance-row">
-            <span>✓ Quality Checked</span>
-            <span>✓ 100% Secure Payment</span>
-            <span>✓ Safe Eco Packaging</span>
-            <span>✓ Free Express Delivery</span>
-          </div>
-        </section>
+        
 
         <!-- RELATED PRODUCTS -->
         <section class="lux-section" style="padding-bottom:48px;">
@@ -976,7 +1071,7 @@
           <a href="/about.html">About Us</a>
           <a href="/contact.html">Contact</a>
           <a href="/blog.html">Blog</a>
-          <a href="/new-launches.html">New Launches</a>
+          <a href="/shop.html">New Launches</a>
           <a href="/cashback-offer.html" class="lux-offer-link">Offers</a>
         </div>
         <div class="lux-footer-col">

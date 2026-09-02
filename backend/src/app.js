@@ -72,6 +72,13 @@ function createApp() {
     })
   );
 
+  app.use((req, res, next) => {
+    if (req.path === "/new-launches.html" || req.path === "/new-launches") {
+      return res.redirect(301, "/shop.html");
+    }
+    next();
+  });
+
   app.use("/", pagesRouter);
   app.use("/cart", cartRouter);
   app.use("/auth", authRouter);
