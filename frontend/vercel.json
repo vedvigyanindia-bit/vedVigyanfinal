@@ -2,11 +2,15 @@
   "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/products/:slug*",
-      "destination": "/product/detail.html"
+      "source": "/products/(.*)",
+      "destination": "/products/index.html"
     },
     {
-      "source": "/collections/:category*",
+      "source": "/products",
+      "destination": "/products/index.html"
+    },
+    {
+      "source": "/collections/(.*)",
       "destination": "/shop.html"
     }
   ]

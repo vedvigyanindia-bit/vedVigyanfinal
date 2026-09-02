@@ -10,11 +10,15 @@
       "destination": "/frontend/public/$1"
     },
     {
-      "source": "/products/:slug*",
-      "destination": "/frontend/product/detail.html"
+      "source": "/products/(.*)",
+      "destination": "/frontend/products/index.html"
     },
     {
-      "source": "/collections/:category*",
+      "source": "/products",
+      "destination": "/frontend/products/index.html"
+    },
+    {
+      "source": "/collections/(.*)",
       "destination": "/frontend/shop.html"
     },
     {
