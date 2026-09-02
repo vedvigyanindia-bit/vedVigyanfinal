@@ -420,6 +420,13 @@ function renderProductPage() {
     journeySection.style.display = isRudraksha ? "block" : "none";
   }
 
+  // Update Description, Specification, Benefits, and FAQs tabs for this specific product
+  try {
+    updatePDPTabs(product);
+  } catch (tabErr) {
+    console.warn("PDP Tabs update error:", tabErr);
+  }
+
   // Dynamic filesystem scanner fetch
   if (product && product.slug) {
     fetch(`/api/gallery?slug=${product.slug}`)
@@ -498,6 +505,91 @@ function renderProductPage() {
   window.initPDPTabs?.(product);
   document.querySelectorAll(".lux-reveal").forEach((el) => el.classList.add("visible"));
   window.VedVigyanLux?.initScrollReveal?.();
+}
+
+function updatePDPTabs(product) {
+  const tabsData = window.VED_VIGYAN_PRODUCT_TABS;
+  if (!product) return;
+
+  const data = tabsData ? (tabsData[product.id] || tabsData[product.slug] || tabsData[(product.name || "").toLowerCase().trim().replace(/[()]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")]) : null;
+
+  // 1. Description Tab
+  const descEl = document.getElementById("productDesc");
+  if (descEl) {
+    descEl.textContent = (data && data.description) ? data.description : (product.description || product.short || "");
+  }
+
+  // 2. Specification Tab
+  const specPanel = document.getElementById("tabSpecification");
+  if (specPanel) {
+    const specs = (data && Array.isArray(data.specs) && data.specs.length)
+      ? data.specs
+      : [
+          { label: "Authenticity & Testing", value: "100% Natural, Government Approved Lab Certified with QR Code Report" },
+          { label: "Ritual Energization", value: "Pre-energized via Traditional Vedic Mantra Pran Pratishtha rituals" },
+          { label: "Origin & Harvest", value: "Ethically sourced directly from sacred Himalayan regions" },
+          { label: "Package Includes", value: `${product.name} + Physical Test Report Certificate + Usage Guide + Sacred Packaging Box` },
+          { label: "Care Instructions", value: "Wipe gently with a clean dry cotton cloth. Keep away from perfumes and harsh chemicals." }
+        ];
+
+    const rowsHtml = specs.map((s) => `
+      <tr>
+        <th>${s.label}</th>
+        <td>${s.value}</td>
+      </tr>
+    `).join("");
+
+    specPanel.innerHTML = `
+      <div class="pdp-spec-table-wrap">
+        <table class="pdp-spec-table">
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  // 3. Benefits Tab
+  const benefitsGrid = document.getElementById("pdpBenefitsGrid");
+  if (benefitsGrid) {
+    const benefits = (data && Array.isArray(data.benefits) && data.benefits.length)
+      ? data.benefits
+      : [
+          { icon: "🛡️", title: "Spiritual Protection", desc: "Shields the wearer from negative energies, evil eye, and aura stress." },
+          { icon: "🧘", title: "Mental Peace & Focus", desc: "Calms an overactive mind and enhances focus during meditation." },
+          { icon: "✨", title: "Chakra Harmonization", desc: "Balances internal energy centers to promote emotional equilibrium." },
+          { icon: "💼", title: "Confidence & Growth", desc: "Attracts positive cosmic vibrations, supporting clarity and growth." }
+        ];
+
+    benefitsGrid.innerHTML = benefits.map((b) => `
+      <div class="pdp-benefit-card">
+        <div class="pdp-benefit-icon">${b.icon || "✨"}</div>
+        <h4>${b.title}</h4>
+        <p>${b.desc}</p>
+      </div>
+    `).join("");
+  }
+
+  // 4. FAQs Tab
+  const faqsList = document.getElementById("pdpFaqs");
+  if (faqsList) {
+    const faqs = (data && Array.isArray(data.faqs) && data.faqs.length)
+      ? data.faqs
+      : [
+          { q: `Is ${product.name} 100% authentic and certified?`, a: "Yes! Every single piece is individually lab tested and comes with a physical test report featuring a QR code for online verification." },
+          { q: "How do I wear or use this spiritual item?", a: "All products are pre-energized with Vedic mantras. You can wear it on an auspicious morning after bathing while chanting sacred mantras." },
+          { q: "Can anyone wear this regardless of age or gender?", a: "Absolutely! Authentic Rudraksha beads, gemstones, and malas can be worn by anyone irrespective of gender, age, or horoscope." },
+          { q: "How long does delivery take?", a: "We dispatch within 24 hours. Express delivery across India takes 3 to 5 business days with full tracking updates via SMS/WhatsApp." }
+        ];
+
+    faqsList.innerHTML = faqs.map((f) => `
+      <div class="pdp-faq-item">
+        <strong>Q: ${f.q || f.question}</strong>
+        <p>A: ${f.a || f.answer}</p>
+      </div>
+    `).join("");
+  }
 }
 
 window.__pdpReviewsList = [];
