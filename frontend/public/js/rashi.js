@@ -234,7 +234,7 @@
     if (!btn) return;
     const activeZodiac = ZODIACS[activeIndex];
     btn.textContent = `View All ${activeZodiac.name} Bracelets`;
-    btn.href = `/shop.html?zodiac=${activeZodiac.slug}`;
+    btn.href = `/collections/zodiac-bracelet?zodiac=${activeZodiac.slug}`;
   }
 
   function scrollActiveIntoView(track) {

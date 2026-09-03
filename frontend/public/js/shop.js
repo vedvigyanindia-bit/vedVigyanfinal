@@ -125,11 +125,12 @@ function renderShop() {
     const params = new URLSearchParams(window.location.search);
     const qFromUrl = params.get("q");
     const catFromUrl = params.get("cat");
+    const zodiacFromUrl = params.get("zodiac");
     const pathCat = window.location.pathname.startsWith("/collections/") 
-      ? window.location.pathname.replace(/^\/collections\/?/, "").split("/")[0] 
+      ? window.location.pathname.replace(/^\/collections\/?/, "").replace(/\.html$/, "").split("/")[0] 
       : "";
 
-    if (!qFromUrl && !catFromUrl && !pathCat) {
+    if (!qFromUrl && !catFromUrl && !pathCat && !zodiacFromUrl) {
       active = "all";
       query = "";
       minPrice = "";
@@ -146,7 +147,12 @@ function renderShop() {
       active = catFromUrl;
       syncInputs();
     }
-    if (qFromUrl !== null) {
+
+    if (zodiacFromUrl) {
+      query = zodiacFromUrl;
+      if (!pathCat) active = "zodiac-bracelet";
+      syncInputs();
+    } else if (qFromUrl !== null) {
       query = qFromUrl;
       syncInputs();
     }
