@@ -7895,55 +7895,31 @@ button[type="submit"]#placeOrderBtn:hover {
   line-height: 1.3 !important;
 }
 
-/* ─── Focal Card Scaling & is-current Dynamic Scroll Focus ─── */
-.dh-ptrack .product-card,
-.dh-ptrack .lux-product-card,
-.rashi-carousel-track .rashi-card,
-.rashi-carousel-track .lux-product-card,
-.rashi-carousel-track .product-card,
-.product-card,
-.lux-product-card,
-.rashi-card {
-  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-    box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1),
-    opacity 0.35s ease,
-    border-color 0.35s ease !important;
-}
-
-@media (max-width: 768px) {
-
-  .dh-ptrack .product-card:not(.is-current),
-  .dh-ptrack .lux-product-card:not(.is-current),
-  .rashi-carousel-track .rashi-card:not(.is-current),
-  .rashi-carousel-track .lux-product-card:not(.is-current),
-  .product-card:not(.is-current),
-  .lux-product-card:not(.is-current) {
-    transform: scale(0.92) !important;
-    opacity: 0.82 !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
-  }
-
-  .dh-ptrack .product-card.is-current,
-  .dh-ptrack .lux-product-card.is-current,
-  .rashi-carousel-track .rashi-card.is-current,
-  .rashi-carousel-track .lux-product-card.is-current,
-  .product-card.is-current,
-  .lux-product-card.is-current {
-    transform: scale(1.02) !important;
-    opacity: 1 !important;
-    box-shadow: 0 12px 28px rgba(138, 26, 35, 0.16), 0 4px 12px rgba(0, 0, 0, 0.06) !important;
-    border-color: #d4af37 !important;
-    z-index: 5 !important;
-  }
-}
-
-.product-card.is-current,
-.lux-product-card.is-current {
-  transform: scale(1.02) !important;
+/* ─── Explicit Stability Lock for Vertical Grids (Fixes card left/right movement) ─── */
+#featuredGrid .lux-product-card,
+#featuredGrid .product-card,
+#bestSellersGrid .lux-product-card,
+#bestSellersGrid .product-card,
+#catalogGrid .lux-product-card,
+#catalogGrid .product-card,
+#productGrid .lux-product-card,
+#productGrid .product-card,
+#giftingGrid .lux-product-card,
+#pujaGrid .lux-product-card,
+#wishlistGrid .lux-product-card,
+#braceletGrid .lux-product-card,
+#malaCatalog .lux-product-card,
+#rudrakshaCatalog .lux-product-card,
+#gemstoneCatalog .lux-product-card,
+#gemStoneCatalog .lux-product-card,
+.lux-products-grid:not(.is-carousel) .lux-product-card,
+.lux-products-grid:not(.is-carousel) .product-card {
+  transform: none !important;
   opacity: 1 !important;
-  box-shadow: 0 14px 32px rgba(138, 26, 35, 0.15) !important;
-  border-color: #d4af37 !important;
-  z-index: 5 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
 
 /* ─── Comprehensive Mobile Responsiveness & PDP Gallery Fixes ─── */

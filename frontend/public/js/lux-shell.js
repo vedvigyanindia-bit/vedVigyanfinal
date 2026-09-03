@@ -769,10 +769,10 @@ window.VedVigyanLux = window.VedVigyanLux || {};
   }
 
   function updateCurrentCardTrackers() {
-    const tracks = document.querySelectorAll('.dh-ptrack, .vv-reel-track, .lux-products-grid, .product-carousel-track');
+    const tracks = document.querySelectorAll('.dh-ptrack');
 
     tracks.forEach((track) => {
-      const cards = track.querySelectorAll('.product-card, .lux-product-card, .lux-card, .vv-reel-card');
+      const cards = track.querySelectorAll('.product-card, .lux-product-card');
       if (!cards.length) return;
 
       const trackRect = track.getBoundingClientRect();
@@ -803,7 +803,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
   }
 
   function bindCurrentCardTrackers() {
-    const tracks = document.querySelectorAll('.dh-ptrack, .vv-reel-track, .lux-products-grid, .product-carousel-track');
+    const tracks = document.querySelectorAll('.dh-ptrack');
     tracks.forEach((track) => {
       if (track.__vv_current_bound) return;
       track.__vv_current_bound = true;
