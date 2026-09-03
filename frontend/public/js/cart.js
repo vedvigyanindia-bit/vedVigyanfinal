@@ -194,85 +194,31 @@ function cartSubtotal(cart) {
   return Object.values(cart.items).reduce((sum, it) => sum + getCartLineTotal(it), 0);
 }
 
-function showAddedToCartPopup(product, extraMsg = "") {
-  let modal = document.getElementById("addedToCartModal");
-  if (!modal) {
-    modal = document.createElement("div");
-    modal.id = "addedToCartModal";
-    modal.className = "vv-cart-modal-overlay";
-    document.body.appendChild(modal);
-
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) window.closeCartPopup();
-    });
+function showSmallToast(msg = "Item added to cart") {
+  let el = document.getElementById("smallCartToast");
+  if (!el) {
+    el = document.createElement("div");
+    el.id = "smallCartToast";
+    el.className = "vv-small-toast";
+    document.body.appendChild(el);
   }
 
-  const cart = loadCart();
-  const totalCount = Object.values(cart.items).reduce((sum, i) => sum + (i.qty || 1), 0);
-  const cartSub = Object.values(cart.items).reduce((sum, i) => sum + ((i.price || 0) * (i.qty || 1)), 0);
+  el.innerHTML = `<span class="vv-small-toast-icon">✓</span><span class="vv-small-toast-text">${msg}</span>`;
+  el.classList.add("show");
 
-  const prodName = product ? product.name : "Authentic Spiritual Item";
-  const prodImg = product ? (product.image || "/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp") : "/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp";
-  const prodPrice = product ? (product.price || 0) : 0;
-  const prodOriginal = product ? (product.originalPrice || 0) : 0;
-
-  modal.innerHTML = `
-    <div class="vv-cart-modal-content">
-      <button type="button" class="vv-cart-modal-close" onclick="window.closeCartPopup()" aria-label="Close">&times;</button>
-      
-      <div class="vv-cart-modal-header">
-        <div class="vv-cart-modal-icon">✓</div>
-        <div>
-          <h3 class="vv-cart-modal-title">Item Added to Your Cart!</h3>
-          <p class="vv-cart-modal-sub">${extraMsg || "Successfully added to your spiritual bag."}</p>
-        </div>
-      </div>
-
-      <div class="vv-cart-modal-body">
-        <img src="${prodImg}" alt="${prodName}" class="vv-cart-modal-thumb">
-        <div class="vv-cart-modal-details">
-          <h4 class="vv-cart-modal-name">${prodName}</h4>
-          <div class="vv-cart-modal-priceline">
-            <span class="vv-cart-modal-now">₹${prodPrice.toLocaleString('en-IN')}</span>
-            ${prodOriginal > prodPrice ? `<span class="vv-cart-modal-was">₹${prodOriginal.toLocaleString('en-IN')}</span>` : ''}
-          </div>
-        </div>
-      </div>
-
-      <div class="vv-cart-modal-summary">
-        <span>Subtotal (${totalCount} item${totalCount > 1 ? 's' : ''}):</span>
-        <strong>₹${cartSub.toLocaleString('en-IN')}</strong>
-      </div>
-
-      <div class="vv-cart-modal-actions">
-        <a href="/cart.html" class="vv-cart-btn-primary">VIEW CART (${totalCount})</a>
-        <button type="button" class="vv-cart-btn-secondary" onclick="window.closeCartPopup()">CONTINUE SHOPPING</button>
-      </div>
-    </div>
-  `;
-
-  requestAnimationFrame(() => {
-    modal.classList.add("is-active");
-  });
-
-  clearTimeout(window.__vv_modal_timer);
-  window.__vv_modal_timer = setTimeout(() => {
-    window.closeCartPopup();
-  }, 4500);
+  clearTimeout(window.__vv_small_toast_timer);
+  window.__vv_small_toast_timer = setTimeout(() => {
+    el.classList.remove("show");
+  }, 2500);
 }
 
-window.closeCartPopup = function() {
-  const modal = document.getElementById("addedToCartModal");
-  if (modal) {
-    modal.classList.remove("is-active");
-  }
-};
+function showAddedToCartPopup(product, extraMsg = "") {
+  const name = product ? product.name : "Item";
+  showSmallToast(extraMsg || `"${name}" added to cart`);
+}
 
 function toast(message) {
-  const cart = loadCart();
-  const items = Object.values(cart.items);
-  const lastItem = items.length ? items[items.length - 1] : null;
-  showAddedToCartPopup(lastItem, message);
+  showSmallToast(message || "Item added to cart");
 }
 
 function buyNow(productId) {
