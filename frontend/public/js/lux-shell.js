@@ -52,11 +52,11 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="All Rudraksha" loading="lazy" /></div>
                   <b>All Rudraksha</b><span>14 authentic mukhi beads</span>
                 </a>
-                <a class="lux-mega-item" href="/rudraksha/5-mukhi.html">
+                <a class="lux-mega-item" href="/products/5-mukhi-rudraksh">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="5 Mukhi" loading="lazy" /></div>
                   <b>5 Mukhi</b><span>Bestseller for daily wear</span>
                 </a>
-                <a class="lux-mega-item" href="/rudraksha/7-mukhi.html">
+                <a class="lux-mega-item" href="/products/7-mukhi-rudraksh">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="7 Mukhi" loading="lazy" /></div>
                   <b>7 Mukhi</b><span>Wealth & abundance</span>
                 </a>
@@ -113,11 +113,11 @@ window.VedVigyanLux = window.VedVigyanLux || {};
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Rudraksh Jap Mala/1.webp" alt="All Malas" loading="lazy" /></div>
                   <b>All Malas</b><span>108 bead chanting strings</span>
                 </a>
-                <a class="lux-mega-item" href="/products/karka-cancer-braclet">
+                <a class="lux-mega-item" href="/products/karungali-rudraksh-silver-cap-mala">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Karungali mala/1.webp" alt="Karungali Malas" loading="lazy" /></div>
                   <b>Karungali Malas</b><span>Ebony wood positive energy</span>
                 </a>
-                <a class="lux-mega-item" href="/products/tula-libra-braclet">
+                <a class="lux-mega-item" href="/products/tulsi-mala">
                   <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Tulsi Mala/1.webp" alt="Tulsi Malas" loading="lazy" /></div>
                   <b>Tulsi Malas</b><span>Sacred Vaishnav jaap malas</span>
                 </a>

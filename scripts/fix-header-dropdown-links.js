@@ -1,97 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2V3FFQX8V1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+const fs = require('fs');
+const path = require('path');
 
-      gtag('config', 'G-2V3FFQX8V1');
-    </script>
-
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ved Vigyan Blog - Rudraksha & Spiritual Guidance</title>
-    <meta
-      name="description"
-      content="Read Ved Vigyan blog posts on Rudraksha benefits, authenticity tips, and beginner-friendly spiritual practices."
-    />
-    <link rel="canonical" href="/blog.html" />
-    <meta name="robots" content="index,follow" />
-    <link rel="stylesheet" href="/public/css/style.css" />
-    <link rel="stylesheet" href="/public/css/home-luxury.css" />
-
-    <script src="/public/js/data.js" defer></script>
-    <script src="/public/js/carousel.js" defer></script>
-    <script src="/public/js/cart.js" defer></script>
-    <script src="/public/js/wishlist.js" defer></script>
-    <script src="/public/js/lux-shell.js" defer></script>
-    <script src="/public/js/lux-cards.js" defer></script>
-    <script src="/public/js/ui.js" defer></script>
-    <script src="/public/js/blog.js" defer></script>
-    <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1048722281178787');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  </head>
-  <body class="lux-home" data-lux-shell-inject="true">
-
-    <!-- Top Marquee Banner -->
-    <div class="lux-promo-bar" aria-live="polite">
-    <div class="lux-promo-marquee-track">
-      <div class="lux-promo-item">🙏 <b>FREE EXPRESS SHIPPING</b> On Orders Above ₹999</div>
-      <div class="lux-promo-item">🧪 <b>100% LAB CERTIFIED &amp; ENERGIZED</b> Nepal Rudraksha</div>
-      <div class="lux-promo-item">⭐ <b>TRUSTED BY 25,000+ DEVOTEES</b> Across India</div>
-      <div class="lux-promo-item">✨ <b>VEDIC MANTRA PURIFIED</b> Before Dispatch</div>
-      <div class="lux-promo-item">🙏 <b>FREE EXPRESS SHIPPING</b> On Orders Above ₹999</div>
-      <div class="lux-promo-item">🧪 <b>100% LAB CERTIFIED &amp; ENERGIZED</b> Nepal Rudraksha</div>
-      <div class="lux-promo-item">⭐ <b>TRUSTED BY 25,000+ DEVOTEES</b> Across India</div>
-      <div class="lux-promo-item">✨ <b>VEDIC MANTRA PURIFIED</b> Before Dispatch</div>
-    </div>
-  </div>
-
-  <!-- 2. Navigation -->
-  <header class="lux-nav" id="luxNav">
-    <div class="lux-container lux-nav-inner">
-      <a class="lux-brand" href="/index.html" aria-label="Ved Vigyan Home">
-        <img src="/public/images/logo.jpg" alt="Ved Vigyan" width="44" height="44" style="border-radius:50%; object-fit:cover; border:1.5px solid #d4af37;" />
-        <div class="lux-brand-text">
-          <div class="lux-brand-name" style="font-size:20px; font-weight:700; color:#8a1a23;">Ved Vigyan</div>
-          <div class="lux-brand-tag" style="font-size:9px; color:#d4af37; font-weight:600; text-transform:uppercase;">Ancient Wisdom · Modern Living</div>
-        </div>
-      </a>
-
-      
-      
-      
-      
-      
-      
-      
-      <nav class="lux-navlinks" aria-label="Primary">
-        <a class="lux-nav-link" href="/index.html">Home</a>
-
+// Target HTML markup for mega menu dropdowns in index.html & static files
+const headerDropdownMarkup = `
         <!-- 1. Rudraksha Card Dropdown -->
         <div class="lux-mega-wrap" data-mega="rudraksha">
           <button class="lux-mega-trigger" type="button" aria-expanded="false">
@@ -324,152 +235,73 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
               </a>
             </div>
           </div>
-        </div>
-      </nav>
+        </div>`;
 
+function walkDir(dir, fileList = []) {
+  const files = fs.readdirSync(dir);
+  files.forEach((file) => {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    if (stat.isDirectory()) {
+      walkDir(filePath, fileList);
+    } else if (file.endsWith('.html')) {
+      fileList.push(filePath);
+    }
+  });
+  return fileList;
+}
 
+const frontendDir = path.join(__dirname, '..', 'frontend');
+const htmlFiles = walkDir(frontendDir);
 
+// 1. Update all HTML files that contain the mega menu nav
+const megaRegex = /<!--\s*1\.\s*Rudraksha Card Dropdown\s*-->[\s\S]*?<!--\s*6\.\s*Shop All Card Dropdown\s*-->[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/gi;
 
+let htmlCount = 0;
+htmlFiles.forEach((file) => {
+  let content = fs.readFileSync(file, 'utf8');
+  if (content.includes('data-mega="rudraksha"')) {
+    content = content.replace(megaRegex, headerDropdownMarkup.trim());
+    fs.writeFileSync(file, content, 'utf8');
+    htmlCount++;
+  }
+});
 
+console.log(`Updated mega header dropdown links in ${htmlCount} HTML files`);
 
+// 2. Also update lux-shell.js
+const luxShellPath = path.join(__dirname, '..', 'frontend', 'public', 'js', 'lux-shell.js');
+let luxShellContent = fs.readFileSync(luxShellPath, 'utf8');
 
+// Update lux-shell.js mega items
+luxShellContent = luxShellContent.replace(
+  /href="\/rudraksha\/5-mukhi\.html"/g,
+  'href="/products/5-mukhi-rudraksh"'
+).replace(
+  /href="\/rudraksha\/7-mukhi\.html"/g,
+  'href="/products/7-mukhi-rudraksh"'
+).replace(
+  /href="\/products\/gauri-sankar-rudraksh"\s+([^>]*>[\s\S]*?<b>Money Magnet<\/b>)/g,
+  'href="/products/money-magnet-bracelet-pyrite-citrine" $1'
+).replace(
+  /href="\/gem-stone\/amethyst-bracelet\.html"/g,
+  'href="/products/amethyst-bracelet"'
+).replace(
+  /href="\/gem-stone\/tiger-eye-bracelet\.html"/g,
+  'href="/products/tiger-eye-loose-big"'
+).replace(
+  /href="\/rudraksha-mala\/5-mukhi-mala-108\.html"/g,
+  'href="/products/5-mukhi-nepali-rudraksha-mala-108-beads"'
+).replace(
+  /href="\/products\/karka-cancer-braclet"/g,
+  'href="/products/karungali-rudraksh-silver-cap-mala"'
+).replace(
+  /href="\/products\/tula-libra-braclet"/g,
+  'href="/products/tulsi-mala"'
+);
 
-      <div class="lux-nav-actions">
-        <button class="lux-icon-btn" id="searchOpen" type="button" aria-label="Search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
-        </button>
-        <a class="lux-icon-btn" href="/wishlist.html" aria-label="Wishlist">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path
-              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-          </svg>
-          <span class="lux-badge" data-wishlist-count>0</span>
-        </a>
-        <a class="lux-icon-btn" href="/cart.html" aria-label="Cart">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-            <path d="M3 6h18" />
-            <path d="M16 10a4 4 0 0 1-8 0" />
-          </svg>
-          <span class="lux-badge" data-cart-count>0</span>
-        </a>
-        <a class="lux-icon-btn" href="/contact.html" aria-label="Account">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-        </a>
-        <button class="lux-icon-btn lux-hamburger" id="mobileMenuBtn" type="button" aria-label="Menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M3 12h18M3 6h18M3 18h18" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
+fs.writeFileSync(luxShellPath, luxShellContent, 'utf8');
+console.log('Updated lux-shell.js header dropdown links');
 
-
-    
-
-    <main class="page">
-      <div class="container">
-        <div class="pagecard">
-          <div class="breadcrumbs">Home / Blog</div>
-          <h1 class="section-title" style="margin:0 0 6px">Ved Vigyan Blog</h1>
-          <p class="section-sub" style="margin:0">
-            Beginner-friendly posts on Rudraksha authenticity, benefits and spiritual routines.
-          </p>
-        </div>
-
-        <div style="height:14px"></div>
-
-        <section id="blogList" aria-label="Blog posts"></section>
-      </div>
-    </main>
-
-    <div id="toast" class="toast" role="status" aria-live="polite"></div>
-  
-    <!-- Luxury Footer -->
-    <footer class="lux-footer footer footer-luxury">
-    <div class="lux-container">
-      <div class="lux-footer-grid">
-        <div class="lux-footer-brand">
-          <h2 class="lux-brand-title">Ved Vigyan</h2>
-          <p>Authentic Rudraksha, healing crystals and Vedic wellness products — crafted with integrity for your spiritual journey.</p>
-          <form class="lux-newsletter" id="newsletterForm">
-            <input type="email" placeholder="Your email address" aria-label="Email for newsletter" required />
-            <button class="lux-subscribe-btn" type="submit">SUBSCRIBE</button>
-          </form>
-          <div class="lux-payment-icons">
-            <span>UPI</span><span>VISA</span><span>Mastercard</span><span>RuPay</span><span>COD</span>
-          </div>
-        </div>
-        <div class="lux-footer-col">
-          <h4>Company</h4>
-          <a href="/about.html">About Us</a>
-          <a href="/contact.html">Contact</a>
-          <a href="/blog.html">Blog</a>
-          <a href="/shop.html">New Launches</a>
-          <a href="/cashback-offer.html" class="lux-offer-link">Offers</a>
-        </div>
-        <div class="lux-footer-col">
-          <h4>Collections</h4>
-          <a href="/rudraksha.html">Rudraksha</a>
-          <a href="/mala.html">Malas</a>
-          <a href="/gem-stone.html">Healing Crystals</a>
-          <a href="/bracelet/rudraksha-bracelet.html">Bracelets</a>
-          <a href="/shop.html">All Products</a>
-        </div>
-        <div class="lux-footer-col lux-footer-care-col">
-          <h4>Customer Care</h4>
-          <a href="/faq.html">FAQ</a>
-          <a href="/privacy-policy.html">Privacy Policy</a>
-          <a href="/terms-and-conditions.html">Terms & Conditions</a>
-          <a href="/refund-cancellation-policy.html">Returns & Refunds</a>
-          <a href="https://wa.me/917900811101" target="_blank" rel="noopener noreferrer">WhatsApp Support</a>
-        </div>
-        <div class="lux-footer-om-seal" aria-hidden="true">
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="46" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="4 2" />
-            <circle cx="50" cy="50" r="40" stroke="#d4af37" stroke-width="1" />
-            <text x="50" y="60" font-size="34" fill="#d4af37" text-anchor="middle" font-weight="bold">ॐ</text>
-          </svg>
-        </div>
-      </div>
-      <div class="lux-footer-bottom">
-        <div class="lux-copyright">
-          © 2026 Ved Vigyan India · Dehradun, Uttarakhand · <a href="mailto:vedvigyanindia@gmail.com">vedvigyanindia@gmail.com</a> · <a href="tel:+917900811101">+91 7900811101</a>
-        </div>
-        <div class="lux-social-icons">
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-          <a href="https://youtu.be/o9dREd5ZPhw?si=X2tbKalptHS0wmhD" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
-          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
-          <a href="https://in.pinterest.com/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">PT</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-    <a class="lux-whatsapp" href="https://wa.me/917900811101" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-    </a>
-    <button class="lux-back-top" id="backToTop" type="button" aria-label="Back to top">
-      <svg class="lux-back-top-ring" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" id="backTopRing"/></svg>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 15-6-6-6 6"/></svg>
-    </button>
-    <div class="lux-quickview" id="quickView" role="dialog" aria-label="Quick view" aria-hidden="true">
-      <div class="lux-quickview-panel" id="quickViewPanel"></div>
-    </div>
-    <div class="vv-video-modal-backdrop" id="vvVideoModalBackdrop" role="dialog" aria-hidden="true">
-      <div class="vv-video-modal-content">
-        <button class="vv-video-modal-close" id="vvVideoModalClose" type="button" aria-label="Close video">&times;</button>
-        <div class="vv-video-player-container" id="vvVideoPlayerContainer"></div>
-      </div>
-    </div>
-
-  </body>
-</html>
-
-
+// Re-generate static product pages so all frontend/products/*.html files get the exact updated header
+require('./generate-static-product-pages.js');
