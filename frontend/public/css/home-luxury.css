@@ -367,8 +367,8 @@
   padding: 24px 0 !important;
 }
 
-.lux-mega-wrap:hover > .mega,
-.lux-mega-wrap.open > .mega {
+.lux-mega-wrap:hover>.mega,
+.lux-mega-wrap.open>.mega {
   display: block !important;
 }
 
@@ -405,7 +405,7 @@
   text-decoration: none !important;
 }
 
-.mega__cat > span {
+.mega__cat>span {
   opacity: 0;
   font-size: 18px;
   line-height: 1;
@@ -417,8 +417,8 @@
   color: #ffffff !important;
 }
 
-.mega__cat.is-active > span,
-.mega__cat:hover > span {
+.mega__cat.is-active>span,
+.mega__cat:hover>span {
   opacity: 1 !important;
 }
 
@@ -2826,11 +2826,13 @@ textarea.vv-input {
   .vv-form-grid {
     grid-template-columns: 1fr !important;
   }
+
   .vv-field--full,
   .vv-field--half,
   .vv-field--third {
     grid-column: span 1 !important;
   }
+
   .vv-checkout-card {
     padding: 18px !important;
   }
@@ -4608,18 +4610,55 @@ grid-column: span 1;
 
 @media (max-width: 768px) {
 
-  .dh-ptrack .lux-product-card,
-  .dh-ptrack .product-card {
-    flex: 0 0 72% !important;
-    min-width: 220px !important;
-    max-width: 250px !important;
+  .dh-ptrack,
+  .rashi-carousel-track,
+  .lux-products-grid.is-carousel {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding: 0 12vw !important;
+    padding: 16px 12vw 28px 12vw !important;
+    gap: 16px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
   }
-}
 
-.dh-ptrack .lux-product-card:hover,
-.dh-ptrack .product-card:hover {
-  transform: translateY(-4px) !important;
-  box-shadow: 0 12px 28px rgba(138, 26, 35, 0.14) !important;
+  .dh-ptrack .lux-product-card,
+  .dh-ptrack .product-card,
+  .rashi-carousel-track .rashi-card,
+  .rashi-carousel-track .lux-product-card,
+  .lux-products-grid.is-carousel .lux-product-card {
+    flex: 0 0 74vw !important;
+    min-width: 250px !important;
+    max-width: 285px !important;
+    scroll-snap-align: center !important;
+    background: #FAF5EE !important;
+    border: 1px solid rgba(226, 211, 193, 0.8) !important;
+    border-radius: 14px !important;
+    padding: 10px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+    transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.35s ease, opacity 0.35s ease !important;
+  }
+
+  .dh-ptrack .lux-product-card:not(.is-current),
+  .dh-ptrack .product-card:not(.is-current),
+  .rashi-carousel-track .rashi-card:not(.is-current),
+  .rashi-carousel-track .lux-product-card:not(.is-current) {
+    transform: scale(0.88) !important;
+    opacity: 0.78 !important;
+    box-shadow: none !important;
+  }
+
+  .dh-ptrack .lux-product-card.is-current,
+  .dh-ptrack .product-card.is-current,
+  .rashi-carousel-track .rashi-card.is-current,
+  .rashi-carousel-track .lux-product-card.is-current {
+    transform: scale(1.0) !important;
+    opacity: 1.0 !important;
+    box-shadow: 0 12px 32px rgba(138, 26, 35, 0.16), 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(212, 175, 55, 0.6) !important;
+    z-index: 5 !important;
+  }
 }
 
 .dh-ptrack .lux-product-media {
@@ -6296,7 +6335,10 @@ button[type="submit"]#placeOrderBtn:hover {
   overflow-x: auto;
   scrollbar-width: none;
 }
-.pdp-tabs-header::-webkit-scrollbar { display: none; }
+
+.pdp-tabs-header::-webkit-scrollbar {
+  display: none;
+}
 
 .pdp-tab-btn {
   background: none;
@@ -6406,8 +6448,15 @@ button[type="submit"]#placeOrderBtn:hover {
 }
 
 @keyframes pdpFaqSlideDown {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .pdp-faq-whatsapp-cta {
@@ -6452,8 +6501,15 @@ button[type="submit"]#placeOrderBtn:hover {
 }
 
 @keyframes pdpTabFade {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Tab 1: Description */
@@ -6510,7 +6566,8 @@ button[type="submit"]#placeOrderBtn:hover {
   font-size: 14px;
 }
 
-.pdp-spec-table th, .pdp-spec-table td {
+.pdp-spec-table th,
+.pdp-spec-table td {
   padding: 14px 18px;
   border-bottom: 1px solid #edf2f7;
   text-align: left;
@@ -6599,24 +6656,30 @@ button[type="submit"]#placeOrderBtn:hover {
   .pdp-tabs-section {
     padding: 20px 16px;
   }
+
   .pdp-tabs-header {
     gap: 20px;
   }
+
   .pdp-tab-btn {
     font-size: 16px;
   }
+
   .pdp-tab-content-grid {
     grid-template-columns: 1fr;
   }
+
   .pdp-benefits-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (max-width: 480px) {
   .pdp-benefits-grid {
     grid-template-columns: 1fr;
   }
 }
+
 .vv-watch-shop-section {
   margin: 56px 0;
   padding: 40px 0;
@@ -7610,9 +7673,11 @@ button[type="submit"]#placeOrderBtn:hover {
   .pdp-sticky-bar {
     padding: 8px 14px !important;
   }
+
   .pdp-sticky-price .now {
     font-size: 18px !important;
   }
+
   .pdp-sticky-btn-atc,
   .pdp-sticky-btn-buynow {
     padding: 8px 14px !important;
@@ -7644,7 +7709,8 @@ button[type="submit"]#placeOrderBtn:hover {
 
 /* ─── Divine Hindu Continuous Red Marquee Ticker Carousel ─── */
 .dh-marquee-ticker {
-  background: #8a1a23 !important; /* Rich Divine Red / Maroon */
+  background: #8a1a23 !important;
+  /* Rich Divine Red / Maroon */
   color: #ffffff !important;
   overflow: hidden !important;
   white-space: nowrap !important;
@@ -7678,7 +7744,8 @@ button[type="submit"]#placeOrderBtn:hover {
 }
 
 .dh-marquee-ticker .marquee__inner span .bullet {
-  color: #d4af37 !important; /* Gold bullet dot */
+  color: #d4af37 !important;
+  /* Gold bullet dot */
   font-size: 18px !important;
   margin-left: 18px !important;
 }
@@ -7687,6 +7754,7 @@ button[type="submit"]#placeOrderBtn:hover {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -7825,4 +7893,56 @@ button[type="submit"]#placeOrderBtn:hover {
   font-weight: 400 !important;
   color: #777777 !important;
   line-height: 1.3 !important;
+}
+
+/* ─── Focal Card Scaling & is-current Dynamic Scroll Focus ─── */
+.dh-ptrack .product-card,
+.dh-ptrack .lux-product-card,
+.rashi-carousel-track .rashi-card,
+.rashi-carousel-track .lux-product-card,
+.rashi-carousel-track .product-card,
+.product-card,
+.lux-product-card,
+.rashi-card {
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.35s ease,
+    border-color 0.35s ease !important;
+}
+
+@media (max-width: 768px) {
+
+  .dh-ptrack .product-card:not(.is-current),
+  .dh-ptrack .lux-product-card:not(.is-current),
+  .rashi-carousel-track .rashi-card:not(.is-current),
+  .rashi-carousel-track .lux-product-card:not(.is-current),
+  .product-card:not(.is-current),
+  .lux-product-card:not(.is-current) {
+    transform: scale(0.92) !important;
+    opacity: 0.82 !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .dh-ptrack .product-card.is-current,
+  .dh-ptrack .lux-product-card.is-current,
+  .rashi-carousel-track .rashi-card.is-current,
+  .rashi-carousel-track .lux-product-card.is-current,
+  .product-card.is-current,
+  .lux-product-card.is-current {
+    transform: scale(1.02) !important;
+    opacity: 1 !important;
+    box-shadow: 0 12px 28px rgba(138, 26, 35, 0.16), 0 4px 12px rgba(0, 0, 0, 0.06) !important;
+    border-color: #d4af37 !important;
+    z-index: 5 !important;
+  }
+}
+
+.product-card.is-current,
+.lux-product-card.is-current,
+.rashi-card.is-current {
+  transform: scale(1.02) !important;
+  opacity: 1 !important;
+  box-shadow: 0 14px 32px rgba(138, 26, 35, 0.15) !important;
+  border-color: #d4af37 !important;
+  z-index: 5 !important;
 }

@@ -762,10 +762,62 @@ window.VedVigyanLux = window.VedVigyanLux || {};
       Lux.initNewsletter();
       Lux.initScrollReveal();
       Lux.initWatchShopCarousel();
+      Lux.initCurrentCardTracker();
     }
 
     ensureGlobalScripts();
   }
+
+  function updateCurrentCardTrackers() {
+    const tracks = document.querySelectorAll('.dh-ptrack, .rashi-carousel-track, .vv-reel-track, .lux-products-grid, .product-carousel-track');
+
+    tracks.forEach((track) => {
+      const cards = track.querySelectorAll('.product-card, .lux-product-card, .rashi-card, .lux-card, .vv-reel-card');
+      if (!cards.length) return;
+
+      const trackRect = track.getBoundingClientRect();
+      const focalPoint = trackRect.left + (window.innerWidth <= 768 ? trackRect.width * 0.35 : trackRect.width / 2);
+
+      let closestCard = null;
+      let minDistance = Infinity;
+
+      cards.forEach((card) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const distance = Math.abs(cardCenter - focalPoint);
+
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestCard = card;
+        }
+      });
+
+      cards.forEach((card) => {
+        if (card === closestCard) {
+          card.classList.add('is-current');
+        } else {
+          card.classList.remove('is-current');
+        }
+      });
+    });
+  }
+
+  function bindCurrentCardTrackers() {
+    const tracks = document.querySelectorAll('.dh-ptrack, .rashi-carousel-track, .vv-reel-track, .lux-products-grid, .product-carousel-track');
+    tracks.forEach((track) => {
+      if (track.__vv_current_bound) return;
+      track.__vv_current_bound = true;
+      track.addEventListener('scroll', updateCurrentCardTrackers, { passive: true });
+    });
+    updateCurrentCardTrackers();
+  }
+
+  Lux.initCurrentCardTracker = function () {
+    bindCurrentCardTrackers();
+    window.addEventListener('scroll', updateCurrentCardTrackers, { passive: true });
+    window.addEventListener('resize', updateCurrentCardTrackers, { passive: true });
+    setInterval(updateCurrentCardTrackers, 400);
+  };
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", bootLuxShell);
