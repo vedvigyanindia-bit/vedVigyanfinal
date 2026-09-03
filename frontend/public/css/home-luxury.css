@@ -8226,6 +8226,7 @@ button[data-buy-now] {
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
   position: relative !important;
+  overflow: hidden !important;
 }
 
 .upi-logo-circle:first-child {
@@ -8235,16 +8236,23 @@ button[data-buy-now] {
 
 .upi-logo-circle.phonepe {
   z-index: 2 !important;
-  color: #5f259f !important;
-  font-weight: 900 !important;
-  font-size: 13px !important;
-  font-family: sans-serif !important;
 }
 
 .upi-logo-circle.paytm {
   z-index: 1 !important;
-  color: #00baf2 !important;
+}
+
+.phonepe-inner-circle {
+  width: 19px !important;
+  height: 19px !important;
+  border-radius: 50% !important;
+  background: #5f259f !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 11.5px !important;
   font-weight: 900 !important;
-  font-size: 8px !important;
-  font-family: sans-serif !important;
+  font-family: Arial, sans-serif !important;
+  line-height: 1 !important;
 }
