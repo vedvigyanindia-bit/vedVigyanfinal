@@ -8025,6 +8025,11 @@ img[src*="4.jpg"],
 
 /* 4. Mobile Sticky Bottom Bar & WhatsApp Button Collision Fix (Fixes Screenshot 3) */
 @media (max-width: 768px) {
+  /* Hide inline body buttons on mobile so only fixed bottom sticky bar displays */
+  .pdp-main-btns {
+    display: none !important;
+  }
+
   /* Elevate floating WhatsApp button above sticky bottom bar */
   .whatsapp-float,
   .floating-wa,
@@ -8170,4 +8175,82 @@ img[src*="4.jpg"],
   overflow: hidden !important;
   text-overflow: ellipsis !important;
   white-space: nowrap !important;
+}
+
+/* ─── UPI Buy Now Button & Shiprocket Badge Styling (Matching Screenshot) ─── */
+.pdp-btn-buynow,
+.lux-btn-buynow,
+button[data-buy-now] {
+  position: relative !important;
+  background: #1b5e20 !important; /* Rich Green Buy Now Button matching screenshot */
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 12px 18px !important;
+  font-size: 14.5px !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 14px rgba(27, 94, 32, 0.35) !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  flex-wrap: wrap !important;
+}
+
+.pdp-btn-buynow:hover,
+.lux-btn-buynow:hover {
+  background: #144718 !important;
+  transform: translateY(-2px) !important;
+}
+
+.vv-upi-badge-container {
+  display: inline-flex !important;
+  align-items: center !important;
+  background: #ffffff !important;
+  padding: 2px 6px !important;
+  border-radius: 999px !important;
+  gap: 3px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+  flex-shrink: 0 !important;
+}
+
+.upi-circle {
+  width: 19px !important;
+  height: 19px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  user-select: none !important;
+}
+
+.upi-circle.gpay {
+  background: #4285F4 !important;
+  font-size: 9px !important;
+  font-family: Arial, sans-serif !important;
+}
+
+.upi-circle.phonepe {
+  background: #5f259f !important;
+  font-size: 10.5px !important;
+  font-family: sans-serif !important;
+}
+
+.upi-circle.paytm {
+  background: #00baf2 !important;
+  font-size: 6.5px !important;
+  font-family: sans-serif !important;
+}
+
+.powered-by-shiprocket {
+  font-size: 10px !important;
+  opacity: 0.9 !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  display: inline-block !important;
 }

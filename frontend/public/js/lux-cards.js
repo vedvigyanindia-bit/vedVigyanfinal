@@ -30,7 +30,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
            <button type="button" data-card-inc="${p.id}" aria-label="Increase">+</button>
          </div>`
       : `<button class="lux-btn lux-btn-secondary lux-btn-sm" type="button" data-add-to-cart="${p.id}">Add to Cart</button>`;
-    const buyNowBtn = `<button class="lux-btn lux-btn-primary lux-btn-sm" type="button" data-buy-now="${p.id}">Buy Now</button>`;
+    const buyNowBtn = `<button class="lux-btn lux-btn-primary lux-btn-sm" type="button" data-buy-now="${p.id}"><span>Order Now – Pay via UPI</span> <span class="vv-upi-badge-container"><span class="upi-circle gpay">G</span><span class="upi-circle phonepe">पे</span><span class="upi-circle paytm">paytm</span></span></button>`;
 
     const discountFlag = p.discountPercent
       ? `<span class="lux-product-discount-flag">${p.discountPercent}% OFF</span>`
