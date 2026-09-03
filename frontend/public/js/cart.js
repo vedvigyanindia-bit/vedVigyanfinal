@@ -107,10 +107,10 @@ function addCustomItemToCart(item, forceFreeGift = true) {
       originalPrice: 399
     };
     saveCart(cart);
-    toast(`Added "${item.name}" + FREE Gift to Cart!`);
+    showAddedToCartPopup(cart.items[id], "Added product + FREE Gift to cart!");
   } else {
     saveCart(cart);
-    toast(`Added "${item.name}" to Cart!`);
+    showAddedToCartPopup(cart.items[id]);
   }
 }
 
@@ -138,14 +138,14 @@ function addToCart(productId, qty = 1, forceFreeGift = null) {
   if (shouldClaimGift) {
     if (isFreeGiftClaimed()) {
       saveCart(cart);
-      toast(`Added "${product.name}" to cart!`);
+      showAddedToCartPopup(product);
     } else {
       addFreeGiftItem();
-      toast(`Added "${product.name}" + FREE Gift to cart!`);
+      showAddedToCartPopup(product, "Added product + FREE Gift to cart!");
     }
   } else {
     saveCart(cart);
-    toast(`Added "${product.name}" to cart`);
+    showAddedToCartPopup(product);
   }
 }
 
@@ -194,65 +194,85 @@ function cartSubtotal(cart) {
   return Object.values(cart.items).reduce((sum, it) => sum + getCartLineTotal(it), 0);
 }
 
-function toast(message) {
-  let el = document.getElementById("toast");
-  if (!el) {
-    el = document.createElement("div");
-    el.id = "toast";
-    el.className = "toast";
-    el.setAttribute("role", "status");
-    el.setAttribute("aria-live", "polite");
-    document.body.appendChild(el);
+function showAddedToCartPopup(product, extraMsg = "") {
+  let modal = document.getElementById("addedToCartModal");
+  if (!modal) {
+    modal = document.createElement("div");
+    modal.id = "addedToCartModal";
+    modal.className = "vv-cart-modal-overlay";
+    document.body.appendChild(modal);
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) window.closeCartPopup();
+    });
   }
 
   const cart = loadCart();
   const totalCount = Object.values(cart.items).reduce((sum, i) => sum + (i.qty || 1), 0);
+  const cartSub = Object.values(cart.items).reduce((sum, i) => sum + ((i.price || 0) * (i.qty || 1)), 0);
 
-  el.innerHTML = `
-    <div class="vv-toast-inner">
-      <div class="vv-toast-icon">✓</div>
-      <div class="vv-toast-content">
-        <div class="vv-toast-title">${message || "Added to Cart!"}</div>
-        <div class="vv-toast-sub">Cart contains ${totalCount} item${totalCount > 1 ? "s" : ""}</div>
+  const prodName = product ? product.name : "Authentic Spiritual Item";
+  const prodImg = product ? (product.image || "/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp") : "/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp";
+  const prodPrice = product ? (product.price || 0) : 0;
+  const prodOriginal = product ? (product.originalPrice || 0) : 0;
+
+  modal.innerHTML = `
+    <div class="vv-cart-modal-content">
+      <button type="button" class="vv-cart-modal-close" onclick="window.closeCartPopup()" aria-label="Close">&times;</button>
+      
+      <div class="vv-cart-modal-header">
+        <div class="vv-cart-modal-icon">✓</div>
+        <div>
+          <h3 class="vv-cart-modal-title">Item Added to Your Cart!</h3>
+          <p class="vv-cart-modal-sub">${extraMsg || "Successfully added to your spiritual bag."}</p>
+        </div>
       </div>
-      <a href="/cart.html" class="vv-toast-btn">VIEW CART</a>
+
+      <div class="vv-cart-modal-body">
+        <img src="${prodImg}" alt="${prodName}" class="vv-cart-modal-thumb">
+        <div class="vv-cart-modal-details">
+          <h4 class="vv-cart-modal-name">${prodName}</h4>
+          <div class="vv-cart-modal-priceline">
+            <span class="vv-cart-modal-now">₹${prodPrice.toLocaleString('en-IN')}</span>
+            ${prodOriginal > prodPrice ? `<span class="vv-cart-modal-was">₹${prodOriginal.toLocaleString('en-IN')}</span>` : ''}
+          </div>
+        </div>
+      </div>
+
+      <div class="vv-cart-modal-summary">
+        <span>Subtotal (${totalCount} item${totalCount > 1 ? 's' : ''}):</span>
+        <strong>₹${cartSub.toLocaleString('en-IN')}</strong>
+      </div>
+
+      <div class="vv-cart-modal-actions">
+        <a href="/cart.html" class="vv-cart-btn-primary">VIEW CART (${totalCount})</a>
+        <button type="button" class="vv-cart-btn-secondary" onclick="window.closeCartPopup()">CONTINUE SHOPPING</button>
+      </div>
     </div>
   `;
 
-  const isMobile = window.innerWidth <= 600;
-  const positionStyle = isMobile
-    ? "top: 16px !important; left: 50% !important; right: auto !important; transform: translateX(-50%) !important;"
-    : "top: 24px !important; right: 24px !important; left: auto !important; transform: none !important;";
+  requestAnimationFrame(() => {
+    modal.classList.add("is-active");
+  });
 
-  el.style.cssText = `
-    position: fixed !important;
-    ${positionStyle}
-    z-index: 999999 !important;
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    background: #ffffff !important;
-    color: #1a0809 !important;
-    padding: 0 !important;
-    border-radius: 14px !important;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25), 0 4px 16px rgba(138, 26, 35, 0.15) !important;
-    border: 1.5px solid #d4af37 !important;
-    max-width: 400px !important;
-    width: calc(100vw - 32px) !important;
-    transition: opacity 0.3s ease !important;
-  `;
+  clearTimeout(window.__vv_modal_timer);
+  window.__vv_modal_timer = setTimeout(() => {
+    window.closeCartPopup();
+  }, 4500);
+}
 
-  el.classList.add("show");
+window.closeCartPopup = function() {
+  const modal = document.getElementById("addedToCartModal");
+  if (modal) {
+    modal.classList.remove("is-active");
+  }
+};
 
-  clearTimeout(window.__vv_toast_timer);
-  window.__vv_toast_timer = setTimeout(() => {
-    el.style.opacity = "0";
-    el.style.visibility = "hidden";
-    setTimeout(() => {
-      el.style.display = "none";
-      el.classList.remove("show");
-    }, 300);
-  }, 3500);
+function toast(message) {
+  const cart = loadCart();
+  const items = Object.values(cart.items);
+  const lastItem = items.length ? items[items.length - 1] : null;
+  showAddedToCartPopup(lastItem, message);
 }
 
 function buyNow(productId) {
