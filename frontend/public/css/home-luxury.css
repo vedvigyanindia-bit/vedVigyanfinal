@@ -8177,27 +8177,27 @@ img[src*="4.jpg"],
   white-space: nowrap !important;
 }
 
-/* ─── UPI Buy Now Button & Shiprocket Badge Styling (Matching Screenshot) ─── */
+/* ─── UPI Buy Now Button & Overlapping Logo Circles (Matching Screenshot) ─── */
 .pdp-btn-buynow,
 .lux-btn-buynow,
 button[data-buy-now] {
   position: relative !important;
-  background: #1b5e20 !important; /* Rich Green Buy Now Button matching screenshot */
+  background: #1b5e20 !important; /* Rich Dark Green Buy Now Button matching screenshot */
   color: #ffffff !important;
   border: none !important;
   border-radius: 999px !important;
-  padding: 12px 18px !important;
-  font-size: 14.5px !important;
+  padding: 12px 24px !important;
+  font-size: 15px !important;
   font-weight: 800 !important;
+  letter-spacing: 0.05em !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 10px !important;
+  gap: 12px !important;
   cursor: pointer !important;
   box-shadow: 0 4px 14px rgba(27, 94, 32, 0.35) !important;
   transition: all 0.2s ease !important;
   text-decoration: none !important;
-  flex-wrap: wrap !important;
 }
 
 .pdp-btn-buynow:hover,
@@ -8206,51 +8206,45 @@ button[data-buy-now] {
   transform: translateY(-2px) !important;
 }
 
-.vv-upi-badge-container {
+.vv-upi-overlap-badge {
   display: inline-flex !important;
   align-items: center !important;
-  background: #ffffff !important;
-  padding: 2px 6px !important;
-  border-radius: 999px !important;
-  gap: 3px !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
-  flex-shrink: 0 !important;
+  margin-left: 6px !important;
 }
 
-.upi-circle {
-  width: 19px !important;
-  height: 19px !important;
+.upi-logo-circle {
+  width: 26px !important;
+  height: 26px !important;
   border-radius: 50% !important;
+  background: #ffffff !important;
+  border: 1.5px solid #111111 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
+  margin-left: -8px !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+}
+
+.upi-logo-circle:first-child {
+  margin-left: 0 !important;
+  z-index: 3 !important;
+}
+
+.upi-logo-circle.phonepe {
+  z-index: 2 !important;
+  color: #5f259f !important;
   font-weight: 900 !important;
-  color: #ffffff !important;
-  user-select: none !important;
-}
-
-.upi-circle.gpay {
-  background: #4285F4 !important;
-  font-size: 9px !important;
-  font-family: Arial, sans-serif !important;
-}
-
-.upi-circle.phonepe {
-  background: #5f259f !important;
-  font-size: 10.5px !important;
+  font-size: 13px !important;
   font-family: sans-serif !important;
 }
 
-.upi-circle.paytm {
-  background: #00baf2 !important;
-  font-size: 6.5px !important;
+.upi-logo-circle.paytm {
+  z-index: 1 !important;
+  color: #00baf2 !important;
+  font-weight: 900 !important;
+  font-size: 8px !important;
   font-family: sans-serif !important;
-}
-
-.powered-by-shiprocket {
-  font-size: 10px !important;
-  opacity: 0.9 !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
-  display: inline-block !important;
 }
