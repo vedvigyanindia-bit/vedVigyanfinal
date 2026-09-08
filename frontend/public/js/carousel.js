@@ -8,9 +8,10 @@ const GALLERY_STYLES = `
 .carousel-slide img {
   transition: transform 0.15s ease-out;
   cursor: zoom-in;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Thumbnail Navigation */

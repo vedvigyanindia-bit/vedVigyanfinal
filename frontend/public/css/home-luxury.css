@@ -1342,11 +1342,8 @@
 
 .lux-product-media .carousel-slide img.certificate-image,
 .lux-product-media .carousel-slide img[src*="cert"],
-.lux-product-media .carousel-slide img[src*="lab"],
-.lux-product-media .carousel-slide img[src*="3.webp"],
-.lux-product-media .carousel-slide img[src*="3.jpg"],
-.lux-product-media .carousel-slide img[src*="4.webp"],
-.lux-product-media .carousel-slide img[src*="4.jpg"] {
+.lux-product-media .carousel-slide img[src*="lab-certificate"],
+.lux-product-media .carousel-slide img[src*="report"] {
   object-fit: contain !important;
   background: #faf7f2 !important;
   padding: 4px !important;
@@ -2561,11 +2558,8 @@ body[data-lux-page="checkout"] .lux-reveal,
 
 .lux-home .product-carousel .carousel-slide img.certificate-image,
 .lux-home .product-carousel .carousel-slide img[src*="cert"],
-.lux-home .product-carousel .carousel-slide img[src*="lab"],
-.lux-home .product-carousel .carousel-slide img[src*="3.webp"],
-.lux-home .product-carousel .carousel-slide img[src*="3.jpg"],
-.lux-home .product-carousel .carousel-slide img[src*="4.webp"],
-.lux-home .product-carousel .carousel-slide img[src*="4.jpg"] {
+.lux-home .product-carousel .carousel-slide img[src*="lab-certificate"],
+.lux-home .product-carousel .carousel-slide img[src*="report"] {
   object-fit: contain !important;
   background: #faf7f2 !important;
   padding: 4px !important;
@@ -7949,25 +7943,23 @@ html, body {
 .lux-pdp-main-image img {
   width: 100% !important;
   height: 100% !important;
-  max-height: 480px !important;
-  object-fit: contain !important; /* Prevents lab certificate text from ever getting cropped or cut off! */
-  background: #FAF5EE !important;
+  object-fit: cover !important;
+  object-position: center !important;
   border-radius: 12px !important;
   display: block !important;
   margin: 0 auto !important;
 }
 
-/* Force object-fit: contain on all certificate and lab report images */
-img[src*="cert"],
-img[src*="lab"],
-img[src*="GRRL"],
-img[src*="3.webp"],
-img[src*="3.jpg"],
-img[src*="4.webp"],
-img[src*="4.jpg"],
+/* Force object-fit: contain strictly on lab certificate/report images */
+.carousel-slide img.certificate-image,
+.carousel-slide img[src*="cert"],
+.carousel-slide img[src*="lab-certificate"],
+.carousel-slide img[src*="report"],
 .certificate-image,
 .vv-cert-preview-box img {
   object-fit: contain !important;
+  background: #FAF5EE !important;
+}
   background: #FAF5EE !important;
   border-radius: 10px !important;
 }
@@ -8256,3 +8248,339 @@ button[data-buy-now] {
   font-family: Arial, sans-serif !important;
   line-height: 1 !important;
 }
+
+/* ─── Perfect 1:1 Aspect-Ratio & Clean Alignment Fixes for Product Cards & PDP Gallery ─── */
+.lux-product-card .lux-product-media,
+.lux-product-card .product-carousel,
+.lux-product-card .carousel-track-wrapper,
+.lux-product-card .carousel-slide {
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 12px 12px 0 0 !important;
+  overflow: hidden !important;
+  background: #fdf6ec !important;
+}
+
+.lux-product-card .lux-product-media img,
+.lux-product-card .carousel-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+/* PDP Gallery Aspect Ratio & Container Styling */
+.lux-pdp-gallery,
+#pdpGallery {
+  width: 100% !important;
+  max-width: 600px !important;
+  margin: 0 auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.pdp-grid .product-carousel {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.pdp-grid .carousel-track-wrapper,
+.pdp-grid .carousel-slide {
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  background: #fdf6ec !important;
+}
+
+.pdp-grid .carousel-slide img,
+#productImg {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 16px !important;
+}
+
+/* Mobile & Desktop PDP Layout Positioning & Responsive Wrapping */
+.pdp-grid {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.pdp-info {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.pdp-title {
+  font-family: var(--font-heading, 'Poppins', Georgia, serif) !important;
+  font-size: clamp(16px, 4.2vw, 26px) !important;
+  font-weight: 800 !important;
+  color: #1a0809 !important;
+  line-height: 1.35 !important;
+  margin: 0 0 10px 0 !important;
+  padding-right: 4px !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+.pdp-cert-box {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  background: #ffffff !important;
+  border: 1px solid #ead9bd !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  margin-top: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.pdp-review-slider-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-bottom: 24px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.pdp-review-card {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  padding: 12px 14px !important;
+  gap: 10px !important;
+}
+
+.pdp-rev-body {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.pdp-rev-body > div:first-child {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+}
+
+.pdp-rev-body strong {
+  font-size: 13px !important;
+  word-break: break-word !important;
+}
+
+.pdp-rev-text {
+  font-size: 12.5px !important;
+  line-height: 1.4 !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+@media (max-width: 768px) {
+  .lux-container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .pdp-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .pdp-info {
+    padding-left: 2px !important;
+    padding-right: 4px !important;
+  }
+
+  .lux-whatsapp,
+  #backToTop {
+    bottom: 96px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdp-rev-nav {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 18px !important;
+  }
+
+  .pdp-cert-box {
+    padding: 10px 12px !important;
+  }
+
+  .pdp-cert-download-btn {
+    width: 100% !important;
+    margin-top: 4px !important;
+  }
+}
+
+/* ─── Global Overflow-X Containment & PDP Element Positioning Fixes ─── */
+html,
+body.lux-home {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+}
+
+.lux-pdp,
+.pdp-grid,
+.pdp-info {
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+/* Fix Certificate Download Box Wrapping */
+.pdp-cert-box {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  background: #ffffff !important;
+  border: 1px solid #ead9bd !important;
+  border-radius: 12px !important;
+  padding: 12px 14px !important;
+  margin-top: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.pdp-cert-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #333 !important;
+  flex-wrap: wrap !important;
+  min-width: 0 !important;
+}
+
+.pdp-cert-download-btn {
+  background: #8a1a23 !important;
+  color: #ffffff !important;
+  padding: 8px 14px !important;
+  border-radius: 8px !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  display: inline-block !important;
+  text-align: center !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Fix Review Slider Wrap & Card Overflow */
+.pdp-review-slider-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-bottom: 24px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.pdp-review-card {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  padding: 12px 14px !important;
+  gap: 10px !important;
+}
+
+.pdp-rev-body {
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.pdp-rev-body > div:first-child {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+}
+
+.pdp-rev-body strong {
+  font-size: 13px !important;
+  word-break: break-word !important;
+}
+
+.pdp-rev-text {
+  font-size: 12.5px !important;
+  line-height: 1.4 !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+}
+
+@media (max-width: 480px) {
+  .pdp-rev-nav {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 18px !important;
+  }
+
+  .pdp-cert-box {
+    padding: 10px 12px !important;
+  }
+
+  .pdp-cert-download-btn {
+    width: 100% !important;
+    margin-top: 4px !important;
+  }
+}
+

@@ -48,11 +48,11 @@ function createInternalOrderId() {
 }
 
 async function createRazorpayOrder(amount, receipt) {
-  const keyId = process.env.RAZORPAY_KEY_ID || "rzp_live_TBHg0qyyrxP80B";
-  const keySecret = process.env.RAZORPAY_KEY_SECRET || "4FpX4f7rZ5aNjm8s7ij1X7mC";
+  const keyId = process.env.RAZORPAY_KEY_ID;
+  const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
   if (!keyId || !keySecret) {
-    throw new Error("Missing Razorpay credentials");
+    throw new Error("Missing Razorpay credentials. Please configure RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in environment variables.");
   }
 
   const response = await fetch("https://api.razorpay.com/v1/orders", {

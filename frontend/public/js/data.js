@@ -1011,8 +1011,6 @@ window.VED_VIGYAN_DATA = {
     "images": [
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/1.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/2.webp",
-      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp",
-      "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/4.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/5.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/6.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/7.webp",
