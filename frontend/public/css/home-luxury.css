@@ -8169,56 +8169,113 @@ html, body {
   white-space: nowrap !important;
 }
 
-/* ─── UPI Buy Now Button & Overlapping Logo Circles (Matching Screenshot) ─── */
+/* ─── UPI Buy Now Button & Overlapping Logo Circles (PDP & Product Cards) ─── */
 .pdp-btn-buynow,
 .lux-btn-buynow,
-button[data-buy-now] {
+#buyNowBtn,
+.pdp-main-buynow {
   position: relative !important;
-  background: #1b5e20 !important; /* Rich Dark Green Buy Now Button matching screenshot */
+  background: linear-gradient(135deg, #1b5e20 0%, #124d17 100%) !important;
   color: #ffffff !important;
   border: none !important;
   border-radius: 999px !important;
   padding: 12px 24px !important;
   font-size: 15px !important;
   font-weight: 800 !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.04em !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 12px !important;
+  gap: 10px !important;
   cursor: pointer !important;
   box-shadow: 0 4px 14px rgba(27, 94, 32, 0.35) !important;
   transition: all 0.2s ease !important;
   text-decoration: none !important;
 }
 
+/* Card-Specific Buy Now Button Optimization (Prevents text clipping in product cards) */
+.lux-product-card button[data-buy-now],
+.lux-product-footer button[data-buy-now],
+.product-card button[data-buy-now],
+.grid button[data-buy-now],
+.lux-product-footer .lux-btn-primary {
+  position: relative !important;
+  background: linear-gradient(135deg, #1b5e20 0%, #124d17 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 7px 8px !important;
+  font-size: 11.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  cursor: pointer !important;
+  box-shadow: 0 3px 8px rgba(27, 94, 32, 0.3) !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.lux-product-card button[data-buy-now]:hover,
+.lux-product-footer button[data-buy-now]:hover,
 .pdp-btn-buynow:hover,
 .lux-btn-buynow:hover {
-  background: #144718 !important;
-  transform: translateY(-2px) !important;
+  background: linear-gradient(135deg, #227328 0%, #175a1d 100%) !important;
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 5px 16px rgba(27, 94, 32, 0.45) !important;
 }
 
 .vv-upi-overlap-badge {
   display: inline-flex !important;
   align-items: center !important;
-  margin-left: 6px !important;
+  margin-left: 4px !important;
+  flex-shrink: 0 !important;
 }
 
 .upi-logo-circle {
-  width: 26px !important;
-  height: 26px !important;
+  width: 24px !important;
+  height: 24px !important;
   border-radius: 50% !important;
   background: #ffffff !important;
-  border: 1.5px solid #111111 !important;
+  border: 1.2px solid #111111 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin-left: -8px !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+  margin-left: -7px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
   position: relative !important;
   overflow: hidden !important;
+}
+
+/* Scaled down UPI circles inside product cards so text "BUY NOW" is NEVER clipped */
+.lux-product-card .upi-logo-circle,
+.lux-product-footer .upi-logo-circle {
+  width: 19px !important;
+  height: 19px !important;
+  margin-left: -5px !important;
+  border-width: 1px !important;
+}
+
+.lux-product-card .upi-logo-circle svg,
+.lux-product-footer .upi-logo-circle svg {
+  max-width: 12px !important;
+  max-height: 10px !important;
+}
+
+.lux-product-card .phonepe-inner-circle,
+.lux-product-footer .phonepe-inner-circle {
+  width: 13px !important;
+  height: 13px !important;
+  font-size: 8.5px !important;
 }
 
 .upi-logo-circle:first-child {
@@ -8235,15 +8292,15 @@ button[data-buy-now] {
 }
 
 .phonepe-inner-circle {
-  width: 19px !important;
-  height: 19px !important;
+  width: 17px !important;
+  height: 17px !important;
   border-radius: 50% !important;
   background: #5f259f !important;
   color: #ffffff !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 11.5px !important;
+  font-size: 10px !important;
   font-weight: 900 !important;
   font-family: Arial, sans-serif !important;
   line-height: 1 !important;
