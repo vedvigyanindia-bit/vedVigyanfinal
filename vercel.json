@@ -10,28 +10,28 @@
       "destination": "/frontend/public/$1"
     },
     {
-      "source": "/products/(.*)",
-      "destination": "/frontend/products/index.html"
-    },
-    {
       "source": "/products",
-      "destination": "/frontend/products/index.html"
+      "destination": "/frontend/products/index"
     },
     {
-      "source": "/blog/(.*)",
-      "destination": "/frontend/blog-post.html"
+      "source": "/products/(.*)",
+      "destination": "/frontend/products/index"
     },
     {
       "source": "/blog",
-      "destination": "/frontend/blog.html"
+      "destination": "/frontend/blog"
+    },
+    {
+      "source": "/blog/(.*)",
+      "destination": "/frontend/blog-post"
     },
     {
       "source": "/collections/(.*)",
-      "destination": "/frontend/shop.html"
+      "destination": "/frontend/shop"
     },
     {
       "source": "/",
-      "destination": "/frontend/index.html"
+      "destination": "/frontend/index"
     },
     {
       "source": "/((?!api/).*)",
