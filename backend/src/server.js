@@ -723,6 +723,11 @@ function handleRequest(req, res) {
       sendFile(directFile, res);
       return;
     }
+    const blogPostPath = path.join(FRONTEND_ROOT, "blog-post.html");
+    if (fs.existsSync(blogPostPath)) {
+      sendFile(blogPostPath, res);
+      return;
+    }
     const blogPath = path.join(FRONTEND_ROOT, "blog.html");
     sendFile(blogPath, res);
     return;

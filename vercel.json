@@ -19,7 +19,7 @@
     },
     {
       "source": "/blog/(.*)",
-      "destination": "/frontend/blog/index.html"
+      "destination": "/frontend/blog-post.html"
     },
     {
       "source": "/blog",
