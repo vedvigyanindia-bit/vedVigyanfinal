@@ -13,6 +13,20 @@ const GALLERY_STYLES = `
   object-fit: cover;
   object-position: center;
 }
+.carousel-slide img.certificate-image,
+.carousel-slide.is-certificate-slide img,
+.carousel-slide img[src*="3.webp"],
+.carousel-slide img[src*="4.webp"],
+.carousel-slide img[src*="cert"],
+.carousel-slide img[src*="report"] {
+  object-fit: contain !important;
+  background: #ffffff !important;
+  padding: 6px !important;
+  box-sizing: border-box !important;
+}
+.carousel-slide.is-certificate-slide {
+  background: #ffffff !important;
+}
 
 /* Thumbnail Navigation */
 .carousel-thumbnails {
@@ -207,10 +221,11 @@ function getOrCreateLightbox() {
 }
 
 window.VedVigyanCarousel = {
-  isCertificateImage(url) {
+  isCertificateImage(url, product) {
     if (!url) return false;
     const u = String(url).toLowerCase();
-    return /cert|lab-certificate|report|authenticity|asli-brand-comparison|\/4\.webp/.test(u);
+    if (product && product.certificate && String(product.certificate).toLowerCase() === u) return true;
+    return /cert|lab-certificate|report|authenticity|asli-brand-comparison|\/3\.webp|\/4\.webp|tulsi jap mala/.test(u);
   },
 
   isGeneratedPlaceholderImage(url) {
@@ -235,7 +250,7 @@ window.VedVigyanCarousel = {
     const total = images.length;
 
     const slideLabels = images.map((imgUrl, idx) => {
-      const isCert = this.isCertificateImage(imgUrl);
+      const isCert = this.isCertificateImage(imgUrl, product) || (idx === 2 && images.length >= 3 && !/1\.webp|2\.webp/.test(imgUrl));
       if (isCert) {
         return `${idx + 1}/${total} Lab Certificate`;
       }
@@ -243,7 +258,7 @@ window.VedVigyanCarousel = {
     });
 
     const slideAltLabels = images.map((imgUrl, idx) => {
-      const isCert = this.isCertificateImage(imgUrl);
+      const isCert = this.isCertificateImage(imgUrl, product) || (idx === 2 && images.length >= 3 && !/1\.webp|2\.webp/.test(imgUrl));
       if (isCert) {
         return `Lab Certificate`;
       }
@@ -256,9 +271,9 @@ window.VedVigyanCarousel = {
     const slidesHtml = images.map((imgUrl, idx) => {
       // First slide loads eagerly for LCP, others are lazy loaded
       const isLcp = idx === 0;
-      const isCert = this.isCertificateImage(imgUrl);
+      const isCert = this.isCertificateImage(imgUrl, product) || (idx === 2 && images.length >= 3 && !/1\.webp|2\.webp/.test(imgUrl));
       return `
-        <div class="carousel-slide" data-slide-index="${idx}">
+        <div class="carousel-slide ${isCert ? 'is-certificate-slide' : ''}" data-slide-index="${idx}">
           <img src="${imgUrl}" class="${isCert ? 'certificate-image' : ''}" alt="${product.name} - ${slideAltLabels[idx]}" width="400" height="400" ${isLcp ? 'fetchpriority="high"' : 'loading="lazy"'} />
         </div>
       `;
@@ -346,9 +361,9 @@ window.VedVigyanCarousel = {
         });
       });
 
-      // Image click opens detail page directly without hover zoom or lightbox overlay
+      // Image click: opens product page if inside catalog card, or opens lightbox on PDP detail page
       const slideImgs = carousel.querySelectorAll('.carousel-slide img');
-      slideImgs.forEach((img) => {
+      slideImgs.forEach((img, idx) => {
         img.addEventListener('click', (e) => {
           const card = img.closest('.lux-product-card, .card, [data-product-id]');
           if (card) {
@@ -358,6 +373,9 @@ window.VedVigyanCarousel = {
             if (targetUrl) {
               window.location.href = targetUrl;
             }
+          } else {
+            // We are on PDP: open lightbox so certificate or product image is viewed in high-res
+            openLightbox(idx);
           }
         });
       });

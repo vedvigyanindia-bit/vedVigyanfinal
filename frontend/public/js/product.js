@@ -402,10 +402,18 @@ function renderProductPage() {
   }
 
   const certImg = document.getElementById("productCertImg") || document.querySelector(".vv-cert-preview-box img");
+  const certDownloadBtn = document.getElementById("pdpCertDownloadBtn");
+  const certSrc = product.certificate || 
+    (product.images && product.images.find(img => window.VedVigyanCarousel?.isCertificateImage(img))) ||
+    (product.images && product.images.length >= 3 ? product.images[2] : "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp");
+
   if (certImg) {
-    const certSrc = product.certificate || (product.images && product.images.length >= 4 ? product.images[3] : "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp");
     certImg.src = certSrc;
     certImg.alt = `${product.name} Authenticity Certificate`;
+  }
+  if (certDownloadBtn) {
+    certDownloadBtn.href = certSrc;
+    certDownloadBtn.setAttribute("download", `${product.name} Certificate.webp`);
   }
 
   // 3-Step Sacred Journey section: Show ONLY for Rudraksha & Mala related products

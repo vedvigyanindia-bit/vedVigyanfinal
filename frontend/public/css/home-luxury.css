@@ -7975,16 +7975,26 @@ html, body {
 
 /* Force object-fit: contain strictly on lab certificate/report images */
 .carousel-slide img.certificate-image,
+.carousel-slide.is-certificate-slide img,
+.carousel-slide img[src*="3.webp"],
+.carousel-slide img[src*="4.webp"],
 .carousel-slide img[src*="cert"],
 .carousel-slide img[src*="lab-certificate"],
 .carousel-slide img[src*="report"],
+.carousel-slide img[src*="authenticity"],
 .certificate-image,
-.vv-cert-preview-box img {
+.vv-cert-preview-box img,
+#productCertImg {
   object-fit: contain !important;
-  background: #FAF5EE !important;
-}
-  background: #FAF5EE !important;
+  object-position: center !important;
+  background: #ffffff !important;
+  padding: 6px !important;
+  box-sizing: border-box !important;
   border-radius: 10px !important;
+}
+
+.carousel-slide.is-certificate-slide {
+  background: #ffffff !important;
 }
 
 /* 3. PDP Thumbnail Strip Responsiveness */
@@ -8386,6 +8396,27 @@ html, body {
   object-fit: cover !important;
   object-position: center !important;
   border-radius: 16px !important;
+}
+
+/* Ensure Certificates inside PDP are NEVER cropped or zoomed in */
+.pdp-grid .carousel-slide img.certificate-image,
+.pdp-grid .carousel-slide.is-certificate-slide img,
+.pdp-grid .carousel-slide img[src*="3.webp"],
+.pdp-grid .carousel-slide img[src*="4.webp"],
+.pdp-grid .carousel-slide img[src*="cert"],
+.pdp-grid .carousel-slide img[src*="report"],
+.pdp-grid .carousel-slide img[src*="authenticity"] {
+  object-fit: contain !important;
+  object-position: center !important;
+  background: #ffffff !important;
+  padding: 8px !important;
+  box-sizing: border-box !important;
+}
+
+.pdp-grid .carousel-slide.is-certificate-slide,
+.pdp-grid .carousel-slide:has(img.certificate-image),
+.pdp-grid .carousel-slide:has(img[src*="3.webp"]) {
+  background: #ffffff !important;
 }
 
 /* Mobile & Desktop PDP Layout Positioning & Responsive Wrapping */
