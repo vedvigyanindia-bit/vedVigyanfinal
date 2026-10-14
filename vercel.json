@@ -22,8 +22,12 @@
       "destination": "/frontend/blog"
     },
     {
+      "source": "/blog/:slug",
+      "destination": "/api/blog/render?slug=:slug"
+    },
+    {
       "source": "/blog/(.*)",
-      "destination": "/frontend/blog/index"
+      "destination": "/api/blog/render?slug=$1"
     },
     {
       "source": "/collections/(.*)",
