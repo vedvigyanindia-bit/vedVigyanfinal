@@ -1,4 +1,4 @@
-const { google } = require('googleapis');
+let google = null;
 
 // Ensure variables are read from environment
 const sheetId = process.env.GOOGLE_SHEET_ID;
@@ -10,6 +10,10 @@ let sheets = null;
 
 function getSheetsClient() {
   if (sheets) return sheets;
+
+  if (!google) {
+    google = require('googleapis').google;
+  }
 
   if (!sheetId || !serviceAccountEmail || !privateKey) {
     throw new Error('Google Sheets API environment variables are missing (GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY)');

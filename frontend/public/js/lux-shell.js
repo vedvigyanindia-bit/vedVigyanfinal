@@ -162,6 +162,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
               </div>
             </div>
           </div>
+          <a class="lux-nav-link" href="/blog.html">Blog</a>
         </nav>
         <div class="lux-nav-actions">
           <button class="lux-icon-btn" id="searchOpen" type="button" aria-label="Search">
@@ -214,7 +215,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
         <a href="/gem-stone.html">Healing Crystals</a>
         <a href="/mala.html">Malas</a>
         <a href="/shop.html">Shop All</a>
-        <a href="/blog.html">Knowledge Centre</a>
+        <a href="/blog.html">Blog</a>
         <a href="/contact.html">Contact</a>
       </nav>
     </div>

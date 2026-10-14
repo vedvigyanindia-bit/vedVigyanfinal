@@ -18,6 +18,14 @@
       "destination": "/frontend/products/index.html"
     },
     {
+      "source": "/blog/(.*)",
+      "destination": "/frontend/blog/index.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/frontend/blog.html"
+    },
+    {
       "source": "/collections/(.*)",
       "destination": "/frontend/shop.html"
     },

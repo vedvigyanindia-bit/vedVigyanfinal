@@ -134,7 +134,7 @@
 
 .lux-nav .lux-container {
   max-width: 1440px;
-  padding: 0 clamp(16px, 2.5vw, 40px);
+  padding: 0 clamp(12px, 1.8vw, 32px);
 }
 
 .lux-nav.is-transparent,
@@ -144,10 +144,10 @@
 }
 
 .lux-nav-inner {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: center;
-  column-gap: clamp(16px, 3vw, 48px);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: clamp(8px, 1.2vw, 20px) !important;
   min-height: 72px;
   height: auto;
   padding: 10px 0;
@@ -157,7 +157,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-shrink: 0;
+  flex-shrink: 0 !important;
   min-width: 0;
 }
 
@@ -195,12 +195,13 @@
 }
 
 .lux-navlinks {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(2px, 1.1vw, 6px);
-  flex-wrap: nowrap;
-  min-width: 0;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: clamp(1px, 0.4vw, 5px) !important;
+  flex-wrap: nowrap !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
 }
 
 .lux-navlinks>a,
@@ -214,10 +215,10 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 8px clamp(8px, 1vw, 14px);
-  font-size: clamp(12px, 1.05vw, 13.5px);
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  padding: 6px clamp(5px, 0.65vw, 11px);
+  font-size: clamp(12px, 0.88vw, 13.5px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
   color: var(--text);
   background: transparent;
   border: none;
@@ -268,9 +269,9 @@
 }
 
 .lux-nav-chevron {
-  width: 10px;
-  height: 10px;
-  opacity: 0.45;
+  width: 9px;
+  height: 9px;
+  opacity: 0.5;
   transition: transform 0.25s, opacity 0.25s;
   flex-shrink: 0;
 }
@@ -2367,19 +2368,31 @@ body[data-lux-page="checkout"] .lux-reveal,
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1240px) {
   .lux-brand-tag {
-    display: none;
+    display: none !important;
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1180px) and (min-width: 1025px) {
+  .lux-nav-link,
+  .lux-mega-trigger {
+    padding: 6px 4px !important;
+    font-size: 11.5px !important;
+    gap: 2px !important;
+  }
   .lux-navlinks {
-    display: none;
+    gap: 1px !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .lux-navlinks {
+    display: none !important;
   }
 
   .lux-hamburger {
-    display: flex;
+    display: flex !important;
   }
 
   .lux-nav-actions {
@@ -2387,6 +2400,9 @@ body[data-lux-page="checkout"] .lux-reveal,
     border: none;
     padding: 0;
   }
+}
+
+@media (max-width: 900px) {
 
   .lux-hero-grid {
     grid-template-columns: 1fr;
@@ -4160,7 +4176,7 @@ grid-column: span 1;
 .lux-mega-trigger {
   font-family: var(--font-body);
   font-weight: 600;
-  font-size: 13px;
+  font-size: clamp(12px, 0.88vw, 13.5px);
 }
 
 .lux-nav-actions {
@@ -4168,6 +4184,9 @@ grid-column: span 1;
   border: none;
   padding: 0;
   gap: 0;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
 }
 
 .lux-icon-btn {
@@ -5193,7 +5212,7 @@ grid-column: span 1;
 
   .lux-nav-inner {
     min-height: 60px;
-    column-gap: 8px;
+    gap: 8px;
   }
 
   .lux-brand img {
@@ -7760,22 +7779,26 @@ button[type="submit"]#placeOrderBtn:hover {
   display: inline-block !important;
 }
 
-.lux-mega-trigger {
+.lux-mega-trigger,
+.lux-nav-link {
   background: transparent !important;
   border: none !important;
   font-family: var(--font-body, system-ui, sans-serif) !important;
-  font-size: 14.5px !important;
-  font-weight: 700 !important;
+  font-size: clamp(12px, 0.88vw, 13.5px) !important;
+  font-weight: 600 !important;
   color: #1a0809 !important;
-  padding: 8px 16px !important;
+  padding: 6px clamp(5px, 0.65vw, 11px) !important;
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
+  gap: 4px !important;
   transition: color 0.2s ease, background 0.2s ease !important;
   border-radius: 8px !important;
+  white-space: nowrap !important;
+  text-decoration: none !important;
 }
 
+.lux-nav-link:hover,
 .lux-mega-wrap:hover .lux-mega-trigger,
 .lux-mega-wrap:focus-within .lux-mega-trigger {
   color: #8a1a23 !important;

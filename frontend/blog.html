@@ -18,7 +18,8 @@
       name="description"
       content="Read Ved Vigyan blog posts on Rudraksha benefits, authenticity tips, and beginner-friendly spiritual practices."
     />
-    <link rel="canonical" href="/blog.html" />
+    <link rel="canonical" href="https://vedvigyan.in/blog" />
+    <link rel="stylesheet" href="/public/css/blog.css" />
     <meta name="robots" content="index,follow" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <link rel="stylesheet" href="/public/css/home-luxury.css" />
@@ -31,6 +32,7 @@
     <script src="/public/js/lux-cards.js" defer></script>
     <script src="/public/js/ui.js" defer></script>
     <script src="/public/js/blog.js" defer></script>
+    <script src="/public/js/blog-engine.js" defer></script>
     <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -325,10 +327,8 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
             </div>
           </div>
         </div>
+        <a class="lux-nav-link" href="/blog.html">Blog</a>
       </nav>
-
-
-
 
 
 
@@ -375,18 +375,39 @@ src="https://www.facebook.com/tr?id=1048722281178787&ev=PageView&noscript=1"
     
 
     <main class="page">
-      <div class="container">
-        <div class="pagecard">
-          <div class="breadcrumbs">Home / Blog</div>
-          <h1 class="section-title" style="margin:0 0 6px">Ved Vigyan Blog</h1>
-          <p class="section-sub" style="margin:0">
-            Beginner-friendly posts on Rudraksha authenticity, benefits and spiritual routines.
+      <!-- Luxury Blog Hero Section -->
+      <section class="vv-blog-hero">
+        <div class="vv-blog-hero-content">
+          <div class="vv-blog-badge">ॐ Sacred Journal &amp; Vedic Wisdom</div>
+          <h1 class="vv-blog-hero-title">Ved Vigyan Knowledge Centre</h1>
+          <p class="vv-blog-hero-sub">
+            Ancient wisdom decoded for modern living. Authentic spiritual guides on sacred Rudraksha, energized malas, and healing gemstones.
           </p>
         </div>
+      </section>
 
-        <div style="height:14px"></div>
+      <!-- Category Filter & Search Toolbar -->
+      <div class="vv-blog-toolbar">
+        <div class="vv-blog-filter-row">
+          <div class="vv-blog-categories" id="blogCategoriesTrack">
+            <button type="button" class="vv-cat-pill active" data-category="">All Wisdom</button>
+            <button type="button" class="vv-cat-pill" data-category="Rudraksha">Rudraksha</button>
+            <button type="button" class="vv-cat-pill" data-category="Guide">Guide</button>
+            <button type="button" class="vv-cat-pill" data-category="Crystals">Crystals</button>
+            <button type="button" class="vv-cat-pill" data-category="Meditation">Meditation</button>
+            <button type="button" class="vv-cat-pill" data-category="Astrology">Astrology</button>
+          </div>
+          <div class="vv-blog-search-box">
+            <input type="text" id="blogSearchInput" placeholder="Search wisdom &amp; guides..." aria-label="Search articles" />
+            <span class="vv-blog-search-icon">🔍</span>
+          </div>
+        </div>
+      </div>
 
-        <section id="blogList" aria-label="Blog posts"></section>
+      <!-- Luxury Posts Grid -->
+      <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 16px;">
+        <section class="vv-blog-grid" id="blogPostsGrid" aria-label="Blog articles"></section>
+        <section id="blogList" style="display:none;" aria-hidden="true"></section>
       </div>
     </main>
 

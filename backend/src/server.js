@@ -708,7 +708,72 @@ function handleRequest(req, res) {
     return;
   }
 
-  // 4. Default Static HTML Page Server
+  // 4. Clean Blog URLs: /blog, /blog/, /blog/:slug
+  if (req.method === "GET" && (url.pathname === "/blog" || url.pathname === "/blog/")) {
+    const blogPath = path.join(FRONTEND_ROOT, "blog.html");
+    sendFile(blogPath, res);
+    return;
+  }
+
+  if (req.method === "GET" && url.pathname.startsWith("/blog/")) {
+    const sub = url.pathname.replace(/^\/blog\//, "").replace(/\/+$/, "");
+    const cleanSub = sub.replace(/\.html$/i, "");
+    const directFile = path.join(FRONTEND_ROOT, "blog", `${cleanSub}.html`);
+    if (fs.existsSync(directFile)) {
+      sendFile(directFile, res);
+      return;
+    }
+    const blogPath = path.join(FRONTEND_ROOT, "blog.html");
+    sendFile(blogPath, res);
+    return;
+  }
+
+  // 5. Blog API Endpoints: /api/blog/posts and /api/blog/post
+  if (req.method === "GET" && url.pathname === "/api/blog/posts") {
+    try {
+      const postsHandler = require(path.join(__dirname, "..", "..", "api", "blog", "posts.js"));
+      const queryObj = Object.fromEntries(url.searchParams.entries());
+      const adaptedReq = Object.assign(req, { query: queryObj });
+      const adaptedRes = Object.assign(res, {
+        status(code) {
+          this.statusCode = code;
+          return this;
+        },
+        json(data) {
+          this.setHeader("Content-Type", "application/json");
+          this.end(JSON.stringify(data));
+        }
+      });
+      return postsHandler(adaptedReq, adaptedRes);
+    } catch (e) {
+      sendJson(res, 500, { error: e.message });
+      return;
+    }
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/blog/post") {
+    try {
+      const postHandler = require(path.join(__dirname, "..", "..", "api", "blog", "post.js"));
+      const queryObj = Object.fromEntries(url.searchParams.entries());
+      const adaptedReq = Object.assign(req, { query: queryObj });
+      const adaptedRes = Object.assign(res, {
+        status(code) {
+          this.statusCode = code;
+          return this;
+        },
+        json(data) {
+          this.setHeader("Content-Type", "application/json");
+          this.end(JSON.stringify(data));
+        }
+      });
+      return postHandler(adaptedReq, adaptedRes);
+    } catch (e) {
+      sendJson(res, 500, { error: e.message });
+      return;
+    }
+  }
+
+  // 6. Default Static HTML Page Server
   fs.stat(filePath, (err, stat) => {
     if (!err && stat.isFile()) {
       sendFile(filePath, res);
