@@ -7,6 +7,9 @@ let MongooseOrderModel = null;
 
 try {
   mongoose = require('mongoose');
+  try {
+    mongoose.set('bufferCommands', false);
+  } catch {}
   orderSchema = new mongoose.Schema(
     {
       orderId: { type: String, required: true, unique: true, index: true },
@@ -58,7 +61,7 @@ try {
       // Overall Order Status
       orderStatus: { type: String, default: 'Pending' }
     },
-    { timestamps: true }
+    { timestamps: true, bufferCommands: false }
   );
 
   try {
@@ -156,6 +159,8 @@ function writeFileDb(data) {
   }
 }
 
+let cachedMongoPromise = null;
+
 class OrderRepository {
   static isMongoConnected() {
     return Boolean(mongoose && mongoose.connection && mongoose.connection.readyState === 1);
@@ -163,22 +168,28 @@ class OrderRepository {
 
   static async connectMongoIfNeeded() {
     try {
-      if (this.isMongoConnected()) return;
+      if (this.isMongoConnected()) return true;
       const uri = process.env.MONGODB_URI;
-      if (mongoose && uri && mongoose.connection.readyState !== 1) {
-        await mongoose.connect(uri, {
+      if (!uri || !mongoose) return false;
+
+      if (!cachedMongoPromise || mongoose.connection.readyState === 0) {
+        cachedMongoPromise = mongoose.connect(uri, {
           bufferCommands: false,
-          serverSelectionTimeoutMS: 5000
+          serverSelectionTimeoutMS: 5000,
+          connectTimeoutMS: 5000
         });
-        console.log('[Order DB] Connected to MongoDB Atlas on demand.');
       }
+      await cachedMongoPromise;
+      return this.isMongoConnected();
     } catch (err) {
       console.warn('[Order DB] MongoDB connection notice:', err.message);
+      cachedMongoPromise = null;
+      return false;
     }
   }
 
   static async create(orderData) {
-    await this.connectMongoIfNeeded();
+    const isConnected = await this.connectMongoIfNeeded();
 
     const doc = {
       ...orderData,
@@ -187,7 +198,7 @@ class OrderRepository {
     };
 
     const Model = getOrderModel();
-    if (Model) {
+    if (isConnected && Model) {
       try {
         const mongoDoc = await Model.create(doc);
         const list = readFileDb();
@@ -211,10 +222,10 @@ class OrderRepository {
   }
 
   static async findByOrderId(orderId) {
-    await this.connectMongoIfNeeded();
+    const isConnected = await this.connectMongoIfNeeded();
 
     const Model = getOrderModel();
-    if (Model) {
+    if (isConnected && Model) {
       try {
         const mongoDoc = await Model.findOne({ orderId });
         if (mongoDoc) return mongoDoc.toObject();
@@ -229,10 +240,10 @@ class OrderRepository {
 
   static async findByPaymentId(paymentId) {
     if (!paymentId) return null;
-    await this.connectMongoIfNeeded();
+    const isConnected = await this.connectMongoIfNeeded();
 
     const Model = getOrderModel();
-    if (Model) {
+    if (isConnected && Model) {
       try {
         const mongoDoc = await Model.findOne({ razorpayPaymentId: paymentId });
         if (mongoDoc) return mongoDoc.toObject();
@@ -246,7 +257,7 @@ class OrderRepository {
   }
 
   static async update(orderId, updateFields) {
-    await this.connectMongoIfNeeded();
+    const isConnected = await this.connectMongoIfNeeded();
 
     const fieldsWithTimestamp = {
       ...updateFields,
@@ -255,7 +266,7 @@ class OrderRepository {
 
     let updatedRecord = null;
     const Model = getOrderModel();
-    if (Model) {
+    if (isConnected && Model) {
       try {
         const mongoDoc = await Model.findOneAndUpdate(
           { orderId },
@@ -280,16 +291,15 @@ class OrderRepository {
   }
 
   static async getAll(filter = {}, limit = 100) {
-    await this.connectMongoIfNeeded();
+    const isConnected = await this.connectMongoIfNeeded();
 
     const Model = getOrderModel();
-    if (Model) {
+    if (isConnected && Model) {
       try {
         const docs = await Model.find(filter).sort({ createdAt: -1 }).limit(limit);
         return docs.map((d) => d.toObject());
       } catch (err) {
-        console.error('[Order DB] Mongoose getAll error:', err.message);
-        throw new Error(`MongoDB Query Error: ${err.message}`);
+        console.error('[Order DB] Mongoose getAll error, falling back to local store:', err.message);
       }
     }
 
