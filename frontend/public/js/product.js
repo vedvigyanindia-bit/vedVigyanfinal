@@ -403,13 +403,37 @@ function renderProductPage() {
 
   const certImg = document.getElementById("productCertImg") || document.querySelector(".vv-cert-preview-box img");
   const certDownloadBtn = document.getElementById("pdpCertDownloadBtn");
-  const certSrc = product.certificate || 
-    (product.images && product.images.find(img => window.VedVigyanCarousel?.isCertificateImage(img))) ||
-    (product.images && product.images.length >= 3 ? product.images[2] : "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp");
+  const FIVE_MUKHI_FALLBACK = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
+
+  function getProductCert(p) {
+    if (!p) return FIVE_MUKHI_FALLBACK;
+    if (p.slug === "7-mukhi-rudraksh") {
+      const f4 = (p.images || []).find((i) => i.includes("4.webp"));
+      if (f4) return f4;
+    }
+    const found3 = (p.images || []).find((i) => /\/3\.(webp|jpg|png)$/i.test(i));
+    if (found3) return found3;
+    const foundCert = (p.images || []).find((i) => /cert|lab-certificate|report|authenticity/i.test(i) && !i.includes("asli-brand-comparison"));
+    if (foundCert) return foundCert;
+    if (p.certificate && !/\/(1|2)\.(webp|jpg|png)$/i.test(p.certificate) && !p.certificate.includes("asli-brand-comparison")) {
+      return p.certificate;
+    }
+    return FIVE_MUKHI_FALLBACK;
+  }
+
+  const certSrc = getProductCert(product);
 
   if (certImg) {
     certImg.src = certSrc;
     certImg.alt = `${product.name} Authenticity Certificate`;
+    if (!certImg.__vv_click_bound) {
+      certImg.__vv_click_bound = true;
+      certImg.style.cursor = "zoom-in";
+      certImg.title = "Click to enlarge certificate";
+      certImg.addEventListener("click", () => {
+        window.open(certImg.src, "_blank");
+      });
+    }
   }
   if (certDownloadBtn) {
     certDownloadBtn.href = certSrc;
@@ -446,6 +470,7 @@ function renderProductPage() {
         if (data && data.certificate) {
           product.certificate = data.certificate;
           if (certImg) certImg.src = data.certificate;
+          if (certDownloadBtn) certDownloadBtn.href = data.certificate;
         }
 
         if (data && Array.isArray(data.images) && data.images.length > 0) {

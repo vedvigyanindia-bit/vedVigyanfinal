@@ -92,8 +92,15 @@ module.exports = async function handler(req, res) {
     } else if (folderName === "7 Mukhi Rudraksh") {
       certificate = "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp";
     } else {
-      const certFileFound = resolvedFiles.find((rf) => /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(rf.name.toLowerCase()));
-      if (certFileFound) certificate = certFileFound.url;
+      const certFile3 = resolvedFiles.find((rf) => /^(3\.(webp|jpg|png)|4\.(webp|jpg|png))$/i.test(rf.name));
+      const certFileNamed = resolvedFiles.find((rf) => /cert|lab-certificate|report|authenticity/i.test(rf.name) && !rf.name.includes("asli-brand-comparison"));
+      if (certFile3) {
+        certificate = certFile3.url;
+      } else if (certFileNamed) {
+        certificate = certFileNamed.url;
+      } else {
+        certificate = defaultCert;
+      }
     }
 
     // Sort product files numerically (e.g. 1.png, 2.jpg, 3.webp, 4.webp, etc.)
