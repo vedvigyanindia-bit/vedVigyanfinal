@@ -34,6 +34,39 @@ function extractFirstImage(content) {
   return match ? match[1] : null;
 }
 
+function sanitizeContentUrls(html, wpHost) {
+  if (!html) return "";
+  let cleaned = html;
+
+  // 1. Transform any href linking to hostingersite.com into site-relative links
+  // E.g. href="https://www.darkseagreen-goshawk-417412.hostingersite.com/products/7-mukhi-rudraksh" -> href="/products/7-mukhi-rudraksh"
+  cleaned = cleaned.replace(
+    /href=["']https?:\/\/(?:[a-zA-Z0-9-]+\.)*hostingersite\.com(\/[^"']*)?["']/gi,
+    (match, path) => `href="${path || '/'}"`
+  );
+
+  // 2. Transform any href linking to the configured WordPress host
+  if (wpHost) {
+    try {
+      const parsed = new URL(wpHost.startsWith("http") ? wpHost : `https://${wpHost}`);
+      const host = parsed.hostname;
+      if (host && !host.includes("vedvigyan.in")) {
+        const escapedHost = host.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const wpRegex = new RegExp(`href=["']https?:\\/\\/(?:www\\.)?${escapedHost}(\\/[^"']*)?["']`, "gi");
+        cleaned = cleaned.replace(wpRegex, (match, path) => `href="${path || '/'}"`);
+      }
+    } catch (_) {}
+  }
+
+  // 3. Transform any full vedvigyan.in hrefs into relative paths
+  cleaned = cleaned.replace(
+    /href=["']https?:\/\/(?:www\.)?vedvigyan\.in(\/[^"']*)?["']/gi,
+    (match, path) => `href="${path || '/'}"`
+  );
+
+  return cleaned;
+}
+
 function calculateReadTime(text) {
   if (!text) return 3;
   const words = text.replace(/<[^>]+>/g, " ").trim().split(/\s+/).length;
@@ -115,7 +148,7 @@ module.exports = async function handler(req, res) {
     }));
 
     const cleanTitle = decodeHtmlEntities(stripTags(post.title?.rendered || ""));
-    const rawContent = post.content?.rendered || "";
+    const rawContent = sanitizeContentUrls(post.content?.rendered || "", wpUrl);
     const cleanExcerpt = decodeHtmlEntities(stripTags(post.excerpt?.rendered || "")).slice(0, 200);
 
     // Fetch up to 3 related posts

@@ -375,6 +375,13 @@
       `;
     },
 
+    sanitizePostContent(html) {
+      if (!html) return "";
+      return html
+        .replace(/href=["']https?:\/\/(?:[a-zA-Z0-9-]+\.)*hostingersite\.com(\/[^"']*)?["']/gi, (match, path) => `href="${path || '/'}"`)
+        .replace(/href=["']https?:\/\/(?:www\.)?vedvigyan\.in(\/[^"']*)?["']/gi, (match, path) => `href="${path || '/'}"`);
+    },
+
     renderPost(post, relatedPosts) {
       const container = document.getElementById("articleDetailContainer");
       if (!container) return;
@@ -389,6 +396,8 @@
       const authorAvatar = post.author?.avatar
         ? `<img src="${post.author.avatar}" alt="${post.author.name}" class="vv-author-avatar" />`
         : `<div class="vv-author-avatar" style="background:#8a1a23; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:14px;">ॐ</div>`;
+
+      const cleanArticleContent = this.sanitizePostContent(post.content || "");
 
       container.innerHTML = `
         <article class="vv-article-wrap">
@@ -437,7 +446,7 @@
 
           <!-- Article Content Body -->
           <div class="vv-article-body">
-            ${post.content}
+            ${cleanArticleContent}
           </div>
 
           <!-- Sacred Product Recommendation Callout -->
@@ -471,6 +480,25 @@
           navigator.clipboard.writeText(window.location.href).then(() => {
             showToast("Article link copied to clipboard!");
           });
+        });
+      }
+
+      // Defensive link interceptor: ensure any links in article body go to store
+      const articleBody = container.querySelector(".vv-article-body");
+      if (articleBody) {
+        articleBody.addEventListener("click", (e) => {
+          const link = e.target.closest("a");
+          if (!link) return;
+          const href = link.getAttribute("href") || "";
+          if (href.includes("hostingersite.com")) {
+            e.preventDefault();
+            try {
+              const parsed = new URL(href, window.location.origin);
+              window.location.href = parsed.pathname + parsed.search + parsed.hash;
+            } catch (_) {
+              window.location.href = "/";
+            }
+          }
         });
       }
     },
