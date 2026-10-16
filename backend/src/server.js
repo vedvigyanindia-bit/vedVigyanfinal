@@ -469,6 +469,13 @@ async function handleGetGallery(req, res) {
       return a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
     });
 
+    // Ensure certificate is always at the last position
+    const certIdx = imageFiles.findIndex((f) => isCertificate(f.name) || f.url === certificate);
+    if (certIdx > -1 && certIdx !== imageFiles.length - 1) {
+      const [certItem] = imageFiles.splice(certIdx, 1);
+      imageFiles.push(certItem);
+    }
+
     let images = imageFiles.map((f) => f.url);
 
     sendJson(res, 200, { slug, folderName, images, certificate });

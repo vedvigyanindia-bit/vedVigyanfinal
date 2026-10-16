@@ -408,8 +408,8 @@ function renderProductPage() {
   function getProductCert(p) {
     if (!p) return FIVE_MUKHI_FALLBACK;
     if (p.slug === "7-mukhi-rudraksh") {
-      const f4 = (p.images || []).find((i) => i.includes("4.webp"));
-      if (f4) return f4;
+      const fCert = (p.images || []).find((i) => i.includes("7-certificate") || i.includes("cert") || i.includes("4.webp"));
+      if (fCert) return fCert;
     }
     const found3 = (p.images || []).find((i) => /\/3\.(webp|jpg|png)$/i.test(i));
     if (found3) return found3;

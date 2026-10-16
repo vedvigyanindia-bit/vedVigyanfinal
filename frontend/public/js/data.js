@@ -473,9 +473,12 @@ window.VED_VIGYAN_DATA = {
         "/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp",
         "/product/Ved vigyan products/7 Mukhi Rudraksh/2.webp",
         "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp",
-        "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp"
+        "/product/Ved vigyan products/7 Mukhi Rudraksh/4-beej-mantra.jpg",
+        "/product/Ved vigyan products/7 Mukhi Rudraksh/5-deity-planet.jpg",
+        "/product/Ved vigyan products/7 Mukhi Rudraksh/6-rashi-zodiac.jpg",
+        "/product/Ved vigyan products/7 Mukhi Rudraksh/7-certificate.webp"
       ],
-      "certificate": "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp",
+      "certificate": "/product/Ved vigyan products/7 Mukhi Rudraksh/7-certificate.webp",
       "short": "Authentic 7 Mukhi Rudraksha for abundance, career growth, and stability.",
       "description": "7 Mukhi Rudraksha (Sapta Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
       "bullets": [

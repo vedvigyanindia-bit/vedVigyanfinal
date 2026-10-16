@@ -250,7 +250,7 @@ window.VedVigyanCarousel = {
     const total = images.length;
 
     const slideLabels = images.map((imgUrl, idx) => {
-      const isCert = this.isCertificateImage(imgUrl, product) || (idx === 2 && images.length >= 3 && !/1\.webp|2\.webp/.test(imgUrl));
+      const isCert = this.isCertificateImage(imgUrl, product) || (idx === 2 && images.length === 3 && !/1\.webp|2\.webp/.test(imgUrl));
       if (isCert) {
         return `${idx + 1}/${total} Lab Certificate`;
       }
@@ -258,7 +258,7 @@ window.VedVigyanCarousel = {
     });
 
     const slideAltLabels = images.map((imgUrl, idx) => {
-      const isCert = this.isCertificateImage(imgUrl, product) || (idx === 2 && images.length >= 3 && !/1\.webp|2\.webp/.test(imgUrl));
+      const isCert = this.isCertificateImage(imgUrl, product) || (idx === 2 && images.length === 3 && !/1\.webp|2\.webp/.test(imgUrl));
       if (isCert) {
         return `Lab Certificate`;
       }
@@ -271,7 +271,7 @@ window.VedVigyanCarousel = {
     const slidesHtml = images.map((imgUrl, idx) => {
       // First slide loads eagerly for LCP, others are lazy loaded
       const isLcp = idx === 0;
-      const isCert = this.isCertificateImage(imgUrl, product) || (idx === 2 && images.length >= 3 && !/1\.webp|2\.webp/.test(imgUrl));
+      const isCert = this.isCertificateImage(imgUrl, product) || (idx === 2 && images.length === 3 && !/1\.webp|2\.webp/.test(imgUrl));
       return `
         <div class="carousel-slide ${isCert ? 'is-certificate-slide' : ''}" data-slide-index="${idx}">
           <img src="${imgUrl}" class="${isCert ? 'certificate-image' : ''}" alt="${product.name} - ${slideAltLabels[idx]}" width="400" height="400" ${isLcp ? 'fetchpriority="high"' : 'loading="lazy"'} />
