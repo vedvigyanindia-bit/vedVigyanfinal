@@ -8417,30 +8417,6 @@ html, body {
   background: #ffffff !important;
 }
 
-/* 7 Mukhi Rudraksha (vv_p13): Never crop images or infographics, always center and contain */
-.pdp-grid .product-carousel[data-carousel-id="vv_p13"] .carousel-slide,
-.pdp-grid .product-carousel[data-product-name*="7 Mukhi"] .carousel-slide,
-.product-carousel[data-carousel-id="vv_p13"] .carousel-slide,
-.product-carousel[data-product-name*="7 Mukhi"] .carousel-slide {
-  background: #ffffff !important;
-}
-.pdp-grid .product-carousel[data-carousel-id="vv_p13"] .carousel-slide img,
-.pdp-grid .product-carousel[data-product-name*="7 Mukhi"] .carousel-slide img,
-.product-carousel[data-carousel-id="vv_p13"] .carousel-slide img,
-.product-carousel[data-product-name*="7 Mukhi"] .carousel-slide img {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-  max-height: 100% !important;
-  object-fit: contain !important;
-  object-position: center !important;
-  background: #ffffff !important;
-  padding: 6px !important;
-  box-sizing: border-box !important;
-  border-radius: 12px !important;
-  display: block !important;
-  margin: 0 auto !important;
-}
 
 /* Mobile & Desktop PDP Layout Positioning & Responsive Wrapping */
 .pdp-grid {
