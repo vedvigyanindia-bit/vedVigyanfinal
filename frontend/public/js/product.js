@@ -408,22 +408,29 @@ function renderProductPage() {
   function getProductCert(p) {
     if (!p) return FIVE_MUKHI_FALLBACK;
     if (p.slug === "7-mukhi-rudraksh") {
-      const fCert = (p.images || []).find((i) => i.includes("7-certificate") || i.includes("cert") || i.includes("4.webp"));
+      const fCert = (p.images || []).find((i) => i.includes("7-certificate") || i.includes("cert"));
       if (fCert) return fCert;
+      if (p.certificate && !p.certificate.includes("4.webp")) return p.certificate;
+      return "/product/Ved vigyan products/7 Mukhi Rudraksh/7-certificate.webp";
     }
-    const found3 = (p.images || []).find((i) => /\/3\.(webp|jpg|png)$/i.test(i));
-    if (found3) return found3;
-    const foundCert = (p.images || []).find((i) => /cert|lab-certificate|report|authenticity/i.test(i) && !i.includes("asli-brand-comparison"));
-    if (foundCert) return foundCert;
-    if (p.certificate && !/\/(1|2)\.(webp|jpg|png)$/i.test(p.certificate) && !p.certificate.includes("asli-brand-comparison")) {
+    if (p.certificate && !/\/(1|2|4)\.(webp|jpg|png)$/i.test(p.certificate) && !p.certificate.includes("asli-brand-comparison")) {
       return p.certificate;
     }
+    const foundCert = (p.images || []).find((i) => /cert|lab-certificate|report|authenticity/i.test(i) && !i.includes("asli-brand-comparison"));
+    if (foundCert) return foundCert;
+    const found3 = (p.images || []).find((i) => /\/3\.(webp|jpg|png)$/i.test(i));
+    if (found3) return found3;
     return FIVE_MUKHI_FALLBACK;
   }
 
   const certSrc = getProductCert(product);
 
   if (certImg) {
+    certImg.onerror = function () {
+      if (this.src !== FIVE_MUKHI_FALLBACK && !this.src.endsWith(FIVE_MUKHI_FALLBACK)) {
+        this.src = FIVE_MUKHI_FALLBACK;
+      }
+    };
     certImg.src = certSrc;
     certImg.alt = `${product.name} Authenticity Certificate`;
     if (!certImg.__vv_click_bound) {
@@ -467,7 +474,7 @@ function renderProductPage() {
         return response.json();
       })
       .then((data) => {
-        if (data && data.certificate) {
+        if (data && data.certificate && !data.certificate.includes("4.webp")) {
           product.certificate = data.certificate;
           if (certImg) certImg.src = data.certificate;
           if (certDownloadBtn) certDownloadBtn.href = data.certificate;

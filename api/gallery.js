@@ -85,19 +85,25 @@ module.exports = async function handler(req, res) {
     });
 
     // Identify certificates
+    function isCertificate(name) {
+      const fn = name.toLowerCase();
+      if (/^3\.(webp|jpg|png)$/i.test(fn) && !folderName.includes("7 Mukhi") && !folderName.includes("10 Mukhi") && !folderName.includes("11 Mukhi")) {
+        return true;
+      }
+      return (fn.includes("cert") || fn.includes("lab-certificate") || fn.includes("report") || fn.includes("authenticity")) && !fn.includes("asli-brand-comparison");
+    }
+
     const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";
     let certificate = defaultCert;
     if (folderName === "Nepali Rudrakasha Mala Close for wearing") {
       certificate = "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp";
-    } else if (folderName === "7 Mukhi Rudraksh") {
-      certificate = "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp";
     } else {
-      const certFile3 = resolvedFiles.find((rf) => /^(3\.(webp|jpg|png)|4\.(webp|jpg|png))$/i.test(rf.name));
-      const certFileNamed = resolvedFiles.find((rf) => /cert|lab-certificate|report|authenticity/i.test(rf.name) && !rf.name.includes("asli-brand-comparison"));
-      if (certFile3) {
-        certificate = certFile3.url;
-      } else if (certFileNamed) {
+      const certFileNamed = resolvedFiles.find((rf) => (rf.name.toLowerCase().includes("cert") || rf.name.toLowerCase().includes("report")) && !rf.name.includes("asli-brand-comparison"));
+      const certFileGeneric = resolvedFiles.find((rf) => isCertificate(rf.name));
+      if (certFileNamed) {
         certificate = certFileNamed.url;
+      } else if (certFileGeneric) {
+        certificate = certFileGeneric.url;
       } else {
         certificate = defaultCert;
       }

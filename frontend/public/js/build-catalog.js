@@ -248,9 +248,9 @@ folders.forEach((folderName, idx) => {
     if (folderName === "Nepali Rudrakasha Mala Close for wearing") {
       certificate = "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp";
     } else if (folderName === "7 Mukhi Rudraksh") {
-      certificate = "/product/Ved vigyan products/7 Mukhi Rudraksh/4.webp";
+      certificate = "/product/Ved vigyan products/7 Mukhi Rudraksh/7-certificate.webp";
     } else {
-      const certFile = imageFiles.find(rf => /cert|lab-certificate|report|authenticity|asli-brand-comparison/.test(rf.name.toLowerCase()));
+      const certFile = imageFiles.find(rf => /cert|lab-certificate|report|authenticity/.test(rf.name.toLowerCase()) && !rf.name.includes("asli-brand-comparison"));
       certificate = certFile ? certFile.url : (images.length >= 4 ? images[3] : images[images.length - 1]);
     }
   }
