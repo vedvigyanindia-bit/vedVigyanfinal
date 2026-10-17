@@ -442,7 +442,7 @@ async function handleGetGallery(req, res) {
 
     // Keep only images
     const imageExtensions = [".png", ".jpg", ".jpeg", ".webp", ".svg"];
-    const imageFiles = resolvedFiles.filter((rf) => {
+    let imageFiles = resolvedFiles.filter((rf) => {
       const ext = path.extname(rf.name).toLowerCase();
       return imageExtensions.includes(ext);
     });
@@ -477,6 +477,16 @@ async function handleGetGallery(req, res) {
     if (certIdx > -1 && certIdx !== imageFiles.length - 1) {
       const [certItem] = imageFiles.splice(certIdx, 1);
       imageFiles.push(certItem);
+    }
+
+    if (folderName.includes("7 Mukhi")) {
+      const hero = imageFiles.find((f) => f.name.startsWith("1."));
+      const angle = imageFiles.find((f) => f.name.startsWith("2."));
+      const cert = imageFiles.find((f) => isCertificate(f.name));
+      const curated = [hero, angle, cert].filter(Boolean);
+      if (curated.length === 3) {
+        imageFiles = curated;
+      }
     }
 
     let images = imageFiles.map((f) => f.url);

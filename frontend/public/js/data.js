@@ -472,10 +472,6 @@ window.VED_VIGYAN_DATA = {
       "images": [
         "/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp",
         "/product/Ved vigyan products/7 Mukhi Rudraksh/2.webp",
-        "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp",
-        "/product/Ved vigyan products/7 Mukhi Rudraksh/4-beej-mantra.jpg",
-        "/product/Ved vigyan products/7 Mukhi Rudraksh/5-deity-planet.jpg",
-        "/product/Ved vigyan products/7 Mukhi Rudraksh/6-rashi-zodiac.jpg",
         "/product/Ved vigyan products/7 Mukhi Rudraksh/7-certificate.webp"
       ],
       "certificate": "/product/Ved vigyan products/7 Mukhi Rudraksh/7-certificate.webp",
