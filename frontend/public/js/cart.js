@@ -47,7 +47,7 @@ const FREE_GIFT_ID = "free_5_mukhi_rudraksha";
 
 function isFreeGiftClaimed() {
   const cart = loadCart();
-  return !!cart.items[FREE_GIFT_ID];
+  return !!(cart && cart.items && cart.items[FREE_GIFT_ID]);
 }
 
 function addFreeGiftItem() {

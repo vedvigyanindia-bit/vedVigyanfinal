@@ -213,9 +213,9 @@ function renderProductPage() {
             if (window.VED_VIGYAN_DATA?.products?.length) {
               renderProductPage();
             }
-          } catch (e) {}
+          } catch (e) { }
         })
-        .catch(() => {});
+        .catch(() => { });
     }
     return;
   }
@@ -447,7 +447,7 @@ function renderProductPage() {
       (product.category && (product.category === "rudraksha" || product.category === "mala" || product.category === "rudraksha-mala")) ||
       (product.name && /rudraksh|mala/i.test(product.name)) ||
       (product.tags && Array.isArray(product.tags) && product.tags.some(t => /rudraksh|mala/i.test(t))) ||
-      (product.id && (product.id.includes("rud") || ["vv_p01","vv_p02","vv_p03","vv_p04","vv_p05","vv_p06","vv_p18","vv_p19","vv_p20","vv_p21","vv_p22","vv_p23","vv_p25","vv_p31"].includes(product.id)))
+      (product.id && (product.id.includes("rud") || ["vv_p01", "vv_p02", "vv_p03", "vv_p04", "vv_p05", "vv_p06", "vv_p18", "vv_p19", "vv_p20", "vv_p21", "vv_p22", "vv_p23", "vv_p25", "vv_p31"].includes(product.id)))
     );
     journeySection.style.display = isRudraksha ? "block" : "none";
   }
@@ -473,38 +473,34 @@ function renderProductPage() {
           if (certDownloadBtn) certDownloadBtn.href = data.certificate;
         }
 
-        if (data && Array.isArray(data.images) && data.images.length > 0) {
-          const currentImages = product.images || [];
-          const isSame = currentImages.length === data.images.length &&
-            currentImages.every((val, index) => val === data.images[index]);
+        // Only populate images if the product didn't already have curated images in catalog data
+        const currentImages = product.images || [];
+        if (currentImages.length === 0 && data && Array.isArray(data.images) && data.images.length > 0) {
+          product.images = data.images;
+          product.image = data.images[0];
 
-          if (!isSame && data.images.length >= currentImages.length) {
-            product.images = data.images;
-            product.image = data.images[0];
+          if (galleryEl && window.VedVigyanCarousel) {
+            const oldCarousel = galleryEl.querySelector('.product-carousel');
+            if (oldCarousel) delete oldCarousel.__vv_bound;
 
-            if (galleryEl && window.VedVigyanCarousel) {
-              const oldCarousel = galleryEl.querySelector('.product-carousel');
+            galleryEl.innerHTML = window.VedVigyanCarousel.renderCarouselHtml(product);
+            window.VedVigyanCarousel.bindCarouselEvents(galleryEl);
+          } else if (imgEl) {
+            const parent = imgEl.parentElement;
+            if (parent && window.VedVigyanCarousel) {
+              const oldCarousel = parent.querySelector('.product-carousel');
               if (oldCarousel) delete oldCarousel.__vv_bound;
 
-              galleryEl.innerHTML = window.VedVigyanCarousel.renderCarouselHtml(product);
-              window.VedVigyanCarousel.bindCarouselEvents(galleryEl);
-            } else if (imgEl) {
-              const parent = imgEl.parentElement;
-              if (parent && window.VedVigyanCarousel) {
-                const oldCarousel = parent.querySelector('.product-carousel');
-                if (oldCarousel) delete oldCarousel.__vv_bound;
-
-                parent.innerHTML = window.VedVigyanCarousel.renderCarouselHtml(product);
-                window.VedVigyanCarousel.bindCarouselEvents(parent);
-              } else {
-                imgEl.src = product.image;
-              }
+              parent.innerHTML = window.VedVigyanCarousel.renderCarouselHtml(product);
+              window.VedVigyanCarousel.bindCarouselEvents(parent);
+            } else {
+              imgEl.src = product.image;
             }
+          }
 
-            const stickyImg = document.getElementById("stickyImg");
-            if (stickyImg) {
-              stickyImg.src = product.image;
-            }
+          const stickyImg = document.getElementById("stickyImg");
+          if (stickyImg) {
+            stickyImg.src = product.image;
           }
         }
       })
@@ -513,31 +509,31 @@ function renderProductPage() {
       });
   }
 
-  if (bulletsEl && Array.isArray(product.bullets)) {
-    bulletsEl.innerHTML = product.bullets.map((b) => `<li>${b}</li>`).join("");
-  }
+if (bulletsEl && Array.isArray(product.bullets)) {
+  bulletsEl.innerHTML = product.bullets.map((b) => `<li>${b}</li>`).join("");
+}
 
-  if (wishBtn) {
-    wishBtn.setAttribute("data-wishlist", product.id);
-    window.VedVigyanWishlist?.wireWishlistButtons?.(document);
-    window.VedVigyanWishlist?.updateWishButtons?.(document);
-  }
+if (wishBtn) {
+  wishBtn.setAttribute("data-wishlist", product.id);
+  window.VedVigyanWishlist?.wireWishlistButtons?.(document);
+  window.VedVigyanWishlist?.updateWishButtons?.(document);
+}
 
-  initStickyCart(product);
+initStickyCart(product);
 
-  if (product.seoTitle) document.title = product.seoTitle;
-  const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc && product.seoDescription) metaDesc.setAttribute("content", product.seoDescription);
-  const canonical = document.querySelector('link[rel="canonical"]');
-  if (canonical) canonical.setAttribute("href", product.url);
+if (product.seoTitle) document.title = product.seoTitle;
+const metaDesc = document.querySelector('meta[name="description"]');
+if (metaDesc && product.seoDescription) metaDesc.setAttribute("content", product.seoDescription);
+const canonical = document.querySelector('link[rel="canonical"]');
+if (canonical) canonical.setAttribute("href", product.url);
 
-  injectProductSchema(product);
-  renderDiscoveryRail(product, products);
-  initSectionInteractiveHandlers(product);
-  initPDPReviewSlider(product);
-  window.initPDPTabs?.(product);
-  document.querySelectorAll(".lux-reveal").forEach((el) => el.classList.add("visible"));
-  window.VedVigyanLux?.initScrollReveal?.();
+injectProductSchema(product);
+renderDiscoveryRail(product, products);
+initSectionInteractiveHandlers(product);
+initPDPReviewSlider(product);
+window.initPDPTabs?.(product);
+document.querySelectorAll(".lux-reveal").forEach((el) => el.classList.add("visible"));
+window.VedVigyanLux?.initScrollReveal?.();
 }
 
 function updatePDPTabs(product) {
@@ -558,12 +554,12 @@ function updatePDPTabs(product) {
     const specs = (data && Array.isArray(data.specs) && data.specs.length)
       ? data.specs
       : [
-          { label: "Authenticity & Testing", value: "100% Natural, Government Approved Lab Certified with QR Code Report" },
-          { label: "Ritual Energization", value: "Pre-energized via Traditional Vedic Mantra Pran Pratishtha rituals" },
-          { label: "Origin & Harvest", value: "Ethically sourced directly from sacred Himalayan regions" },
-          { label: "Package Includes", value: `${product.name} + Physical Test Report Certificate + Usage Guide + Sacred Packaging Box` },
-          { label: "Care Instructions", value: "Wipe gently with a clean dry cotton cloth. Keep away from perfumes and harsh chemicals." }
-        ];
+        { label: "Authenticity & Testing", value: "100% Natural, Government Approved Lab Certified with QR Code Report" },
+        { label: "Ritual Energization", value: "Pre-energized via Traditional Vedic Mantra Pran Pratishtha rituals" },
+        { label: "Origin & Harvest", value: "Ethically sourced directly from sacred Himalayan regions" },
+        { label: "Package Includes", value: `${product.name} + Physical Test Report Certificate + Usage Guide + Sacred Packaging Box` },
+        { label: "Care Instructions", value: "Wipe gently with a clean dry cotton cloth. Keep away from perfumes and harsh chemicals." }
+      ];
 
     const rowsHtml = specs.map((s) => `
       <tr>
@@ -589,11 +585,11 @@ function updatePDPTabs(product) {
     const benefits = (data && Array.isArray(data.benefits) && data.benefits.length)
       ? data.benefits
       : [
-          { icon: "🛡️", title: "Spiritual Protection", desc: "Shields the wearer from negative energies, evil eye, and aura stress." },
-          { icon: "🧘", title: "Mental Peace & Focus", desc: "Calms an overactive mind and enhances focus during meditation." },
-          { icon: "✨", title: "Chakra Harmonization", desc: "Balances internal energy centers to promote emotional equilibrium." },
-          { icon: "💼", title: "Confidence & Growth", desc: "Attracts positive cosmic vibrations, supporting clarity and growth." }
-        ];
+        { icon: "🛡️", title: "Spiritual Protection", desc: "Shields the wearer from negative energies, evil eye, and aura stress." },
+        { icon: "🧘", title: "Mental Peace & Focus", desc: "Calms an overactive mind and enhances focus during meditation." },
+        { icon: "✨", title: "Chakra Harmonization", desc: "Balances internal energy centers to promote emotional equilibrium." },
+        { icon: "💼", title: "Confidence & Growth", desc: "Attracts positive cosmic vibrations, supporting clarity and growth." }
+      ];
 
     benefitsGrid.innerHTML = benefits.map((b) => `
       <div class="pdp-benefit-card">
@@ -610,11 +606,11 @@ function updatePDPTabs(product) {
     const faqs = (data && Array.isArray(data.faqs) && data.faqs.length)
       ? data.faqs
       : [
-          { q: `Is ${product.name} 100% authentic and certified?`, a: "Yes! Every single piece is individually lab tested and comes with a physical test report featuring a QR code for online verification." },
-          { q: "How do I wear or use this spiritual item?", a: "All products are pre-energized with Vedic mantras. You can wear it on an auspicious morning after bathing while chanting sacred mantras." },
-          { q: "Can anyone wear this regardless of age or gender?", a: "Absolutely! Authentic Rudraksha beads, gemstones, and malas can be worn by anyone irrespective of gender, age, or horoscope." },
-          { q: "How long does delivery take?", a: "We dispatch within 24 hours. Express delivery across India takes 3 to 5 business days with full tracking updates via SMS/WhatsApp." }
-        ];
+        { q: `Is ${product.name} 100% authentic and certified?`, a: "Yes! Every single piece is individually lab tested and comes with a physical test report featuring a QR code for online verification." },
+        { q: "How do I wear or use this spiritual item?", a: "All products are pre-energized with Vedic mantras. You can wear it on an auspicious morning after bathing while chanting sacred mantras." },
+        { q: "Can anyone wear this regardless of age or gender?", a: "Absolutely! Authentic Rudraksha beads, gemstones, and malas can be worn by anyone irrespective of gender, age, or horoscope." },
+        { q: "How long does delivery take?", a: "We dispatch within 24 hours. Express delivery across India takes 3 to 5 business days with full tracking updates via SMS/WhatsApp." }
+      ];
 
     faqsList.innerHTML = faqs.map((f) => `
       <div class="pdp-faq-item">
@@ -652,7 +648,7 @@ function initPDPReviewSlider(product) {
   window.updatePDPReviewDisplay();
 }
 
-window.updatePDPReviewDisplay = function() {
+window.updatePDPReviewDisplay = function () {
   const reviews = window.__pdpReviewsList;
   if (!reviews || !reviews.length) return;
 
@@ -672,7 +668,7 @@ window.updatePDPReviewDisplay = function() {
   if (counterEl) counterEl.textContent = `${idx + 1} / ${reviews.length}`;
 };
 
-window.changePDPReview = function(delta) {
+window.changePDPReview = function (delta) {
   const reviews = window.__pdpReviewsList;
   if (!reviews || !reviews.length) return;
 
@@ -680,9 +676,9 @@ window.changePDPReview = function(delta) {
   window.updatePDPReviewDisplay();
 };
 
-window.switchPDPTab = function(btn, evt) {
+window.switchPDPTab = function (btn, evt) {
   if (evt) {
-    try { evt.preventDefault(); evt.stopPropagation(); } catch (e) {}
+    try { evt.preventDefault(); evt.stopPropagation(); } catch (e) { }
   }
   if (!btn) return;
   const container = btn.closest(".pdp-tabs-section") || document.querySelector(".pdp-tabs-section");
@@ -721,7 +717,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-window.togglePDPFaq = function(headerEl) {
+window.togglePDPFaq = function (headerEl) {
   if (!headerEl) return;
   const item = headerEl.closest(".pdp-faq-accordion-item");
   if (!item) return;
@@ -744,7 +740,7 @@ window.togglePDPFaq = function(headerEl) {
   }
 };
 
-window.initPDPTabs = function(product) {
+window.initPDPTabs = function (product) {
   // Auto-resolve product if omitted
   if (!product && window.VED_VIGYAN_CURRENT_PRODUCT) {
     product = window.VED_VIGYAN_CURRENT_PRODUCT;
@@ -875,11 +871,11 @@ function initSectionInteractiveHandlers(product) {
           v.pause();
           v.removeAttribute("src");
           v.load();
-        } catch (e) {}
+        } catch (e) { }
       }
       const iframe = inlinePlayer.querySelector("iframe");
       if (iframe) {
-        try { iframe.src = "about:blank"; } catch (e) {}
+        try { iframe.src = "about:blank"; } catch (e) { }
       }
       inlinePlayer.remove();
     }
@@ -939,6 +935,10 @@ function initSectionInteractiveHandlers(product) {
       }
     });
   });
+
+  const modalBackdrop = document.getElementById("vvVideoModal");
+  const modalClose = document.getElementById("vvModalClose");
+  const modalPlayer = document.getElementById("vvModalPlayer");
 
   const closeVideoModal = () => {
     if (!modalBackdrop) return;
@@ -1074,7 +1074,7 @@ function initPDPOfferTimer() {
     if (saved) {
       targetTime = parseInt(saved, 10);
     }
-  } catch (e) {}
+  } catch (e) { }
 
   const now = Date.now();
   if (!targetTime || targetTime <= now) {
@@ -1082,7 +1082,7 @@ function initPDPOfferTimer() {
     targetTime = now + (initialSeconds * 1000);
     try {
       localStorage.setItem(STORAGE_KEY, targetTime.toString());
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function updateTimer() {
@@ -1094,7 +1094,7 @@ function initPDPOfferTimer() {
       targetTime = current + (resetSeconds * 1000);
       try {
         localStorage.setItem(STORAGE_KEY, targetTime.toString());
-      } catch (e) {}
+      } catch (e) { }
       diff = resetSeconds;
     }
 
