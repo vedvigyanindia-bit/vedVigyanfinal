@@ -78,9 +78,13 @@ window.VED_VIGYAN_DATA = {
       "images": [
         "/product/Ved vigyan products/10 Mukhi Rudraksh/1.webp",
         "/product/Ved vigyan products/10 Mukhi Rudraksh/2.webp",
-        "/product/Ved vigyan products/10 Mukhi Rudraksh/3.webp"
+        "/product/Ved vigyan products/10 Mukhi Rudraksh/3-benefits.jpg",
+        "/product/Ved vigyan products/10 Mukhi Rudraksh/4-beej-mantra.jpg",
+        "/product/Ved vigyan products/10 Mukhi Rudraksh/5-rashi-zodiac.jpg",
+        "/product/Ved vigyan products/10 Mukhi Rudraksh/6-testimonials.jpg",
+        "/product/Ved vigyan products/10 Mukhi Rudraksh/7-certificate.webp"
       ],
-      "certificate": "/product/Ved vigyan products/10 Mukhi Rudraksh/3.webp",
+      "certificate": "/product/Ved vigyan products/10 Mukhi Rudraksh/7-certificate.webp",
       "short": "Authentic 10 Mukhi Rudraksha for divine protection from negative energies & peace.",
       "description": "10 Mukhi Rudraksha (Dasha Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
       "bullets": [
@@ -111,9 +115,13 @@ window.VED_VIGYAN_DATA = {
       "images": [
         "/product/Ved vigyan products/11 Mukhi Rudraksh/1.webp",
         "/product/Ved vigyan products/11 Mukhi Rudraksh/2.webp",
-        "/product/Ved vigyan products/11 Mukhi Rudraksh/3.webp"
+        "/product/Ved vigyan products/11 Mukhi Rudraksh/3-benefits.jpg",
+        "/product/Ved vigyan products/11 Mukhi Rudraksh/4-beej-mantra.jpg",
+        "/product/Ved vigyan products/11 Mukhi Rudraksh/5-deity-planet.jpg",
+        "/product/Ved vigyan products/11 Mukhi Rudraksh/6-how-to-wear.jpg",
+        "/product/Ved vigyan products/11 Mukhi Rudraksh/7-certificate.webp"
       ],
-      "certificate": "/product/Ved vigyan products/11 Mukhi Rudraksh/3.webp",
+      "certificate": "/product/Ved vigyan products/11 Mukhi Rudraksh/7-certificate.webp",
       "short": "Authentic 11 Mukhi Rudraksha for courage, devotion, and Lord Hanuman's grace.",
       "description": "11 Mukhi Rudraksha (Ekadasha Mukhi) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
       "bullets": [
@@ -472,6 +480,10 @@ window.VED_VIGYAN_DATA = {
       "images": [
         "/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp",
         "/product/Ved vigyan products/7 Mukhi Rudraksh/2.webp",
+        "/product/Ved vigyan products/7 Mukhi Rudraksh/3.webp",
+        "/product/Ved vigyan products/7 Mukhi Rudraksh/4-beej-mantra.jpg",
+        "/product/Ved vigyan products/7 Mukhi Rudraksh/5-deity-planet.jpg",
+        "/product/Ved vigyan products/7 Mukhi Rudraksh/6-rashi-zodiac.jpg",
         "/product/Ved vigyan products/7 Mukhi Rudraksh/7-certificate.webp"
       ],
       "certificate": "/product/Ved vigyan products/7 Mukhi Rudraksh/7-certificate.webp",

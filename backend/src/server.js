@@ -479,15 +479,7 @@ async function handleGetGallery(req, res) {
       imageFiles.push(certItem);
     }
 
-    if (folderName.includes("7 Mukhi")) {
-      const hero = imageFiles.find((f) => f.name.startsWith("1."));
-      const angle = imageFiles.find((f) => f.name.startsWith("2."));
-      const cert = imageFiles.find((f) => isCertificate(f.name));
-      const curated = [hero, angle, cert].filter(Boolean);
-      if (curated.length === 3) {
-        imageFiles = curated;
-      }
-    }
+
 
     let images = imageFiles.map((f) => f.url);
 
