@@ -1122,8 +1122,10 @@ window.VED_VIGYAN_DATA = {
         "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/2.webp",
         "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/5.webp",
         "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/6.webp",
+        "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/4.webp",
         "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/7.webp",
-        "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/asli-brand-comparison.jpg"
+        "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/asli-brand-comparison.jpg",
+        "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp"
       ],
       "certificate": "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp",
       "short": "Original 5 Mukhi Nepali Rudraksha 108 bead mala for jaap and daily wearing.",

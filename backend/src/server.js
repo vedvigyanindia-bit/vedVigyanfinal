@@ -450,7 +450,10 @@ async function handleGetGallery(req, res) {
     // Identify certificates
     function isCertificate(name) {
       const fn = name.toLowerCase();
-      return fn.includes("cert") || fn.includes("lab-certificate") || fn.includes("report") || fn.includes("authenticity") || fn.includes("asli-brand-comparison");
+      if (/^3\.(webp|jpg|png)$/i.test(fn) && !folderName.includes("7 Mukhi")) {
+        return true;
+      }
+      return fn.includes("cert") || fn.includes("lab-certificate") || fn.includes("report") || fn.includes("authenticity");
     }
 
     const defaultCert = "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp";

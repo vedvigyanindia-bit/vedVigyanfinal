@@ -248,7 +248,7 @@ window.VedVigyanCarousel = {
     if (product && (product.slug === "7-mukhi-rudraksh" || product.id === "vv_p13")) {
       return /cert|lab-certificate|report|authenticity/.test(u);
     }
-    return /cert|lab-certificate|report|authenticity|asli-brand-comparison|\/3\.webp|\/4\.webp|tulsi jap mala/.test(u);
+    return /cert|lab-certificate|report|authenticity|asli-brand-comparison|\/3\.webp|tulsi jap mala/.test(u);
   },
 
   isGeneratedPlaceholderImage(url) {
