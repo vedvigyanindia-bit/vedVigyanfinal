@@ -13,9 +13,17 @@ const GALLERY_STYLES = `
   object-fit: cover;
   object-position: center;
 }
+.product-carousel {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+.carousel-track-wrapper {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
 .carousel-slide img.certificate-image,
 .carousel-slide.is-certificate-slide img,
-.carousel-slide img[src*="3.webp"],
+.product-carousel:not([data-carousel-id="vv_p13"]) .carousel-slide img[src*="3.webp"],
 .carousel-slide img[src*="4.webp"],
 .carousel-slide img[src*="cert"],
 .carousel-slide img[src*="report"] {
@@ -31,16 +39,27 @@ const GALLERY_STYLES = `
 /* Thumbnail Navigation */
 .carousel-thumbnails {
   display: flex;
-  justify-content: center;
+  justify-content: safe center;
+  align-items: center;
   gap: 10px;
   margin-top: 14px;
   padding: 8px 12px;
   background: #ffffff;
   border-radius: 10px;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  box-sizing: border-box;
+}
+.carousel-thumbnails::-webkit-scrollbar {
+  display: none;
 }
 .carousel-thumbnail {
-  width: 56px;
-  height: 56px;
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
   border: 1.5px solid rgba(212, 175, 55, 0.3);
   border-radius: 8px;
   overflow: hidden;
@@ -49,6 +68,7 @@ const GALLERY_STYLES = `
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  box-sizing: border-box;
 }
 .carousel-thumbnail:hover {
   transform: translateY(-2px);
@@ -225,6 +245,9 @@ window.VedVigyanCarousel = {
     if (!url) return false;
     const u = String(url).toLowerCase();
     if (product && product.certificate && String(product.certificate).toLowerCase() === u) return true;
+    if (product && (product.slug === "7-mukhi-rudraksh" || product.id === "vv_p13")) {
+      return /cert|lab-certificate|report|authenticity/.test(u);
+    }
     return /cert|lab-certificate|report|authenticity|asli-brand-comparison|\/3\.webp|\/4\.webp|tulsi jap mala/.test(u);
   },
 

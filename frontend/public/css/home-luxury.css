@@ -8401,7 +8401,7 @@ html, body {
 /* Ensure Certificates inside PDP are NEVER cropped or zoomed in */
 .pdp-grid .carousel-slide img.certificate-image,
 .pdp-grid .carousel-slide.is-certificate-slide img,
-.pdp-grid .carousel-slide img[src*="3.webp"],
+.pdp-grid .product-carousel:not([data-carousel-id="vv_p13"]) .carousel-slide img[src*="3.webp"],
 .pdp-grid .carousel-slide img[src*="4.webp"],
 .pdp-grid .carousel-slide img[src*="cert"],
 .pdp-grid .carousel-slide img[src*="report"],
@@ -8415,7 +8415,7 @@ html, body {
 
 .pdp-grid .carousel-slide.is-certificate-slide,
 .pdp-grid .carousel-slide:has(img.certificate-image),
-.pdp-grid .carousel-slide:has(img[src*="3.webp"]) {
+.pdp-grid .product-carousel:not([data-carousel-id="vv_p13"]) .carousel-slide:has(img[src*="3.webp"]) {
   background: #ffffff !important;
 }
 
