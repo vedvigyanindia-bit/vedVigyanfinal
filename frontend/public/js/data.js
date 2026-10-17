@@ -748,9 +748,15 @@ window.VED_VIGYAN_DATA = {
       "images": [
         "/product/Ved vigyan products/4. Money Magnet/1.webp",
         "/product/Ved vigyan products/4. Money Magnet/2.webp",
-        "/product/Ved vigyan products/4. Money Magnet/3.webp"
+        "/product/Ved vigyan products/4. Money Magnet/3-significance.jpg",
+        "/product/Ved vigyan products/4. Money Magnet/4-benefits.jpg",
+        "/product/Ved vigyan products/4. Money Magnet/5-powers.jpg",
+        "/product/Ved vigyan products/4. Money Magnet/6-lifestyle-woman.jpg",
+        "/product/Ved vigyan products/4. Money Magnet/7-lifestyle-man.jpg",
+        "/product/Ved vigyan products/4. Money Magnet/8-testimonials.jpg",
+        "/product/Ved vigyan products/4. Money Magnet/9-certificate.webp"
       ],
-      "certificate": "/product/Ved vigyan products/4. Money Magnet/3.webp",
+      "certificate": "/product/Ved vigyan products/4. Money Magnet/9-certificate.webp",
       "short": "Attract wealth, prosperity, and financial growth with natural pyrite & citrine.",
       "description": "Money Magnet Bracelet (Pyrite & Citrine) is an authentic spiritual item carefully sourced and verified by Ved Vigyan. Each piece is energized following Vedic traditions to provide peace, balance, and positive energy for daily wear and ritual practice.",
       "bullets": [

@@ -87,7 +87,7 @@ module.exports = async function handler(req, res) {
     // Identify certificates
     function isCertificate(name) {
       const fn = name.toLowerCase();
-      if (/^3\.(webp|jpg|png)$/i.test(fn) && !folderName.includes("7 Mukhi") && !folderName.includes("10 Mukhi") && !folderName.includes("11 Mukhi")) {
+      if (/^3\.(webp|jpg|png)$/i.test(fn) && !folderName.includes("7 Mukhi") && !folderName.includes("10 Mukhi") && !folderName.includes("11 Mukhi") && !folderName.includes("Money Magnet")) {
         return true;
       }
       return (fn.includes("cert") || fn.includes("lab-certificate") || fn.includes("report") || fn.includes("authenticity")) && !fn.includes("asli-brand-comparison");
