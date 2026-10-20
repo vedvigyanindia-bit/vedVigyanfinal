@@ -6,6 +6,7 @@ require("dotenv").config({ path: path.join(__dirname, "..", ".env") });
 
 const orderService = require("./services/orderService");
 const shiprocketService = require("./services/shiprocketService");
+const productService = require("./services/productService");
 const { OrderRepository } = require("./models/Order");
 
 // Validate required environment variables
@@ -80,7 +81,7 @@ function readJsonBody(req) {
 
     req.on("data", (chunk) => {
       body += chunk;
-      if (body.length > 1_000_000) {
+      if (body.length > 30_000_000) {
         reject(new Error("Request body too large"));
         req.destroy();
       }
@@ -626,6 +627,91 @@ async function handleGenerateShiprocketLabel(req, res) {
   }
 }
 
+async function handleAdminLogin(req, res) {
+  try {
+    const { pin, password } = await readJsonBody(req);
+    const validSecret = process.env.ADMIN_PIN || "vedvigyan2026";
+    if ((pin && pin === validSecret) || (password && password === validSecret)) {
+      sendJson(res, 200, { success: true, token: "vv_admin_authorized" });
+    } else {
+      sendJson(res, 401, { error: "Invalid Admin PIN / Password" });
+    }
+  } catch (err) {
+    sendJson(res, 500, { error: err.message });
+  }
+}
+
+async function handleGetAdminProducts(req, res) {
+  try {
+    const products = productService.getAllProducts();
+    sendJson(res, 200, { success: true, count: products.length, products });
+  } catch (err) {
+    sendJson(res, 500, { error: err.message });
+  }
+}
+
+async function handleAddAdminProduct(req, res) {
+  try {
+    const data = await readJsonBody(req);
+    const newProduct = productService.addProduct(data);
+    sendJson(res, 201, { success: true, message: "Product created successfully", product: newProduct });
+  } catch (err) {
+    console.error("[AddProduct Error]:", err);
+    sendJson(res, 400, { error: err.message || "Failed to add product" });
+  }
+}
+
+async function handleUpdateAdminProduct(req, res) {
+  try {
+    const data = await readJsonBody(req);
+    const { id, ...updates } = data;
+    if (!id) {
+      sendJson(res, 400, { error: "Product id is required" });
+      return;
+    }
+    const updated = productService.updateProduct(id, updates);
+    sendJson(res, 200, { success: true, message: "Product updated successfully", product: updated });
+  } catch (err) {
+    console.error("[UpdateProduct Error]:", err);
+    sendJson(res, 400, { error: err.message || "Failed to update product" });
+  }
+}
+
+async function handleDeleteAdminProduct(req, res, url) {
+  try {
+    let id = url.searchParams.get("id");
+    if (!id) {
+      const data = await readJsonBody(req);
+      id = data.id;
+    }
+    if (!id) {
+      sendJson(res, 400, { error: "Product id is required" });
+      return;
+    }
+    const result = productService.deleteProduct(id);
+    sendJson(res, 200, { success: true, message: "Product deleted successfully", result });
+  } catch (err) {
+    console.error("[DeleteProduct Error]:", err);
+    sendJson(res, 400, { error: err.message || "Failed to delete product" });
+  }
+}
+
+async function handleToggleStockAdminProduct(req, res) {
+  try {
+    const data = await readJsonBody(req);
+    const { id } = data;
+    if (!id) {
+      sendJson(res, 400, { error: "Product id is required" });
+      return;
+    }
+    const updated = productService.toggleStock(id);
+    sendJson(res, 200, { success: true, message: "Stock status updated", product: updated });
+  } catch (err) {
+    console.error("[ToggleStock Error]:", err);
+    sendJson(res, 400, { error: err.message || "Failed to toggle stock" });
+  }
+}
+
 function handleRequest(req, res) {
   const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
   console.log(`[${new Date().toISOString()}] ${req.method} ${url.pathname}`);
@@ -662,6 +748,37 @@ function handleRequest(req, res) {
 
   if (req.method === "POST" && url.pathname === "/api/admin/orders/shiprocket-label") {
     handleGenerateShiprocketLabel(req, res);
+    return;
+  }
+
+  // Admin Product Management APIs
+  if (req.method === "POST" && url.pathname === "/api/admin/login") {
+    handleAdminLogin(req, res);
+    return;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/admin/products") {
+    handleGetAdminProducts(req, res);
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/admin/products") {
+    handleAddAdminProduct(req, res);
+    return;
+  }
+
+  if (url.pathname === "/api/admin/products/update" || (req.method === "PUT" && url.pathname === "/api/admin/products")) {
+    handleUpdateAdminProduct(req, res);
+    return;
+  }
+
+  if (url.pathname === "/api/admin/products/delete" || (req.method === "DELETE" && url.pathname === "/api/admin/products")) {
+    handleDeleteAdminProduct(req, res, url);
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/admin/products/toggle-stock") {
+    handleToggleStockAdminProduct(req, res);
     return;
   }
 

@@ -3,213 +3,937 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ved Vigyan — Admin &amp; Seller Control Center</title>
+    <title>Ved Vigyan — Admin &amp; Product Control Center</title>
     <link rel="stylesheet" href="/public/css/style.css" />
     <link rel="stylesheet" href="/public/css/home-luxury.css" />
     <style>
-      .admin-layout { max-width: 1280px; margin: 24px auto; padding: 0 20px; font-family: var(--font-body, system-ui, sans-serif); }
-      .admin-nav { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, #7c1a22 0%, #4a0c11 100%); padding: 16px 24px; border-radius: 16px; color: #fff; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(124,26,34,0.18); }
+      :root {
+        --admin-maroon: #7c1a22;
+        --admin-dark-maroon: #4a0c11;
+        --admin-gold: #d4af37;
+        --admin-gold-hover: #b89628;
+        --admin-bg: #f8f6f0;
+        --admin-card: #ffffff;
+        --admin-border: #ebd9c0;
+        --admin-text: #1a0809;
+      }
+      body { background: var(--admin-bg); font-family: var(--font-body, system-ui, -apple-system, sans-serif); color: var(--admin-text); margin: 0; padding: 0; }
+      .admin-layout { max-width: 1360px; margin: 24px auto; padding: 0 20px; }
+      
+      /* Navigation Bar */
+      .admin-nav { display: flex; align-items: center; justify-content: space-between; background: linear-gradient(135deg, var(--admin-maroon) 0%, var(--admin-dark-maroon) 100%); padding: 16px 24px; border-radius: 16px; color: #fff; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(124,26,34,0.18); flex-wrap: wrap; gap: 14px; }
       .admin-brand { display: flex; align-items: center; gap: 12px; }
       .admin-brand h1 { margin: 0; font-size: 20px; color: #ffffff; font-family: var(--font-display, serif); }
-      .admin-brand span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold,#d4af37); font-weight: 700; }
+      .admin-brand span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--admin-gold); font-weight: 700; }
       
-      .grid-dashboard { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 24px; }
-      @media(max-width: 900px) { .grid-dashboard { grid-template-columns: 1fr; } }
-      
-      .card-box { background: #ffffff; border-radius: 16px; padding: 20px; border: 1px solid var(--line,#ebd9c0); box-shadow: 0 4px 16px rgba(0,0,0,0.04); }
-      .card-title { font-size: 16px; font-weight: 700; color: var(--maroon,#7c1a22); margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
-      
-      .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
-      .stat-card { background: #faf7f2; padding: 16px; border-radius: 12px; border: 1px solid #ebd9c0; transition: transform 0.2s; }
+      /* Main Tabs */
+      .nav-tabs { display: flex; gap: 8px; background: rgba(255,255,255,0.12); padding: 4px; border-radius: 10px; }
+      .nav-tab-btn { background: transparent; border: none; color: #ebd9c0; padding: 8px 18px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+      .nav-tab-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
+      .nav-tab-btn.active { background: #ffffff; color: var(--admin-maroon); box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+
+      /* Cards & Container */
+      .card-box { background: var(--admin-card); border-radius: 16px; padding: 22px; border: 1px solid var(--admin-border); box-shadow: 0 4px 16px rgba(0,0,0,0.04); margin-bottom: 24px; }
+      .card-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+      .card-title { font-size: 18px; font-weight: 800; color: var(--admin-maroon); margin: 0; display: flex; align-items: center; gap: 8px; }
+      .card-subtitle { font-size: 13px; color: #666; margin-top: 4px; }
+
+      /* Action Buttons */
+      .btn-primary { background: linear-gradient(135deg, var(--admin-maroon) 0%, #9b222c 100%); color: #fff; border: none; padding: 10px 20px; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(124,26,34,0.25); }
+      .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(124,26,34,0.35); background: linear-gradient(135deg, #64131a 0%, #831b23 100%); }
+      .btn-secondary { background: #fff; border: 1px solid var(--admin-border); color: #444; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 12px; cursor: pointer; }
+      .btn-secondary:hover { background: #fdfaf5; border-color: var(--admin-gold); }
+      .btn-danger { background: #fee2e2; border: 1px solid #fca5a5; color: #991b1b; padding: 6px 12px; border-radius: 6px; font-weight: 600; font-size: 12px; cursor: pointer; }
+      .btn-danger:hover { background: #fecaca; }
+
+      /* Stats Row */
+      .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
+      .stat-card { background: #faf7f2; padding: 16px 20px; border-radius: 12px; border: 1px solid var(--admin-border); transition: transform 0.2s; }
       .stat-card:hover { transform: translateY(-2px); }
-      .stat-label { font-size: 12px; font-weight: 600; color: #666; margin-bottom: 4px; }
-      .stat-num { font-size: 24px; font-weight: 800; color: var(--maroon,#7c1a22); }
+      .stat-label { font-size: 12px; font-weight: 700; color: #777; text-transform: uppercase; letter-spacing: 0.05em; }
+      .stat-num { font-size: 26px; font-weight: 800; color: var(--admin-maroon); margin-top: 4px; }
       .stat-sub { font-size: 11px; color: #888; margin-top: 4px; }
+
+      /* Search & Filter Bar */
+      .filter-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; background: #faf7f2; padding: 12px 16px; border-radius: 12px; border: 1px solid var(--admin-border); margin-bottom: 16px; }
+      .search-box { flex: 1; min-width: 240px; position: relative; }
+      .search-box input { width: 100%; box-sizing: border-box; padding: 10px 14px 10px 36px; border-radius: 8px; border: 1px solid #d4c5b1; font-size: 13px; outline: none; background: #fff; }
+      .search-box input:focus { border-color: var(--admin-maroon); box-shadow: 0 0 0 3px rgba(124,26,34,0.1); }
+      .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 14px; color: #888; }
+      .filter-select { padding: 9px 14px; border-radius: 8px; border: 1px solid #d4c5b1; font-size: 13px; background: #fff; outline: none; cursor: pointer; }
+
+      /* Product Table */
+      .table-responsive { overflow-x: auto; border-radius: 12px; border: 1px solid #f0e6d6; background: #fff; }
+      .data-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+      .data-table th { background: #faf7f2; padding: 14px 16px; font-weight: 700; color: var(--admin-maroon); border-bottom: 2px solid var(--admin-border); white-space: nowrap; }
+      .data-table td { padding: 14px 16px; border-bottom: 1px solid #f5ede2; vertical-align: middle; }
+      .data-table tr:hover { background: #fffdfa; }
+
+      .prod-thumb { width: 52px; height: 52px; border-radius: 8px; object-fit: cover; border: 1px solid #e2d3be; background: #fafafa; display: block; }
+      .prod-title { font-weight: 700; color: var(--admin-text); font-size: 14px; margin-bottom: 3px; }
+      .prod-meta { font-size: 11px; color: #777; display: flex; gap: 8px; align-items: center; }
       
-      .actions-box { background: #fff5f5; border: 1px solid #fecaca; border-radius: 12px; padding: 16px; margin-bottom: 20px; display: none; }
-      .actions-box.active { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+      .badge { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; }
+      .badge-in-stock { background: #d1fae5; color: #065f46; }
+      .badge-out-stock { background: #fee2e2; color: #991b1b; }
+      .badge-cat { background: #fef3c7; color: #92400e; font-size: 10px; }
+      .badge-fruit { background: #fef08a; color: #854d0e; }
+      .badge-stone { background: #e0e7ff; color: #3730a3; }
+
+      /* Modal for Add / Edit Product */
+      .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+      .modal-backdrop.active { display: flex; }
+      .modal-content { background: #fff; border-radius: 20px; width: 100%; max-width: 980px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 1px solid var(--admin-border); position: relative; animation: slideUp 0.25s ease-out; }
+      @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      .modal-header { padding: 20px 24px; border-bottom: 1px solid #f0e6d6; display: flex; align-items: center; justify-content: space-between; background: #faf7f2; border-radius: 20px 20px 0 0; }
+      .modal-header h3 { margin: 0; font-size: 18px; color: var(--admin-maroon); font-family: var(--font-display, serif); }
+      .modal-close { background: transparent; border: none; font-size: 24px; cursor: pointer; color: #666; line-height: 1; }
+      .modal-close:hover { color: #000; }
+      .modal-body { padding: 24px; }
+
+      /* Form Layout inside Modal */
+      .form-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 24px; }
+      @media (max-width: 820px) { .form-grid { grid-template-columns: 1fr; } }
       
-      .calculator-box input { width: 100%; padding: 10px; border: 1px solid #d4af37; border-radius: 8px; font-size: 14px; margin-top: 6px; }
-      .calculator-box label { font-size: 12px; font-weight: 700; color: #444; }
-      
+      .form-group { margin-bottom: 16px; }
+      .form-group label { display: block; font-size: 12px; font-weight: 700; color: #333; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+      .form-control { width: 100%; box-sizing: border-box; padding: 10px 14px; border-radius: 8px; border: 1px solid #d4c5b1; font-size: 13px; font-family: inherit; background: #fff; }
+      .form-control:focus { border-color: var(--admin-maroon); outline: none; box-shadow: 0 0 0 3px rgba(124,26,34,0.1); }
+      .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+      /* Image Uploader Area */
+      .dropzone { border: 2px dashed #d4af37; border-radius: 12px; background: #fdfaf5; padding: 24px 16px; text-align: center; cursor: pointer; transition: all 0.2s; position: relative; }
+      .dropzone:hover { background: #faf4e6; border-color: var(--admin-maroon); }
+      .dropzone-icon { font-size: 32px; color: var(--admin-gold); margin-bottom: 8px; }
+      .dropzone-text { font-size: 13px; font-weight: 600; color: var(--admin-maroon); }
+      .dropzone-sub { font-size: 11px; color: #888; margin-top: 4px; }
+      .image-previews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 10px; margin-top: 12px; }
+      .img-preview-card { position: relative; width: 70px; height: 70px; border-radius: 8px; overflow: hidden; border: 1px solid #d4af37; }
+      .img-preview-card img { width: 100%; height: 100%; object-fit: cover; }
+      .img-preview-remove { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.7); color: #fff; border: none; width: 18px; height: 18px; border-radius: 50%; font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+      /* Live Preview Card */
+      .live-preview-box { background: #faf7f2; border: 1px solid #ebd9c0; border-radius: 14px; padding: 18px; position: sticky; top: 10px; }
+      .preview-label { font-size: 11px; font-weight: 800; color: var(--admin-maroon); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+      .mock-pdp-card { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid #ebd9c0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+      .mock-img { width: 100%; height: 210px; object-fit: cover; background: #eee; display: block; }
+      .mock-info { padding: 14px; }
+      .mock-pills { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+      .mock-pill { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: #f5ede2; color: #6b4c1e; }
+      .mock-title { font-size: 15px; font-weight: 700; color: #1a0809; margin: 0 0 6px 0; }
+      .mock-price { display: flex; align-items: baseline; gap: 8px; font-size: 16px; font-weight: 800; color: #059669; }
+      .mock-mrp { font-size: 12px; color: #888; text-decoration: line-through; }
+      .mock-discount { font-size: 11px; font-weight: 700; color: #dc2626; }
+
+      /* Toast Notification */
+      .admin-toast { position: fixed; bottom: 24px; right: 24px; background: #1a0809; color: #fff; padding: 14px 22px; border-radius: 10px; font-size: 13px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,0.25); z-index: 10000; display: none; border-left: 4px solid var(--admin-gold); }
+      .admin-toast.active { display: block; animation: toastIn 0.3s; }
+      @keyframes toastIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+      /* Simple PIN Login Modal */
+      .auth-modal { position: fixed; inset: 0; background: rgba(26,8,9,0.92); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+      .auth-box { background: #fff; border-radius: 20px; padding: 32px; max-width: 380px; width: 100%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.4); border: 1px solid var(--admin-gold); }
+      .auth-box h2 { margin: 12px 0 6px 0; font-family: var(--font-display, serif); color: var(--admin-maroon); font-size: 22px; }
+      .auth-box p { font-size: 12px; color: #666; margin-bottom: 20px; }
+      .auth-box input { width: 100%; box-sizing: border-box; text-align: center; font-size: 20px; letter-spacing: 0.2em; padding: 12px; border-radius: 10px; border: 2px solid #ebd9c0; margin-bottom: 16px; outline: none; }
+      .auth-box input:focus { border-color: var(--admin-maroon); }
+      .auth-error { color: #dc2626; font-size: 12px; margin-bottom: 12px; display: none; }
+
+      /* Orders table styles retained */
       .orders-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px; }
       .orders-table th, .orders-table td { padding: 12px; text-align: left; border-bottom: 1px solid #f0e6d6; }
-      .orders-table th { background: #faf7f2; font-weight: 700; color: var(--maroon,#7c1a22); }
-      
-      .badge { padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: 11px; display: inline-block; }
+      .orders-table th { background: #faf7f2; font-weight: 700; color: var(--admin-maroon); }
       .badge-synced { background: #d1fae5; color: #065f46; }
       .badge-failed { background: #fee2e2; color: #991b1b; }
       .badge-pending { background: #fef3c7; color: #92400e; }
-      
       .btn-action { padding: 6px 12px; border-radius: 6px; font-weight: 700; font-size: 12px; cursor: pointer; border: none; }
       .btn-retry { background: #7c1a22; color: #ffffff; }
       .btn-retry:hover { background: #591118; }
       .btn-label { background: #d4af37; color: #1a0809; margin-left: 6px; }
-      .filter-btn { padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 700; cursor: pointer; border: 1px solid #d4af37; background: #fff; color: #1a0809; }
-      .filter-btn.active { background: #7c1a22; color: #fff; border-color: #7c1a22; }
+      .actions-box { background: #fff5f5; border: 1px solid #fecaca; border-radius: 12px; padding: 16px; margin-bottom: 20px; display: none; }
+      .actions-box.active { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
     </style>
-  
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   </head>
-  <body class="lux-home" data-lux-shell-inject="true">
-    <div class="admin-layout">
+  <body>
+
+    <!-- 1. AUTH PIN MODAL -->
+    <div id="authModal" class="auth-modal">
+      <div class="auth-box">
+        <div style="font-size: 38px;">🔱</div>
+        <h2>Ved Vigyan Admin</h2>
+        <p>Team members &amp; sellers: Enter your Admin PIN to manage products &amp; orders.</p>
+        <div id="authError" class="auth-error">Incorrect PIN. Please try again.</div>
+        <form id="authForm" onsubmit="handleLoginSubmit(event)">
+          <input type="password" id="authPin" placeholder="••••••••" autofocus required />
+          <button type="submit" class="btn-primary" style="width:100%; justify-content:center;">Unlock Control Center 🔐</button>
+        </form>
+        <div style="font-size:11px; color:#999; margin-top:14px;">Default PIN: <code>vedvigyan2026</code></div>
+      </div>
+    </div>
+
+    <!-- 2. MAIN ADMIN LAYOUT -->
+    <div class="admin-layout" id="mainAdminLayout" style="display:none;">
       
       <!-- Top Navigation Header -->
       <header class="admin-nav">
         <div class="admin-brand">
-          <div style="font-size: 28px;">🔱</div>
+          <div style="font-size: 32px;">🔱</div>
           <div>
             <span>Ved Vigyan Official</span>
             <h1>Seller &amp; Admin Control Center</h1>
           </div>
         </div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+          <button class="nav-tab-btn active" id="tabBtnProducts" onclick="switchTab('products')">
+            📦 Products Catalog
+          </button>
+          <button class="nav-tab-btn" id="tabBtnOrders" onclick="switchTab('orders')">
+            🚚 Orders &amp; Shipping
+          </button>
+        </div>
+
         <div style="display:flex; gap:12px; align-items:center;">
-          <a href="/index.html" target="_blank" style="color:var(--gold,#d4af37); text-decoration:none; font-weight:700; font-size:13px;">View Store Front &rarr;</a>
+          <a href="/index.html" target="_blank" style="color:var(--admin-gold); text-decoration:none; font-weight:700; font-size:13px; display:flex; align-items:center; gap:4px;">
+            <span>Live Store</span> ↗
+          </a>
+          <button onclick="logoutAdmin()" class="btn-secondary" style="color:#fee2e2; background:rgba(0,0,0,0.25); border-color:rgba(255,255,255,0.2);">Logout</button>
         </div>
       </header>
 
-      <!-- Alert Box for Failed Shiprocket Syncs -->
-      <div id="actionsAlertBox" class="actions-box">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <div style="font-size:20px;">⚠️</div>
-          <div>
-            <strong style="color:#991b1b; font-size:14px;">Action Required: Shiprocket Sync Failures Detected</strong>
-            <div style="font-size:12px; color:#7f1d1d;" id="actionsAlertText">Some orders failed to automatically push to Shiprocket API.</div>
-          </div>
-        </div>
-        <button class="btn-action btn-retry" onclick="retryAllFailedSyncs()">🔄 Retry All Failed Syncs</button>
-      </div>
-
-      <!-- Dashboard Grid: Stats + Shipping Rate Calculator -->
-      <div class="grid-dashboard">
+      <!-- TAB 1: PRODUCT MANAGEMENT -->
+      <section id="sectionProducts">
         
-        <!-- Left: Summary Metrics -->
+        <!-- Summary Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Store Products</div>
+            <div class="stat-num" id="prodStatTotal">0</div>
+            <div class="stat-sub">Live in website catalog</div>
+          </div>
+          <div class="stat-card" style="background:#ecfdf5; border-color:#a7f3d0;">
+            <div class="stat-label" style="color:#065f46;">In Stock &amp; Active</div>
+            <div class="stat-num" style="color:#065f46;" id="prodStatInStock">0</div>
+            <div class="stat-sub" style="color:#047857;">Available for customers to buy</div>
+          </div>
+          <div class="stat-card" style="background:#fefce8; border-color:#fef08a;">
+            <div class="stat-label" style="color:#854d0e;">Rudraksha &amp; Malas</div>
+            <div class="stat-num" style="color:#854d0e;" id="prodStatRudraksha">0</div>
+            <div class="stat-sub" style="color:#a16207;">Natural Fruit badges enabled</div>
+          </div>
+          <div class="stat-card" style="background:#eef2ff; border-color:#c7d2fe;">
+            <div class="stat-label" style="color:#3730a3;">Crystals &amp; Gemstones</div>
+            <div class="stat-num" style="color:#3730a3;" id="prodStatCrystals">0</div>
+            <div class="stat-sub" style="color:#4338ca;">Natural Stone badges enabled</div>
+          </div>
+        </div>
+
+        <!-- Products Table Card -->
         <div class="card-box">
-          <div class="card-title">
-            <span>📊 Business Performance Summary</span>
-            <span style="font-size:12px; color:#888; font-weight:normal;" id="lastUpdatedTime">Updated Live</span>
+          <div class="card-header-row">
+            <div>
+              <h2 class="card-title">📦 Product Catalog &amp; Inventory</h2>
+              <div class="card-subtitle">Add new products or edit pricing, photos, and descriptions without writing code.</div>
+            </div>
+            <button class="btn-primary" onclick="openAddProductModal()">
+              <span>+</span> Add New Product
+            </button>
           </div>
 
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-label">Total Orders</div>
-              <div class="stat-num" id="statTotal">0</div>
-              <div class="stat-sub">Lifetime Orders in DB</div>
+          <!-- Filter & Search Toolbar -->
+          <div class="filter-toolbar">
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="prodSearchInput" placeholder="Search by name, category, or ID (e.g. 7 Mukhi)..." oninput="filterProductsTable()" />
             </div>
-            <div class="stat-card">
-              <div class="stat-label">Total Revenue</div>
-              <div class="stat-num" id="statRevenue">₹0</div>
-              <div class="stat-sub">Gross Sales Volume</div>
-            </div>
-            <div class="stat-card" style="background:#ecfdf5; border-color:#a7f3d0;">
-              <div class="stat-label" style="color:#065f46;">Shiprocket Synced</div>
-              <div class="stat-num" style="color:#065f46;" id="statSynced">0</div>
-              <div class="stat-sub" style="color:#047857;">AWB Generated &amp; Active</div>
-            </div>
-            <div class="stat-card" style="background:#fef2f2; border-color:#fecaca;">
-              <div class="stat-label" style="color:#991b1b;">Failed Sync (Retry)</div>
-              <div class="stat-num" style="color:#991b1b;" id="statFailed">0</div>
-              <div class="stat-sub" style="color:#b91c1c;">Requires Action</div>
-            </div>
+            <select class="filter-select" id="prodCategoryFilter" onchange="filterProductsTable()">
+              <option value="all">All Categories</option>
+              <option value="rudraksha">Rudraksha Beads</option>
+              <option value="mala">Jaap Malas &amp; Sacred Strings</option>
+              <option value="crystal-bracelet">Gemstones &amp; Crystals</option>
+              <option value="zodiac-bracelet">Zodiac Rashi Bracelets</option>
+              <option value="gemstone-tree">Crystal Trees</option>
+              <option value="puja-items">Puja Items</option>
+            </select>
+            <select class="filter-select" id="prodStockFilter" onchange="filterProductsTable()">
+              <option value="all">All Stock Status</option>
+              <option value="in_stock">In Stock</option>
+              <option value="out_of_stock">Out of Stock</option>
+            </select>
           </div>
-        </div>
 
-        <!-- Right: Calculate Shipping Rates -->
-        <div class="card-box calculator-box">
-          <div class="card-title">
-            <span>🚚 Calculate Shipping Rates</span>
-            <span style="font-size:11px; color:#7c1a22; font-weight:700;">Shiprocket API</span>
-          </div>
-          <form id="calcForm" onsubmit="calculateShippingRates(event)">
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-              <div>
-                <label for="pickupPin">Pickup Pincode</label>
-                <input id="pickupPin" value="110001" maxlength="6" required />
-              </div>
-              <div>
-                <label for="deliveryPin">Delivery Pincode</label>
-                <input id="deliveryPin" placeholder="e.g. 221001" maxlength="6" required />
-              </div>
-            </div>
-            <button class="btn-action btn-label" type="submit" style="width:100%; margin:12px 0 0 0; padding:10px;">Calculate Courier Rates</button>
-          </form>
-          <div id="calcResult" style="margin-top:12px; font-size:12px; line-height:1.5;"></div>
-        </div>
-
-      </div>
-
-      <!-- Main Orders Database Table -->
-      <div class="card-box">
-        <div class="card-title">
-          <span>📦 Order Fulfillment &amp; Database Records</span>
-          <div style="display:flex; gap:6px; flex-wrap:wrap;">
-            <button class="filter-btn active" data-filter="all">All Orders</button>
-            <button class="filter-btn" data-filter="failed">Failed Syncs</button>
-            <button class="filter-btn" data-filter="synced">Shiprocket Synced</button>
-            <button class="filter-btn" data-filter="cod">COD</button>
-            <button class="filter-btn" data-filter="prepaid">Prepaid</button>
+          <!-- Products Table -->
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th style="width: 60px;">Image</th>
+                  <th>Product Details</th>
+                  <th>Category</th>
+                  <th>Price / MRP</th>
+                  <th>Badges</th>
+                  <th>Stock</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productsTableBody">
+                <tr><td colspan="7" style="text-align:center; padding:30px; color:#888;">Loading products...</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
-        <div style="overflow-x:auto;">
-          <table class="orders-table">
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Customer Details</th>
-                <th>Payment</th>
-                <th>Amount</th>
-                <th>Shiprocket Status</th>
-                <th>Shipment &amp; AWB</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody id="ordersTbody">
-              <tr>
-                <td colspan="7" style="text-align:center; padding:30px; color:#666;">Loading orders from database...</td>
-              </tr>
-            </tbody>
-          </table>
+      </section>
+
+      <!-- TAB 2: ORDERS & SHIPROCKET (EXISTING) -->
+      <section id="sectionOrders" style="display:none;">
+        
+        <!-- Alert Box for Failed Shiprocket Syncs -->
+        <div id="actionsAlertBox" class="actions-box">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="font-size:20px;">⚠️</div>
+            <div>
+              <strong style="color:#991b1b; font-size:14px;">Action Required: Shiprocket Sync Failures Detected</strong>
+              <div style="font-size:12px; color:#7f1d1d;" id="actionsAlertText">Some orders failed to automatically push to Shiprocket API.</div>
+            </div>
+          </div>
+          <button class="btn-action btn-retry" onclick="retryAllFailedSyncs()">🔄 Retry All Failed Syncs</button>
         </div>
-      </div>
+
+        <!-- Orders Summary Metrics -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Orders</div>
+            <div class="stat-num" id="statTotal">0</div>
+            <div class="stat-sub">Lifetime Orders in DB</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-num" id="statRevenue">₹0</div>
+            <div class="stat-sub">Gross Sales Volume</div>
+          </div>
+          <div class="stat-card" style="background:#ecfdf5; border-color:#a7f3d0;">
+            <div class="stat-label" style="color:#065f46;">Shiprocket Synced</div>
+            <div class="stat-num" style="color:#065f46;" id="statSynced">0</div>
+            <div class="stat-sub" style="color:#047857;">AWB Generated &amp; Active</div>
+          </div>
+          <div class="stat-card" style="background:#fef2f2; border-color:#fecaca;">
+            <div class="stat-label" style="color:#991b1b;">Failed Sync (Retry)</div>
+            <div class="stat-num" style="color:#991b1b;" id="statFailed">0</div>
+            <div class="stat-sub" style="color:#b91c1c;">Requires Action</div>
+          </div>
+        </div>
+
+        <!-- Orders Table Card -->
+        <div class="card-box">
+          <div class="card-header-row">
+            <div>
+              <h2 class="card-title">🚚 Live Orders &amp; Fulfillment Queue</h2>
+              <div class="card-subtitle">Real-time status of orders, payment verification, and Shiprocket dispatch tracking.</div>
+            </div>
+            <button class="btn-secondary" onclick="fetchOrders()">🔄 Refresh Orders</button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Payment</th>
+                  <th>Amount</th>
+                  <th>Shiprocket</th>
+                  <th>AWB / Tracking</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTbody">
+                <tr><td colspan="7" style="text-align:center; padding:30px; color:#888;">Loading orders...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
 
     </div>
 
-    <script>
-      let currentOrders = [];
+    <!-- 3. ADD / EDIT PRODUCT MODAL -->
+    <div id="productModal" class="modal-backdrop">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle">✨ Add New Product to Store</h3>
+          <button class="modal-close" onclick="closeProductModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="productForm" onsubmit="handleProductFormSubmit(event)">
+            <input type="hidden" id="editProductId" value="" />
+            
+            <div class="form-grid">
+              
+              <!-- Left Form Column -->
+              <div>
+                
+                <div class="form-group">
+                  <label>Product Name / Title *</label>
+                  <input type="text" class="form-control" id="pName" placeholder="e.g. 8 Mukhi Nepali Rudraksha (Ashta Mukhi)" required oninput="updateLivePreview()" />
+                </div>
 
-      async function fetchOrders(filterStatus = "") {
-        const tbody = document.getElementById("ordersTbody");
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#666;">Loading orders...</td></tr>`;
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label>Category *</label>
+                    <select class="form-control" id="pCategory" required onchange="handleCategoryChange()">
+                      <option value="rudraksha">Rudraksha Beads</option>
+                      <option value="mala">Jaap Malas &amp; Sacred Strings</option>
+                      <option value="crystal-bracelet">Gemstone &amp; Crystals</option>
+                      <option value="zodiac-bracelet">Zodiac Rashi Bracelets</option>
+                      <option value="gemstone-tree">Crystal Trees</option>
+                      <option value="puja-items">Sacred Puja Essentials</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label>In Stock Status</label>
+                    <select class="form-control" id="pInStock" onchange="updateLivePreview()">
+                      <option value="true">✓ In Stock (Available)</option>
+                      <option value="false">⚠️ Out of Stock (Disabled)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label>Selling Price (₹) *</label>
+                    <input type="number" class="form-control" id="pPrice" placeholder="999" required min="1" oninput="handlePriceChange()" />
+                  </div>
+                  <div class="form-group">
+                    <label>Original MRP (₹)</label>
+                    <input type="number" class="form-control" id="pOriginalPrice" placeholder="1491" min="1" oninput="handlePriceChange()" />
+                  </div>
+                </div>
+
+                <!-- Photos Uploader -->
+                <div class="form-group">
+                  <label>Product Photos (Choose or Drag &amp; Drop)</label>
+                  <div class="dropzone" onclick="document.getElementById('pFileInput').click()">
+                    <input type="file" id="pFileInput" multiple accept="image/*" style="display:none;" onchange="handleFilesSelected(this.files)" />
+                    <div class="dropzone-icon">📷</div>
+                    <div class="dropzone-text">Click to choose photos from device</div>
+                    <div class="dropzone-sub">Supports JPG, PNG, WebP (Upload 1 to 5 images)</div>
+                  </div>
+                  <div class="image-previews-grid" id="imagePreviewsContainer"></div>
+                </div>
+
+                <div class="form-group">
+                  <label>Short Tagline / Catchphrase</label>
+                  <input type="text" class="form-control" id="pShort" placeholder="e.g. Blessed by Lord Ganesha for intellect, wealth &amp; obstacle removal." oninput="updateLivePreview()" />
+                </div>
+
+                <div class="form-group">
+                  <label>Key Highlights / Bullets (One per line)</label>
+                  <textarea class="form-control" id="pBullets" rows="3" placeholder="100% Authentic natural product with laboratory certificate&#10;Energized according to traditional Vedic rituals&#10;Includes authenticity test certificate &amp; usage guide"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label>Full Product Description &amp; Significance</label>
+                  <textarea class="form-control" id="pDescription" rows="4" placeholder="Detailed product history, authentic sourcing, spiritual meaning, and wearing guidelines..."></textarea>
+                </div>
+
+              </div>
+
+              <!-- Right Column: Live Card Preview -->
+              <div>
+                <div class="live-preview-box">
+                  <div class="preview-label">👁️ Customer Live Preview</div>
+                  <div class="mock-pdp-card">
+                    <img id="prevImg" src="/public/images/logo.jpg" alt="Preview Image" class="mock-img" />
+                    <div class="mock-info">
+                      <div class="mock-pills" id="prevPills">
+                        <span class="mock-pill">Natural Fruit</span>
+                        <span class="mock-pill">Lab Certified</span>
+                        <span class="mock-pill">100% Natural</span>
+                      </div>
+                      <h4 class="mock-title" id="prevTitle">Product Name Preview</h4>
+                      <div style="font-size:11px; color:#888; margin-bottom:8px;" id="prevShort">Product short summary will appear here...</div>
+                      <div class="mock-price">
+                        <span id="prevPrice">₹999</span>
+                        <span class="mock-mrp" id="prevMrp">₹1,491</span>
+                        <span class="mock-discount" id="prevDiscount">33% OFF</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="margin-top:14px; font-size:11px; color:#666; line-height:1.5;">
+                    💡 <strong>Automatic Badges:</strong> Rudraksha items automatically receive <em>Natural Fruit</em> &amp; <em>100% Natural</em> badges. Crystals receive <em>Natural Stone</em>.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Modal Footer Actions -->
+            <div style="margin-top:24px; padding-top:16px; border-top:1px solid #ebd9c0; display:flex; justify-content:flex-end; gap:12px;">
+              <button type="button" class="btn-secondary" onclick="closeProductModal()">Cancel</button>
+              <button type="submit" class="btn-primary" id="saveProductBtn">
+                🚀 Publish Product Live
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. TOAST NOTIFICATION -->
+    <div id="adminToast" class="admin-toast"></div>
+
+    <!-- SCRIPTS -->
+    <script>
+      let currentProducts = [];
+      let currentOrders = [];
+      let pendingImages = []; // base64 strings of newly chosen images
+
+      // Auth validation
+      function checkAuth() {
+        const token = sessionStorage.getItem("vv_admin_token");
+        if (token === "vv_admin_authorized") {
+          document.getElementById("authModal").style.display = "none";
+          document.getElementById("mainAdminLayout").style.display = "block";
+          initAdmin();
+        } else {
+          document.getElementById("authModal").style.display = "flex";
+          document.getElementById("mainAdminLayout").style.display = "none";
+        }
+      }
+
+      async function handleLoginSubmit(e) {
+        e.preventDefault();
+        const pin = document.getElementById("authPin").value.trim();
+        const errorEl = document.getElementById("authError");
+        errorEl.style.display = "none";
 
         try {
-          const url = filterStatus ? `/api/admin/orders?shiprocketStatus=${filterStatus}` : `/api/admin/orders`;
-          const res = await fetch(url);
+          const res = await fetch("/api/admin/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ pin })
+          });
           const data = await res.json();
+          if (res.ok && data.success) {
+            sessionStorage.setItem("vv_admin_token", data.token);
+            checkAuth();
+            showToast("✓ Welcome! Logged in as Admin.");
+          } else {
+            errorEl.style.display = "block";
+          }
+        } catch (err) {
+          errorEl.textContent = "Server error. Please ensure backend is running.";
+          errorEl.style.display = "block";
+        }
+      }
 
-          if (!res.ok) throw new Error(data.error || "Failed to fetch orders");
+      function logoutAdmin() {
+        sessionStorage.removeItem("vv_admin_token");
+        window.location.reload();
+      }
 
+      function showToast(message) {
+        const toast = document.getElementById("adminToast");
+        toast.textContent = message;
+        toast.classList.add("active");
+        setTimeout(() => toast.classList.remove("active"), 4000);
+      }
+
+      function switchTab(tab) {
+        document.querySelectorAll(".nav-tab-btn").forEach(b => b.classList.remove("active"));
+        if (tab === "products") {
+          document.getElementById("tabBtnProducts").classList.add("active");
+          document.getElementById("sectionProducts").style.display = "block";
+          document.getElementById("sectionOrders").style.display = "none";
+        } else {
+          document.getElementById("tabBtnOrders").classList.add("active");
+          document.getElementById("sectionProducts").style.display = "none";
+          document.getElementById("sectionOrders").style.display = "block";
+          fetchOrders();
+        }
+      }
+
+      function initAdmin() {
+        fetchProducts();
+        fetchOrders();
+      }
+
+      // --- PRODUCT MANAGEMENT LOGIC ---
+
+      async function fetchProducts() {
+        try {
+          const res = await fetch("/api/admin/products");
+          const data = await res.json();
+          if (data.success && Array.isArray(data.products)) {
+            currentProducts = data.products;
+            renderProducts(currentProducts);
+            updateProductStats(currentProducts);
+          }
+        } catch (err) {
+          console.error("Failed to load products:", err);
+          document.getElementById("productsTableBody").innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#dc2626;">Error loading products: ${err.message}</td></tr>`;
+        }
+      }
+
+      function updateProductStats(products) {
+        document.getElementById("prodStatTotal").textContent = products.length;
+        const inStock = products.filter(p => p.inStock !== false).length;
+        document.getElementById("prodStatInStock").textContent = inStock;
+
+        const rudCount = products.filter(p => (p.category || '').toLowerCase() === 'rudraksha' || (p.category || '').toLowerCase() === 'mala').length;
+        document.getElementById("prodStatRudraksha").textContent = rudCount;
+
+        const crystalCount = products.filter(p => (p.category || '').toLowerCase().includes('crystal') || (p.category || '').toLowerCase().includes('tree')).length;
+        document.getElementById("prodStatCrystals").textContent = crystalCount;
+      }
+
+      function renderProducts(products) {
+        const tbody = document.getElementById("productsTableBody");
+        if (products.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:40px; color:#888;">No products found matching your filter.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = products.map(p => {
+          const isRud = (p.category || '').toLowerCase() === 'rudraksha' || (p.category || '').toLowerCase() === 'mala' || /rudraksh|mukhi/i.test(p.name || '');
+          const pill1 = isRud ? '<span class="badge badge-fruit">Natural Fruit</span>' : '<span class="badge badge-stone">Natural Stone</span>';
+          const pill3 = isRud ? '<span class="badge badge-fruit">100% Natural</span>' : '<span class="badge badge-stone">100% Made in India</span>';
+          
+          const inStock = p.inStock !== false;
+          const stockBadge = inStock 
+            ? `<button onclick="toggleProductStock('${p.id}')" style="cursor:pointer; border:none; background:none;" title="Click to mark Out of Stock"><span class="badge badge-in-stock">✓ In Stock</span></button>`
+            : `<button onclick="toggleProductStock('${p.id}')" style="cursor:pointer; border:none; background:none;" title="Click to mark In Stock"><span class="badge badge-out-stock">⚠️ Out of Stock</span></button>`;
+
+          const imgUrl = (Array.isArray(p.images) && p.images[0]) || p.image || '/public/images/logo.jpg';
+          const disc = p.discountPercent || (p.originalPrice && p.price ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100) : 0);
+
+          return `
+            <tr>
+              <td>
+                <img src="${imgUrl}" alt="${p.name}" class="prod-thumb" onerror="this.src='/public/images/logo.jpg'" />
+              </td>
+              <td>
+                <div class="prod-title">${p.name}</div>
+                <div class="prod-meta">
+                  <span>ID: <code>${p.id}</code></span>
+                  <span>Slug: <code>${p.slug || p.id}</code></span>
+                </div>
+              </td>
+              <td>
+                <span class="badge badge-cat">${p.category || 'general'}</span>
+              </td>
+              <td>
+                <div style="font-weight:800; color:#059669; font-size:14px;">₹${Number(p.price || 0).toLocaleString('en-IN')}</div>
+                ${p.originalPrice ? `<div style="font-size:11px; color:#888; text-decoration:line-through;">₹${Number(p.originalPrice).toLocaleString('en-IN')}</div>` : ''}
+                ${disc > 0 ? `<div style="font-size:10px; font-weight:700; color:#dc2626;">${disc}% OFF</div>` : ''}
+              </td>
+              <td>
+                <div style="display:flex; flex-direction:column; gap:3px;">
+                  ${pill1}
+                  ${pill3}
+                </div>
+              </td>
+              <td>
+                ${stockBadge}
+              </td>
+              <td style="text-align: right; white-space:nowrap;">
+                <a href="${p.url || `/products/${p.slug || p.id}`}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-block;" title="View Live Page">👁️ View</a>
+                <button class="btn-secondary" style="margin-left:4px;" onclick="openEditProductModal('${p.id}')" title="Edit Product">✏️ Edit</button>
+                <button class="btn-danger" style="margin-left:4px;" onclick="deleteProduct('${p.id}', '${p.name.replace(/'/g, "\\'")}')" title="Delete Product">🗑️</button>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      function filterProductsTable() {
+        const query = document.getElementById("prodSearchInput").value.toLowerCase().trim();
+        const cat = document.getElementById("prodCategoryFilter").value;
+        const stock = document.getElementById("prodStockFilter").value;
+
+        const filtered = currentProducts.filter(p => {
+          const matchQuery = !query || 
+            (p.name || '').toLowerCase().includes(query) ||
+            (p.id || '').toLowerCase().includes(query) ||
+            (p.slug || '').toLowerCase().includes(query) ||
+            (p.category || '').toLowerCase().includes(query);
+
+          const matchCat = cat === "all" || (p.category || '').toLowerCase() === cat.toLowerCase();
+
+          const inStock = p.inStock !== false;
+          const matchStock = stock === "all" || (stock === "in_stock" && inStock) || (stock === "out_of_stock" && !inStock);
+
+          return matchQuery && matchCat && matchStock;
+        });
+
+        renderProducts(filtered);
+      }
+
+      async function toggleProductStock(id) {
+        try {
+          const res = await fetch("/api/admin/products/toggle-stock", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id })
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            showToast(`✓ Stock status updated for ${data.product.name}`);
+            fetchProducts();
+          } else {
+            alert(data.error || "Failed to update stock");
+          }
+        } catch (err) {
+          alert("Error: " + err.message);
+        }
+      }
+
+      async function deleteProduct(id, name) {
+        if (!confirm(`Are you sure you want to delete "${name}"?\nThis will remove the product from the catalog and search.`)) {
+          return;
+        }
+
+        try {
+          const res = await fetch("/api/admin/products/delete", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id })
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            showToast(`✓ "${name}" deleted successfully.`);
+            fetchProducts();
+          } else {
+            alert(data.error || "Failed to delete product");
+          }
+        } catch (err) {
+          alert("Error deleting product: " + err.message);
+        }
+      }
+
+      // --- ADD & EDIT PRODUCT MODAL HANDLERS ---
+
+      function openAddProductModal() {
+        document.getElementById("modalTitle").textContent = "✨ Add New Product to Store";
+        document.getElementById("saveProductBtn").textContent = "🚀 Publish Product Live";
+        document.getElementById("editProductId").value = "";
+        document.getElementById("productForm").reset();
+        pendingImages = [];
+        document.getElementById("imagePreviewsContainer").innerHTML = "";
+        document.getElementById("pCategory").value = "rudraksha";
+        document.getElementById("pPrice").value = "999";
+        document.getElementById("pOriginalPrice").value = "1491";
+        updateLivePreview();
+        document.getElementById("productModal").classList.add("active");
+      }
+
+      function openEditProductModal(id) {
+        const product = currentProducts.find(p => p.id === id);
+        if (!product) return;
+
+        document.getElementById("modalTitle").textContent = `✏️ Edit Product: ${product.name}`;
+        document.getElementById("saveProductBtn").textContent = "💾 Save Changes";
+        document.getElementById("editProductId").value = product.id;
+
+        document.getElementById("pName").value = product.name || "";
+        document.getElementById("pCategory").value = (product.category || "rudraksha").toLowerCase();
+        document.getElementById("pPrice").value = product.price || "";
+        document.getElementById("pOriginalPrice").value = product.originalPrice || "";
+        document.getElementById("pInStock").value = product.inStock !== false ? "true" : "false";
+        document.getElementById("pShort").value = product.short || "";
+        document.getElementById("pDescription").value = product.description || "";
+        document.getElementById("pBullets").value = Array.isArray(product.bullets) ? product.bullets.join("\n") : (product.bullets || "");
+
+        pendingImages = [];
+        const previewsContainer = document.getElementById("imagePreviewsContainer");
+        previewsContainer.innerHTML = "";
+
+        const existingImgs = Array.isArray(product.images) && product.images.length > 0 ? product.images : [product.image];
+        existingImgs.filter(Boolean).forEach(src => {
+          const div = document.createElement("div");
+          div.className = "img-preview-card";
+          div.innerHTML = `<img src="${src}" /><span style="position:absolute; bottom:2px; left:2px; font-size:9px; background:rgba(0,0,0,0.7); color:#fff; padding:1px 3px; border-radius:3px;">Saved</span>`;
+          previewsContainer.appendChild(div);
+        });
+
+        updateLivePreview();
+        document.getElementById("productModal").classList.add("active");
+      }
+
+      function closeProductModal() {
+        document.getElementById("productModal").classList.remove("active");
+      }
+
+      function handleFilesSelected(files) {
+        if (!files || files.length === 0) return;
+        const container = document.getElementById("imagePreviewsContainer");
+
+        Array.from(files).forEach(file => {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const base64 = e.target.result;
+            pendingImages.push(base64);
+
+            const div = document.createElement("div");
+            div.className = "img-preview-card";
+            div.innerHTML = `
+              <img src="${base64}" />
+              <button type="button" class="img-preview-remove" onclick="removePendingImage(${pendingImages.length - 1}, this)">&times;</button>
+            `;
+            container.appendChild(div);
+            updateLivePreview();
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function removePendingImage(index, btn) {
+        if (pendingImages[index]) {
+          pendingImages[index] = null;
+        }
+        btn.parentElement.remove();
+        updateLivePreview();
+      }
+
+      function handleCategoryChange() {
+        updateLivePreview();
+      }
+
+      function handlePriceChange() {
+        const price = Number(document.getElementById("pPrice").value) || 0;
+        const orig = Number(document.getElementById("pOriginalPrice").value) || 0;
+        updateLivePreview();
+      }
+
+      function updateLivePreview() {
+        const name = document.getElementById("pName").value.trim() || "Product Name Preview";
+        const cat = document.getElementById("pCategory").value;
+        const price = Number(document.getElementById("pPrice").value) || 999;
+        const orig = Number(document.getElementById("pOriginalPrice").value) || Math.round(price * 1.5);
+        const short = document.getElementById("pShort").value.trim() || "Product short description...";
+
+        document.getElementById("prevTitle").textContent = name;
+        document.getElementById("prevShort").textContent = short;
+        document.getElementById("prevPrice").textContent = `₹${price.toLocaleString("en-IN")}`;
+        document.getElementById("prevMrp").textContent = `₹${orig.toLocaleString("en-IN")}`;
+
+        const disc = orig > price ? Math.round(((orig - price) / orig) * 100) : 0;
+        const discEl = document.getElementById("prevDiscount");
+        if (disc > 0) {
+          discEl.textContent = `${disc}% OFF`;
+          discEl.style.display = "inline";
+        } else {
+          discEl.style.display = "none";
+        }
+
+        // Badges: Fruit for Rudraksha / Mala, Stone for others
+        const isRud = cat === "rudraksha" || cat === "mala" || /rudraksh|mukhi/i.test(name);
+        const pillsContainer = document.getElementById("prevPills");
+        if (isRud) {
+          pillsContainer.innerHTML = `
+            <span class="mock-pill">Natural Fruit</span>
+            <span class="mock-pill">Lab Certified</span>
+            <span class="mock-pill">100% Natural</span>
+          `;
+        } else {
+          pillsContainer.innerHTML = `
+            <span class="mock-pill">Natural Stone</span>
+            <span class="mock-pill">Lab Certified</span>
+            <span class="mock-pill">100% Made in India</span>
+          `;
+        }
+
+        // Image preview
+        const firstPending = pendingImages.find(Boolean);
+        const imgEl = document.getElementById("prevImg");
+        if (firstPending) {
+          imgEl.src = firstPending;
+        } else {
+          const firstExisting = document.querySelector("#imagePreviewsContainer img");
+          if (firstExisting) {
+            imgEl.src = firstExisting.src;
+          } else {
+            imgEl.src = "/public/images/logo.jpg";
+          }
+        }
+      }
+
+      async function handleProductFormSubmit(e) {
+        e.preventDefault();
+        const saveBtn = document.getElementById("saveProductBtn");
+        const originalText = saveBtn.textContent;
+        saveBtn.disabled = true;
+        saveBtn.textContent = "⏳ Saving Product...";
+
+        try {
+          const editId = document.getElementById("editProductId").value;
+          const isEdit = Boolean(editId);
+
+          const payload = {
+            id: editId || undefined,
+            name: document.getElementById("pName").value.trim(),
+            category: document.getElementById("pCategory").value,
+            price: Number(document.getElementById("pPrice").value),
+            originalPrice: Number(document.getElementById("pOriginalPrice").value) || undefined,
+            inStock: document.getElementById("pInStock").value === "true",
+            short: document.getElementById("pShort").value.trim(),
+            bullets: document.getElementById("pBullets").value,
+            description: document.getElementById("pDescription").value.trim(),
+            uploadedImages: pendingImages.filter(Boolean)
+          };
+
+          const endpoint = isEdit ? "/api/admin/products/update" : "/api/admin/products";
+          const res = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+
+          const data = await res.json();
+          if (!res.ok || !data.success) {
+            throw new Error(data.error || "Failed to save product");
+          }
+
+          showToast(isEdit ? `✓ Product "${payload.name}" updated successfully!` : `✓ New product "${payload.name}" published live!`);
+          closeProductModal();
+          fetchProducts();
+        } catch (err) {
+          alert(`❌ Error: ${err.message}`);
+        } finally {
+          saveBtn.disabled = false;
+          saveBtn.textContent = originalText;
+        }
+      }
+
+      // --- ORDERS & SHIPROCKET (EXISTING) ---
+
+      async function fetchOrders() {
+        const tbody = document.getElementById("ordersTbody");
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#666;">Loading latest orders...</td></tr>`;
+
+        try {
+          const res = await fetch('/api/admin/orders');
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Failed to load orders");
           currentOrders = data.orders || [];
+          updateOrderStats(currentOrders);
           renderOrders(currentOrders);
-          updateStats(currentOrders);
         } catch (err) {
           tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#991b1b;">Error: ${err.message}</td></tr>`;
         }
       }
 
-      function updateStats(orders) {
+      function updateOrderStats(orders) {
         document.getElementById("statTotal").textContent = orders.length;
-        
         const totalRev = orders.reduce((sum, o) => sum + (o.amount || 0), 0);
         document.getElementById("statRevenue").textContent = `₹${totalRev.toLocaleString("en-IN")}`;
-
         const syncedCount = orders.filter(o => o.shiprocketStatus === "synced" || o.shiprocketStatus === "shipped").length;
         const failedCount = orders.filter(o => o.shiprocketStatus === "failed").length;
-
         document.getElementById("statSynced").textContent = syncedCount;
         document.getElementById("statFailed").textContent = failedCount;
 
@@ -217,12 +941,10 @@
         const alertText = document.getElementById("actionsAlertText");
         if (failedCount > 0) {
           alertBox.classList.add("active");
-          alertText.textContent = `${failedCount} order(s) failed automatic Shiprocket sync. Click button to retry immediately.`;
+          alertText.textContent = `${failedCount} order(s) failed automatic Shiprocket sync.`;
         } else {
           alertBox.classList.remove("active");
         }
-
-        document.getElementById("lastUpdatedTime").textContent = `Updated ${new Date().toLocaleTimeString()}`;
       }
 
       function renderOrders(orders) {
@@ -254,7 +976,7 @@
               <td><strong>₹${Number(order.amount || 0).toLocaleString("en-IN")}</strong></td>
               <td>
                 <span class="badge ${badgeClass}">${(order.shiprocketStatus || 'pending').toUpperCase()}</span>
-                ${isFailed && order.shiprocketLastError ? `<div style="font-size:11px; color:#dc2626; margin-top:2px;" title="${order.shiprocketLastError}">⚠️ ${order.shiprocketLastError.slice(0, 35)}...</div>` : ""}
+                ${isFailed && order.shiprocketLastError ? `<div style="font-size:11px; color:#dc2626; margin-top:2px;">⚠️ ${order.shiprocketLastError.slice(0, 35)}...</div>` : ""}
               </td>
               <td>
                 ${order.shiprocketShipmentId ? `<div style="font-size:11px;">ID: ${order.shiprocketShipmentId}</div>` : "<span style='color:#aaa;'>—</span>"}
@@ -263,7 +985,6 @@
               <td>
                 ${isFailed || order.shiprocketStatus === 'pending' ? `<button class="btn-action btn-retry" onclick="retrySync('${order.orderId}')">🔄 Retry</button>` : ""}
                 ${order.shiprocketShipmentId ? `<button class="btn-action btn-label" onclick="generateLabel('${order.shiprocketShipmentId}')">🏷️ Label</button>` : ""}
-                ${order.shiprocketShipmentId ? `<button class="btn-action" style="background:#2563eb; color:#fff; margin-left:4px;" onclick="trackShipment('${order.shiprocketShipmentId}')">📍 Track</button>` : ""}
               </td>
             </tr>
           `;
@@ -272,29 +993,17 @@
 
       async function retrySync(orderId) {
         try {
-          const res = await fetch('/api/admin/shiprocket-retry', {
+          const res = await fetch('/api/admin/orders/shiprocket-retry', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ orderId })
           });
-          const text = await res.text();
-          let data = {};
-          try { data = JSON.parse(text); } catch { data = { error: text }; }
+          const data = await res.json();
           if (!res.ok) throw new Error(data.error || "Retry failed");
-          alert(`✓ Order #${orderId} synced to Shiprocket successfully!`);
+          showToast(`✓ Order ${orderId} synced to Shiprocket!`);
           fetchOrders();
         } catch (err) {
-          alert(`❌ Retry Failed: ${err.message}`);
-        }
-      }
-
-      async function retryAllFailedSyncs() {
-        const failedOrders = currentOrders.filter(o => o.shiprocketStatus === "failed");
-        if (failedOrders.length === 0) return;
-
-        alert(`Retrying Shiprocket sync for ${failedOrders.length} failed order(s)...`);
-        for (const order of failedOrders) {
-          await retrySync(order.orderId);
+          alert(`❌ Sync Error: ${err.message}`);
         }
       }
 
@@ -308,76 +1017,17 @@
           const data = await res.json();
           if (!res.ok) throw new Error(data.error || "Label generation failed");
           const labelUrl = data.labelData?.label_url;
-          if (labelUrl) {
-            window.open(labelUrl, '_blank');
-          } else {
-            alert('Label generated successfully.');
-          }
+          if (labelUrl) window.open(labelUrl, '_blank');
+          else showToast('✓ Label generated successfully.');
         } catch (err) {
-          alert(`❌ Label Generation Error: ${err.message}`);
+          alert(`❌ Label Error: ${err.message}`);
         }
       }
 
-      async function trackShipment(shipmentId) {
-        try {
-          const res = await fetch(`/api/shiprocket/track?shipment_id=${shipmentId}`);
-          const data = await res.json();
-          if (!res.ok) throw new Error(data.error || "Tracking failed");
-          const trackData = data.tracking_data || {};
-          const trackList = trackData.shipment_track || [];
-          const currentStatus = trackList[0]?.current_status || "AWB Generated / Pending Pickup";
-          const courier = trackData.shipment_track_activities?.[0]?.location || "Origin Warehouse";
-          alert(`📦 Live Shiprocket Status (Shipment #${shipmentId}):\n\nStatus: ${currentStatus}\nLocation: ${courier}`);
-        } catch (err) {
-          alert(`❌ Live Tracking Error: ${err.message}`);
-        }
-      }
-
-      async function calculateShippingRates(e) {
-        e.preventDefault();
-        const deliveryPin = document.getElementById("deliveryPin").value.trim();
-        const calcResult = document.getElementById("calcResult");
-        calcResult.innerHTML = `⏳ Checking Shiprocket rate cards...`;
-
-        try {
-          const res = await fetch(`/api/shiprocket/check-pincode?pincode=${deliveryPin}`);
-          const data = await res.json();
-
-          if (data.serviceable) {
-            calcResult.innerHTML = `
-              <div style="background:#ecfdf5; padding:10px; border-radius:8px; color:#065f46;">
-                <strong>✓ Serviceable!</strong><br/>
-                Estimated Days: ~${data.estimatedDeliveryDays} days<br/>
-                Fastest Courier: <strong>${data.fastestCourier}</strong><br/>
-                Couriers Available: ${data.totalCouriers} partners
-              </div>
-            `;
-          } else {
-            calcResult.innerHTML = `
-              <div style="background:#fef2f2; padding:10px; border-radius:8px; color:#991b1b;">
-                ⚠️ ${data.message || 'Delivery restricted for this pincode'}
-              </div>
-            `;
-          }
-        } catch (err) {
-          calcResult.innerHTML = `<span style="color:#dc2626;">Error: ${err.message}</span>`;
-        }
-      }
-
-      document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          const filter = btn.dataset.filter;
-          if (filter === "all") renderOrders(currentOrders);
-          else if (filter === "failed") renderOrders(currentOrders.filter(o => o.shiprocketStatus === "failed"));
-          else if (filter === "synced") renderOrders(currentOrders.filter(o => o.shiprocketStatus === "synced" || o.shiprocketStatus === "shipped"));
-          else if (filter === "cod") renderOrders(currentOrders.filter(o => o.paymentMethod === "COD"));
-          else if (filter === "prepaid") renderOrders(currentOrders.filter(o => o.paymentMethod === "Prepaid"));
-        });
+      // Check auth on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        checkAuth();
       });
-
-      document.addEventListener("DOMContentLoaded", () => fetchOrders());
     </script>
   </body>
 </html>
