@@ -38,7 +38,8 @@ const MIME_TYPES = {
   ".jpeg": "image/jpeg",
   ".webp": "image/webp",
   ".ico": "image/x-icon",
-  ".xml": "application/xml; charset=utf-8"
+  ".xml": "application/xml; charset=utf-8",
+  ".mp4": "video/mp4"
 };
 
 function sendJson(res, statusCode, payload) {
