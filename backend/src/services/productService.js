@@ -2,10 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 
-const PRODUCTS_JSON_PATH = path.join(__dirname, '..', '..', 'data', 'products.json');
-const DATA_JS_PATH = path.join(__dirname, '..', '..', '..', 'frontend', 'public', 'js', 'data.js');
-const PRODUCTS_HTML_DIR = path.join(__dirname, '..', '..', '..', 'frontend', 'products');
-const IMAGES_BASE_DIR = path.join(__dirname, '..', '..', '..', 'frontend', 'public', 'images', 'products');
+const ROOT_DIR = process.cwd();
+const PRODUCTS_JSON_PATH = path.join(ROOT_DIR, 'backend', 'data', 'products.json');
+const DATA_JS_PATH = path.join(ROOT_DIR, 'frontend', 'public', 'js', 'data.js');
+const PRODUCTS_HTML_DIR = path.join(ROOT_DIR, 'frontend', 'products');
+const IMAGES_BASE_DIR = path.join(ROOT_DIR, 'frontend', 'public', 'images', 'products');
 
 function ensureDir(dirPath) {
   if (!fs.existsSync(dirPath)) {
