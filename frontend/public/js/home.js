@@ -16,28 +16,22 @@
 
   const HERO_SLIDES = [
     {
-      href: "/rudraksha/5-mukhi.html",
+      href: "/shop.html",
       img: "/public/images/banner/1.png",
       mobileImg: "/public/images/banner/1.png",
-      alt: "Ved Vigyan 5 Mukhi Nepali Rudraksha - Connect With Divine Blessings"
+      alt: "The Great Dharma Festival - Free 5 Mukhi Rudraksha on Every Prepaid Purchase"
     },
     {
-      href: "/products/karungali-rudraksh-silver-cap-mala",
+      href: "/rudraksha/5-mukhi.html",
       img: "/public/images/banner/2.png",
       mobileImg: "/public/images/banner/2.png",
-      alt: "Karungali Mala - Natural, Spiritual, Powerful"
+      alt: "Free 5 Mukhi Rudraksha on Every Prepaid Purchase - Ye Diwali Ram Rajya Wali"
     },
     {
-      href: "/rudraksha-mala/5-mukhi-mala-108.html",
+      href: "/shop.html",
       img: "/public/images/banner/3.png",
       mobileImg: "/public/images/banner/3.png",
-      alt: "Original 5 Mukhi Nepali Rudraksha Mala - Lab Certified"
-    },
-    {
-      href: "/mala/tulsi-mala.html",
-      img: "/public/images/banner/4.png",
-      mobileImg: "/public/images/banner/4.png",
-      alt: "Original Tulsi Mala - Pure, Sacred, Divine"
+      alt: "Flat 30% Off on Every Product - Diwali Festive Offer"
     }
   ];
 
