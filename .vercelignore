@@ -1,0 +1,8 @@
+# Files to exclude from Vercel deployment
+scripts/
+divine-hindu-ref.html
+update-page-head-scripts.js
+watch-shop-vdos/
+.git/
+.gitignore
+README.md

@@ -101,6 +101,13 @@ const DIVINE_MEGA_NAVLINKS = `
                 <div class="vv-card-item__title">Crystal Bracelets</div>
                 <div class="vv-card-item__sub">Natural healing gems</div>
               </a>
+              <a class="vv-card-item" href="/shop.html">
+                <div class="vv-card-item__img">
+                  <img src="/public/images/banner/all-products.webp" alt="All Products" loading="lazy" />
+                </div>
+                <div class="vv-card-item__title">All Products</div>
+                <div class="vv-card-item__sub">Entire sacred collection</div>
+              </a>
               <a class="vv-card-item" href="/product/detail.html?id=vv_p12">
                 <div class="vv-card-item__img">
                   <img src="/product/Ved vigyan products/7 Chakra Tree/1.webp" alt="7 Chakra Tree" loading="lazy" />
