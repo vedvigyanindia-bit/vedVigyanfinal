@@ -18,19 +18,19 @@
     {
       href: "/shop.html",
       img: "/public/images/banner/1.png",
-      mobileImg: "/public/images/banner/1.png",
+      mobileImg: "/public/images/banner/mob1.png",
       alt: "The Great Dharma Festival - Free 5 Mukhi Rudraksha on Every Prepaid Purchase"
     },
     {
       href: "/rudraksha/5-mukhi.html",
       img: "/public/images/banner/2.png",
-      mobileImg: "/public/images/banner/2.png",
+      mobileImg: "/public/images/banner/mob2.png",
       alt: "Free 5 Mukhi Rudraksha on Every Prepaid Purchase - Ye Diwali Ram Rajya Wali"
     },
     {
       href: "/shop.html",
       img: "/public/images/banner/3.png",
-      mobileImg: "/public/images/banner/3.png",
+      mobileImg: "/public/images/banner/mob3.png",
       alt: "Flat 30% Off on Every Product - Diwali Festive Offer"
     }
   ];

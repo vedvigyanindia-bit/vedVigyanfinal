@@ -134,9 +134,16 @@ pdpFiles.forEach((relPath) => {
   ];
 
   let replaced = false;
+  const isRud = /rudraksh|mukhi|nepali/i.test(relPath);
+  let pageGridHtml = newGridHtml;
+  if (isRud) {
+    pageGridHtml = pageGridHtml
+      .replace('<span class="pdp-pill">Natural Stone</span>', '<span class="pdp-pill">Natural Fruit</span>')
+      .replace('<span class="pdp-pill">100% Made in India</span>', '<span class="pdp-pill">100% Natural</span>');
+  }
   for (const reg of regexes) {
     if (reg.test(content)) {
-      content = content.replace(reg, newGridHtml);
+      content = content.replace(reg, pageGridHtml);
       replaced = true;
       break;
     }

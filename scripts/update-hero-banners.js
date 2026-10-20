@@ -10,19 +10,19 @@ const oldTrackPattern = /<div class="dh-hero-track" id="heroTrack">[\s\S]*?<\/di
 const newTrackHtml = `<div class="dh-hero-track" id="heroTrack">
           <a class="hero__slide dh-hero-slide" href="/shop.html">
             <picture>
-              <source media="(max-width:767px)" srcset="/public/images/banner/1.png">
+              <source media="(max-width:767px)" srcset="/public/images/banner/mob1.png">
               <img class="hero__img" src="/public/images/banner/1.png" alt="The Great Dharma Festival - Free 5 Mukhi Rudraksha on Every Prepaid Purchase" loading="eager" fetchpriority="high" width="1300" height="540" />
             </picture>
           </a>
           <a class="hero__slide dh-hero-slide" href="/rudraksha/5-mukhi.html">
             <picture>
-              <source media="(max-width:767px)" srcset="/public/images/banner/2.png">
+              <source media="(max-width:767px)" srcset="/public/images/banner/mob2.png">
               <img class="hero__img" src="/public/images/banner/2.png" alt="Free 5 Mukhi Rudraksha on Every Prepaid Purchase - Ye Diwali Ram Rajya Wali" loading="lazy" fetchpriority="low" width="1300" height="540" />
             </picture>
           </a>
           <a class="hero__slide dh-hero-slide" href="/shop.html">
             <picture>
-              <source media="(max-width:767px)" srcset="/public/images/banner/3.png">
+              <source media="(max-width:767px)" srcset="/public/images/banner/mob3.png">
               <img class="hero__img" src="/public/images/banner/3.png" alt="Flat 30% Off on Every Product - Diwali Festive Offer" loading="lazy" fetchpriority="low" width="1300" height="540" />
             </picture>
           </a>
@@ -32,7 +32,7 @@ const newTrackHtml = `<div class="dh-hero-track" id="heroTrack">
 if (oldTrackPattern.test(indexHtml)) {
   indexHtml = indexHtml.replace(oldTrackPattern, newTrackHtml);
   fs.writeFileSync(indexPath, indexHtml, 'utf8');
-  console.log('Successfully updated frontend/index.html');
+  console.log('Successfully updated frontend/index.html with mobile banners');
 } else {
   console.error('Pattern not found in index.html');
 }
@@ -46,19 +46,19 @@ const newHeroSlides = `const HERO_SLIDES = [
     {
       href: "/shop.html",
       img: "/public/images/banner/1.png",
-      mobileImg: "/public/images/banner/1.png",
+      mobileImg: "/public/images/banner/mob1.png",
       alt: "The Great Dharma Festival - Free 5 Mukhi Rudraksha on Every Prepaid Purchase"
     },
     {
       href: "/rudraksha/5-mukhi.html",
       img: "/public/images/banner/2.png",
-      mobileImg: "/public/images/banner/2.png",
+      mobileImg: "/public/images/banner/mob2.png",
       alt: "Free 5 Mukhi Rudraksha on Every Prepaid Purchase - Ye Diwali Ram Rajya Wali"
     },
     {
       href: "/shop.html",
       img: "/public/images/banner/3.png",
-      mobileImg: "/public/images/banner/3.png",
+      mobileImg: "/public/images/banner/mob3.png",
       alt: "Flat 30% Off on Every Product - Diwali Festive Offer"
     }
   ];`;
@@ -66,7 +66,7 @@ const newHeroSlides = `const HERO_SLIDES = [
 if (oldHeroSlidesPattern.test(homeJs)) {
   homeJs = homeJs.replace(oldHeroSlidesPattern, newHeroSlides);
   fs.writeFileSync(homeJsPath, homeJs, 'utf8');
-  console.log('Successfully updated frontend/public/js/home.js');
+  console.log('Successfully updated frontend/public/js/home.js with mobile banners');
 } else {
   console.error('Pattern not found in home.js');
 }

@@ -355,6 +355,34 @@ function renderProductPage() {
   if (breadcrumbEl) breadcrumbEl.textContent = product.name;
   if (titleEl) titleEl.textContent = product.name;
 
+  // Update pills/badges: "Natural Fruit" and "100% Natural" for Rudraksha & Rudraksha Malas
+  const featsContainer = document.querySelector(".pdp-feats");
+  if (featsContainer) {
+    const pCat = (product.category || "").toLowerCase();
+    const pName = (product.name || "").toLowerCase();
+    const pSlug = (product.slug || "").toLowerCase();
+    const isRudraksha = (
+      pCat === "rudraksha" ||
+      pCat === "rudraksha-mala" ||
+      /rudraksh|mukhi/i.test(pName) ||
+      /rudraksh|mukhi/i.test(pSlug) ||
+      (product.tags || []).some((t) => /rudraksh/i.test(t))
+    );
+    if (isRudraksha) {
+      featsContainer.innerHTML = `
+        <span class="pdp-pill">Natural Fruit</span>
+        <span class="pdp-pill">Lab Certified</span>
+        <span class="pdp-pill">100% Natural</span>
+      `;
+    } else {
+      featsContainer.innerHTML = `
+        <span class="pdp-pill">Natural Stone</span>
+        <span class="pdp-pill">Lab Certified</span>
+        <span class="pdp-pill">100% Made in India</span>
+      `;
+    }
+  }
+
   const fullStars = Math.round(product.rating || 0);
   const stars = `${"★".repeat(fullStars)}${"☆".repeat(Math.max(0, 5 - fullStars))}`;
   const reviewCount = 40 + (product.id.charCodeAt(product.id.length - 1) * 17) % 200;
