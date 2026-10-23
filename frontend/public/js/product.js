@@ -1125,6 +1125,7 @@ function buildProductSchemaObject(product) {
       name: "Ved Vigyan"
     },
     sku: product.sku || product.id || ("VV-" + (product.slug || "001")),
+    mpn: product.sku || product.id || ("VV-" + (product.slug || "001")),
     category: product.category || "Spiritual",
     offers: {
       "@type": "Offer",
@@ -1137,6 +1138,43 @@ function buildProductSchemaObject(product) {
       seller: {
         "@type": "Organization",
         name: "Ved Vigyan"
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "IN",
+        returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 7,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/FreeReturn",
+        refundType: "https://schema.org/FullRefund",
+        url: "https://www.vedvigyan.in/refund-cancellation-policy.html"
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: "0",
+          currency: "INR"
+        },
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "IN"
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: {
+            "@type": "QuantitativeValue",
+            minValue: 1,
+            maxValue: 2,
+            unitCode: "DAY"
+          },
+          transitTime: {
+            "@type": "QuantitativeValue",
+            minValue: 3,
+            maxValue: 5,
+            unitCode: "DAY"
+          }
+        }
       }
     },
     aggregateRating: {
