@@ -38,7 +38,7 @@ window.VED_VIGYAN_DATA = {
   "categories": [
   {
     "id": "all",
-    "label": "All Products (43)"
+    "label": "All Products (44)"
   },
   {
     "id": "rudraksha",
@@ -54,7 +54,7 @@ window.VED_VIGYAN_DATA = {
   },
   {
     "id": "mala",
-    "label": "Jaap Malas & Sacred Strings (8)"
+    "label": "Jaap Malas & Sacred Strings (9)"
   },
   {
     "id": "gemstone-tree",
@@ -1622,6 +1622,43 @@ window.VED_VIGYAN_DATA = {
     "discountPercent": 36,
     "originalPrice": 1092,
     "rating": 4.4
+  },
+  {
+    "id": "vv_p44",
+    "category": "mala",
+    "slug": "original-haldi-mala",
+    "name": "Original Haldi Mala",
+    "price": 999,
+    "originalPrice": 1300,
+    "discountPercent": 23,
+    "rating": 4.8,
+    "tags": [
+      "mala",
+      "authentic",
+      "vedic"
+    ],
+    "image": "/public/images/products/original-haldi-mala/1.jpg",
+    "imageAlt": "Original Haldi Mala - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/public/images/products/original-haldi-mala/1.jpg",
+      "/public/images/products/original-haldi-mala/2.jpg",
+      "/public/images/products/original-haldi-mala/3.jpg"
+    ],
+    "certificate": "/public/images/products/original-haldi-mala/3.jpg",
+    "short": "Traditional Haldi Mala for Prayer, Devotion, and Daily Spiritual Practice.",
+    "description": "The Original Haldi Mala is a traditional spiritual mala made from natural turmeric (haldi). Turmeric holds an important place in Hindu traditions and is associated with auspiciousness, purity, and devotion.\n\nThis mala can be used during daily puja, mantra chanting, meditation, and other religious rituals. Its natural yellow color makes it a meaningful addition to your spiritual collection and a thoughtful gift for religious occasions and festivals.\n\n*Care Instructions:* Keep the mala away from moisture and store it in a clean, dry place to help maintain its quality.",
+    "bullets": [
+      "Made from natural turmeric (haldi)",
+      "Traditional mala for puja and mantra chanting",
+      "Yellow color symbolizing auspiciousness and devotion",
+      "Suitable for daily spiritual practices and meditation",
+      "Ideal for devotional gifting and religious occasions"
+    ],
+    "seoTitle": "Original Haldi Mala - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Original Haldi Mala online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/original-haldi-mala",
+    "inStock": true,
+    "createdAt": "2026-10-28T11:26:09.802Z"
   }
 ]
 };
