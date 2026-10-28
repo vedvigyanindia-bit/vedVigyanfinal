@@ -38,7 +38,7 @@ window.VED_VIGYAN_DATA = {
   "categories": [
   {
     "id": "all",
-    "label": "All Products (44)"
+    "label": "All Products (45)"
   },
   {
     "id": "rudraksha",
@@ -54,7 +54,7 @@ window.VED_VIGYAN_DATA = {
   },
   {
     "id": "mala",
-    "label": "Jaap Malas & Sacred Strings (9)"
+    "label": "Jaap Malas & Sacred Strings (10)"
   },
   {
     "id": "gemstone-tree",
@@ -1659,6 +1659,42 @@ window.VED_VIGYAN_DATA = {
     "url": "/products/original-haldi-mala",
     "inStock": true,
     "createdAt": "2026-10-28T11:26:09.802Z"
+  },
+  {
+    "id": "vv_p45",
+    "category": "mala",
+    "slug": "5-mukhi-rudraksha-kantha-mala-108-1-beads",
+    "name": "5 Mukhi Rudraksha Kantha mala 108+1 Beads",
+    "price": 2500,
+    "originalPrice": 4000,
+    "discountPercent": 38,
+    "rating": 4.8,
+    "tags": [
+      "mala",
+      "authentic",
+      "vedic"
+    ],
+    "image": "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/1.jpg",
+    "imageAlt": "5 Mukhi Rudraksha Kantha mala 108+1 Beads - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/1.jpg",
+      "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/2.jpg"
+    ],
+    "certificate": "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/2.jpg",
+    "short": "Embrace Tradition, Devotion & Mindful Living",
+    "description": "Discover the traditional significance of the 5 Mukhi Rudraksha Kantha Mala from Ved Vigyan. Featuring textured Rudraksha beads, red thread detailing and a yellow tassel, this mala reflects the rich heritage of Indian spiritual traditions.\n\nThe five-faced Rudraksha is traditionally associated with Lord Shiva and is commonly used during prayer, meditation and mantra chanting. Incorporate this spiritual accessory into your personal devotional practice or gift it to someone who appreciates traditional spiritual items.\n\nCare Instructions: Keep dry, avoid harsh chemicals and perfumes, and store in a clean, dry place.",
+    "bullets": [
+      "Traditional 5 Mukhi Rudraksha bead design",
+      "Associated with Lord Shiva in Hindu tradition",
+      "Suitable for prayer, meditation and mantra chanting",
+      "Distinctive red thread detailing with yellow tassel",
+      "A thoughtful spiritual gift"
+    ],
+    "seoTitle": "5 Mukhi Rudraksha Kantha mala 108+1 Beads - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original 5 Mukhi Rudraksha Kantha mala 108+1 Beads online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/5-mukhi-rudraksha-kantha-mala-108-1-beads",
+    "inStock": true,
+    "createdAt": "2026-10-28T11:39:39.206Z"
   }
 ]
 };
