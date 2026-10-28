@@ -2,7 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 
-const ROOT_DIR = process.cwd();
+const ROOT_DIR = process.cwd().endsWith('backend') 
+  ? path.resolve(process.cwd(), '..') 
+  : path.resolve(__dirname, '..', '..', '..');
 const PRODUCTS_JSON_PATH = path.join(ROOT_DIR, 'backend', 'data', 'products.json');
 const DATA_JS_PATH = path.join(ROOT_DIR, 'frontend', 'public', 'js', 'data.js');
 const PRODUCTS_HTML_DIR = path.join(ROOT_DIR, 'frontend', 'products');
