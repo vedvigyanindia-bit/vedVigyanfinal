@@ -378,7 +378,12 @@
                 
                 <div class="form-group">
                   <label>Product Name / Title *</label>
-                  <input type="text" class="form-control" id="pName" placeholder="e.g. 8 Mukhi Nepali Rudraksha (Ashta Mukhi)" required oninput="updateLivePreview()" />
+                  <input type="text" class="form-control" id="pName" placeholder="e.g. 5 Mukhi Rudraksha Kantha Mala" required oninput="handleNameInput()" />
+                </div>
+
+                <div class="form-group">
+                  <label>Product URL Slug * <small style="color:#888;">(Auto-generated for clean link e.g. /products/your-slug)</small></label>
+                  <input type="text" class="form-control" id="pSlug" placeholder="e.g. 5-mukhi-rudraksha-kantha-mala" required />
                 </div>
 
                 <div class="form-row-2">
@@ -640,7 +645,7 @@
                 <div class="prod-title">${p.name}</div>
                 <div class="prod-meta">
                   <span>ID: <code>${p.id}</code></span>
-                  <span>Slug: <code>${p.slug || p.id}</code></span>
+                  <span>Slug: <code>${p.slug || slugify(p.name) || p.id}</code></span>
                 </div>
               </td>
               <td>
@@ -661,7 +666,7 @@
                 ${stockBadge}
               </td>
               <td style="text-align: right; white-space:nowrap;">
-                <a href="${p.url || `/products/${p.slug || p.id}`}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-block;" title="View Live Page">👁️ View</a>
+                <a href="${p.url || `/products/${p.slug || slugify(p.name) || p.id}`}" target="_blank" class="btn-secondary" style="text-decoration:none; display:inline-block;" title="View Live Page">👁️ View</a>
                 <button class="btn-secondary" style="margin-left:4px;" onclick="openEditProductModal('${p.id}')" title="Edit Product">✏️ Edit</button>
                 <button class="btn-danger" style="margin-left:4px;" onclick="deleteProduct('${p.id}', '${p.name.replace(/'/g, "\\'")}')" title="Delete Product">🗑️</button>
               </td>
@@ -737,11 +742,33 @@
 
       // --- ADD & EDIT PRODUCT MODAL HANDLERS ---
 
+      let isManualSlug = false;
+
+      function slugify(text) {
+        return String(text || "")
+          .toLowerCase()
+          .trim()
+          .replace(/[()|]/g, "")
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+      }
+
+      function handleNameInput() {
+        const name = document.getElementById("pName").value;
+        const slugInput = document.getElementById("pSlug");
+        if (!isManualSlug && slugInput) {
+          slugInput.value = slugify(name);
+        }
+        updateLivePreview();
+      }
+
       function openAddProductModal() {
         document.getElementById("modalTitle").textContent = "✨ Add New Product to Store";
         document.getElementById("saveProductBtn").textContent = "🚀 Publish Product Live";
         document.getElementById("editProductId").value = "";
         document.getElementById("productForm").reset();
+        isManualSlug = false;
+        document.getElementById("pSlug").value = "";
         pendingImages = [];
         document.getElementById("imagePreviewsContainer").innerHTML = "";
         document.getElementById("pCategory").value = "rudraksha";
@@ -760,6 +787,8 @@
         document.getElementById("editProductId").value = product.id;
 
         document.getElementById("pName").value = product.name || "";
+        isManualSlug = true;
+        document.getElementById("pSlug").value = product.slug || slugify(product.name) || "";
         document.getElementById("pCategory").value = (product.category || "rudraksha").toLowerCase();
         document.getElementById("pPrice").value = product.price || "";
         document.getElementById("pOriginalPrice").value = product.originalPrice || "";
@@ -893,9 +922,15 @@
           const editId = document.getElementById("editProductId").value;
           const isEdit = Boolean(editId);
 
+          const name = document.getElementById("pName").value.trim();
+          const rawSlug = document.getElementById("pSlug").value.trim();
+          const slug = slugify(rawSlug || name);
+
           const payload = {
             id: editId || undefined,
-            name: document.getElementById("pName").value.trim(),
+            name: name,
+            slug: slug,
+            url: `/products/${slug}`,
             category: document.getElementById("pCategory").value,
             price: Number(document.getElementById("pPrice").value),
             originalPrice: Number(document.getElementById("pOriginalPrice").value) || undefined,
@@ -931,7 +966,9 @@
               const idx = currentProducts.findIndex(p => p.id === payload.id);
               if (idx !== -1) currentProducts[idx] = { ...currentProducts[idx], ...payload };
             } else {
-              payload.id = `vv_p${currentProducts.length + 1}`;
+              payload.id = `vv_p${String(currentProducts.length + 1).padStart(2, '0')}`;
+              payload.slug = payload.slug || slugify(payload.name);
+              payload.url = `/products/${payload.slug}`;
               payload.image = (payload.uploadedImages && payload.uploadedImages[0]) || '/public/images/logo.jpg';
               currentProducts.unshift(payload);
             }
