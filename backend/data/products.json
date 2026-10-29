@@ -1671,5 +1671,38 @@
     "url": "/products/tiger-eye-bracelet-for-mens",
     "inStock": true,
     "createdAt": "2026-10-29T10:10:49.564Z"
+  },
+  {
+    "id": "vv_p47",
+    "category": "rudraksha",
+    "slug": "live-auto-test-rudraksha",
+    "name": "Live Auto Test Rudraksha",
+    "price": 1299,
+    "originalPrice": 2499,
+    "discountPercent": 48,
+    "rating": 4.8,
+    "tags": [
+      "rudraksha",
+      "authentic",
+      "vedic"
+    ],
+    "image": "/public/images/logo.jpg",
+    "imageAlt": "Live Auto Test Rudraksha - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/public/images/logo.jpg"
+    ],
+    "certificate": "/public/images/logo.jpg",
+    "short": "Automated test product verifying instant live publication",
+    "description": "This authentic energized test product was created live to verify automated catalog sync and static page generation without manual developer intervention.",
+    "bullets": [
+      "100% Authentic Vedic certified",
+      "Energized and verified automatically",
+      "Fast shipping across India"
+    ],
+    "seoTitle": "Live Auto Test Rudraksha - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Live Auto Test Rudraksha online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/live-auto-test-rudraksha",
+    "inStock": true,
+    "createdAt": "2026-10-29T11:36:53.705Z"
   }
 ]
