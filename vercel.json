@@ -10,6 +10,14 @@
       "destination": "/api/admin/products"
     },
     {
+      "source": "/api/admin/shiprocket-retry",
+      "destination": "/api/admin/orders"
+    },
+    {
+      "source": "/api/blog/post",
+      "destination": "/api/blog/posts"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
@@ -52,9 +60,6 @@
   ],
   "functions": {
     "api/admin/orders.js": {
-      "includeFiles": "backend/src/**"
-    },
-    "api/admin/shiprocket-retry.js": {
       "includeFiles": "backend/src/**"
     },
     "api/payments/**": {
