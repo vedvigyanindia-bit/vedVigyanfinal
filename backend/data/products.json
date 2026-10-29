@@ -1400,7 +1400,8 @@
     "imageAlt": "Natural Tiger Eye Protection Bracelet - Authentic Ved Vigyan Original Product",
     "images": [
       "/product/Ved vigyan products/Tiger Eye Loose Big/1.webp",
-      "/product/Ved vigyan products/Tiger Eye Loose Big/2.webp"
+      "/product/Ved vigyan products/Tiger Eye Loose Big/2.webp",
+      "/public/images/products/tiger-eye-loose-big/3.jpg"
     ],
     "certificate": "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp",
     "short": "Natural Tiger Eye gemstone bracelet for courage, grounding & shielding negative energy.",
@@ -1415,7 +1416,9 @@
     "url": "/products/tiger-eye-loose-big",
     "discountPercent": 31,
     "originalPrice": 1013,
-    "rating": 4.8
+    "rating": 4.8,
+    "inStock": true,
+    "updatedAt": "2026-10-29T06:03:21.286Z"
   },
   {
     "id": "vv_p40",
@@ -1611,7 +1614,9 @@
     "imageAlt": "5 Mukhi Rudraksha Kantha mala 108+1 Beads - Authentic Ved Vigyan Original Product",
     "images": [
       "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/1.jpg",
-      "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/2.jpg"
+      "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/2.jpg",
+      "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/3.jpg",
+      "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/4.jpg"
     ],
     "certificate": "/public/images/products/5-mukhi-rudraksha-kantha-mala-108-1-beads/2.jpg",
     "short": "Embrace Tradition, Devotion & Mindful Living",
@@ -1627,6 +1632,7 @@
     "seoDescription": "Shop original 5 Mukhi Rudraksha Kantha mala 108+1 Beads online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
     "url": "/products/5-mukhi-rudraksha-kantha-mala-108-1-beads",
     "inStock": true,
-    "createdAt": "2026-10-28T11:39:39.206Z"
+    "createdAt": "2026-10-28T11:39:39.206Z",
+    "updatedAt": "2026-10-29T06:04:02.344Z"
   }
 ]
