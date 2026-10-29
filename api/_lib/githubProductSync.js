@@ -195,9 +195,85 @@ async function commitFilesToRepo({ commitMessage, filesToUpdate = [], filesToDel
   };
 }
 
+async function getProductDetailTemplate() {
+  try {
+    const fs = require('fs');
+    const path = require('path');
+    const localPath = path.join(process.cwd(), 'frontend', 'product', 'detail.html');
+    if (fs.existsSync(localPath)) {
+      return fs.readFileSync(localPath, 'utf8');
+    }
+  } catch (e) {
+    // fallback to GitHub fetch
+  }
+  const file = await getFileFromRepo('frontend/product/detail.html');
+  if (file && file.content) return file.content;
+  return null;
+}
+
+function buildProductHtml(product, template) {
+  if (!template || !product) return "";
+  const slug = product.slug || product.id;
+  const pageTitle = product.seoTitle || `${product.name} | Ved Vigyan`;
+  const pageDesc = (product.seoDescription || product.short || product.name || '').replace(/"/g, '&quot;');
+  const canonicalUrl = `https://www.vedvigyan.in/products/${slug}.html`;
+
+  let content = template;
+  content = content.replace(/<title>.*?<\/title>/i, `<title>${pageTitle}</title>`);
+  content = content.replace(
+    /<meta\s+name=["']description["']\s+content=["'][^"']*["']\s*\/?>/i,
+    `<meta name="description" content="${pageDesc}" />`
+  );
+  content = content.replace(
+    /<link\s+rel=["']canonical["']\s+href=["'][^"']*["']\s*\/?>/i,
+    `<link rel="canonical" href="${canonicalUrl}" />`
+  );
+
+  const prodUrl = `https://www.vedvigyan.in/products/${slug}.html`;
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': `${prodUrl}#product`,
+    name: product.name || 'Ved Vigyan Spiritual Product',
+    description: product.description || product.short || product.name || '',
+    image: Array.isArray(product.images) && product.images.length > 0
+      ? product.images.map(img => img.startsWith('http') ? img : `https://www.vedvigyan.in${img.startsWith('/') ? img : '/' + img}`)
+      : [`https://www.vedvigyan.in${product.image || '/public/images/logo.jpg'}`],
+    brand: { '@type': 'Brand', name: 'Ved Vigyan' },
+    sku: product.sku || product.id || `VV-${slug}`,
+    mpn: product.sku || product.id || `VV-${slug}`,
+    category: product.category || 'Spiritual',
+    offers: {
+      '@type': 'Offer',
+      url: prodUrl,
+      price: product.price || 0,
+      priceCurrency: 'INR',
+      availability: product.inStock !== false ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', name: 'Ved Vigyan' }
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: Number(product.rating) || 4.8,
+      reviewCount: 78,
+      bestRating: '5',
+      worstRating: '1'
+    }
+  };
+
+  const schemaTag = `  <script id="productSchema" type="application/ld+json">\n${JSON.stringify(schema, null, 2)}\n  </script>\n</head>`;
+  content = content.replace(/<script\s+id=["']productSchema["'][^>]*>[\s\S]*?<\/script>/gi, '');
+  content = content.replace(/<\/head>/i, schemaTag);
+
+  return content;
+}
+
 module.exports = {
   getAllProducts,
   buildDataJs,
   commitFilesToRepo,
-  getFileFromRepo
+  getFileFromRepo,
+  getProductDetailTemplate,
+  buildProductHtml
 };
+

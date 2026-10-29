@@ -1671,37 +1671,5 @@
     "url": "/products/tiger-eye-bracelet-for-mens",
     "inStock": true,
     "createdAt": "2026-10-29T10:10:49.564Z"
-  },
-  {
-    "id": "vv_p47",
-    "category": "rudraksha",
-    "slug": "test-automatic-product",
-    "name": "Test Automatic Product",
-    "price": 1111,
-    "originalPrice": 1999,
-    "discountPercent": 44,
-    "rating": 4.8,
-    "tags": [
-      "rudraksha",
-      "authentic",
-      "vedic"
-    ],
-    "image": "/public/images/logo.jpg",
-    "imageAlt": "Test Automatic Product - Authentic Ved Vigyan Original Product",
-    "images": [
-      "/public/images/logo.jpg"
-    ],
-    "certificate": "/public/images/logo.jpg",
-    "short": "Test product for automated client sync validation",
-    "description": "This is a test product created to verify live automated deployment.",
-    "bullets": [
-      "Test bullet 1",
-      "Test bullet 2"
-    ],
-    "seoTitle": "Test Automatic Product - Buy Original Online | Ved Vigyan",
-    "seoDescription": "Shop original Test Automatic Product online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/products/test-automatic-product",
-    "inStock": true,
-    "createdAt": "2026-10-29T10:54:51.683Z"
   }
 ]

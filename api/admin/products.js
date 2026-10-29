@@ -1,4 +1,10 @@
-const { getAllProducts, buildDataJs, commitFilesToRepo } = require("../_lib/githubProductSync");
+const {
+  getAllProducts,
+  buildDataJs,
+  commitFilesToRepo,
+  getProductDetailTemplate,
+  buildProductHtml
+} = require("../_lib/githubProductSync");
 
 module.exports = async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -81,13 +87,18 @@ module.exports = async function handler(req, res) {
       if (index === -1) return res.status(404).json({ success: false, error: `Product "${id}" not found` });
 
       const removedProduct = products.splice(index, 1)[0];
+      const filesToDelete = [];
+      if (removedProduct.slug) {
+        filesToDelete.push(`frontend/products/${removedProduct.slug}.html`);
+      }
 
       const commitResult = await commitFilesToRepo({
         commitMessage: `chore(admin): delete product "${removedProduct.name}" (${id})`,
         filesToUpdate: [
           { path: "backend/data/products.json", content: JSON.stringify(products, null, 2) },
           { path: "frontend/public/js/data.js", content: buildDataJs(products) }
-        ]
+        ],
+        filesToDelete
       });
 
       return res.status(200).json({
@@ -182,9 +193,24 @@ module.exports = async function handler(req, res) {
       filesToUpdate.push({ path: "backend/data/products.json", content: JSON.stringify(products, null, 2) });
       filesToUpdate.push({ path: "frontend/public/js/data.js", content: buildDataJs(products) });
 
+      const filesToDelete = [];
+      try {
+        const template = await getProductDetailTemplate();
+        if (template) {
+          const productHtml = buildProductHtml(updatedProduct, template);
+          filesToUpdate.push({ path: `frontend/products/${slug}.html`, content: productHtml });
+          if (currentProduct.slug && currentProduct.slug !== slug) {
+            filesToDelete.push(`frontend/products/${currentProduct.slug}.html`);
+          }
+        }
+      } catch (tplErr) {
+        console.warn("[Admin Product Update] Failed to update static product HTML:", tplErr.message);
+      }
+
       const commitResult = await commitFilesToRepo({
         commitMessage: `chore(admin): update product "${name}" (${id})`,
-        filesToUpdate
+        filesToUpdate,
+        filesToDelete
       });
 
       return res.status(200).json({
@@ -291,6 +317,16 @@ module.exports = async function handler(req, res) {
     products.push(newProduct);
     filesToUpdate.push({ path: "backend/data/products.json", content: JSON.stringify(products, null, 2) });
     filesToUpdate.push({ path: "frontend/public/js/data.js", content: buildDataJs(products) });
+
+    try {
+      const template = await getProductDetailTemplate();
+      if (template) {
+        const productHtml = buildProductHtml(newProduct, template);
+        filesToUpdate.push({ path: `frontend/products/${slug}.html`, content: productHtml });
+      }
+    } catch (tplErr) {
+      console.warn("[Admin Product Create] Failed to generate static product HTML:", tplErr.message);
+    }
 
     const commitResult = await commitFilesToRepo({
       commitMessage: `feat(admin): add product "${name}" (${id}) via live admin panel`,

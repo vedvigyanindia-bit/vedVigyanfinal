@@ -27,11 +27,11 @@
     },
     {
       "source": "/products",
-      "destination": "/frontend/products/index"
+      "destination": "/frontend/shop.html"
     },
     {
       "source": "/products/(.*)",
-      "destination": "/frontend/products/index"
+      "destination": "/frontend/products/index.html"
     },
     {
       "source": "/blog",
