@@ -197,6 +197,7 @@ window.VedVigyanLux = window.VedVigyanLux || {};
         </form>
       </div>
     </div>
+    <div class="lux-mobile-backdrop" id="mobileMenuBackdrop" aria-hidden="true"></div>
     <div class="lux-mobile-menu" id="mobileMenu" aria-hidden="true">
       <div class="lux-mobile-header">
         <div style="display:flex; align-items:center; gap:10px;">
@@ -450,16 +451,27 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     });
 
     const mobileMenu = document.getElementById("mobileMenu");
-    document.getElementById("mobileMenuBtn")?.addEventListener("click", () => {
+    const mobileBackdrop = document.getElementById("mobileMenuBackdrop");
+
+    const openMobileMenu = () => {
       mobileMenu?.classList.add("open");
       mobileMenu?.setAttribute("aria-hidden", "false");
+      mobileBackdrop?.classList.add("open");
+      mobileBackdrop?.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
-    });
-    document.getElementById("mobileMenuClose")?.addEventListener("click", () => {
+    };
+
+    const closeMobileMenu = () => {
       mobileMenu?.classList.remove("open");
       mobileMenu?.setAttribute("aria-hidden", "true");
+      mobileBackdrop?.classList.remove("open");
+      mobileBackdrop?.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-    });
+    };
+
+    document.getElementById("mobileMenuBtn")?.addEventListener("click", openMobileMenu);
+    document.getElementById("mobileMenuClose")?.addEventListener("click", closeMobileMenu);
+    mobileBackdrop?.addEventListener("click", closeMobileMenu);
 
     const path = window.location.pathname.replace(/\/+$/, "") || "/index.html";
     const isHome = path === "" || path === "/" || path === "/index.html";
