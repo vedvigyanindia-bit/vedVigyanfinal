@@ -233,7 +233,7 @@
     const btn = document.getElementById("rashiViewAllBtn");
     if (!btn) return;
     const activeZodiac = ZODIACS[activeIndex];
-    btn.textContent = `View All ${activeZodiac.name} Bracelets`;
+    btn.textContent = "View All Rashi Bracelets";
     btn.href = "/collections/zodiac-bracelet";
   }
 

@@ -145,19 +145,32 @@ window.VedVigyanLux = window.VedVigyanLux || {};
           </div>
           <div class="lux-mega-wrap" data-mega="shopall">
             <button class="lux-mega-trigger" type="button" aria-expanded="false">Shop All ${NAV_CHEVRON}</button>
-            <div class="lux-mega-panel">
-              <div class="lux-mega-grid">
-                <a class="lux-mega-item" href="/shop.html">
-                  <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/5 Mukhi Rudraksh/1.webp" alt="Complete Shop" loading="lazy" /></div>
-                  <b>Complete Shop</b><span>Explore all 41 sacred items</span>
+            <div class="vv-card-dropdown">
+              <div class="vv-card-dropdown__grid">
+                <a class="vv-card-item" href="/shop.html">
+                  <div class="vv-card-item__img"><img src="/public/images/banner/all-products.webp" alt="All Products" loading="lazy" /></div>
+                  <div class="vv-card-item__title">All Products</div>
+                  <div class="vv-card-item__sub">Explore all items</div>
                 </a>
-                <a class="lux-mega-item" href="/collections/zodiac-bracelet">
-                  <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/Mesh (मेष – Aries) Braclet/1.webp" alt="Zodiac Rashi" loading="lazy" /></div>
-                  <b>Zodiac Rashi</b><span>Custom Rashi gemstones</span>
+                <a class="vv-card-item" href="/rudraksha.html">
+                  <div class="vv-card-item__img"><img src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="All Rudraksha" loading="lazy" /></div>
+                  <div class="vv-card-item__title">All Rudraksha</div>
+                  <div class="vv-card-item__sub">1 to 14 Mukhi beads</div>
                 </a>
-                <a class="lux-mega-item" href="/rudraksha.html">
-                  <div class="lux-mega-thumb"><img src="/product/Ved vigyan products/7 Mukhi Rudraksh/1.webp" alt="Rudraksha Beads" loading="lazy" /></div>
-                  <b>Rudraksha Beads</b><span>1 to 12 Mukhi collections</span>
+                <a class="vv-card-item" href="/mala.html">
+                  <div class="vv-card-item__img"><img src="/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/1.webp" alt="All Malas" loading="lazy" /></div>
+                  <div class="vv-card-item__title">All Malas</div>
+                  <div class="vv-card-item__sub">Sacred 108 jaap malas</div>
+                </a>
+                <a class="vv-card-item" href="/collections/zodiac-bracelet">
+                  <div class="vv-card-item__img"><img src="/product/Ved vigyan products/Amethyst Bracelet/1.webp" alt="All Bracelets" loading="lazy" /></div>
+                  <div class="vv-card-item__title">All Bracelets</div>
+                  <div class="vv-card-item__sub">Rudraksha &amp; Crystals</div>
+                </a>
+                <a class="vv-card-item" href="/gem-stone.html">
+                  <div class="vv-card-item__img"><img src="/product/Ved vigyan products/7 Chakra Tree/1.webp" alt="All Crystals" loading="lazy" /></div>
+                  <div class="vv-card-item__title">All Crystals</div>
+                  <div class="vv-card-item__sub">Vastu trees &amp; gems</div>
                 </a>
               </div>
             </div>
