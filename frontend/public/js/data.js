@@ -46,7 +46,7 @@ window.VED_VIGYAN_DATA = {
   "categories": [
   {
     "id": "all",
-    "label": "All Products (48)"
+    "label": "All Products (47)"
   },
   {
     "id": "rudraksha",
@@ -54,7 +54,7 @@ window.VED_VIGYAN_DATA = {
   },
   {
     "id": "mala",
-    "label": "Jaap Malas & Sacred Strings (11)"
+    "label": "Jaap Malas & Sacred Strings (10)"
   },
   {
     "id": "gemstone-tree",
@@ -1775,37 +1775,6 @@ window.VED_VIGYAN_DATA = {
     "url": "/products/live-auto-test-rudraksha",
     "inStock": true,
     "createdAt": "2026-10-29T11:36:53.705Z"
-  },
-  {
-    "id": "vv_p48",
-    "category": "mala",
-    "slug": "haldi-mala-for-prosperity",
-    "name": "Haldi mala for prosperity",
-    "price": 1500,
-    "originalPrice": 2000,
-    "discountPercent": 25,
-    "rating": 4.8,
-    "tags": [
-      "mala",
-      "authentic",
-      "vedic"
-    ],
-    "image": "/public/images/products/haldi-mala-for-prosperity/1.jpg",
-    "imageAlt": "Haldi mala for prosperity - Authentic Ved Vigyan Original Product",
-    "images": [
-      "/public/images/products/haldi-mala-for-prosperity/1.jpg"
-    ],
-    "certificate": "/public/images/products/haldi-mala-for-prosperity/1.jpg",
-    "short": "Bring positivity and devotion into your daily spiritual practice with the Original Haldi Mala.",
-    "description": "Best for prosperity",
-    "bullets": [
-      "100% authentic"
-    ],
-    "seoTitle": "Haldi mala for prosperity - Buy Original Online | Ved Vigyan",
-    "seoDescription": "Shop original Haldi mala for prosperity online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
-    "url": "/products/haldi-mala-for-prosperity",
-    "inStock": true,
-    "createdAt": "2026-10-29T11:48:37.838Z"
   }
 ]
 };
