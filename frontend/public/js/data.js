@@ -31,26 +31,26 @@ function deriveMerchandising(products) {
 window.VED_VIGYAN_DATA = {
   "store": {
   "name": "Ved Vigyan",
+  "tagline": "Divine Wisdom & Sacred Jewels",
   "phone": "+91 7900811101",
-  "email": "Vedvigyanindia@gmail.com",
-  "address": "Dehradun, Uttarakhand, India - 248002"
+  "email": "vedvigyanindia@gmail.com",
+  "address": "Dehradun, Uttarakhand, India",
+  "instagram": "https://www.instagram.com/",
+  "youtube": "https://youtu.be/o9dREd5ZPhw?si=X2tbKalptHS0wmhD",
+  "shipping": {
+    "freeShippingThreshold": 999,
+    "standardShippingFee": 99,
+    "expressShippingFee": 149
+  }
 },
   "categories": [
   {
     "id": "all",
-    "label": "All Products (45)"
+    "label": "All Products (46)"
   },
   {
     "id": "rudraksha",
-    "label": "Rudraksha Beads (14)"
-  },
-  {
-    "id": "zodiac-bracelet",
-    "label": "Zodiac Rashi Bracelets (11)"
-  },
-  {
-    "id": "crystal-bracelet",
-    "label": "Gemstone & Crystals (8)"
+    "label": "Original Nepal Rudraksha (14)"
   },
   {
     "id": "mala",
@@ -58,11 +58,15 @@ window.VED_VIGYAN_DATA = {
   },
   {
     "id": "gemstone-tree",
-    "label": "Crystal & Gemstone Trees (2)"
+    "label": "Vastu Gemstone Trees (2)"
   },
   {
-    "id": "puja-items",
-    "label": "Sacred Puja Essentials"
+    "id": "crystal-bracelet",
+    "label": "Healing Crystal Bracelets (9)"
+  },
+  {
+    "id": "zodiac-bracelet",
+    "label": "Vedic Rashi (Zodiac) Bracelets (11)"
   }
 ],
   "products": [
@@ -1701,6 +1705,43 @@ window.VED_VIGYAN_DATA = {
     "inStock": true,
     "createdAt": "2026-10-28T11:39:39.206Z",
     "updatedAt": "2026-10-29T06:04:02.344Z"
+  },
+  {
+    "id": "vv_p46",
+    "category": "crystal-bracelet",
+    "slug": "tiger-eye-bracelet-for-mens",
+    "name": "Tiger eye bracelet for mens",
+    "price": 699,
+    "originalPrice": 1099,
+    "discountPercent": 36,
+    "rating": 4.8,
+    "tags": [
+      "crystal-bracelet",
+      "authentic",
+      "vedic",
+      "tiger-eye",
+      "mens"
+    ],
+    "image": "/product/Ved vigyan products/Tiger Eye Loose Big/1.webp",
+    "imageAlt": "Tiger eye bracelet for mens - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/product/Ved vigyan products/Tiger Eye Loose Big/1.webp",
+      "/product/Ved vigyan products/Tiger Eye Loose Big/2.webp"
+    ],
+    "certificate": "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp",
+    "short": "Authentic Natural Tiger Eye Bracelet for Men. Enhances Courage, Focus, and Positive Energy.",
+    "description": "The Tiger Eye Bracelet for Men is handcrafted with natural golden-brown chatoyant beads, revered in Vedic traditions for promoting mental clarity, grounding, and inner confidence.\n\nTraditionally associated with the Solar Plexus (Manipura) Chakra, Tiger Eye provides an aura of energetic protection against negativity while instilling courage, resilience, and calm focus throughout daily life and meditation.\n\n*Care Instructions:* Store in a clean, dry place. Avoid direct contact with harsh perfumes and chemicals.",
+    "bullets": [
+      "100% Authentic Natural Tiger Eye Gemstone Beads",
+      "Handcrafted elastic stretch bracelet for comfortable daily wear for men",
+      "Energized according to traditional Vedic rituals for protection & focus",
+      "Includes authenticity certificate and sacred packaging"
+    ],
+    "seoTitle": "Tiger eye bracelet for mens - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Tiger eye bracelet for mens online at Ved Vigyan. Energized crystal bracelet for confidence, courage, and divine protection. Fast delivery across India.",
+    "url": "/products/tiger-eye-bracelet-for-mens",
+    "inStock": true,
+    "createdAt": "2026-10-29T10:10:49.564Z"
   }
 ]
 };
