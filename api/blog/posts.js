@@ -92,6 +92,7 @@ function formatPost(post) {
   return {
     id: post.id,
     slug: post.slug,
+    link: `/blog/${post.slug}`,
     title: decodeHtmlEntities(post.title?.rendered || ""),
     excerpt: cleanExcerpt ? cleanExcerpt.slice(0, 160) + (cleanExcerpt.length > 160 ? "…" : "") : "",
     featuredImage,
@@ -108,6 +109,7 @@ function formatPost(post) {
       name: author.name || "Ved Vigyan",
       avatar: author.avatar_urls ? author.avatar_urls["96"] : null
     },
+    authorName: author.name || "Ved Vigyan",
     readTime: calculateReadTime(post.content?.rendered || "")
   };
 }
@@ -172,6 +174,7 @@ module.exports = async function handler(req, res) {
         post: {
           id: post.id,
           slug: post.slug,
+          link: `/blog/${post.slug}`,
           title: cleanTitle,
           content: rawContent,
           excerpt: cleanExcerpt,
@@ -182,6 +185,7 @@ module.exports = async function handler(req, res) {
           categories,
           category: categories[0]?.name || "Spiritual Wisdom",
           author: { name: author.name || "Ved Vigyan Editorial", avatar: author.avatar_urls ? author.avatar_urls["96"] : null },
+          authorName: author.name || "Ved Vigyan Editorial",
           readTime: calculateReadTime(rawContent),
           seoTitle: `${cleanTitle} | Ved Vigyan`,
           seoDescription: cleanExcerpt || `Read ${cleanTitle} on Ved Vigyan.`,

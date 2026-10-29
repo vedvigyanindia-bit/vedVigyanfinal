@@ -248,40 +248,52 @@
       }
 
       const cardsHtml = posts
-        .map(
-          (p) => `
+        .map((p) => {
+          const postLink = p.link || (p.slug ? `/blog/${p.slug}` : (p.id ? `/blog/${p.id}` : "#"));
+          const authorName = (typeof p.author === "object" && p.author)
+            ? (p.author.name || "Ved Vigyan")
+            : (p.author || "Ved Vigyan");
+          const categoryName = (typeof p.category === "object" && p.category)
+            ? (p.category.name || "Blog")
+            : (p.category || "Blog");
+          const featuredImg = p.featuredImage || "/public/images/logo.jpg";
+          const featuredAlt = p.featuredImageAlt || p.title || "Ved Vigyan Sacred Journal";
+          const dateStr = p.dateFormatted || (p.date ? new Date(p.date).toLocaleDateString("en-IN", { year: "numeric", month: "short", day: "2-digit" }) : "");
+          const readTimeStr = p.readTime || 5;
+
+          return `
         <article class="vv-post-card">
-          <a href="${p.link}" class="vv-card-thumb-wrap" aria-label="${p.title}">
-            <img src="${p.featuredImage}" alt="${p.featuredImageAlt}" class="vv-card-thumb" loading="lazy" />
-            <span class="vv-card-cat-badge">${p.category}</span>
+          <a href="${postLink}" class="vv-card-thumb-wrap" aria-label="${p.title}">
+            <img src="${featuredImg}" alt="${featuredAlt}" class="vv-card-thumb" loading="lazy" />
+            <span class="vv-card-cat-badge">${categoryName}</span>
           </a>
           <div class="vv-card-body">
             <div class="vv-card-meta">
               <span class="vv-card-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                ${p.dateFormatted}
+                ${dateStr}
               </span>
               <span>•</span>
               <span class="vv-card-meta-item">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                ${p.readTime} min read
+                ${readTimeStr} min read
               </span>
             </div>
-            <a href="${p.link}" style="text-decoration:none; color:inherit;">
+            <a href="${postLink}" style="text-decoration:none; color:inherit;">
               <h2 class="vv-card-title">${p.title}</h2>
             </a>
-            <p class="vv-card-excerpt">${p.excerpt}</p>
+            <p class="vv-card-excerpt">${p.excerpt || ""}</p>
             <div class="vv-card-footer">
-              <span style="font-size:12px; color:#888;">By ${p.author}</span>
-              <a href="${p.link}" class="vv-card-read-link">
+              <span style="font-size:12px; color:#888;">By ${authorName}</span>
+              <a href="${postLink}" class="vv-card-read-link">
                 Read Article
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
             </div>
           </div>
         </article>
-      `
-        )
+      `;
+        })
         .join("");
 
       if (append) {
@@ -507,28 +519,32 @@
       if (!relatedPosts || !relatedPosts.length) return "";
 
       const cardsHtml = relatedPosts
-        .map(
-          (rp) => `
+        .map((rp) => {
+          const rpLink = rp.link || (rp.slug ? `/blog/${rp.slug}` : (rp.id ? `/blog/${rp.id}` : "#"));
+          const rpCategory = (typeof rp.category === "object" && rp.category)
+            ? (rp.category.name || "Blog")
+            : (rp.category || "Blog");
+          return `
         <article class="vv-post-card">
-          <a href="/blog/${rp.slug}" class="vv-card-thumb-wrap" aria-label="${rp.title}">
-            <img src="${rp.featuredImage}" alt="${rp.title}" class="vv-card-thumb" loading="lazy" />
-            <span class="vv-card-cat-badge">${rp.category}</span>
+          <a href="${rpLink}" class="vv-card-thumb-wrap" aria-label="${rp.title}">
+            <img src="${rp.featuredImage || "/public/images/logo.jpg"}" alt="${rp.title}" class="vv-card-thumb" loading="lazy" />
+            <span class="vv-card-cat-badge">${rpCategory}</span>
           </a>
           <div class="vv-card-body">
             <div class="vv-card-meta">
-              <span class="vv-card-meta-item">${rp.dateFormatted}</span>
+              <span class="vv-card-meta-item">${rp.dateFormatted || ""}</span>
             </div>
-            <a href="/blog/${rp.slug}" style="text-decoration:none; color:inherit;">
+            <a href="${rpLink}" style="text-decoration:none; color:inherit;">
               <h3 class="vv-card-title" style="font-size:17px;">${rp.title}</h3>
             </a>
-            <p class="vv-card-excerpt" style="-webkit-line-clamp:2;">${rp.excerpt}</p>
+            <p class="vv-card-excerpt" style="-webkit-line-clamp:2;">${rp.excerpt || ""}</p>
             <div class="vv-card-footer">
-              <a href="/blog/${rp.slug}" class="vv-card-read-link">Read Article &rarr;</a>
+              <a href="${rpLink}" class="vv-card-read-link">Read Article &rarr;</a>
             </div>
           </div>
         </article>
-      `
-        )
+      `;
+        })
         .join("");
 
       return `
