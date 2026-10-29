@@ -942,6 +942,7 @@
           };
 
           let savedSuccessfully = false;
+          let errorMessage = "";
           try {
             const endpoint = isEdit ? "/api/admin/products/update" : "/api/admin/products";
             const res = await fetch(endpoint, {
@@ -949,32 +950,22 @@
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(payload)
             });
-            if (res.ok) {
-              const data = await res.json();
-              if (data.success) savedSuccessfully = true;
+            const data = await res.json().catch(() => ({}));
+            if (res.ok && data.success) {
+              savedSuccessfully = true;
+            } else {
+              errorMessage = data.error || `Server responded with status ${res.status}`;
             }
           } catch (apiErr) {
-            console.warn("API not reachable, using preview mode:", apiErr);
+            console.warn("API not reachable:", apiErr);
+            errorMessage = apiErr.message;
           }
 
           if (savedSuccessfully) {
-            showToast(isEdit ? `✓ Product "${payload.name}" updated successfully!` : `✓ New product "${payload.name}" published live!`);
-            fetchProducts();
+            showToast(isEdit ? `✓ "${payload.name}" updated! Deploying live in ~30s...` : `✓ "${payload.name}" published! Deploying live in ~30s...`);
+            setTimeout(() => fetchProducts(), 1000);
           } else {
-            // Update in-memory for live preview
-            if (isEdit) {
-              const idx = currentProducts.findIndex(p => p.id === payload.id);
-              if (idx !== -1) currentProducts[idx] = { ...currentProducts[idx], ...payload };
-            } else {
-              payload.id = `vv_p${String(currentProducts.length + 1).padStart(2, '0')}`;
-              payload.slug = payload.slug || slugify(payload.name);
-              payload.url = `/products/${payload.slug}`;
-              payload.image = (payload.uploadedImages && payload.uploadedImages[0]) || '/public/images/logo.jpg';
-              currentProducts.unshift(payload);
-            }
-            renderProducts(currentProducts);
-            updateProductStats(currentProducts);
-            showToast(`✓ Updated! (Preview mode — run 'npm start' locally to commit code files)`);
+            alert(`⚠️ Could not save product to cloud: ${errorMessage}`);
           }
 
           closeProductModal();
