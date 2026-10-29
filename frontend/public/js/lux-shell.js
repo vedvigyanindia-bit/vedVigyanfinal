@@ -366,9 +366,81 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     });
   };
 
+  function ensureSearchAndMobileMenu() {
+    if (!document.getElementById("searchModal")) {
+      const searchDiv = document.createElement("div");
+      searchDiv.className = "lux-search-modal";
+      searchDiv.id = "searchModal";
+      searchDiv.setAttribute("role", "dialog");
+      searchDiv.setAttribute("aria-label", "Search products");
+      searchDiv.setAttribute("aria-hidden", "true");
+      searchDiv.innerHTML = `
+        <button class="lux-search-close" id="searchClose" type="button" aria-label="Close search">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="lux-search-box">
+          <h2>Find Your Sacred Piece</h2>
+          <form class="lux-search-form" id="luxSearchForm" role="search">
+            <input type="search" id="luxSearchInput" placeholder="Search Rudraksha, Malas, Crystals..." autocomplete="off" />
+            <button class="lux-btn lux-btn-primary lux-btn-sm" type="submit">Search</button>
+          </form>
+        </div>
+      `;
+      document.body.appendChild(searchDiv);
+    }
+
+    let backdrop = document.getElementById("mobileMenuBackdrop");
+    if (!backdrop) {
+      backdrop = document.createElement("div");
+      backdrop.id = "mobileMenuBackdrop";
+      backdrop.className = "lux-mobile-backdrop";
+      backdrop.setAttribute("aria-hidden", "true");
+      document.body.appendChild(backdrop);
+    }
+
+    if (!document.getElementById("mobileMenu")) {
+      const menuDiv = document.createElement("div");
+      menuDiv.className = "lux-mobile-menu";
+      menuDiv.id = "mobileMenu";
+      menuDiv.setAttribute("aria-hidden", "true");
+      menuDiv.innerHTML = `
+        <div class="lux-mobile-header">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <img src="/public/images/logo.jpg" alt="Ved Vigyan" width="34" height="34" style="border-radius:50%; object-fit:cover; border:1px solid rgba(255,255,255,0.4);" />
+            <span class="lux-brand-name">Ved Vigyan</span>
+          </div>
+          <button class="lux-icon-btn" id="mobileMenuClose" type="button" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <nav class="lux-mobile-links">
+          <a href="/index.html">Home</a>
+          <a href="/rudraksha.html">Rudraksha</a>
+          <a href="/bracelet/rudraksha-bracelet.html">Bracelets</a>
+          <a href="/gem-stone.html">Healing Crystals</a>
+          <a href="/mala.html">Malas</a>
+          <a href="/collections/zodiac-bracelet">Zodiac Collection</a>
+          <a href="/shop.html">Shop All</a>
+          <a href="/blog.html">Blog</a>
+          <a href="/about.html">About Us</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      `;
+      document.body.appendChild(menuDiv);
+    }
+  }
+
+  Lux.ensureSearchAndMobileMenu = ensureSearchAndMobileMenu;
+
   Lux.initNav = function initNav(options = {}) {
     const nav = document.getElementById("luxNav");
     if (!nav) return;
+
+    ensureSearchAndMobileMenu();
 
     const transparentOnTop = options.transparentOnTop === true;
 
@@ -440,51 +512,101 @@ window.VedVigyanLux = window.VedVigyanLux || {};
     const searchClose = document.getElementById("searchClose");
     const searchForm = document.getElementById("luxSearchForm");
 
-    searchOpen?.addEventListener("click", () => {
-      searchModal?.classList.add("open");
-      searchModal?.setAttribute("aria-hidden", "false");
-      document.getElementById("luxSearchInput")?.focus();
-    });
+    if (searchOpen && !searchOpen.__luxBound) {
+      searchOpen.__luxBound = true;
+      searchOpen.addEventListener("click", (e) => {
+        if (e) e.preventDefault();
+        const modal = document.getElementById("searchModal");
+        modal?.classList.add("open");
+        modal?.setAttribute("aria-hidden", "false");
+        setTimeout(() => {
+          document.getElementById("luxSearchInput")?.focus();
+        }, 50);
+      });
+    }
 
     const closeSearch = () => {
-      searchModal?.classList.remove("open");
-      searchModal?.setAttribute("aria-hidden", "true");
+      const modal = document.getElementById("searchModal");
+      modal?.classList.remove("open");
+      modal?.setAttribute("aria-hidden", "true");
     };
-    searchClose?.addEventListener("click", closeSearch);
-    searchModal?.addEventListener("click", (e) => { if (e.target === searchModal) closeSearch(); });
 
-    searchForm?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const q = document.getElementById("luxSearchInput")?.value?.trim();
-      window.location.href = q ? `/shop.html?q=${encodeURIComponent(q)}` : "/shop.html";
-    });
+    if (searchClose && !searchClose.__luxBound) {
+      searchClose.__luxBound = true;
+      searchClose.addEventListener("click", closeSearch);
+    }
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeSearch();
-    });
+    if (searchModal && !searchModal.__luxBound) {
+      searchModal.__luxBound = true;
+      searchModal.addEventListener("click", (e) => {
+        if (e.target === searchModal) closeSearch();
+      });
+    }
 
-    const mobileMenu = document.getElementById("mobileMenu");
-    const mobileBackdrop = document.getElementById("mobileMenuBackdrop");
+    if (searchForm && !searchForm.__luxBound) {
+      searchForm.__luxBound = true;
+      searchForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const q = document.getElementById("luxSearchInput")?.value?.trim();
+        window.location.href = q ? `/shop.html?q=${encodeURIComponent(q)}` : "/shop.html";
+      });
+    }
 
-    const openMobileMenu = () => {
-      mobileMenu?.classList.add("open");
-      mobileMenu?.setAttribute("aria-hidden", "false");
-      mobileBackdrop?.classList.add("open");
-      mobileBackdrop?.setAttribute("aria-hidden", "false");
+    const openMobileMenu = (e) => {
+      if (e) e.preventDefault();
+      const mMenu = document.getElementById("mobileMenu");
+      const mBackdrop = document.getElementById("mobileMenuBackdrop");
+      mMenu?.classList.add("open");
+      mMenu?.setAttribute("aria-hidden", "false");
+      mBackdrop?.classList.add("open");
+      mBackdrop?.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
     };
 
     const closeMobileMenu = () => {
-      mobileMenu?.classList.remove("open");
-      mobileMenu?.setAttribute("aria-hidden", "true");
-      mobileBackdrop?.classList.remove("open");
-      mobileBackdrop?.setAttribute("aria-hidden", "true");
+      const mMenu = document.getElementById("mobileMenu");
+      const mBackdrop = document.getElementById("mobileMenuBackdrop");
+      mMenu?.classList.remove("open");
+      mMenu?.setAttribute("aria-hidden", "true");
+      mBackdrop?.classList.remove("open");
+      mBackdrop?.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
     };
 
-    document.getElementById("mobileMenuBtn")?.addEventListener("click", openMobileMenu);
-    document.getElementById("mobileMenuClose")?.addEventListener("click", closeMobileMenu);
-    mobileBackdrop?.addEventListener("click", closeMobileMenu);
+    if (!window.__luxEscapeBound) {
+      window.__luxEscapeBound = true;
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeSearch();
+          closeMobileMenu();
+        }
+      });
+    }
+
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    if (mobileMenuBtn && !mobileMenuBtn.__luxBound) {
+      mobileMenuBtn.__luxBound = true;
+      mobileMenuBtn.addEventListener("click", openMobileMenu);
+    }
+
+    const mobileMenuClose = document.getElementById("mobileMenuClose");
+    if (mobileMenuClose && !mobileMenuClose.__luxBound) {
+      mobileMenuClose.__luxBound = true;
+      mobileMenuClose.addEventListener("click", closeMobileMenu);
+    }
+
+    const mobileBackdrop = document.getElementById("mobileMenuBackdrop");
+    if (mobileBackdrop && !mobileBackdrop.__luxBound) {
+      mobileBackdrop.__luxBound = true;
+      mobileBackdrop.addEventListener("click", closeMobileMenu);
+    }
+
+    document.querySelectorAll(".lux-mobile-links a").forEach((a) => {
+      if (!a.__luxBound) {
+        a.__luxBound = true;
+        a.addEventListener("click", closeMobileMenu);
+      }
+    });
 
     const path = window.location.pathname.replace(/\/+$/, "") || "/index.html";
     const isHome = path === "" || path === "/" || path === "/index.html";
