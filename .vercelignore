@@ -6,3 +6,5 @@ watch-shop-vdos/
 .git/
 .gitignore
 README.md
+backend/node_modules/
+backend/.env

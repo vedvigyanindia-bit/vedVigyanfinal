@@ -2,6 +2,14 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/api/admin/products/:action",
+      "destination": "/api/admin/products?action=:action"
+    },
+    {
+      "source": "/api/admin/products",
+      "destination": "/api/admin/products"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
@@ -43,8 +51,20 @@
     }
   ],
   "functions": {
-    "api/**": {
-      "includeFiles": "backend/**"
+    "api/admin/orders.js": {
+      "includeFiles": "backend/src/**"
+    },
+    "api/admin/shiprocket-retry.js": {
+      "includeFiles": "backend/src/**"
+    },
+    "api/payments/**": {
+      "includeFiles": "backend/src/**"
+    },
+    "api/orders/**": {
+      "includeFiles": "backend/src/**"
+    },
+    "api/shiprocket/**": {
+      "includeFiles": "backend/src/**"
     }
   }
 }
