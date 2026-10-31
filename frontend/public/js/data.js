@@ -1713,11 +1713,11 @@ window.VED_VIGYAN_DATA = {
   {
     "id": "vv_p46",
     "category": "crystal-bracelet",
-    "slug": "tiger-eye-bracelet-for-mens",
-    "name": "Tiger eye bracelet for mens",
+    "slug": "tiger-eye-bracelet-for-men",
+    "name": "Tiger Eye Bracelet for Men | 100% Natural Stone Beads",
     "price": 699,
-    "originalPrice": 1099,
-    "discountPercent": 36,
+    "originalPrice": 1299,
+    "discountPercent": 46,
     "rating": 4.8,
     "tags": [
       "crystal-bracelet",
@@ -1727,25 +1727,28 @@ window.VED_VIGYAN_DATA = {
       "mens"
     ],
     "image": "/product/Ved vigyan products/Tiger Eye Loose Big/1.webp",
-    "imageAlt": "Tiger eye bracelet for mens - Authentic Ved Vigyan Original Product",
+    "imageAlt": "Tiger Eye Bracelet for Men | 100% Natural Stone Beads - Authentic Ved Vigyan Original Product",
     "images": [
       "/product/Ved vigyan products/Tiger Eye Loose Big/1.webp",
       "/product/Ved vigyan products/Tiger Eye Loose Big/2.webp"
     ],
-    "certificate": "/product/Ved vigyan products/5 Mukhi Rudraksh/3.webp",
-    "short": "Authentic Natural Tiger Eye Bracelet for Men. Enhances Courage, Focus, and Positive Energy.",
-    "description": "The Tiger Eye Bracelet for Men is handcrafted with natural golden-brown chatoyant beads, revered in Vedic traditions for promoting mental clarity, grounding, and inner confidence.\n\nTraditionally associated with the Solar Plexus (Manipura) Chakra, Tiger Eye provides an aura of energetic protection against negativity while instilling courage, resilience, and calm focus throughout daily life and meditation.\n\n*Care Instructions:* Store in a clean, dry place. Avoid direct contact with harsh perfumes and chemicals.",
+    "certificate": "/product/Ved vigyan products/Tiger Eye Loose Big/2.webp",
+    "short": "Natural Tiger Eye Bracelet for Men. Strength. Focus. Grounding.",
+    "description": "The Tiger Eye Bracelet for Men from Ved Vigyan is handcrafted with natural tiger eye gemstone beads known for their rich golden-brown, silky chatoyant shine. Designed as a comfortable elastic stretch bracelet, it suits daily wear, office, gym, meditation and gifting.\n\nSignificance of Tiger Eye Stone\nIn Vedic and crystal traditions, Tiger Eye is associated with the Solar Plexus (Manipura) Chakra. It is traditionally worn for confidence, courage, grounding and a calm, focused mindset. Many wearers also like it as a protective stone for daily life.\n\nWhy Choose Ved Vigyan Tiger Eye Bracelet\n- 100% natural tiger eye gemstone beads\n- Handcrafted in India with durable elastic stretch cord\n- Masculine, minimal design that works with formal and casual looks\n- Energized with traditional Vedic rituals before dispatch\n- Sacred, gift-ready packaging\n- Free shipping above ₹999, COD available\n\nSize & Fit\nBead size: [__ mm] | Fits wrist: [__ to __ inches] | Stretch fit, easy to wear and remove.\n\nWho Is It For?\nA great gift for husbands, brothers, fathers, friends and colleagues, for birthdays, Raksha Bandhan, Diwali or any milestone.\n\nHow to Wear\nWear it on your left or right wrist as you prefer. Many people start on a Sunday or Tuesday morning after bathing with a positive intention.\n\nCare Instructions\nStore in a clean, dry place. Keep away from perfume, harsh chemicals and excess water. Wipe gently with a soft cloth.\n\nNote: Gemstone benefits are based on traditional beliefs and personal experience. They are not a substitute for medical advice, and results are not guaranteed.",
     "bullets": [
-      "100% Authentic Natural Tiger Eye Gemstone Beads",
-      "Handcrafted elastic stretch bracelet for comfortable daily wear for men",
-      "Energized according to traditional Vedic rituals for protection & focus",
-      "Includes authenticity certificate and sacred packaging"
+      "100% Natural Tiger Eye Gemstone Beads – Golden-Brown Chatoyant Shine",
+      "Handcrafted Elastic Stretch Bracelet for Comfortable Daily Wear",
+      "Traditionally Worn for Confidence, Focus & Grounding",
+      "Vedic Ritual Energized Before Dispatch",
+      "Gift-Ready Sacred Packaging | Free Shipping Above ₹999",
+      "Made in India | COD, UPI & Cards Accepted"
     ],
-    "seoTitle": "Tiger eye bracelet for mens - Buy Original Online | Ved Vigyan",
-    "seoDescription": "Shop original Tiger eye bracelet for mens online at Ved Vigyan. Energized crystal bracelet for confidence, courage, and divine protection. Fast delivery across India.",
-    "url": "/products/tiger-eye-bracelet-for-mens",
+    "seoTitle": "Tiger Eye Bracelet for Men | 100% Natural Stone Beads - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Tiger Eye Bracelet for Men | 100% Natural Stone Beads online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/tiger-eye-bracelet-for-men",
     "inStock": true,
-    "createdAt": "2026-10-29T10:10:49.564Z"
+    "createdAt": "2026-10-29T10:10:49.564Z",
+    "updatedAt": "2026-10-31T20:39:33.704Z"
   },
   {
     "id": "vv_p47",
