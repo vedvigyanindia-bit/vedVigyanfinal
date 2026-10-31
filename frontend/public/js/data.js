@@ -1130,7 +1130,7 @@ window.VED_VIGYAN_DATA = {
     "id": "vv_p31",
     "category": "mala",
     "slug": "5-mukhi-nepali-rudraksha-mala-108-beads",
-    "name": "Mukhi Nepali Rudraksha Mala 108 Beads | Lab Certified – Ved Vigyan",
+    "name": "5 Mukhi Nepali Rudraksha Mala 108 Beads | DRGTL Certified – Ved Vigyan",
     "price": 951,
     "tags": [
       "mala",
@@ -1138,7 +1138,7 @@ window.VED_VIGYAN_DATA = {
       "vedic"
     ],
     "image": "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/1.webp",
-    "imageAlt": "Mukhi Nepali Rudraksha Mala 108 Beads | Lab Certified – Ved Vigyan - Authentic Ved Vigyan Original Product",
+    "imageAlt": "5 Mukhi Nepali Rudraksha Mala 108 Beads | DRGTL Certified – Ved Vigyan - Authentic Ved Vigyan Original Product",
     "images": [
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/1.webp",
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/2.webp",
@@ -1150,13 +1150,15 @@ window.VED_VIGYAN_DATA = {
       "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp"
     ],
     "certificate": "/product/Ved vigyan products/Nepali Rudrakasha Mala Close for wearing/3.webp",
-    "short": "Original 5 Mukhi Nepali Rudraksha 108 bead mala for jaap and daily wearing.",
-    "description": "The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.",
+    "short": "108 Beads. DRGTL Certified. 100% Asli.",
+    "description": "The 5 Mukhi Nepali Rudraksha Mala (108 Beads) from Ved Vigyan is one of the most revered rudraksha malas in Hindu tradition. Made with 108 natural Nepali Panchmukhi rudraksha beads, it is widely used for daily japa, mantra chanting, meditation and spiritual practice.\n\nEvery mala comes with an individual DRGTL lab certificate and QR code, so you can verify its authenticity online before you wear it.\n\nSignificance of 5 Mukhi (Panchmukhi) Rudraksha\nIn Hindu tradition, the 5 Mukhi Rudraksha is associated with Lord Shiva in his Kalagni Rudra form and is ruled by Jupiter (Brihaspati). It is the most commonly worn rudraksha, and a 108-bead mala is traditionally used for chanting \"Om Namah Shivaya\". Many devotees value it for a calm, focused and peaceful daily routine.\n\nWhy Choose Ved Vigyan Nepali Rudraksha Mala\n- 100% natural Nepali rudraksha beads, not dyed or moulded\n- Lab tested and X-ray verified for natural internal structure\n- Individual DRGTL authenticity certificate with QR code\n- Purified with Vedic mantras and rituals before dispatch\n- Tamper-proof packaging with free express shipping above ₹999\n- COD, UPI, cards and Paytm accepted\n\nHow to Use\nBegin preferably on a Monday morning after bathing. Sit facing east or north, hold the mala with devotion and chant \"Om Namah Shivaya\" 108 times (one full round). You can wear it daily or use it only for japa.\n\nCare Instructions\nKeep away from perfume, chemicals and excess water. Wipe gently with a dry cloth and apply a drop of natural oil every few weeks.\n\nNote: Rudraksha is a traditional and spiritual product. Experiences vary from person to person and results are not guaranteed.",
     "bullets": [
-      "100% Original Nepali 5 Mukhi Rudraksha (108 Beads)",
-      "Supports a calm & focused mind during meditation",
-      "Ideal for daily mantra chanting (108 beads)",
-      "Includes Authenticity Certificate & Usage Guide"
+      "100% Original Nepali 5 Mukhi Rudraksha Mala – 108 Natural Beads",
+      "DRGTL Lab Certified with QR Code Verification",
+      "Lab Tested & X-Ray Verified for Natural Structure",
+      "Vedic Mantra Purified Before Dispatch",
+      "Ideal for Daily Japa, Om Namah Shivaya Chanting & Meditation",
+      "Free Express Shipping Above ₹999 | COD Available"
     ],
     "detailsHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">Benefits of 5 Mukhi Nepali Rudraksha Mala</h4><p>The 5 Mukhi Nepali Rudraksha Mala (108 Beads) is one of the most revered Rudraksha malas in Hindu tradition. Associated with Lord Shiva (Kalagni Rudra), it is widely used for daily meditation, mantra chanting (Jaap), and spiritual practices.</p><h5 style=\"margin-top: 14px; margin-bottom: 8px; font-weight:600;\">Key Benefits</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>✅ Supports a calm and focused mind during meditation</li><li>✅ Ideal for daily mantra chanting (108 beads)</li><li>✅ Traditionally believed to promote inner peace and spiritual growth</li><li>✅ Encourages discipline and mindfulness in daily life</li><li>✅ Comfortable for everyday wear</li><li>✅ Suitable for both beginners and experienced spiritual practitioners</li></ul><p style=\"font-size: 12px; opacity: 0.8; font-style: italic; margin-top: 10px;\">Note: These benefits are based on traditional Hindu beliefs and spiritual practices. They are not intended as medical or therapeutic claims.</p><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">🙏 Who Should Wear This Rudraksha?</h5><p>This Rudraksha Mala is suitable for:</p><ul style=\"list-style: disc; padding-left: 20px; line-height: 1.7;\"><li>Men and women</li><li>Students practicing concentration and meditation</li><li>Professionals seeking a mindful daily routine</li><li>Yoga practitioners</li><li>Spiritual seekers</li><li>Devotees of Lord Shiva</li><li>Individuals who perform daily Jaap</li><li>Anyone looking for an authentic Nepali Rudraksha Mala</li></ul><p style=\"margin-top:8px;\">The 5 Mukhi Rudraksha is traditionally regarded as one of the most universally suitable Rudraksha beads.</p><h5 style=\"margin-top: 18px; margin-bottom: 8px; font-weight:600;\">📦 What's Included?</h5><ul style=\"list-style: none; padding: 0; line-height: 1.8;\"><li>● 1 × Original 5 Mukhi Nepali Rudraksha Mala (108 Beads)</li><li>● Authenticity Certificate</li><li>● Usage Guide</li><li>● Premium Packaging</li></ul></div>",
     "howToUseHtml": "<div class=\"pdp-rich-content\"><h4 style=\"color:var(--lux-gold, #d4af37); margin-bottom: 8px;\">📿 How to Wear the 5 Mukhi Rudraksha Mala</h4><p>To wear and use your Rudraksha Mala:</p><ol style=\"padding-left: 20px; line-height: 1.8;\"><li>Wake up early and bathe before wearing it.</li><li>Offer a prayer to Lord Shiva.</li><li>Chant \"Om Namah Shivaya\" 108 times (optional but traditionally recommended).</li><li>Wear the mala around your neck or use it for daily Jaap.</li><li>Store it respectfully when not in use.</li></ol><h5 style=\"margin-top: 16px; margin-bottom: 8px; font-weight:600;\">Care Instructions</h5><ul style=\"list-style: disc; padding-left: 20px; line-height: 1.7;\"><li>Avoid exposing it to harsh chemicals.</li><li>Keep away from perfumes and detergents.</li><li>Clean occasionally with a soft cloth.</li><li>Apply a small amount of natural oil every few months to help maintain the beads.</li></ul></div>",
@@ -1203,14 +1205,14 @@ window.VED_VIGYAN_DATA = {
         "a": "Keep it clean and dry, avoid harsh chemicals, and occasionally apply a small amount of natural oil to preserve the beads."
       }
     ],
-    "seoTitle": "Mukhi Nepali Rudraksha Mala 108 Beads | Lab Certified – Ved Vigyan - Buy Original Online | Ved Vigyan",
-    "seoDescription": "Shop original Mukhi Nepali Rudraksha Mala 108 Beads | Lab Certified – Ved Vigyan online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "seoTitle": "5 Mukhi Nepali Rudraksha Mala 108 Beads | DRGTL Certified – Ved Vigyan - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original 5 Mukhi Nepali Rudraksha Mala 108 Beads | DRGTL Certified – Ved Vigyan online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
     "url": "/products/5-mukhi-nepali-rudraksha-mala-108-beads",
     "discountPercent": 58,
     "originalPrice": 2265,
     "rating": 4.8,
     "inStock": true,
-    "updatedAt": "2026-10-31T20:26:57.670Z"
+    "updatedAt": "2026-10-31T20:34:17.246Z"
   },
   {
     "id": "vv_p32",
