@@ -46,7 +46,7 @@ window.VED_VIGYAN_DATA = {
   "categories": [
   {
     "id": "all",
-    "label": "All Products (47)"
+    "label": "All Products (48)"
   },
   {
     "id": "rudraksha",
@@ -54,7 +54,7 @@ window.VED_VIGYAN_DATA = {
   },
   {
     "id": "mala",
-    "label": "Jaap Malas & Sacred Strings (10)"
+    "label": "Jaap Malas & Sacred Strings (11)"
   },
   {
     "id": "gemstone-tree",
@@ -1784,6 +1784,41 @@ window.VED_VIGYAN_DATA = {
     "url": "/products/original-7-mukhi-rudraksha-sapta-mukhi-nepali-lab-tested-certified",
     "inStock": true,
     "createdAt": "2026-10-29T15:12:05.063Z"
+  },
+  {
+    "id": "vv_p48",
+    "category": "mala",
+    "slug": "original-kamal-gatta-mala-108-1-beads",
+    "name": "Original Kamal Gatta Mala 108+1 Beads",
+    "price": 1199,
+    "originalPrice": 1700,
+    "discountPercent": 29,
+    "rating": 4.8,
+    "tags": [
+      "mala",
+      "authentic",
+      "vedic"
+    ],
+    "image": "/public/images/products/original-kamal-gatta-mala-108-1-beads/1.jpg",
+    "imageAlt": "Original Kamal Gatta Mala 108+1 Beads - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/public/images/products/original-kamal-gatta-mala-108-1-beads/1.jpg",
+      "/public/images/products/original-kamal-gatta-mala-108-1-beads/2.png",
+      "/public/images/products/original-kamal-gatta-mala-108-1-beads/3.jpg"
+    ],
+    "certificate": "/public/images/products/original-kamal-gatta-mala-108-1-beads/3.jpg",
+    "short": "The lotus seeds in the mala are known for their association with Goddess Lakshmi, the deity of wealth and prosperity.",
+    "description": "How to Wear and Use a Kamal Gatta Mala\n\n\nWearing the Mala\n\n• Auspicious Day: Traditionally worn or first energized on a Friday (day of Goddess Lakshmi), during Diwali, or on special Lakshmi Puja days.\n• Placement: Can be worn around the neck or kept in a clean, sacred space.\n• Etiquette: Treat the mala with respect; keep it clean and avoid wearing it in impure environments or as a casual fashion accessory if it has been consecrated for worship.\n\n\nUsing the Mala for Japa (Mantra Chanting)\n\n• Purification: Before first use, gently purify the mala with Ganga Jal (Ganges water) and offer incense or prayers before a Lakshmi idol.\n• Hand Posture: Hold the mala in your right hand. Drape it over your middle or ring finger, and use your thumb to pull each bead toward your body.\n• Avoid the Index Finger: According to traditional consensus on Quora, avoid touching the beads with the index finger, as it is considered disrespectful in ritual practices.\n• The Guru Bead: Do not cross or step over the central guru bead. When you reach the guru bead at the end of 108 counts, turn the mala around in reverse direction to start the next round.\n• Mantras to Chant: Recite the Lakshmi Beej Mantra or Shree Sukta with focus and devotion.",
+    "bullets": [
+      "The Kamal Gatta Mala is a divine rosary crafted from sacred lotus seeds, symbolizing purity, spiritual growth, and divine connection. Each bead in this mala is energized through Vedic rituals by experienced pandits, making it a powerful tool for spiritual practices and personal transformation.",
+      "The lotus seeds in the mala are known for their association with Goddess Lakshmi, the deity of wealth and prosperity. This mala is ideal for meditation, chanting, and attracting positivity and abundance into your life.",
+      "Incorporate the Kamalgata Mala into your daily spiritual practices to invite divine blessings, clarity, and abundance into your life."
+    ],
+    "seoTitle": "Original Kamal Gatta Mala 108+1 Beads - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Original Kamal Gatta Mala 108+1 Beads online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/original-kamal-gatta-mala-108-1-beads",
+    "inStock": true,
+    "createdAt": "2026-11-02T10:04:22.876Z"
   }
 ]
 };
