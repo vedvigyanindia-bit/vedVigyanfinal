@@ -1749,5 +1749,40 @@
     "inStock": true,
     "createdAt": "2026-11-02T10:04:22.876Z",
     "updatedAt": "2026-11-03T06:12:10.174Z"
+  },
+  {
+    "id": "vv_p49",
+    "category": "rudraksha",
+    "slug": "5-mukhi-rudraksha-kantha-mala-54-1-beads",
+    "name": "5 Mukhi Rudraksha Kantha mala 54+1 Beads",
+    "price": 1500,
+    "originalPrice": 2000,
+    "discountPercent": 25,
+    "rating": 4.8,
+    "tags": [
+      "rudraksha",
+      "authentic",
+      "vedic"
+    ],
+    "image": "/public/images/products/5-mukhi-rudraksha-kantha-mala-54-1-beads/1.jpg",
+    "imageAlt": "5 Mukhi Rudraksha Kantha mala 54+1 Beads - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/public/images/products/5-mukhi-rudraksha-kantha-mala-54-1-beads/1.jpg",
+      "/public/images/products/5-mukhi-rudraksha-kantha-mala-54-1-beads/2.jpg",
+      "/public/images/products/5-mukhi-rudraksha-kantha-mala-54-1-beads/3.jpg"
+    ],
+    "certificate": "/public/images/products/5-mukhi-rudraksha-kantha-mala-54-1-beads/3.jpg",
+    "short": "This Rudraksha kantha mala is made from natural 5 Mukhi Rudraksha beads",
+    "description": "Discover the traditional significance of the 5 Mukhi Rudraksha Kantha Mala from Ved Vigyan. Featuring textured Rudraksha beads, red thread detailing and a yellow tassel, this mala reflects the rich heritage of Indian spiritual traditions. The five-faced Rudraksha is traditionally associated with Lord Shiva and is commonly used during prayer, meditation and mantra chanting. Incorporate this spiritual accessory into your personal devotional practice or gift it to someone who appreciates traditional spiritual items. Care Instructions: Keep dry, avoid harsh chemicals and perfumes, and store in a clean, dry place.",
+    "bullets": [
+      "100% Authentic natural product with laboratory certificate",
+      "Energized according to traditional Vedic rituals",
+      "Includes authenticity test certificate & usage guide"
+    ],
+    "seoTitle": "5 Mukhi Rudraksha Kantha mala 54+1 Beads - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original 5 Mukhi Rudraksha Kantha mala 54+1 Beads online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/5-mukhi-rudraksha-kantha-mala-54-1-beads",
+    "inStock": true,
+    "createdAt": "2026-11-09T15:23:40.149Z"
   }
 ]
