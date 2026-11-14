@@ -46,7 +46,7 @@ window.VED_VIGYAN_DATA = {
   "categories": [
   {
     "id": "all",
-    "label": "All Products (50)"
+    "label": "All Products (51)"
   },
   {
     "id": "rudraksha",
@@ -1896,6 +1896,46 @@ window.VED_VIGYAN_DATA = {
     "url": "/products/5-mukhi-rudraksha-bracelet-for-health-and-wealth",
     "inStock": true,
     "createdAt": "2026-11-14T11:24:12.150Z"
+  },
+  {
+    "id": "vv_p51",
+    "category": "puja-items",
+    "slug": "7-horses-on-raw-pyrite-frame",
+    "name": "7 Horses on Raw Pyrite Frame",
+    "price": 1150,
+    "originalPrice": 1750,
+    "discountPercent": 34,
+    "rating": 4.8,
+    "tags": [
+      "puja-items",
+      "authentic",
+      "vedic"
+    ],
+    "image": "/public/images/products/7-horses-on-raw-pyrite-frame/1.webp",
+    "imageAlt": "7 Horses on Raw Pyrite Frame - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/public/images/products/7-horses-on-raw-pyrite-frame/1.webp",
+      "/public/images/products/7-horses-on-raw-pyrite-frame/2.webp",
+      "/public/images/products/7-horses-on-raw-pyrite-frame/3.webp",
+      "/public/images/products/7-horses-on-raw-pyrite-frame/4.webp"
+    ],
+    "certificate": "/public/images/products/7-horses-on-raw-pyrite-frame/4.webp",
+    "short": "A Symbol of Success, Prosperity, Growth & Positive Energy.",
+    "description": "7 Horses on Raw Pyrite Frame – A Symbol of Success & Prosperity\n\nBring home the symbolic power of seven galloping horses with this beautifully designed 7 Horses on Raw Pyrite Frame.\n\nIn Vastu and traditional beliefs, seven running horses represent speed, determination, progress, success and continuous growth. The radiant Sun motif symbolizes energy, confidence and new beginnings.\n\nThe frame features a striking golden seven-horse design against a natural raw pyrite-inspired textured background, complemented by an elegant dark wooden frame with golden detailing.\n\nSignificance of Seven Horses:\n\nSuccess & Growth: Symbolizes progress and achievement in personal and professional life.\n\nProsperity: Traditionally associated with abundance and financial growth.\n\nPositive Energy: Represents enthusiasm, motivation and confidence.\n\nStrength & Determination: Symbolizes courage and the ability to overcome challenges.\n\nWhere to Place:\nSuitable for your home, office, workplace or business space. Choose a prominent and well-maintained location according to your Vastu preferences.\n\nSpecial Prepaid Order Offer:\nReceive an Energized Shri Hanuman Chalisa with prepaid orders.\n\nMake your space more inspiring with this beautiful combination of traditional symbolism and elegant décor.",
+    "bullets": [
+      "Beautiful 7 Horses design with a radiant Sun motif",
+      "Features natural raw pyrite stone texture",
+      "Premium handcrafted-style wooden frame with golden detailing",
+      "Symbolizes success, progress, strength and prosperity",
+      "Ideal for home, office and business spaces",
+      "A meaningful gift for business owners and loved ones",
+      "Get an Energized Hanuman Chalisa on prepaid orders"
+    ],
+    "seoTitle": "7 Horses on Raw Pyrite Frame - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original 7 Horses on Raw Pyrite Frame online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/7-horses-on-raw-pyrite-frame",
+    "inStock": true,
+    "createdAt": "2026-11-14T11:37:17.952Z"
   }
 ]
 };
