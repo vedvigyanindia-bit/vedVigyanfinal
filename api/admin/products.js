@@ -146,8 +146,13 @@ module.exports = async function handler(req, res) {
             const matches = imgBase64.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
             if (matches && matches[2]) {
               const ext = matches[1].includes("png") ? "png" : (matches[1].includes("webp") ? "webp" : "jpg");
-              const relPath = `frontend/public/images/products/${slug}/${idx + 1}.${ext}`;
-              const webUrl = `/public/images/products/${slug}/${idx + 1}.${ext}`;
+              let fileName = `${idx + 1}.${ext}`;
+              let webUrl = `/public/images/products/${slug}/${fileName}`;
+              if (data.uploadedImages.includes(webUrl) || newUrls.includes(webUrl)) {
+                fileName = `${idx + 1}-${Date.now()}.${ext}`;
+                webUrl = `/public/images/products/${slug}/${fileName}`;
+              }
+              const relPath = `frontend/public/images/products/${slug}/${fileName}`;
               filesToUpdate.push({ path: relPath, content: matches[2], isBase64: true });
               newUrls.push(webUrl);
             }
