@@ -69,6 +69,19 @@
           }
         });
       }
+
+      const catContainer = document.getElementById("blogCategoriesTrack");
+      if (catContainer) {
+        catContainer.querySelectorAll(".vv-cat-pill").forEach((pill) => {
+          pill.addEventListener("click", () => {
+            catContainer.querySelectorAll(".vv-cat-pill").forEach((p) => p.classList.remove("active"));
+            pill.classList.add("active");
+            this.currentCategory = pill.getAttribute("data-category");
+            this.currentPage = 1;
+            this.fetchPosts(1);
+          });
+        });
+      }
     },
 
     renderSkeletons(append = false) {
@@ -108,7 +121,7 @@
 
       const params = new URLSearchParams({
         page: page.toString(),
-        per_page: "9",
+        per_page: "50",
         include_categories: page === 1 ? "true" : "false"
       });
 
@@ -183,7 +196,8 @@
 
       let html = `<button type="button" class="vv-cat-pill ${!this.currentCategory ? "active" : ""}" data-category="">All Wisdom</button>`;
       categories.forEach((cat) => {
-        html += `<button type="button" class="vv-cat-pill ${this.currentCategory === cat.slug ? "active" : ""}" data-category="${cat.id}">${cat.name}</button>`;
+        const isActive = String(this.currentCategory) === String(cat.id) || this.currentCategory === cat.slug;
+        html += `<button type="button" class="vv-cat-pill ${isActive ? "active" : ""}" data-category="${cat.id}">${cat.name}</button>`;
       });
 
       catContainer.innerHTML = html;

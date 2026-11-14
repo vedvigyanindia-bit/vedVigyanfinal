@@ -201,12 +201,14 @@ module.exports = async function handler(req, res) {
   // 2. LIST POSTS
   try {
     const page = Math.max(1, parseInt(req.query.page, 10) || 1);
-    const perPage = Math.min(50, Math.max(1, parseInt(req.query.per_page, 10) || 9));
+    const perPage = Math.min(100, Math.max(1, parseInt(req.query.per_page, 10) || 50));
     const category = req.query.category ? req.query.category.trim() : "";
     const search = req.query.search ? req.query.search.trim() : "";
 
     const params = new URLSearchParams({ page: String(page), per_page: String(perPage), _embed: "true" });
-    if (category) params.set("categories", category);
+    if (category && /^\d+$/.test(category)) {
+      params.set("categories", category);
+    }
     if (search) params.set("search", search);
 
     const wpApiUrl = `${wpUrl}/wp-json/wp/v2/posts?${params.toString()}`;
@@ -217,12 +219,33 @@ module.exports = async function handler(req, res) {
     const totalPosts = parseInt(postsRes.headers.get("x-wp-total") || "0", 10);
     const totalPages = parseInt(postsRes.headers.get("x-wp-totalpages") || "1", 10);
     const rawPosts = await postsRes.json();
-    const formattedPosts = Array.isArray(rawPosts) ? rawPosts.map(formatPost) : [];
+    let formattedPosts = Array.isArray(rawPosts) ? rawPosts.map(formatPost) : [];
+
+    // Filter by category name/slug if a non-numeric category was requested
+    if (category && !/^\d+$/.test(category)) {
+      const catLower = category.toLowerCase();
+      formattedPosts = formattedPosts.filter((p) =>
+        (p.category && p.category.toLowerCase() === catLower) ||
+        (Array.isArray(p.categories) && p.categories.some((c) => c.name.toLowerCase() === catLower || c.slug.toLowerCase() === catLower))
+      );
+    }
+
+    // Collect categories present in the posts
+    const categoryMap = new Map();
+    for (const p of formattedPosts) {
+      if (Array.isArray(p.categories)) {
+        for (const c of p.categories) {
+          if (c && c.id && !categoryMap.has(c.id)) {
+            categoryMap.set(c.id, c);
+          }
+        }
+      }
+    }
 
     return res.status(200).json({
       configured: true,
       posts: formattedPosts,
-      categories: [],
+      categories: Array.from(categoryMap.values()),
       page,
       perPage,
       totalPosts,
