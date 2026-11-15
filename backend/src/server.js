@@ -888,7 +888,7 @@ function handleRequest(req, res) {
 
   if (req.method === "GET" && url.pathname === "/api/blog/post") {
     try {
-      const postHandler = require(path.join(__dirname, "..", "..", "api", "blog", "post.js"));
+      const postHandler = require(path.join(__dirname, "..", "..", "api", "blog", "posts.js"));
       const queryObj = Object.fromEntries(url.searchParams.entries());
       const adaptedReq = Object.assign(req, { query: queryObj });
       const adaptedRes = Object.assign(res, {
