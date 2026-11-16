@@ -133,7 +133,7 @@ function getPageHtml(slug = "") {
           </div>
         </div>
         <div class="lux-footer-bottom">
-          <div class="lux-copyright">© 2026 Ved Vigyan India · Dehradun, Uttarakhand</div>
+          <div class="lux-copyright">© 2026 Ved Vigyan India · Dehradun, Uttarakhand · Created by Mahima Joshi <a href="mailto:joshimahima798@gmail.com">joshimahima798@gmail.com</a></div>
         </div>
       </div>
     </footer>
