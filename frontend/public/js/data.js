@@ -46,11 +46,11 @@ window.VED_VIGYAN_DATA = {
   "categories": [
   {
     "id": "all",
-    "label": "All Products (52)"
+    "label": "All Products (53)"
   },
   {
     "id": "rudraksha",
-    "label": "Original Nepal Rudraksha (17)"
+    "label": "Original Nepal Rudraksha (18)"
   },
   {
     "id": "mala",
@@ -1970,6 +1970,51 @@ window.VED_VIGYAN_DATA = {
     "inStock": true,
     "createdAt": "2026-11-16T07:15:30.751Z",
     "updatedAt": "2026-11-16T07:24:40.933Z"
+  },
+  {
+    "id": "vv_p53",
+    "category": "rudraksha",
+    "slug": "rudraksha-mala-for-men-original-natural-rudraksha-beads",
+    "name": "Rudraksha Mala for Men – Original Natural Rudraksha Beads",
+    "price": 950,
+    "originalPrice": 1491,
+    "discountPercent": 36,
+    "rating": 4.8,
+    "tags": [
+      "rudraksha",
+      "authentic",
+      "vedic"
+    ],
+    "image": "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/1.webp",
+    "imageAlt": "Rudraksha Mala for Men – Original Natural Rudraksha Beads - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/1.webp",
+      "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/2.webp",
+      "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/3.webp",
+      "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/4.webp",
+      "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/5.webp",
+      "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/6.webp",
+      "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/7.webp",
+      "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/8.webp"
+    ],
+    "certificate": "/public/images/products/rudraksha-mala-for-men-original-natural-rudraksha-beads/8.webp",
+    "short": "Experience divine energy, inner peace, and spiritual strength with an authentic Rudraksha Mala for Men.",
+    "description": "Rudraksha Mala for Men – Natural Beads for Spiritual Wellness\n\nThe Rudraksha Mala for Men is a traditional spiritual accessory valued for its religious significance and association with Lord Shiva. Made from natural Rudraksha beads, this mala is suitable for men who wish to incorporate spirituality, meditation, and traditional practices into their daily lives.\n\nSpiritual Significance of Rudraksha Mala\n\nRudraksha holds a special place in Hindu traditions and is traditionally associated with Lord Shiva. It is commonly worn by devotees during prayers, meditation, and spiritual practices. Wearing a Rudraksha Mala is considered a symbol of devotion, discipline, and spiritual connection.\n\nWhy Choose a Rudraksha Mala for Men?\n\nTraditional Spiritual Value: Associated with Lord Shiva and ancient Vedic traditions.\n\nNatural Rudraksha Beads: Features naturally formed Rudraksha beads.\n\nMeditation and Prayer: Suitable for mantra chanting, meditation, and daily worship.\n\nDaily Spiritual Wear: Can be incorporated into everyday spiritual routines.\n\nTraditional Design: A timeless accessory for men who appreciate spiritual traditions.\n\nHow to Wear a Rudraksha Mala\n\nTraditionally, Rudraksha malas are worn after following customary purification and prayer rituals. They can also be used for mantra chanting and meditation. Follow the recommended care and wearing instructions to maintain the beads.\n\nWho Can Wear a Rudraksha Mala?\n\nMen interested in spirituality, meditation, traditional Hindu practices, and devotional worship may choose to wear a Rudraksha Mala. It is also a thoughtful spiritual gift for family members and loved ones.\n\nBuy Authentic Rudraksha Mala for Men from Ved Vigyan\n\nChoose Ved Vigyan for carefully selected Rudraksha products that honour traditional spiritual values. Every product is presented with attention to authenticity, quality, and customer guidance.\n\nBring home a Rudraksha Mala for Men and make it a meaningful part of your spiritual journey.",
+    "bullets": [
+      "100% Natural and Authentic Rudraksha Beads",
+      "Carefully Selected Rudraksha for Spiritual Wear",
+      "Lab-Tested for Authenticity and Quality",
+      "Traditionally Associated with Lord Shiva",
+      "Supports Meditation, Focus, and Spiritual Practices",
+      "Comfortable to Wear for Daily Use",
+      "Ideal for Men Seeking Spiritual Growth",
+      "Includes Authenticity Certificate and Usage Guide"
+    ],
+    "seoTitle": "Rudraksha Mala for Men – Original Natural Rudraksha Beads - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Rudraksha Mala for Men – Original Natural Rudraksha Beads online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/rudraksha-mala-for-men-original-natural-rudraksha-beads",
+    "inStock": true,
+    "createdAt": "2026-11-16T08:56:36.150Z"
   }
 ]
 };
