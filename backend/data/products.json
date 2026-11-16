@@ -1867,5 +1867,37 @@
     "url": "/products/7-horses-on-raw-pyrite-frame",
     "inStock": true,
     "createdAt": "2026-11-14T11:37:17.952Z"
+  },
+  {
+    "id": "vv_p52",
+    "category": "puja-items",
+    "slug": "pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack",
+    "name": "Pure Braj Raj Mitti  from Holy Vrindavan Dham ( 1 + 1 pack )",
+    "price": 450,
+    "originalPrice": 999,
+    "discountPercent": 55,
+    "rating": 4.8,
+    "tags": [
+      "puja-items",
+      "authentic",
+      "vedic"
+    ],
+    "image": "/public/images/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack/1.webp",
+    "imageAlt": "Pure Braj Raj Mitti  from Holy Vrindavan Dham ( 1 + 1 pack ) - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/public/images/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack/1.webp",
+      "/public/images/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack/2.webp"
+    ],
+    "certificate": "/public/images/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack/2.webp",
+    "short": "Sacred Braj Raj Mitti from Vrindavan: Authentic Braj Raj Mitti collected from Holy Vrindavan Dham, the sacred land of Lord Krishna, traditionally used in Hindu pooja and bhakti rituals.",
+    "description": "Ideal for Tilak & Daily Pooja: Perfect for applying traditional tilak, daily worship, bhajan, jap, and spiritual practices at home or temple.",
+    "bullets": [
+      "Ideal for Tilak & Daily Pooja: Perfect for applying traditional tilak, daily worship, bhajan, jap, and spiritual practices at home or temple."
+    ],
+    "seoTitle": "Pure Braj Raj Mitti  from Holy Vrindavan Dham ( 1 + 1 pack ) - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Pure Braj Raj Mitti  from Holy Vrindavan Dham ( 1 + 1 pack ) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack",
+    "inStock": true,
+    "createdAt": "2026-11-16T07:15:30.751Z"
   }
 ]
