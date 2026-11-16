@@ -1953,10 +1953,9 @@ window.VED_VIGYAN_DATA = {
       "authentic",
       "vedic"
     ],
-    "image": "/public/images/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack/1.webp",
+    "image": "/public/images/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack/2.webp",
     "imageAlt": "Pure Braj Raj Mitti  from Holy Vrindavan Dham ( 1 + 1 pack ) - Authentic Ved Vigyan Original Product",
     "images": [
-      "/public/images/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack/1.webp",
       "/public/images/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack/2.webp"
     ],
     "certificate": "/public/images/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack/2.webp",
@@ -1969,7 +1968,8 @@ window.VED_VIGYAN_DATA = {
     "seoDescription": "Shop original Pure Braj Raj Mitti  from Holy Vrindavan Dham ( 1 + 1 pack ) online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
     "url": "/products/pure-braj-raj-mitti-from-holy-vrindavan-dham-1-1-pack",
     "inStock": true,
-    "createdAt": "2026-11-16T07:15:30.751Z"
+    "createdAt": "2026-11-16T07:15:30.751Z",
+    "updatedAt": "2026-11-16T07:24:40.933Z"
   }
 ]
 };
