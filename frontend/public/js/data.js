@@ -46,7 +46,7 @@ window.VED_VIGYAN_DATA = {
   "categories": [
   {
     "id": "all",
-    "label": "All Products (53)"
+    "label": "All Products (54)"
   },
   {
     "id": "rudraksha",
@@ -66,7 +66,7 @@ window.VED_VIGYAN_DATA = {
   },
   {
     "id": "zodiac-bracelet",
-    "label": "Vedic Rashi (Zodiac) Bracelets (11)"
+    "label": "Vedic Rashi (Zodiac) Bracelets (12)"
   }
 ],
   "products": [
@@ -2015,6 +2015,48 @@ window.VED_VIGYAN_DATA = {
     "url": "/products/rudraksha-mala-for-men-original-natural-rudraksha-beads",
     "inStock": true,
     "createdAt": "2026-11-16T08:56:36.150Z"
+  },
+  {
+    "id": "vv_p54",
+    "category": "zodiac-bracelet",
+    "slug": "natural-karungali-bracelet-original-certified",
+    "name": "Natural Karungali Bracelet Original Certified",
+    "price": 720,
+    "originalPrice": 1491,
+    "discountPercent": 52,
+    "rating": 4.8,
+    "tags": [
+      "zodiac-bracelet",
+      "authentic",
+      "vedic"
+    ],
+    "image": "/public/images/products/natural-karungali-bracelet-original-certified/1.webp",
+    "imageAlt": "Natural Karungali Bracelet Original Certified - Authentic Ved Vigyan Original Product",
+    "images": [
+      "/public/images/products/natural-karungali-bracelet-original-certified/1.webp",
+      "/public/images/products/natural-karungali-bracelet-original-certified/2.webp",
+      "/public/images/products/natural-karungali-bracelet-original-certified/3.webp",
+      "/public/images/products/natural-karungali-bracelet-original-certified/4.webp",
+      "/public/images/products/natural-karungali-bracelet-original-certified/5.webp",
+      "/public/images/products/natural-karungali-bracelet-original-certified/6.webp",
+      "/public/images/products/natural-karungali-bracelet-original-certified/7.webp"
+    ],
+    "certificate": "/public/images/products/natural-karungali-bracelet-original-certified/7.webp",
+    "short": "Embrace the Protective Energy of Sacred Karungali Wood.",
+    "description": "The Natural Karungali Bracelet by Ved Vigyan is crafted from Karungali, traditionally known as sacred Ebony wood. Deeply valued in Indian spiritual traditions, Karungali is associated with protection, grounding and the removal of negative influences.\n\nAccording to traditional beliefs, Karungali wood is considered a symbol of spiritual strength and positivity. Wearing a Karungali bracelet is believed to support inner balance, encourage mindfulness and strengthen one's spiritual connection.\n\nIts naturally dark wooden beads give the bracelet a distinctive and timeless appearance, making it suitable for both everyday wear and spiritual practices.\n\nSpiritual Significance:\n\nTraditionally associated with protection against negative energies.\n\nSymbolises strength, stability and grounding.\n\nBelieved to encourage positive thoughts and inner peace.\n\nCommonly worn by individuals interested in spiritual growth and meditation.\n\nHow to Wear:\nThe bracelet can be worn daily on either wrist. Wear it with a positive intention and maintain it with proper care.\n\nCare Instructions:\n\nKeep away from water and excessive moisture.\n\nAvoid direct contact with perfumes and harsh chemicals.\n\nStore in a clean, dry place when not in use.\n\nBring home the traditional significance of Karungali wood with Ved Vigyan's Natural Karungali Bracelet.",
+    "bullets": [
+      "Made from natural Karungali (Ebony) wood beads",
+      "Traditionally valued for spiritual protection and positive energy",
+      "Supports meditation, mindfulness and spiritual practices",
+      "Lightweight and comfortable for everyday wear",
+      "Natural wooden beads with a traditional finish",
+      "A meaningful accessory for spiritual seekers"
+    ],
+    "seoTitle": "Natural Karungali Bracelet Original Certified - Buy Original Online | Ved Vigyan",
+    "seoDescription": "Shop original Natural Karungali Bracelet Original Certified online at Ved Vigyan. Comes with lab certificate, free spiritual guidance, and fast delivery across India.",
+    "url": "/products/natural-karungali-bracelet-original-certified",
+    "inStock": true,
+    "createdAt": "2026-11-17T09:34:32.493Z"
   }
 ]
 };
